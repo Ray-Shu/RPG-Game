@@ -1,4 +1,4 @@
-package Sorters;
+
 import java.util.Scanner;
 
 public class errorChecker {

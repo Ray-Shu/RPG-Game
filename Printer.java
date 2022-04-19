@@ -14,8 +14,20 @@ public class Printer {
      * @param whatToPrint = the thing we print 1 word at a time. 
      */
     public void print (String whatToPrint){
-        while (!whatToPrint.isEmpty()) {
-            whatToPrint.split(" ", 0);
+        //splits the words at all the spaces
+        String words[] = whatToPrint.split(" ");
+
+        //prints out each word from the array of words
+        for (String word : words) {
+            System.out.print(word+ " ");
+
+            //waits a few seconds. In try catch bc VS code told me too. Something about an error
+            try {
+                Thread.sleep(100);
+            } catch (InterruptedException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            }
         }
         System.out.println();
     }
@@ -27,6 +39,7 @@ public class Printer {
      * @param color = the string version of the color we will use
      */
     public void printColor(String whatToPrint, String color){
+        //sets the color to one of our colors which was found here: https://stackoverflow.com/questions/5762491/how-to-print-color-in-console-using-system-out-println
         switch (color.toLowerCase()) {
             case "red":
                 System.out.print(ANSI_RED);
@@ -54,7 +67,7 @@ public class Printer {
                 break;
         }
         print(whatToPrint);
-        System.out.println(ANSI_RESET);
+        System.out.print(ANSI_RESET);
+        //prints out the color and sets it to white. 
         }
-    
     }

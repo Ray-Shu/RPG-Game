@@ -1,5 +1,5 @@
 public class ChamberOfCommerce {
-    //Store template
+    //Store templates for the stores
     private static String[] shopForSale = {"car", "shoe", "pizza", "macaroni"};
     private static int[] shopPrices = {100, 10, 99, 88};
     private static String shopName = "Bobs Random Things";

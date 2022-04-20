@@ -1,7 +1,7 @@
 
 import java.util.Scanner;
 
-public class errorChecker {
+public class ErrorChecker {
 
 
     /**
@@ -69,19 +69,18 @@ public class errorChecker {
      * @param whatToSayAtStart = What we say at the start of running the code. 
      * @return the value in the array that the user inputted. 
      */
-    public static int compareArrayOfStrings(String[] possibleInputs, String whatToSayAtStart){
+    public static String compareArrayOfStrings(String[] possibleInputs,  String errorMessage){
         Scanner scan = new Scanner(System.in);
-        System.out.print(whatToSayAtStart);
         while (true) {
             String input = scan.nextLine().toLowerCase(); 
             //for each element in the array, we will check if the user inputted that word. If not any of them, we will loop. 
             for (int i = 0; i < possibleInputs.length; i++) {
                     if(input.equalsIgnoreCase(possibleInputs[i]) ){
                             System.out.println();
-                            return i;
+                            return possibleInputs[i];
                         }
                     }
-        System.out.print("Error: Please enter a valid input: ");
+        Printer.print(errorMessage);
         }
     }
 

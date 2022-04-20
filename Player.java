@@ -1,7 +1,6 @@
 public class Player {
-    public static void main(String[] args) {
-        System.out.println("Hello World");
-        System.err.println("Hi im alex");
-        System.out.println("Hey");
+    //Creates the player by asking questions and stuff. Chooses classes
+    Player(){
+        System.out.println("Welcome");
     }
 }

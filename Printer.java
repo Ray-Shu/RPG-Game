@@ -38,32 +38,32 @@ public class Printer {
      * @param whatToPrint = the message we want to print
      * @param color = the string version of the color we will use
      */
-    public void printColor(String whatToPrint, String color){
+    public static void printColor(String whatToPrint, String color){
         //sets the color to one of our colors which was found here: https://stackoverflow.com/questions/5762491/how-to-print-color-in-console-using-system-out-println
         switch (color.toLowerCase()) {
             case "red":
                 System.out.print(ANSI_RED);
                 break;
             case "black":
-                System.out.print(ANSI_RED);
+                System.out.print(ANSI_BLACK);
                 break;
             case "green":
-                System.out.print(ANSI_RED);
+                System.out.print(ANSI_GREEN);
                 break;
             case "yellow":
-                System.out.print(ANSI_RED);
+                System.out.print(ANSI_YELLOW);
                 break;
             case "blue":
-                System.out.print(ANSI_RED);
+                System.out.print(ANSI_BLUE);
                 break;
             case "purple":
-                System.out.print(ANSI_RED);
+                System.out.print(ANSI_PURPLE);
                 break;
             case "cyan":
-                System.out.print(ANSI_RED);
+                System.out.print(ANSI_CYAN);
                 break;
             case "white":
-                System.out.print(ANSI_RED);
+                System.out.print(ANSI_WHITE);
                 break;
         }
         print(whatToPrint);

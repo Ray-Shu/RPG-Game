@@ -1,23 +1,18 @@
 public class Stats {
-    private static int hp;
-    private static int mp;
-    private static int spd;
-    private static int atk;
-    private static int pd;
-    private static int md;
-    private static int def;
-    private static int endurence;
-    private static int stamina;
-    private static int physRes;
-    private static int magicRes;
+    public static Double luck, hp, mp, spd, atk, pd, md, def, endurance, stamina, physRes, magicRes;
 
     //This class will contain information about the stats of the player and the mobs. 
-    Stats(int hp, int mp, int spd, int atk, int pd, int md, int def){
+    Stats(Double luck, Double hp, Double mp, Double spd, Double atk, Double pd, Double md, Double def, Double endurance, Double stamina, Double physRes, Double magicRes){
+        this.luck = luck;
         this.hp = hp;
         this.mp = mp;
         this.spd = spd; 
         this.atk = atk; 
         this.pd = pd;
-        
+        this.def = def;
+        this.stamina = stamina;
+        this.physRes = physRes;
+        this.magicRes = magicRes;
     }
+
 }

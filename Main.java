@@ -6,6 +6,7 @@ public class Main {
 
             // *Character class selection process
             Player player = new Player(); 
+            player.nameSelection();
             player.classSelection();
             finishedGame = true; 
 

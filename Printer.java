@@ -19,15 +19,14 @@ public class Printer {
 
         //prints out each word from the array of words
         for (String word : words) {
-            System.out.print(word+ " ");
-
-            //waits a few seconds. In try catch bc VS code told me too. Something about an error
             try {
                 Thread.sleep(100);
             } catch (InterruptedException e) {
-                // TODO Auto-generated catch block
                 e.printStackTrace();
             }
+            System.out.print(word+ " ");
+
+            //waits a few seconds. In try catch bc VS code told me too. Something about an error
         }
         System.out.println();
     }

@@ -1,14 +1,14 @@
 import java.util.Arrays;
 
 public class Merchant {
-    private int[] priceOfItem;
-    private String[] itemsForSale;
-    private String shopName;
-    private String greeting;
-    private String farewell;
-    private String errorMessage;
-    private String[] thingsToDo;
-    private String color;
+    public int[] priceOfItem;
+    public String[] itemsForSale;
+    public String shopName;
+    public String greeting;
+    public String farewell;
+    public String errorMessage;
+    public String[] thingsToDo;
+    public String color;
 
     /**
      * This gets all the data we will need for the merchant, including what they might sell, what they say, and what they do. 

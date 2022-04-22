@@ -56,7 +56,7 @@ public class Player {
         Printer.printColor("HP: 300" + '\n' + "MP: 80" + '\n' + "SPD: 0.75" + '\n' + "ATK: 3" + '\n'
                 + "DEF: 7", "green");
         System.out.println('\n' + "--------------------------------------------------");
-
+        
         quickBreak();
         // Terminator
         System.out.println();

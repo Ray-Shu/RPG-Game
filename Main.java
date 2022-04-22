@@ -3,8 +3,6 @@ public class Main {
         boolean finishedGame = false;
 
         while (!finishedGame) {
-
-
             
             // *Character class selection process
             Player player = new Player(); 

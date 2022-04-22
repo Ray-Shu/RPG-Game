@@ -10,7 +10,7 @@ public class Town {
     private static String[] shopForSale = {"car", "shoe", "pizza", "macaroni"};
     private static int[] shopPrices = {100, 10, 99, 88};
     private static String shopName = "Bobs Random Things";
-    private static String[] thingsAtShop = {"buy", "sell"};
+    private static String[] thingsAtShop = {"buy", "sell", "leave"};
     private static String shopGreeting = "Welcome to Bobs Random Thing! We sell lots of random things.";
     private static String shopFarewell = "Thank you for shopping at Bobs random things";
     private static String shopErrorMessage = "Sorry didn't hear you there could you repeat that?";
@@ -24,8 +24,8 @@ public class Town {
     private static String hospitalErrorMessage = "Please speak clearly";
 
 
-    Merchant shop = new Merchant(shopForSale, shopPrices, shopName, thingsAtShop, shopGreeting, shopFarewell, shopErrorMessage, "green");
-    Merchant hospital = new Merchant(hospitalForSale, hospitalPrices, hospitalName, thingsAtHospital, hospitalGreeting, hospitalFarewell, hospitalErrorMessage, "purple");
+    Merchant shop = new Merchant(this, shopForSale, shopPrices, shopName, thingsAtShop, shopGreeting, shopFarewell, shopErrorMessage, "green");
+    Merchant hospital = new Merchant(this,hospitalForSale, hospitalPrices, hospitalName, thingsAtHospital, hospitalGreeting, hospitalFarewell, hospitalErrorMessage, "purple");
     Merchant allThingsInTown[] = {shop, hospital};
     ArrayList<String> namesOfThingsInTown = new ArrayList<String>();
 

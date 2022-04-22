@@ -9,6 +9,7 @@ public class Merchant {
     public String errorMessage;
     public String[] thingsToDo;
     public String color;
+    private Town town;
 
     /**
      * This gets all the data we will need for the merchant, including what they might sell, what they say, and what they do. 
@@ -21,7 +22,7 @@ public class Merchant {
      * @param errorMessage
      * @param color
      */
-    Merchant(String[] itemsForSale, int[] priceOfItem, String shopName, String[] thingsToDo, String greeting, String farewell, String errorMessage, String color) {
+    Merchant(Town town, String[] itemsForSale, int[] priceOfItem, String shopName, String[] thingsToDo, String greeting, String farewell, String errorMessage, String color) {
         this.itemsForSale = itemsForSale;
         this.priceOfItem = priceOfItem;
         this.shopName = shopName;
@@ -30,6 +31,7 @@ public class Merchant {
         this.thingsToDo = thingsToDo;
         this.errorMessage = errorMessage;
         this.color = color;
+        this.town = town;
     }
 
     public void shop() {
@@ -57,7 +59,11 @@ public class Merchant {
             case "get healing":
                 Printer.printColor("Healing you: ", color);
                 break;
+            case "leave":
+                town.characterEnteringTown();
+                break;
         }
+        
         
         
     }

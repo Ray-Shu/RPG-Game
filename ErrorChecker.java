@@ -69,7 +69,7 @@ public class ErrorChecker {
      * @param whatToSayAtStart = What we say at the start of running the code. 
      * @return the value in the array that the user inputted. 
      */
-    public static String compareArrayOfStrings(String[] possibleInputs,  String errorMessage){
+    public static String compareArrayOfStrings(String[] possibleInputs,  String errorMessage, String color){
         Scanner scan = new Scanner(System.in);
         while (true) {
             String input = scan.nextLine().toLowerCase(); 
@@ -80,7 +80,7 @@ public class ErrorChecker {
                             return possibleInputs[i];
                         }
                     }
-        Printer.print(errorMessage);
+        Printer.printColor(errorMessage, color);
         }
     }
 

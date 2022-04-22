@@ -41,20 +41,20 @@ public class ErrorChecker {
      * @param whatToSayAtStart = The thing we start by saying
      * @return my value taken in if it is acceptable. 
      */
-    public static int intWithMinAndMax(int min, int max, String whatToSayAtStart) {
+    public static double doubleWithMinAndMax(Double min, Double max, String whatToSayAtStart, String color) {
         Scanner scan = new Scanner(System.in);
-        System.out.print(whatToSayAtStart);
+        Printer.printColor(whatToSayAtStart, color);
         //Repeats until we fet a nice number
         while (true) {
             //makes sure its an int
             while (!scan.hasNextInt()) {
-                System.out.print("Error: Please enter an number greater than " + min + " and less than " + max + ": ");
+                Printer.printColor("Error: Please enter an number greater than " + min + " and less than " + max + ": ", color);
                 scan.next();
             }
-            int value = scan.nextInt();
+            Double value = scan.nextDouble();
             //makes sure its in range. Loops if it is not
             if(value < min || value > max){
-                System.out.print("Error: Please enter an number greater than " + min + " and less than " + max + ": ");
+                Printer.printColor("Error: Please enter an number greater than " + min + " and less than " + max + ": ", color);
             }
             else{
                 return value;

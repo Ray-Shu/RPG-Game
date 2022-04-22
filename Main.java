@@ -1,18 +1,16 @@
 public class Main {
     public static void main(String[] args) {
-        boolean finishedGame = false; 
+        boolean finishedGame = false;
 
-        while(!finishedGame) { 
+        while (!finishedGame) {
 
             // *Character class selection process
             Player player = new Player(); 
             player.nameSelection();
             player.classSelection();
-            finishedGame = true; 
+            finishedGame = true;
 
         }
-        
-        
-        
+
     }
 }

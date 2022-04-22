@@ -25,9 +25,10 @@ public class Player {
      * TODO: Implement random perks
      */
 
+    // yellow cyan
+    // Creates the player by asking questions and stuff. Chooses classes
     public void classSelection() {
-
-        Printer.printColor("Which class would you like to be?", "purple");
+        Printer.printColor("Class Selection: ", "white");
 
         // * Prints the stats for all of the classes
         // Cyborg

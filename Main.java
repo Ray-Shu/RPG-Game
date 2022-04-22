@@ -8,7 +8,7 @@ public class Main {
             Player player = new Player(); 
             player.nameSelection();
             player.classSelection();
-            finishedGame = true;
+            finishedGame = true; 
 
         }
 

@@ -21,7 +21,7 @@ public class Player {
      *  * CLASS SELECTION AND STAT DISTRIBUTION
      * This part of the code makes the user enter one of the classes listed above, and then
      * creates the character's stats based off of those inputted values. 
-     * TODO: Finish writing out classes and determining base stats
+     * TODO: Finish writing out classes and determining base stats | NEARLY FINISHED
      * TODO: Implement random perks
      */
 
@@ -31,33 +31,90 @@ public class Player {
         Printer.printColor("Class Selection: ", "white");
 
         // * Prints the stats for all of the classes 
+
         // Cyborg
         System.out.println();
         Printer.printColor("Cyborg:", "blue");
-        //Maybe we add description of character here?
-        Printer.printColor("The cyborg is a well rounded assault unit with strong offensive and defensive abilities. "
-                + "\nCyborgs are highly skilled in hand to hand combat and with laser rifles. \n", "yellow");
+
+        //character description
+        Printer.printColor("The Cyborg is a well rounded assault unit with strong offensive and defensive abilities. "
+                + "\nCyborgs are highly skilled in hand to hand combat and with laser rifles. \n", "white");
         
         Printer.printColor("HP: 200" + '\n' + "MP: 100" + '\n' + "SPD: 1.00" + '\n' + "ATK: 5" + '\n'
-                + "Physical Damage: 5" + '\n' + "Magic Damage: 0", "blue");
+                + "DEF: 5", "blue");
         System.out.println('\n' + "--------------------------------------------------");
         //Maybe we have it pause quickly so the user can see the information about the class more. 
         quickBreak();
-
+        
         // Hacker
         System.out.println();
-        Printer.printColor("Hacker" + '\n' + "HP: 300" + '\n' + "MP: 80" + '\n' + "SPD: 0.75" + '\n' + "ATK: 4" + '\n'
-                + "Physical Damage: 3" + '\n' + "Magic Damage: 3", "green");
+        Printer.printColor("Hacker: ", "green");
+
+        //character description
+        Printer.printColor("Unparalleled in their mastery and knowledge of all technology related," +
+        "\nthe Hacker is a tank unit who wields control over an arsenal of automated technological weaponry. \n", "white");
+        Printer.printColor("HP: 300" + '\n' + "MP: 80" + '\n' + "SPD: 0.75" + '\n' + "ATK: 3" + '\n'
+                + "DEF: 7", "green");
         System.out.println('\n' + "--------------------------------------------------");
 
         quickBreak();
         // Terminator
         System.out.println();
-        Printer.printColor("Terminator" + '\n' + "HP: 300" + '\n' + "MP: 90" + '\n' + "SPD: 0.70" + '\n' + "ATK: 5"
-                + '\n' + "Physical Damage: 6" + '\n' + "Magic Damage: 0", "red");
+        Printer.printColor("Terminator: ", "red");
+
+        //character description
+        Printer.printColor("The Terminator is an unpredictable aggressive beast who specializes in close-range combat."
+        + "\nBlinded by fury, these individuals wreak havoc on anything that may get on their nerves.\n", "white");
+        Printer.printColor("HP: 250" + '\n' + "MP: 50" + '\n' + "SPD: 1.00" + '\n' + "ATK: 6"
+                + '\n' + "DEF: 3", "red");
         System.out.println('\n' + "--------------------------------------------------");
-    
         
+        quickBreak(); 
+        // Lazer Swordsman
+        System.out.println();
+        Printer.printColor("Lazer Swordsman: ", "cyan");
+
+        //character description
+        Printer.printColor("The Lazer Swordsman is a composed, well-balanced and versatile individual." 
+        + "\nJack of all trades yet master of none. \n", "white");
+        Printer.printColor(
+                "HP: 200" + '\n' + "MP: 100" + '\n' + "SPD: 1.25" + '\n' + "ATK: 5"
+                        + '\n' + "DEF: 6",
+                "cyan");
+        System.out.println('\n' + "--------------------------------------------------");
+
+        quickBreak(); 
+        // Rogue
+        System.out.println();
+        Printer.printColor("Rogue: ", "yellow");
+
+        //character description
+        Printer.printColor("The Rogue is sneaky, speedy thief. They make up for their fragility with their evasion and high damage output."
+        + "\nA glass cannon of sorts. \n", "white");
+        Printer.printColor(
+                "HP: 150" + '\n' + "MP: 100" + '\n' + "SPD: 1.50" + '\n' + "ATK: 7"
+                        + '\n' + "DEF: 2",
+                "yellow");
+        System.out.println('\n' + "--------------------------------------------------");
+
+        quickBreak(); 
+        // Mystic
+        System.out.println();
+        Printer.printColor("Mystic ", "purple");
+
+        //character description
+        Printer.printColor("The Mystic is a mysterious individual; while their origins, and their tools-of-the-trade are unknown," + 
+        "\nthey offer a service irrefutable for the rebels. Blessed by the Gods, the mystic specializes in magic of many elements. \n", "white");
+        Printer.printColor(
+                "HP: 200" + '\n' + "MP: 100" + '\n' + "SPD: 1.25" + '\n' + "ATK: 7"
+                        + '\n' + "DEF: 3",
+                "purple");
+        System.out.println('\n' + "--------------------------------------------------");
+
+        quickBreak();
+        // asks which class to be
+        System.out.println();
+        Printer.printColor("Which class would you like to select?", "white");
         String chosenClass = ErrorChecker.compareArrayOfStrings(CLASSES, "Please choose a valid class", "purple");
         switch (chosenClass) {
             // * string param must be all lower-case
@@ -87,7 +144,7 @@ public class Player {
     }
     public void quickBreak() {
         try {
-            Thread.sleep(3000);
+            Thread.sleep(2000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }

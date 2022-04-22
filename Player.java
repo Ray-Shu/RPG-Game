@@ -1,9 +1,10 @@
 public class Player {
     final String CLASSES[] = { "cyborg", "hacker", "terminator", "lazer swordsman", "rogue", "mystic" };
 
+    // yellow cyan
     // Creates the player by asking questions and stuff. Chooses classes
     public void classSelection() {
-        Printer.printColor("Which class would you like to be?", "purple");
+        Printer.printColor("Class Selection: ", "white");
 
         // * Prints the stats for all of the classes
         // Cyborg
@@ -23,6 +24,34 @@ public class Player {
         Printer.printColor("Terminator" + '\n' + "HP: 300" + '\n' + "MP: 90" + '\n' + "SPD: 0.70" + '\n' + "ATK: 5"
                 + '\n' + "Physical Damage: 6" + '\n' + "Magic Damage: 0", "red");
         System.out.println('\n' + "--------------------------------------------------");
+
+        // Lazer Swordsman
+        System.out.println();
+        Printer.printColor(
+                "Lazer Swordsman" + '\n' + "HP: 200" + '\n' + "MP: 100" + '\n' + "SPD: 1.25" + '\n' + "ATK: 4"
+                        + '\n' + "Physical Damage: 7" + '\n' + "Magic Damage: 0",
+                "cyan");
+        System.out.println('\n' + "--------------------------------------------------");
+
+        // Rogue
+        System.out.println();
+        Printer.printColor(
+                "Rogue" + '\n' + "HP: 200" + '\n' + "MP: 100" + '\n' + "SPD: 1.25" + '\n' + "ATK: 4"
+                        + '\n' + "Physical Damage: 7" + '\n' + "Magic Damage: 0",
+                "yellow");
+        System.out.println('\n' + "--------------------------------------------------");
+
+        // Mystic
+        System.out.println();
+        Printer.printColor(
+                "Mystic" + '\n' + "HP: 200" + '\n' + "MP: 100" + '\n' + "SPD: 1.25" + '\n' + "ATK: 7"
+                        + '\n' + "Physical Damage: 0" + '\n' + "Magic Damage: 8",
+                "purple");
+        System.out.println('\n' + "--------------------------------------------------");
+
+        // asks which class to be
+        System.out.println();
+        Printer.printColor("Which class would you like to select?", "white");
 
         String chosenClass = ErrorChecker.compareArrayOfStrings(CLASSES, "Please choose a valid class", "purple");
         switch (chosenClass) {

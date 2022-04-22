@@ -62,6 +62,8 @@ public class Merchant {
             case "leave":
                 town.characterEnteringTown();
                 break;
+            case "view balance":
+                
         }
         
         

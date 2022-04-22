@@ -24,14 +24,17 @@ public class Town {
     private static String hospitalErrorMessage = "Please speak clearly";
 
 
+    
     Merchant shop = new Merchant(this, shopForSale, shopPrices, shopName, thingsAtShop, shopGreeting, shopFarewell, shopErrorMessage, "green");
     Merchant hospital = new Merchant(this,hospitalForSale, hospitalPrices, hospitalName, thingsAtHospital, hospitalGreeting, hospitalFarewell, hospitalErrorMessage, "purple");
     Merchant allThingsInTown[] = {shop, hospital};
     ArrayList<String> namesOfThingsInTown = new ArrayList<String>();
-
-    Town(String townName, int floorLvl) {
+    private Bank playerAccount;
+    
+    Town(String townName, int floorLvl, Bank playerAccount) {
         this.townName = townName;
         this.floorLvl = floorLvl;
+        this.playerAccount = playerAccount;
         //makes a list of all the names of shops in town. 
         for (int i = 0; i < allThingsInTown.length; i++) {
             namesOfThingsInTown.add(i,allThingsInTown[i].shopName);

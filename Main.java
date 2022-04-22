@@ -4,8 +4,8 @@ public class Main {
 
         while (!finishedGame) {
 
-
-            Town town = new Town("Golden", 1);
+            Bank playerAccount = new Bank(1000);
+            Town town = new Town("Golden", 1, playerAccount);
             town.characterEnteringTown();
             // // *Character class selection process
             // Player player = new Player(); 

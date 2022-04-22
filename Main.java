@@ -4,14 +4,14 @@ public class Main {
 
         while (!finishedGame) {
 
-
-            Town town = new Town("Golden", 1);
+            Town town = new Town("Golden Reign", 1);
             town.characterEnteringTown();
-            // // *Character class selection process
-            // Player player = new Player(); 
-            // player.nameSelection();
-            // player.classSelection();
-            // finishedGame = true; 
+            
+            // *Character class selection process
+            Player player = new Player(); 
+            player.nameSelection();
+            player.classSelection();
+            finishedGame = true; 
 
         }
 

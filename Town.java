@@ -41,7 +41,7 @@ public class Town {
     public void characterEnteringTown(){
 
         //welcomes the character to town and shows them what we have here
-        Printer.printColor("Welcome to " + townName + " traveler! Here is a brochure with all you can do here! \n", "blue");
+        Printer.printColor("Welcome to " + townName + ", traveler! Here is a brochure with all you can do here! \n", "blue");
         for (Merchant merchant : allThingsInTown) {
             Printer.printColor(merchant.shopName, "blue");
         }

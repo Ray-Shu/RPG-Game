@@ -21,7 +21,7 @@ public class Player {
      *  * CLASS SELECTION AND STAT DISTRIBUTION
      * This part of the code makes the user enter one of the classes listed above, and then
      * creates the character's stats based off of those inputted values. 
-     * TODO: Finish writing out classes and determining base stats | NEARLY FINISHED
+     * TODO: Finish writing out classes and determining base stats | NEARLY FINISHED, MAY NEED TO ADD ADJUSTMENTS
      * TODO: Implement random perks
      */
 
@@ -111,7 +111,6 @@ public class Player {
                 "purple");
         System.out.println('\n' + "--------------------------------------------------");
 
-        quickBreak();
         // asks which class to be
         System.out.println();
         Printer.printColor("Which class would you like to select?", "white");
@@ -119,7 +118,7 @@ public class Player {
         switch (chosenClass) {
             // * string param must be all lower-case
             case "cyborg":
-                playerStats = new Stats(5.0, 200.0, 100.0, 1.0, 5.0, 5.0, 0.0, 5.0, 5.0, 5.0, 5.0, 5.0);
+                playerStats = new Stats(200.0, 100.0, 1.00, 5.0, 7.0, 4.0, 5.0, 10.0, 100.0, 8.0, 3.0, 0.0, 0.0, 0.0, 0.0, 1.0);
                 Printer.printColor("You chose Cyborg.", "cyan");
                 break;
             case "hacker":
@@ -129,7 +128,7 @@ public class Player {
                 Printer.printColor("You chose Terminator.", "cyan");
                 break;
             case "laser swordsman":
-                Printer.printColor("You chose laser Swordsman.", "cyan");
+                Printer.printColor("You chose Laser Swordsman.", "cyan");
                 break;
             case "rogue":
                 Printer.printColor("You chose Rogue.", "cyan");

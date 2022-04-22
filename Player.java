@@ -1,7 +1,7 @@
 import java.util.Scanner;
 
 public class Player {
-    final String CLASSES[] = { "cyborg", "hacker", "terminator", "lazer swordsman", "rogue", "mystic" };
+    final String CLASSES[] = { "cyborg", "hacker", "terminator", "laser swordsman", "rogue", "mystic" };
     Stats playerStats;
     private static Scanner scan = new Scanner(System.in);
     public static String characterName;
@@ -30,13 +30,13 @@ public class Player {
     public void classSelection() {
         Printer.printColor("Class Selection: ", "white");
 
-        // * Prints the stats for all of the classes
+        // * Prints the stats for all of the classes 
         // Cyborg
         System.out.println();
         Printer.printColor("Cyborg:", "blue");
         //Maybe we add description of character here?
         Printer.printColor("The cyborg is a well rounded assault unit with strong offensive and defensive abilities. "
-                + "\nCyborgs are highly skilled in hand to hand combat and with lazer rifles. \n", "yellow");
+                + "\nCyborgs are highly skilled in hand to hand combat and with laser rifles. \n", "yellow");
         
         Printer.printColor("HP: 200" + '\n' + "MP: 100" + '\n' + "SPD: 1.00" + '\n' + "ATK: 5" + '\n'
                 + "Physical Damage: 5" + '\n' + "Magic Damage: 0", "blue");
@@ -71,8 +71,8 @@ public class Player {
             case "terminator":
                 Printer.printColor("You chose Terminator.", "cyan");
                 break;
-            case "lazer swordsman":
-                Printer.printColor("You chose Lazer Swordsman.", "cyan");
+            case "laser swordsman":
+                Printer.printColor("You chose laser Swordsman.", "cyan");
                 break;
             case "rogue":
                 Printer.printColor("You chose Rogue.", "cyan");

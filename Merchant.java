@@ -1,4 +1,5 @@
 import java.util.Arrays;
+import java.util.Scanner;
 
 public class Merchant {
     public int[] priceOfItem;
@@ -10,6 +11,8 @@ public class Merchant {
     public String[] thingsToDo;
     public String color;
     private Town town;
+    private Bank playerAccount;
+    private Scanner scan = new Scanner(System.in);
 
     /**
      * This gets all the data we will need for the merchant, including what they might sell, what they say, and what they do. 
@@ -22,7 +25,7 @@ public class Merchant {
      * @param errorMessage
      * @param color
      */
-    Merchant(Town town, String[] itemsForSale, int[] priceOfItem, String shopName, String[] thingsToDo, String greeting, String farewell, String errorMessage, String color) {
+    Merchant(Bank playerAccount, Town town, String[] itemsForSale, int[] priceOfItem, String shopName, String[] thingsToDo, String greeting, String farewell, String errorMessage, String color) {
         this.itemsForSale = itemsForSale;
         this.priceOfItem = priceOfItem;
         this.shopName = shopName;
@@ -32,6 +35,7 @@ public class Merchant {
         this.errorMessage = errorMessage;
         this.color = color;
         this.town = town;
+        this.playerAccount = playerAccount;
     }
 
     public void shop() {
@@ -63,6 +67,15 @@ public class Merchant {
                 town.characterEnteringTown();
                 break;
             case "view balance":
+                Printer.printColor("Here is your current balance: ", color);
+                System.out.println("Please enter any character to continue: ");
+                scan.next();
+                shop();
+                break;
+            case "withdraw": 
+                double amountForWithdraw = ErrorChecker.doubleWithMinAndMax(0.0,playerAccount.getBalance(), "Please enter much would you like to withdraw: ", color);
+                playerAccount.withdraw(amountForWithdraw);
+                break;
                 
         }
         

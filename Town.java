@@ -15,21 +15,28 @@ public class Town {
     private static String shopFarewell = "Thank you for shopping at Bobs random things";
     private static String shopErrorMessage = "Sorry didn't hear you there could you repeat that?";
     
-    private static String[] hospitalForSale = new String[5];
-    private static int[] hospitalPrices = new int[5];
+    private static String[] hospitalForSale, bankforsale = new String[5];
+    private static int[] hospitalPrices, bankPrices= new int[5];
     private static String hospitalName = "The Cool Hospital";
     private static String[] thingsAtHospital = {"get healing", "sell"};
     private static String hospitalGreeting = "Welcome to the hospital!";
     private static String hospitalFarewell = "Thank you for coming to the hospital I hope we enjoyed your stay. ";
     private static String hospitalErrorMessage = "Please speak clearly";
+    private Bank playerAccount;
+
+    private static String bankName = "Golden Bank Of Reign";
+    static String[] thingsAtBank = {"withdraw", "view balance", "leave"};
+    static String bankGreeting = "Welcome to the bank!";
+    static String bankFarewell = "Thank you for coming to the bank";
+    private static String bankErrorMessage = "Please speak clearly";
 
 
     
-    Merchant shop = new Merchant(this, shopForSale, shopPrices, shopName, thingsAtShop, shopGreeting, shopFarewell, shopErrorMessage, "green");
-    Merchant hospital = new Merchant(this,hospitalForSale, hospitalPrices, hospitalName, thingsAtHospital, hospitalGreeting, hospitalFarewell, hospitalErrorMessage, "purple");
-    Merchant allThingsInTown[] = {shop, hospital};
+    Merchant shop = new Merchant(playerAccount, this, shopForSale, shopPrices, shopName, thingsAtShop, shopGreeting, shopFarewell, shopErrorMessage, "green");
+    Merchant hospital = new Merchant(playerAccount, this,hospitalForSale, hospitalPrices, hospitalName, thingsAtHospital, hospitalGreeting, hospitalFarewell, hospitalErrorMessage, "purple");
+    Merchant bank = new Merchant(playerAccount, this, bankforsale, bankPrices, bankName, thingsAtBank, bankGreeting, bankFarewell, bankErrorMessage, "red");
+    Merchant allThingsInTown[] = {shop, hospital, bank};
     ArrayList<String> namesOfThingsInTown = new ArrayList<String>();
-    private Bank playerAccount;
     
     Town(String townName, int floorLvl, Bank playerAccount) {
         this.townName = townName;
@@ -48,7 +55,7 @@ public class Town {
         for (Merchant merchant : allThingsInTown) {
             Printer.printColor(merchant.shopName, "blue");
         }
-        System.out.println("\n" + "Where do you want to go?");
+        Printer.printColor("\n" + "Where do you want to go?", "blue");
 
         //gets them to enter a shop name as to where they want to go, and then runs that shop. 
         String whereMerchantWantsToGO = ErrorChecker.compareArrayOfStrings(namesOfThingsInTown.toArray(new String[namesOfThingsInTown.size()]),
@@ -60,10 +67,4 @@ public class Town {
         }
     }
 
-    public void runHospital() {
-        hospital.shop();
-    }
-    public void runShop() {
-        shop.shop();
-    }
 }

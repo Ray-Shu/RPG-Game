@@ -4,6 +4,8 @@ public class Main {
 
         while (!finishedGame) {
 
+
+            
             // *Character class selection process
             Player player = new Player(); 
             player.nameSelection();

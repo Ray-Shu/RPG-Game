@@ -49,7 +49,7 @@ public class Player {
         Printer.printColor("Hacker" + '\n' + "HP: 300" + '\n' + "MP: 80" + '\n' + "SPD: 0.75" + '\n' + "ATK: 4" + '\n'
                 + "Physical Damage: 3" + '\n' + "Magic Damage: 3", "green");
         System.out.println('\n' + "--------------------------------------------------");
-
+        
         quickBreak();
         // Terminator
         System.out.println();

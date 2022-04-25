@@ -11,7 +11,7 @@ public class Merchant {
     public String[] thingsToDo;
     public String color;
     private Town town;
-    private Bank playerAccount;
+    public Bank playerAccount;
     private Scanner scan = new Scanner(System.in);
 
     /**
@@ -45,6 +45,12 @@ public class Merchant {
         String responseBack = ErrorChecker.compareArrayOfStrings(thingsToDo, errorMessage, "red").toLowerCase();
         
         switch (responseBack) {
+            // * ALl things
+            case "leave":
+                town.characterEnteringTown();
+                break;
+
+            // * SHOP THINGS
             case "buy":
                 System.out.println("Items for sale: ");
                 for (int i = 0; i < itemsForSale.length; i++) {
@@ -55,31 +61,41 @@ public class Merchant {
             case "sell":
                 Printer.printColor("Here are your items and how much they are worth: ",color);
                 break;
+
             case "upgrade":
                 break;
+
             case "view talents":
                 Printer.printColor("Here are your talents", color);
                 break;
+
             case "get healing":
                 Printer.printColor("Healing you: ", color);
                 break;
-            case "leave":
-                town.characterEnteringTown();
-                break;
+
+
             case "view balance":
-                Printer.printColor("Here is your current balance: ", color);
+                Printer.printColor("Here is your current balance: " + playerAccount.getBalance(), color);
                 System.out.println("Please enter any character to continue: ");
                 scan.next();
                 shop();
                 break;
+
             case "withdraw": 
-                double amountForWithdraw = ErrorChecker.doubleWithMinAndMax(0.0,playerAccount.getBalance(), "Please enter much would you like to withdraw: ", color);
+                double amountForWithdraw = ErrorChecker.doubleWithMinAndMax(0.0,playerAccount.getBalance() + 1, "Please enter much would you like to withdraw: ", color);
                 playerAccount.withdraw(amountForWithdraw);
+                Printer.printColor("Thank you! Your current balance is "+  playerAccount.getBalance(), color);
+                shop();
                 break;
                 
         }
         
         
-        
     }
+
+    public String getShopName() {
+        return shopName;
+    }
+
 }
+

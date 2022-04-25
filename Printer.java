@@ -8,7 +8,9 @@ public class Printer {
     private static final String ANSI_PURPLE = "\u001B[35m";
     private static final String ANSI_CYAN = "\u001B[36m";
     private static final String ANSI_WHITE = "\u001B[37m";
-
+    private static final String START_ITALICIZED = "\033[3m";
+    private static final String END_ITALICIZED = "\033[0m";
+    
     /**
      * This method prints out a string one word at a time, in white. 
      * @param whatToPrint = the thing we print 1 word at a time. 
@@ -20,7 +22,7 @@ public class Printer {
         //prints out each word from the array of words
         for (String word : words) {
             try {
-                Thread.sleep(100);
+                Thread.sleep(90);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
@@ -68,5 +70,15 @@ public class Printer {
         print(whatToPrint);
         System.out.print(ANSI_RESET);
         //prints out the color and sets it to white. 
+    
+        }
+
+        /**
+         * Prints out the string italicized. 
+         */
+        public void printItalizcizedColor (String whatToPrint, String color){
+           printColor(START_ITALICIZED + whatToPrint + END_ITALICIZED , color);
         }
     }
+
+

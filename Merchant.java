@@ -103,8 +103,7 @@ public class Merchant {
         }        
     }
     
-    //! MIGHT NOT BE NEEDED IF WE JUST MAKE THE SHOP NAME PUBLIC. SHOULD ASK Mr. Carby IF WE CAN JUST USE PUBLIC VARIABLES
-    //! RATHER THAN METHODS...
+   
     public String getShopName() {
         return shopName;
     }

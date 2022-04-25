@@ -4,16 +4,20 @@ public class Main {
 
         while (!finishedGame) {
 
-            Bank playerAccount = new Bank(1000);
-            Town town = new Town("Golden", 1, playerAccount);
-            town.characterEnteringTown();
+            // Bank playerAccount = new Bank(1000);
+            // Town town = new Town("Golden", 1, playerAccount);
+            // town.characterEnteringTown();
+
+            // *Prologue
+            MainStory.prologue();
 
             // // *Character class selection process
             // Player player = new Player();
             // player.nameSelection();
             // player.classSelection();
 
-            // finishedGame = true;
+
+            finishedGame = true;
 
         }
 

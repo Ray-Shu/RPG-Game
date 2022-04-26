@@ -3,6 +3,14 @@ import java.util.Scanner;
 public class Player {
         final String CLASSES[] = { "cyborg", "hacker", "terminator", "laser swordsman", "rogue", "mystic" };
         Stats playerStats;
+        final String CYBORG_ATTACKS[] = {"Laser Barrage", "Charged Shot", "Cyber Shield", "Overload"};
+        final String HACKER_ATTACKS[] = {"Drone Army", "Unlucky Missile", "Watchful Vulture", "Watchful Vulture"};
+        final String TERMINATOR_ATTACKS[] = {"Machine Gun Fury", "First Impact Fists", "Deceiving Blast of Cybernetic Proportions", "Hunker Down"};
+        final String SWORDSMAN_ATTACKS[] = {"Swift Thrust of the Sword", "Fatal Erruption Of Bullets", "Lightning Clone Strike", "Rest"};
+        final String ROGUE_ATTACKS[] = {"Quick Blast", "", "", "Forbidden Smoke of the Holy Tree"};
+        final String MYSTIC_ATTACKS[] = {"", "" , "" , ""};
+
+
         private static Scanner scan = new Scanner(System.in);
         public static String characterName;
 
@@ -11,9 +19,9 @@ public class Player {
          * gets the user to enter a name.
          */
         public void nameSelection() {
-                Printer.printColor("What is your name?", "red");
+                Printer.printColor("Enter your name", "red");
                 characterName = scan.nextLine();
-                Printer.printColor("Welcome back " + characterName, "red");
+                Printer.printColor("Welcome " + characterName + ", it seems your contributions are needed once more.", "red");
                 System.out.println("\n" + "-------------------------------------------");
         }
 

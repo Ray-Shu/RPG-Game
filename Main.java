@@ -9,7 +9,8 @@ public class Main {
             // town.characterEnteringTown();
 
             // *Prologue
-            MainStory.prologue();
+            MainStory story = new MainStory();
+            story.prologue();
 
             // // *Character class selection process
             // Player player = new Player();

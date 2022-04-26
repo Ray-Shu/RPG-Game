@@ -76,7 +76,7 @@ public class Printer {
         /**
          * Prints out the string italicized. 
          */
-        public void printItalizcizedColor (String whatToPrint, String color){
+        public static void printItalizcizedColor (String whatToPrint, String color){
            printColor(START_ITALICIZED + whatToPrint + END_ITALICIZED , color);
         }
     }

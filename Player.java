@@ -9,7 +9,7 @@ public class Player {
         final String SWORDSMAN_ATTACKS[] = {"Swift Thrust of the Sword", "Fatal Erruption Of Bullets", "Lightning Clone Strike", "Rest"};
         final String ROGUE_ATTACKS[] = {"Quick Blast", "", "", "Forbidden Smoke of the Holy Tree"};
         final String MYSTIC_ATTACKS[] = {"", "" , "" , ""};
-
+        String chosenAttacks[];
 
         private static Scanner scan = new Scanner(System.in);
         public static String characterName;
@@ -144,7 +144,7 @@ public class Player {
                                 Printer.printColor("You chose Cyborg.", "cyan");
 
                                 playerStats.getInfo(chosenClass);
-
+                                chosenAttacks = CYBORG_ATTACKS;
                                 break;
                         case "hacker":
                                 playerStats = new Stats(300.0, 80.0, 0.75, 3.0, 8.0, 1.0, 7.0, 10.0, 150.0, 8.0,
@@ -153,18 +153,23 @@ public class Player {
                                 Printer.printColor("You chose Hacker.", "cyan");
 
                                 playerStats.getInfo(chosenClass);
+                                chosenAttacks = HACKER_ATTACKS;
                                 break;
                         case "terminator":
                                 Printer.printColor("You chose Terminator.", "cyan");
+                                chosenAttacks = TERMINATOR_ATTACKS;
                                 break;
                         case "laser swordsman":
                                 Printer.printColor("You chose Laser Swordsman.", "cyan");
+                                chosenAttacks = SWORDSMAN_ATTACKS;
                                 break;
                         case "rogue":
                                 Printer.printColor("You chose Rogue.", "cyan");
+                                chosenAttacks = ROGUE_ATTACKS;
                                 break;
                         case "mystic":
                                 Printer.printColor("You chose Mystic.", "cyan");
+                                chosenAttacks = MYSTIC_ATTACKS;
                                 break;
 
                 }

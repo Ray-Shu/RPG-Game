@@ -1,13 +1,17 @@
 import java.util.Arrays;
 
 public class Stats {
-        public Double hp, mp, spd, atk, physDmg, magicDmg, def, end, stam, physRes, magicRes, dodge, vit,
-                        critRate,
-                        critDmg, luck;
+        public double maxHP, maxMP, maxSpd, maxAtk, maxPhysDmg, maxMagicDmg, maxDef, maxEnd, maxStam, maxPhysRes, maxMagicRes, maxDodge, maxVit,
+                        maxCritRate, maxCritDmg, maxLuck;
+        public double currentHP, currentMP, currentSpd, currentAtk, currentPhysDmg, currentMagicDmg, currentDef, currentEnd, currentStam,
+                currentPhysRes, currentMagicRes, currentDodge, currentVit, currentCritRate, currentCritDmg, currentLuck;
 
-        Double allStatsInfo[];
+        double allStats[];
         String displayStats[];
-
+        //? When you change one of the variables after this is declared, will the number in the array change with it? 
+        double currentStats[] = {currentHP, currentMP, currentSpd, currentAtk, currentPhysDmg, currentMagicDmg, currentDef, currentEnd, currentStam, 
+                currentPhysRes, currentMagicRes, currentDodge, currentVit, currentCritRate, currentCritDmg, currentLuck};
+        
         /**
          * This class will contain information about the stats of the player and the
          * mobs.
@@ -47,33 +51,38 @@ public class Stats {
          * @param cd       - crit damage | the amount of damage increased onto base
          *                 damage when a 'critical hit' is induced
          * @param luck     - luck | dictates how much gold a character will get after
-         *                 slaying a foe //TODO more info will be added to luck
+         *                 slaying a foe. 
+         // ?                  Maybe impacts miss. 
          */
 
-        Stats(Double hp, Double mp, Double spd, Double atk, Double pd, Double md, Double def, Double end, Double stam,
-                        Double physRes, Double magicRes, Double dodge, Double vit, Double cr, Double cd, Double luck) {
-                this.hp = hp;
-                this.mp = mp;
-                this.spd = spd;
-                this.atk = atk;
-                this.physDmg = pd;
-                this.magicDmg = md;
-                this.def = def;
-                this.end = end;
-                this.stam = stam;
-                this.physRes = physRes;
-                this.magicRes = magicRes;
-                this.dodge = dodge;
-                this.vit = vit;
-                this.critRate = cr;
-                this.critDmg = cd;
-                this.luck = luck;
+        Stats(double hp, double mp, double spd, double atk, double pd, double md, double def, double end, double stam,
+                        double physRes, double magicRes, double dodge, double vit, double cr, double cd, double luck) {
+                maxHP = hp;
+                maxMP = mp;
+                maxSpd = spd;
+                maxAtk = atk;
+                maxPhysDmg = pd;
+                maxMagicDmg = md;
+                maxDef = def;
+                maxEnd = end;
+                maxStam = stam;
+                maxPhysRes = physRes;
+                maxMagicRes = magicRes;
+                maxDodge = dodge;
+                maxVit = vit;
+                maxCritRate = cr;
+                maxCritDmg = cd;
+                maxLuck = luck;
 
-                Double[] allStatsInfo = { hp, mp, spd, atk, physDmg, magicDmg, def, end, stam, physRes, magicRes, dodge,
-                                vit,
-                                critRate, critDmg, luck };
+                double[] allStats = { maxHP, maxMP, maxSpd, maxAtk, maxPhysDmg, maxMagicDmg, maxDef, maxEnd, maxStam, maxPhysRes, maxMagicRes, maxDodge,
+                                maxVit, maxCritRate, maxCritDmg, maxLuck };
 
-                this.allStatsInfo = allStatsInfo;
+                //sets current stats to all stats 
+                for (int i = 0; i < allStats.length; i++) {
+                        currentStats[i] = allStats[i];
+                }
+
+                this.allStats = allStats;
 
                 String[] displayStats = { "HP", "MP", "Speed", "Attack", "Physical Damage", "Magic Damage", "Defense",
                                 "Endurance", "Stamina", "Phyical Resistance", "Magic Resistance", "Dodge", "Vitality",
@@ -93,10 +102,25 @@ public class Stats {
                                 "white");
                 System.out.println();
                 int i = 0;
-                for (Double element : allStatsInfo) {
+                for (Double element : allStats) {
                         Printer.printColor(displayStats[i] + ": " + String.valueOf(element), "white");
                         i++;
                 }
         }
 
+        public void levelUp() {
+                Double statPercentageIncreasePerLevel = 1.05;
+                for (int i = 0; i < allStats.length; i++) {
+                        allStats[i] = allStats[i] * statPercentageIncreasePerLevel;
+                        currentStats[i] = currentStats[i] * statPercentageIncreasePerLevel;
+                }
+        }
+
+        public void heal() {
+                currentHP = maxHP;
+        }
+
+        public void rest() {
+                currentMP = maxMP;
+        }
 }

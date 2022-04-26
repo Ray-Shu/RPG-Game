@@ -42,19 +42,69 @@ public class MainStory {
         // quickBreak(); 
         // Printer.print("Well, nice to meet ya and glad that you held your promise. I trust you know what your doing, then?\n");
         // quickBreak(); 
-        Printer.printItalizcizedColor("I nod, and the man smiles. He makes a motion with his hand and the group grabs \nthe crates and drops them under your feet, in an arc around you.\n", "white");
+        Printer.printItalizcizedColor("I nod, and the man returns a toothy grin. He makes a motion with his hand and the \ngroup grabs the crates and drops them under your feet, in an arc around you.\n", "white");
         quickBreak();
-        Printer.print("\"We can only spare you one crate of equipment, the rest is for the other members in the Insurgence. Since it's you though, you can choose which crate you want.\"");
-
+        Printer.print("\"We can only spare you one crate of equipment, the rest is for the other members in the Insurgence. Since it's you though, you can choose which crate you want.\" \n");
+        quickBreak(); 
+        Printer.printItalizcizedColor("The crates around you luminate in a cyan blue, each projecting \ntheir own hologram of information pertaining to their class.\n", "white");
+        Printer.printColor("Choose the crate you desire. Enter [M] to see the specific stats the class begins with.","purple");
+        printCrateInfo(); 
 
         System.out.println();
     }
 
-    public static void quickBreak() {
+    public void quickBreak() {
         try {
                 Thread.sleep(1000);
         } catch (InterruptedException e) {
                 e.printStackTrace();
         }
-}
+    }
+
+    public void printCrateInfo() {
+        Printer.printItalizcizedColor("\nEnter the number of the crate to choose it. \n", "purple");
+
+        //* CRATE ONE INFO
+        Printer.printColor("[1] Crate One:", "blue"); 
+        Printer.print("Battered Metal Helm");
+        Printer.print("Battered Metal Chestplate");
+        Printer.print("Battered Metal Greaves"); 
+        Printer.print("Battered Metal Heelguards");
+        Printer.print("[M] - More info");
+
+        System.out.println();
+
+
+        //* CRATE TWO INFO
+        Printer.printColor("[2] Crate Two:", "green"); 
+        Printer.print("Battered Metal Helm");
+        Printer.print("Battered Metal Chestplate");
+        Printer.print("Battered Metal Greaves"); 
+        Printer.print("Battered Metal Heelguards");
+        Printer.print("[M] - More info");
+
+        System.out.println();
+
+
+        //* CRATE THREE INFO
+        Printer.printColor("[2] Crate Three:", "red"); 
+        Printer.print("Battered Metal Helm");
+        Printer.print("Battered Metal Chestplate");
+        Printer.print("Battered Metal Greaves"); 
+        Printer.print("Battered Metal Heelguards");
+        Printer.print("[M] - More info");
+
+        System.out.println();
+
+        //* CRATE FOUR INFO
+        Printer.printColor("[2] Crate Four:", "cyan"); 
+        Printer.print("Battered Metal Helm");
+        Printer.print("Battered Metal Chestplate");
+        Printer.print("Battered Metal Greaves"); 
+        Printer.print("Battered Metal Heelguards");
+        Printer.print("[M] - More info");
+
+        System.out.println();
+
+    }
 }

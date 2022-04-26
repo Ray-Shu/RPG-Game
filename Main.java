@@ -13,7 +13,7 @@ public class Main {
             // player.nameSelection();
             // player.classSelection();
 
-            // finishedGame = true;
+            finishedGame = true;
 
         }
 

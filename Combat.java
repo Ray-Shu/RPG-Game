@@ -1,7 +1,10 @@
+import java.util.Random;
+
 public class Combat {
     String playerAttacks, mobAttacks;
     Stats playerStats, mobStats;
     Double playerTurnRate, mobTurnRate;
+    Random random = new Random();
     
     Combat(Stats playerStats, String playerAttacks, Stats mobStats , String mobAttacks){
         this.playerAttacks = playerAttacks;
@@ -23,7 +26,7 @@ public class Combat {
      */
     public void playerTurnOver() {
         playerTurnRate -= mobTurnRate;
-        mobTurnRate += mobStats.spd;
+        mobTurnRate += mobStats.currentSpd;
     }
 
     /**
@@ -31,7 +34,7 @@ public class Combat {
      */
     public void mobTurnOver() {
         mobTurnRate -= playerTurnRate;
-        playerTurnRate += playerStats.spd;
+        playerTurnRate += playerStats.currentSpd;
     }
 
     public void playerAttack() {
@@ -50,6 +53,15 @@ public class Combat {
         
     }
 
+    public void applyDodge(Stats attackerStats, Stats victimStats, double missMultiplier) {
+        double effectiveDodge = victimStats.currentDodge * missMultiplier;
+        effectiveDodge *= 100;
+        
+    }
+
+    public double applyCrit() {
+
+    }
 //* PAST THIS POINT IS ATTACKS: 
 
     // CYBORG ATTACKS: 
@@ -118,28 +130,41 @@ public class Combat {
     public void quick_blast (Stats attackerStats, Stats victimStats) {
 
     }
-    public void in_the_system (Stats attackerStats, Stats victimStats) {
+    public void death_strike (Stats attackerStats, Stats victimStats) {
 
     }
-    public void in_the_system (Stats attackerStats, Stats victimStats) {
+    public void secret_mushroom_strike (Stats attackerStats, Stats victimStats) {
 
     }
-    public void forbidden_smoke_of_the_holy_tree (Stats attackerStats, Stats victimStats) {
+    public void forbidden_smoke (Stats attackerStats, Stats victimStats) {
 
     }
 
     // MYSTIC ATTACKS: 
-    public void in_the_system (Stats attackerStats, Stats victimStats) {
+    public void dragon_shatter (Stats attackerStats, Stats victimStats) {
 
     }
-    public void in_the_system (Stats attackerStats, Stats victimStats) {
+    public void simple_strike (Stats attackerStats, Stats victimStats) {
 
     }
-    public void in_the_system (Stats attackerStats, Stats victimStats) {
+    public void frost_eruption (Stats attackerStats, Stats victimStats) {
 
     }
-    public void in_the_system (Stats attackerStats, Stats victimStats) {
+    public void burning_prison (Stats attackerStats, Stats victimStats) {
 
     }
 
+    // REVEREND ATTACKS: 
+    public void holy_flash_of_radiant_light (Stats attackerStats, Stats victimStats) {
+
+    }
+    public void divine_smite (Stats attackerStats, Stats victimStats) {
+
+    }
+    public void holy_healing (Stats attackerStats, Stats victimStats) {
+
+    }
+    public void prayer (Stats attackerStats, Stats victimStats) {
+
+    }
 }

@@ -53,14 +53,20 @@ public class Combat {
         
     }
 
-    public void applyDodge(Stats attackerStats, Stats victimStats, double missMultiplier) {
+    public boolean didDodge(Stats victimStats, double missMultiplier) {
         double effectiveDodge = victimStats.currentDodge * missMultiplier;
-        effectiveDodge *= 100;
-        
+        if(random.nextDouble() <= effectiveDodge) {
+            return true;
+        }
+        return false;
     }
 
-    public double applyCrit() {
-
+    public double applyCrit(Stats attackerStats, double damage) {
+        double critDamage = attackerStats.currentCritDmg * damage;
+        if(random.nextDouble() <= attackerStats.currentCritRate / 100){
+            return critDamage;
+        }
+        return damage;
     }
 //* PAST THIS POINT IS ATTACKS: 
 

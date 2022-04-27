@@ -64,47 +64,68 @@ public class MainStory {
     public void printCrateInfo() {
         Printer.printItalizcizedColor("\nEnter the number of the crate to choose it. \n", "purple");
 
-        //* CRATE ONE INFO
+        //* CRATE ONE INFO - Cyborg
         Printer.printColor("[1] Crate One:", "blue"); 
         Printer.print("Battered Metal Helm");
         Printer.print("Battered Metal Chestplate");
         Printer.print("Battered Metal Greaves"); 
         Printer.print("Battered Metal Heelguards");
-        Printer.print("[M] - More info");
+        Printer.print("[M1] - More info");
 
         System.out.println();
 
 
-        //* CRATE TWO INFO
+        //* CRATE TWO INFO - Hacker
         Printer.printColor("[2] Crate Two:", "green"); 
         Printer.print("Battered Metal Helm");
         Printer.print("Battered Metal Chestplate");
         Printer.print("Battered Metal Greaves"); 
         Printer.print("Battered Metal Heelguards");
-        Printer.print("[M] - More info");
+        Printer.print("[M2] - More info");
 
         System.out.println();
 
 
-        //* CRATE THREE INFO
-        Printer.printColor("[2] Crate Three:", "red"); 
+        //* CRATE THREE INFO - Terminator
+        Printer.printColor("[3] Crate Three:", "red"); 
         Printer.print("Battered Metal Helm");
         Printer.print("Battered Metal Chestplate");
         Printer.print("Battered Metal Greaves"); 
         Printer.print("Battered Metal Heelguards");
-        Printer.print("[M] - More info");
+        Printer.print("[M3] - More info");
 
         System.out.println();
 
-        //* CRATE FOUR INFO
-        Printer.printColor("[2] Crate Four:", "cyan"); 
+        //* CRATE FOUR INFO - Lazer Swordsman
+        Printer.printColor("[4] Crate Four:", "cyan"); 
         Printer.print("Battered Metal Helm");
         Printer.print("Battered Metal Chestplate");
         Printer.print("Battered Metal Greaves"); 
         Printer.print("Battered Metal Heelguards");
-        Printer.print("[M] - More info");
+        Printer.print("[M4] - More info");
 
         System.out.println();
+
+        //* CRATE FIVE INFO - Rogue
+        Printer.printColor("[5] Crate Five:", "yellow"); 
+        Printer.print("Battered Metal Helm");
+        Printer.print("Battered Metal Chestplate");
+        Printer.print("Battered Metal Greaves"); 
+        Printer.print("Battered Metal Heelguards");
+        Printer.print("[M5] - More info");
+
+        System.out.println();
+
+         //* CRATE FIVE INFO - Mystic
+         Printer.printColor("[6] Crate Six:", "purple"); 
+         Printer.print("Battered Metal Helm");
+         Printer.print("Battered Metal Chestplate");
+         Printer.print("Battered Metal Greaves"); 
+         Printer.print("Battered Metal Heelguards");
+         Printer.print("[M6] - More info");
+ 
+         System.out.println();
+ 
 
     }
 }

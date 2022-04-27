@@ -4,6 +4,8 @@ public class MainStory {
     public static Printer print = new Printer();
 
     String playerName; 
+
+    Player mainPlayer = new Player();
     Scanner in = new Scanner(System.in);
 
     public String getName() {
@@ -21,7 +23,7 @@ public class MainStory {
         // quickBreak();
         // Printer.print("\"Are you braindead!? It's late in the night, an' I'm tryna get some sleep!\"\n");
         // quickBreak();
-        // Printer.printItalizcizedColor("You ignore the guard, continuing the cacophonous, ear-shredding sound of clashing metal. \nThe guard turns red with anger.\n", "white");
+        // Printer.printItalizcizedColor("You ignore the guard, continuing the cacophonous, ear-shredding sound of clashing Spectral  \nThe guard turns red with anger.\n", "white");
         // quickBreak(); 
         // Printer.print("\"I had 'bout enough of your shit, you insolent bastard! Know you're place!\"" + "\033[3m \nThe guard opens your cell door, ready to beat you into submission. \033[0m\n");
         // quickBreak(); 
@@ -33,7 +35,7 @@ public class MainStory {
         // quickBreak(); 
         // Printer.printItalizcizedColor("However, the mysterious people breaking you out of this corrupted hell-hole are \nequally, if not more, ruthless. Experts in their respective fields and \nunparalleled communication, paired with amazing teamwork shatters the prison's \nrecord. You and this unknown lot quickly escape before reinforcements are called.\n", "white");
         // quickBreak(); 
-        // Printer.printItalizcizedColor("Four individuals lead you to a shelter; it's barren, save for a dim fire \nand some metal crates tossed to the side. The floor is slightly damp \nfrom yesterdays torrent and the neon lights just outside are flickering, \nas if their vitality is being drained away.\n", "white");
+        // Printer.printItalizcizedColor("Four individuals lead you to a shelter; it's barren, save for a dim fire \nand some Spectral crates tossed to the side. The floor is slightly damp \nfrom yesterdays torrent and the neon lights just outside are flickering, \nas if their vitality is being drained away.\n", "white");
         // quickBreak(); 
         // Printer.print("\"Hey\"! \033[3mA gruff voice calls out to you. \033[0m" + "\"Whats your name, \u001B[31mMister Executioner?\" \u001B[31m");
         // getName();
@@ -42,13 +44,13 @@ public class MainStory {
         // quickBreak(); 
         // Printer.print("Well, nice to meet ya and glad that you held your promise. I trust you know what your doing, then?\n");
         // quickBreak(); 
-        Printer.printItalizcizedColor("I nod, and the man returns a toothy grin. He makes a motion with his hand and the \ngroup grabs the crates and drops them under your feet, in an arc around you.\n", "white");
-        quickBreak();
-        Printer.print("\"We can only spare you one crate of equipment, the rest is for the other members in the Insurgence. Since it's you though, you can choose which crate you want.\" \n");
-        quickBreak(); 
+        // Printer.printItalizcizedColor("I nod, and the man returns a toothy grin. He makes a motion with his hand and the \ngroup grabs the crates and drops them under your feet, in an arc around you.\n", "white");
+        // quickBreak();
+        // Printer.print("\"We can only spare you one crate of equipment, the rest is for the other members in the Insurgence. Since it's you though, you can choose which crate you want.\" \n");
+        // quickBreak(); 
         Printer.printItalizcizedColor("The crates around you luminate in a cyan blue, each projecting \ntheir own hologram of information pertaining to their class.\n", "white");
-        Printer.printColor("Choose the crate you desire. Enter [M] to see the specific stats the class begins with.","purple");
-        printCrateInfo(); 
+        Printer.printColor("Choose the crate you desire.", "purple");
+        mainPlayer.printCrateInfo(); 
 
         System.out.println();
     }
@@ -61,71 +63,5 @@ public class MainStory {
         }
     }
 
-    public void printCrateInfo() {
-        Printer.printItalizcizedColor("\nEnter the number of the crate to choose it. \n", "purple");
-
-        //* CRATE ONE INFO - Cyborg
-        Printer.printColor("[1] Crate One:", "blue"); 
-        Printer.print("Battered Metal Helm");
-        Printer.print("Battered Metal Chestplate");
-        Printer.print("Battered Metal Greaves"); 
-        Printer.print("Battered Metal Heelguards");
-        Printer.print("[M1] - More info");
-
-        System.out.println();
-
-
-        //* CRATE TWO INFO - Hacker
-        Printer.printColor("[2] Crate Two:", "green"); 
-        Printer.print("Battered Metal Helm");
-        Printer.print("Battered Metal Chestplate");
-        Printer.print("Battered Metal Greaves"); 
-        Printer.print("Battered Metal Heelguards");
-        Printer.print("[M2] - More info");
-
-        System.out.println();
-
-
-        //* CRATE THREE INFO - Terminator
-        Printer.printColor("[3] Crate Three:", "red"); 
-        Printer.print("Battered Metal Helm");
-        Printer.print("Battered Metal Chestplate");
-        Printer.print("Battered Metal Greaves"); 
-        Printer.print("Battered Metal Heelguards");
-        Printer.print("[M3] - More info");
-
-        System.out.println();
-
-        //* CRATE FOUR INFO - Lazer Swordsman
-        Printer.printColor("[4] Crate Four:", "cyan"); 
-        Printer.print("Battered Metal Helm");
-        Printer.print("Battered Metal Chestplate");
-        Printer.print("Battered Metal Greaves"); 
-        Printer.print("Battered Metal Heelguards");
-        Printer.print("[M4] - More info");
-
-        System.out.println();
-
-        //* CRATE FIVE INFO - Rogue
-        Printer.printColor("[5] Crate Five:", "yellow"); 
-        Printer.print("Battered Metal Helm");
-        Printer.print("Battered Metal Chestplate");
-        Printer.print("Battered Metal Greaves"); 
-        Printer.print("Battered Metal Heelguards");
-        Printer.print("[M5] - More info");
-
-        System.out.println();
-
-         //* CRATE FIVE INFO - Mystic
-         Printer.printColor("[6] Crate Six:", "purple"); 
-         Printer.print("Battered Metal Helm");
-         Printer.print("Battered Metal Chestplate");
-         Printer.print("Battered Metal Greaves"); 
-         Printer.print("Battered Metal Heelguards");
-         Printer.print("[M6] - More info");
- 
-         System.out.println();
- 
-
-    }
+    
 }

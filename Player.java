@@ -3,26 +3,209 @@ import java.util.Scanner;
 public class Player {
         final String CLASSES[] = { "cyborg", "hacker", "terminator", "laser swordsman", "rogue", "mystic" };
         Stats playerStats;
-        final String CYBORG_ATTACKS[] = {"Laser Barrage", "Charged Shot", "Cyber Shield", "Overload"};
-        final String HACKER_ATTACKS[] = {"Drone Army", "Unlucky Missile", "Watchful Vulture", "Watchful Vulture"};
-        final String TERMINATOR_ATTACKS[] = {"Machine Gun Fury", "First Impact Fists", "Deceiving Blast of Cybernetic Proportions", "Hunker Down"};
-        final String SWORDSMAN_ATTACKS[] = {"Swift Thrust of the Sword", "Fatal Erruption Of Bullets", "Lightning Clone Strike", "Rest"};
-        final String ROGUE_ATTACKS[] = {"Quick Blast", "", "", "Forbidden Smoke of the Holy Tree"};
-        final String MYSTIC_ATTACKS[] = {"", "" , "" , ""};
-        String chosenAttacks[];
 
+        final String CYBORG_ATTACKS[] = {"Laser Barrage", "Charged Shot", "Cyber Shield", "Overload"};
+        final String CYBORG_ATTACK_INFO[] = {"Laser Barrage unleashes a flury of low damage laser shots on the opponents", 
+                "The Charged Shot unleashes a powerful blast capable dealing major damage", 
+                "The Cyber Shield increases defence for the next 3 turns", 
+                "Overload greatly increases attack for the next 3 turns"};
+
+        final String HACKER_ATTACKS[] = {"Drone Army", "Stolen Missile", "Watchful Vulture", "Watchful Vulture"};
+        final String HACKER_ATTACKS_INFO[] = {"Drone Army summons an army of drones dealing large damage as they attack over 3 turns",
+                "With the Stolen Missile ability, the hacker siezes a missile from the government and tries to use it to destroy their enemies",
+                "The hacker's Watchful Vulture ability uses realtime satalite imagery to locate enemies and ensure hits for the next 3 turns",
+                "The hacker gets \"In The System\" with their final ability to disable their enemy robots for 2 turns"};
+
+        final String TERMINATOR_ATTACKS[] = {"Machine Gun Fury", "First Impact Fists", "Deceiving Blast of Cybernetic Proportions", "Hunker Down"};
+        final String TERMINATOR_ATTACKS_INFO[] = {"The Terminator unleashes their Machine gun to deal major damage to opponents",
+                "The Terminator gets a heavily impactful strike on their enemy. ",
+                "The Terminators special move surprises enemies and blinding them for 2 turns. ",
+                "The Hunker Down ability increases ATK, but removes chance of dodging an attack. "};
+
+        final String SWORDSMAN_ATTACKS[] = {"Swift Thrust of the Sword", "Fatal Erruption Of Bullets", "Lightning Clone Strike", "Rest"};
+        final String SWORDSMAN_ATTACKS_INFO[] = {"",
+                "",
+                "",
+                ""};
+        
+        final String ROGUE_ATTACKS[] = {"Quick Blast", "Death Strike", "Secret Mushroom Strike", "Forbidden Smoke of the Holy Tree"};
+        final String ROGUE_ATTACKS_INFO[] = {"",
+                "",
+                "",
+                ""};
+        
+        final String MYSTIC_ATTACKS[] = {"Dragon Shatter", "Simple Strike", "Frost Erruption" , "Burning Prison"};
+        final String MYSTIC_ATTACKS_INFO[] = {"",
+                "",
+                "",
+                ""};
+        
+        final String REVEREND_ATTACKS[] = {"holy_flash_of_radiant_light", "divine_smite", "holy_healing", "prayer"};
+        final String REVEREND_ATTACKS_INFO[] = {"",
+                "",
+                "",
+                ""};
+        
+        private final String CHOOSE_CRATE_AND_CRATE_INFO[] = {"1", "2", "3", "4", "5", "6", "7", "M1", "M2", "M3", "M4", "M5", "M6", "M7"};
+        
+        private final String CHOOSE_CRATE[] = {"1", "2", "3", "4", "5", "6", "7"};
+        
+        private final String CRATE_INFO[] = {"M1", "M2", "M3", "M4", "M5", "M6", "M7"};
+        
+
+        String chosenAttacks[];
+        String descriptionOfAttacks[];
         private static Scanner scan = new Scanner(System.in);
         public static String characterName;
 
-        /**
-         * * NAMING OF CHARACTER:
-         * gets the user to enter a name.
-         */
-        public void nameSelection() {
-                Printer.printColor("Enter your name", "red");
-                characterName = scan.nextLine();
-                Printer.printColor("Welcome " + characterName + ", it seems your contributions are needed once more.", "red");
-                System.out.println("\n" + "-------------------------------------------");
+        public void printCrateInfo() {
+                //* CRATE ONE INFO - Cyborg
+                Printer.printColor("[1] Crate One:", "blue"); 
+                Printer.print("Battered Spectral Helm");
+                Printer.print("Battered Spectral Chestplate");
+                Printer.print("Battered Spectral Greaves"); 
+                Printer.print("Battered Spectral Heelguards");
+                Printer.print("[M1] - More info");
+        
+                System.out.println();
+        
+        
+                //* CRATE TWO INFO - Hacker
+                Printer.printColor("[2] Crate Two:", "green"); 
+                Printer.print("Battered Spectral Helm");
+                Printer.print("Battered Spectral Chestplate");
+                Printer.print("Battered Spectral Greaves"); 
+                Printer.print("Battered Spectral Heelguards");
+                Printer.print("[M2] - More info");
+        
+                System.out.println();
+        
+        
+                //* CRATE THREE INFO - Terminator
+                Printer.printColor("[3] Crate Three:", "red"); 
+                Printer.print("Battered Spectral Helm");
+                Printer.print("Battered Spectral Chestplate");
+                Printer.print("Battered Spectral Greaves"); 
+                Printer.print("Battered Spectral Heelguards");
+                Printer.print("[M3] - More info");
+        
+                System.out.println();
+        
+                //* CRATE FOUR INFO - Lazer Swordsman
+                Printer.printColor("[4] Crate Four:", "cyan"); 
+                Printer.print("Battered Spectral Visor");
+                Printer.print("Battered Spectral Quasiplate");
+                Printer.print("Battered Spectral Chaps"); 
+                Printer.print("Battered Spectral Shoes");
+                Printer.print("[M4] - More info");
+        
+                System.out.println();
+        
+                //* CRATE FIVE INFO - Rogue
+                Printer.printColor("[5] Crate Five:", "yellow"); 
+                Printer.print("Battered Spectral Visor");
+                Printer.print("Battered Spectral Quasiplate");
+                Printer.print("Battered Spectral Chaps"); 
+                Printer.print("Battered Spectral Shoes");
+                Printer.print("[M5] - More info");
+        
+                System.out.println();
+        
+                //* CRATE SIX INFO - Mystic
+                Printer.printColor("[6] Crate Six:", "purple"); 
+                Printer.print("Battered Spectral Hood ");
+                Printer.print("Battered Spectral Robe");
+                Printer.print("Battered Spectral Leggings"); 
+                Printer.print("Battered Spectral Boots");
+                Printer.print("[M6] - More info");
+         
+                System.out.println();
+         
+                //* CRATE SEVEN INFO - Reverend
+                Printer.printColor("[7] Crate Seven:", "white"); 
+                Printer.print("Battered Spectral Hood");
+                Printer.print("Battered Spectral Robe");
+                Printer.print("Battered Spectral Leggings"); 
+                Printer.print("Battered Spectral Boots");
+                Printer.print("[M7] - More info");
+         
+                System.out.println();
+        
+                Printer.printItalizcizedColor("Enter the number of the crate to choose it. Enter [M#] to get more info on the crate\n", "purple");
+
+                String chooseCrateOrCrateInfo = ErrorChecker.compareArrayOfStrings(CHOOSE_CRATE_AND_CRATE_INFO, "It's not that hard to choose a proper option is it?", "red");
+
+                switch(chooseCrateOrCrateInfo) {
+                        case "1": 
+                        
+                        break; 
+                         
+                        
+                        case "2": 
+                        
+                        break; 
+
+                        
+                        case "3": 
+                        
+                        break; 
+
+
+                        case "4": 
+                        
+                        break; 
+
+
+                        case "5": 
+                        
+                        break; 
+
+                        
+                        case "6": 
+                        
+                        break; 
+                        
+
+                        case "7": 
+                        
+                        break; 
+
+
+                        case "M1": 
+                        
+                        break; 
+                        
+
+                        case "M2": 
+                        
+                        break; 
+
+                        
+                        case "M3": 
+                        
+                        break; 
+                        
+                        
+                        case "M4": 
+                        
+                        break; 
+
+                        
+                        case "M5": 
+                        
+                        break; 
+
+                        
+                        case "M6": 
+                        
+                        break; 
+
+
+                        case "M7": 
+                        
+                        break; 
+                }
+                 
         }
 
         /**
@@ -38,99 +221,7 @@ public class Player {
         // yellow cyan
         // Creates the player by asking questions and stuff. Chooses classes
         public void classSelection() {
-                Printer.printColor("Class Selection: ", "white");
-
-                // * Prints the stats for all of the classes
-
-                // Cyborg
-                System.out.println();
-                Printer.printColor("Cyborg:", "blue");
-
-                // character description
-                Printer.printColor(
-                                "The Cyborg is a well rounded assault unit with strong offensive and defensive abilities. "
-                                                + "\nCyborgs are highly skilled in hand to hand combat and with laser rifles. \n",
-                                "white");
-
-                Printer.printColor("HP: 200" + '\n' + "MP: 100" + '\n' + "SPD: 1.00" + '\n' + "ATK: 5" + '\n'
-                                + "DEF: 5", "blue");
-                System.out.println('\n' + "--------------------------------------------------");
-                quickBreak();
-
-                // Hacker
-                System.out.println();
-                Printer.printColor("Hacker: ", "green");
-
-                // character description
-                Printer.printColor("Unparalleled in their mastery and knowledge of all technology related," +
-                                "\nthe Hacker is a tank unit who wields control over an arsenal of automated technological weaponry. \n",
-                                "white");
-                Printer.printColor("HP: 300" + '\n' + "MP: 80" + '\n' + "SPD: 0.75" + '\n' + "ATK: 3" + '\n'
-                                + "DEF: 7", "green");
-                System.out.println('\n' + "--------------------------------------------------");
-                quickBreak();
-
-                // Terminator
-                System.out.println();
-                Printer.printColor("Terminator: ", "red");
-
-                // character description
-                Printer.printColor(
-                                "The Terminator is an unpredictable aggressive beast who specializes in close-range combat."
-                                                + "\nBlinded by fury, these individuals wreak havoc on anything that may get on their nerves.\n",
-                                "white");
-                Printer.printColor("HP: 250" + '\n' + "MP: 50" + '\n' + "SPD: 1.00" + '\n' + "ATK: 6"
-                                + '\n' + "DEF: 3", "red");
-                System.out.println('\n' + "--------------------------------------------------");
-                quickBreak();
-
-                // Lazer Swordsman
-                System.out.println();
-                Printer.printColor("Lazer Swordsman: ", "cyan");
-
-                // character description
-                Printer.printColor("The Lazer Swordsman is a composed, well-balanced and versatile individual."
-                                + "\nJack of all trades yet master of none. \n", "white");
-                Printer.printColor(
-                                "HP: 200" + '\n' + "MP: 100" + '\n' + "SPD: 1.25" + '\n' + "ATK: 5"
-                                                + '\n' + "DEF: 6",
-                                "cyan");
-                System.out.println('\n' + "--------------------------------------------------");
-                quickBreak();
-
-                // Rogue
-                System.out.println();
-                Printer.printColor("Rogue: ", "yellow");
-
-                // character description
-                Printer.printColor(
-                                "The Rogue is sneaky, speedy thief. They make up for their fragility with their evasion and high damage output."
-                                                + "\nA glass cannon of sorts. \n",
-                                "white");
-                Printer.printColor(
-                                "HP: 150" + '\n' + "MP: 100" + '\n' + "SPD: 1.50" + '\n' + "ATK: 7"
-                                                + '\n' + "DEF: 2",
-                                "yellow");
-                System.out.println('\n' + "--------------------------------------------------");
-                quickBreak();
-
-                // Mystic
-                System.out.println();
-                Printer.printColor("Mystic ", "purple");
-
-                // character description
-                Printer.printColor(
-                                "The Mystic is a mysterious individual; while their origins, and their tools-of-the-trade are unknown,"
-                                                +
-                                                "\nthey offer a service irrefutable for the rebels. Blessed by the Gods, the mystic specializes in magic of many elements. \n",
-                                "white");
-                Printer.printColor(
-                                "HP: 200" + '\n' + "MP: 100" + '\n' + "SPD: 1.25" + '\n' + "ATK: 7"
-                                                + '\n' + "DEF: 3",
-                                "purple");
-                System.out.println('\n' + "--------------------------------------------------");
-
-                // asks which class to be
+                //* Asks which class to be
                 System.out.println();
                 Printer.printColor("Which class would you like to select?", "white");
                 String chosenClass = ErrorChecker.compareArrayOfStrings(CLASSES, "Please choose a valid class",
@@ -183,5 +274,6 @@ public class Player {
                         e.printStackTrace();
                 }
         }
+        
 
 }

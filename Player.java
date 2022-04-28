@@ -53,8 +53,8 @@ public class Player {
         private final String CRATE_INFO[] = {"M1", "M2", "M3", "M4", "M5", "M6", "M7"};
         
 
-        String chosenAttacks[];
-        String descriptionOfAttacks[];
+        public String chosenAttacks[];
+        public String descriptionOfAttacks[];
         private static Scanner scan = new Scanner(System.in);
         public static String characterName;
 

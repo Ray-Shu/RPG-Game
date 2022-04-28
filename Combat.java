@@ -1,14 +1,15 @@
 import java.util.Random;
 
-public class Combat {
-    String playerAttacks, mobAttacks;
-    Stats playerStats, mobStats;
+public class Combat extends Moves{
+    String[] mobAttacks;
+    Stats  mobStats, playerStats;
     Double playerTurnRate, mobTurnRate;
+    Player player;
     Random random = new Random();
     
-    Combat(Stats playerStats, String playerAttacks, Stats mobStats , String mobAttacks){
-        this.playerAttacks = playerAttacks;
+    Combat(Player player, Stats playerStats, Stats mobStats , String[] mobAttacks){
         this.playerStats = playerStats;
+        this.player = player;
         this.mobStats = mobStats;
         this.mobAttacks = mobAttacks;
     }
@@ -46,10 +47,13 @@ public class Combat {
     }
 
     public void listAttacks() {
-
+        Printer.printColor("Here are your moves:\n", "cyan");
+        for (int i = 0; i < player.chosenAttacks.length; i++) {
+            Printer.printColor("("+ i + ") "+ player.chosenAttacks[i], "white");
+        }
     }
 
-    public void disabled(Stats attackerStats, Stats victimStats) {
+    public void disabled(Stats playerStats, Stats victimStats) {
         
     }
 
@@ -68,109 +72,136 @@ public class Combat {
         }
         return damage;
     }
-//* PAST THIS POINT IS ATTACKS: 
-
-    // CYBORG ATTACKS: 
-    public void laser_barrage (Stats attackerStats, Stats victimStats) {
-        
-    }
-
-    public void charged_shot (Stats attackerStats, Stats victimStats) {
-
-    }
-
-    public void cyber_shield (Stats attackerStats, Stats victimStats) {
-
-    }
-
-    public void overload (Stats attackerStats, Stats victimStats) {
-
-    }
-
-    // HACKER ATTACKS: 
-    public void drone_army (Stats attackerStats, Stats victimStats) {
-
-    }
-
-    public void unlucky_missile (Stats attackerStats, Stats victimStats) {
-
-    }
-
-    public void watchful_vulture (Stats attackerStats, Stats victimStats) {
-
-    }
-
-    public void in_the_system (Stats attackerStats, Stats victimStats) {
-
-    }
-
-    // TERMINATOR ATTACKS:
-    public void machine_gun_fury (Stats attackerStats, Stats victimStats) {
-
-    }
-    public void first_impact_fists (Stats attackerStats, Stats victimStats) {
-
-    }
-    public void decieving_blast_of_cybernetic_proportions (Stats attackerStats, Stats victimStats) {
-
-    }
-    public void hunker_down (Stats attackerStats, Stats victimStats) {
-
-    }
     
-    // LAZER SWORDSMAN ATTACKS: 
-    public void swift_thrust_of_the_sword (Stats attackerStats, Stats victimStats) {
+    public void doMove(int index, Stats playerStats, Stats victimStats) {
+        //checks if we are a cyborg class
+        if (player.chosenAttacks == player.CYBORG_ATTACKS){
+            switch (index) {
+                case 1:
+                    laser_barrage(playerStats, victimStats);
+                    break;
+                case 2:
+                    charged_shot(playerStats, victimStats);
+                    break;
+                case 3:
+                    cyber_shield(playerStats, victimStats);
+                    break;
+                case 4:
+                    overload(playerStats, victimStats);
+                    break;
+            }
+        }
+
+        //checks if we are a hacker
+        else if (player.chosenAttacks == player.HACKER_ATTACKS){
+            switch (index) {
+                case 1:
+                    drone_army(playerStats, victimStats);
+                    break;
+                case 2:
+                    stolen_missile(playerStats, victimStats);
+                    break;
+                case 3:
+                    watchful_vulture(playerStats, victimStats);
+                    break;
+                case 4:
+                    in_the_system(playerStats, victimStats);
+                    break;
+            }
+        }
+
+        //checks if we are a terminator
+        else if (player.chosenAttacks == player.TERMINATOR_ATTACKS){
+            switch (index) {
+                case 1:
+                    machine_gun_fury(playerStats, victimStats);
+                    break;
+                case 2:
+                    first_impact_fists(playerStats, victimStats);
+                    break;
+                case 3:
+                    decieving_blast_of_cybernetic_proportions(playerStats, victimStats);
+                    break;
+                case 4:
+                    hunker_down(playerStats, victimStats);
+                    break;
+            }
+        }
+        //checks if we are a Laser Swordsman
+        else if (player.chosenAttacks == player.SWORDSMAN_ATTACKS){
+            switch (index) {
+                case 1:
+                    swift_thrust_of_the_sword(playerStats, victimStats);
+                    break;
+                case 2:
+                    fatal_erruption_of_bullets(playerStats, victimStats);
+                    break;
+                case 3:
+                    lightning_clone_strike(playerStats, victimStats);
+                    break;
+                case 4:
+                    rest(playerStats);
+                    break;
+            }
+        }
+
+        //checks if we are a rogue
+        else if (player.chosenAttacks == player.ROGUE_ATTACKS){
+            switch (index) {
+                case 1:
+                    machine_gun_fury(playerStats, victimStats);
+                    break;
+                case 2:
+                    first_impact_fists(playerStats, victimStats);
+                    break;
+                case 3:
+                    decieving_blast_of_cybernetic_proportions(playerStats, victimStats);
+                    break;
+                case 4:
+                    hunker_down(playerStats, victimStats);
+                    break;
+            }
+        }
+
+        //checks if we are a Mystic
+        else if (player.chosenAttacks == player.MYSTIC_ATTACKS){
+            switch (index) {
+                case 1:
+                    machine_gun_fury(playerStats, victimStats);
+                    break;
+                case 2:
+                    first_impact_fists(playerStats, victimStats);
+                    break;
+                case 3:
+                    decieving_blast_of_cybernetic_proportions(playerStats, victimStats);
+                    break;
+                case 4:
+                    hunker_down(playerStats, victimStats);
+                    break;
+            }
+        }
+
+        // we are the reverend
+        else {
+            switch (index) {
+                case 1:
+                    machine_gun_fury(playerStats, victimStats);
+                    break;
+                case 2:
+                    first_impact_fists(playerStats, victimStats);
+                    break;
+                case 3:
+                    decieving_blast_of_cybernetic_proportions(playerStats, victimStats);
+                    break;
+                case 4:
+                    hunker_down(playerStats, victimStats);
+                    break;
+            }
+        }
+
+
+
         
-    }
-    public void fatal_erruption_of_bullets (Stats attackerStats, Stats victimStats) {
-
-    }
-    public void lightning_clone_strike (Stats attackerStats, Stats victimStats) {
-
-    }
-    public void rest (Stats attackerStats) {
-
-    }
-
-    // ROGUE ATTACKS: 
-    public void quick_blast (Stats attackerStats, Stats victimStats) {
-
-    }
-    public void death_strike (Stats attackerStats, Stats victimStats) {
-
-    }
-    public void secret_mushroom_strike (Stats attackerStats, Stats victimStats) {
-
-    }
-    public void forbidden_smoke (Stats attackerStats, Stats victimStats) {
-
-    }
-
-    // MYSTIC ATTACKS: 
-    public void dragon_shatter (Stats attackerStats, Stats victimStats) {
-
-    }
-    public void simple_strike (Stats attackerStats, Stats victimStats) {
-
-    }
-    public void frost_eruption (Stats attackerStats, Stats victimStats) {
-
-    }
-    public void burning_prison (Stats attackerStats, Stats victimStats) {
-
-    }
-
-    // REVEREND ATTACKS: 
-    public void holy_flash_of_radiant_light (Stats attackerStats, Stats victimStats) {
-
-    }
-    public void divine_smite (Stats attackerStats, Stats victimStats) {
-
-    }
-    public void holy_healing (Stats attackerStats, Stats victimStats) {
-
-    }
-    public void prayer (Stats attackerStats, Stats victimStats) {
-
+        
     }
 }

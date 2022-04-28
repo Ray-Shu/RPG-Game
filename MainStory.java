@@ -48,7 +48,7 @@ public class MainStory {
         // quickBreak();
         // Printer.print("\"We can only spare you one crate of equipment, the rest is for the other members in the Insurgence. Since it's you though, you can choose which crate you want.\" \n");
         // quickBreak(); 
-        Printer.printItalizcizedColor("The crates around you luminate in a cyan blue, each projecting \ntheir own hologram of information pertaining to their class.\n", "white");
+        // Printer.printItalizcizedColor("The crates around you luminate in a cyan blue, each projecting \ntheir own hologram of information pertaining to their class.\n", "white");
         Printer.printColor("Choose the crate you desire.", "purple");
         mainPlayer.printCrateInfo(); 
 

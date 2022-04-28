@@ -1,4 +1,10 @@
-public class Classes {
+import java.util.Scanner;
+
+public class Classes {  
+
+    Scanner in = new Scanner(System.in);    
+    private final String CHOICE[] = {"choose", "back"}; 
+    Player mainPlayer = new Player(); 
     
     public void cyborgInfo(){
 
@@ -15,22 +21,51 @@ public class Classes {
         Printer.printColor("HP: 200" + '\n' + "MP: 100" + '\n' + "SPD: 1.00" + '\n' + "ATK: 5" + '\n'
                         + "DEF: 5", "blue");  
 
-    }
+        Printer.print("Would you like to choose Cyborg? [choose] [back]");
+        String choice = ErrorChecker.compareArrayOfStrings(CHOICE, "Do you not know how to read?", "red");
+                        
+        switch(choice) {
+            case "choose": 
+                mainPlayer.chooseCyborg("cyborg");
+            break; 
+                
+            case "back": 
+                mainPlayer.printCrateInfo();
+            break;      
+                            
+            }
+
+    } 
+    
 
     public void hackerInfo() {
 
-         // Hacker
-         System.out.println();
-         Printer.printColor("Hacker: ", "green");
+        // Hacker
+        System.out.println();
+        Printer.printColor("Hacker: ", "green");
 
-         // character description
-         Printer.printItalizcizedColor("Unparalleled in their mastery and knowledge of all technology related," +
+        // character description
+        Printer.printItalizcizedColor("Unparalleled in their mastery and knowledge of all technology related," +
                          "\nthe Hacker is a tank unit who wields control over an arsenal of automated technological weaponry. \n",
                          "white");
-         Printer.printColor("HP: 300" + '\n' + "MP: 80" + '\n' + "SPD: 0.75" + '\n' + "ATK: 3" + '\n'
+        Printer.printColor("HP: 300" + '\n' + "MP: 80" + '\n' + "SPD: 0.75" + '\n' + "ATK: 3" + '\n'
                          + "DEF: 7", "green");
 
+        Printer.print("Would you like to choose Hacker? [choose] [back]");
+        String choice = ErrorChecker.compareArrayOfStrings(CHOICE, "Do you not know how to read?", "red");
+                                         
+        switch(choice) {
+            case "choose": 
+                mainPlayer.chooseHacker("Hacker");                      
+            break; 
+                                 
+            case "back": 
+                mainPlayer.printCrateInfo();
+            break;      
+        }
+        
     }
+
 
     public void terminatorInfo() {
         System.out.println();
@@ -43,7 +78,21 @@ public class Classes {
                         "white");
         Printer.printColor("HP: 250" + '\n' + "MP: 50" + '\n' + "SPD: 1.00" + '\n' + "ATK: 6"
                         + '\n' + "DEF: 3", "red");
+
+        Printer.print("Would you like to choose Terminator? [choose] [back]");
+        String choice = ErrorChecker.compareArrayOfStrings(CHOICE, "Do you not know how to read?", "red");
+                                                         
+        switch(choice) {
+            case "choose": 
+                mainPlayer.chooseTerminator("terminator");                          
+            break; 
+                                                 
+            case "back": 
+                mainPlayer.printCrateInfo();
+            break;      
+        }
     }
+
 
     public void lazerSwordsmanInfo() {
         // Lazer Swordsman
@@ -55,8 +104,20 @@ public class Classes {
                         + "\nJack of all trades yet master of none. \n", "white");
         Printer.printColor(
                         "HP: 200" + '\n' + "MP: 100" + '\n' + "SPD: 1.25" + '\n' + "ATK: 5"
-                                        + '\n' + "DEF: 6",
-                        "cyan");
+                                        + '\n' + "DEF: 6","cyan");
+
+        Printer.print("Would you like to choose Lazer Swordsman? [choose] [back]");
+        String choice = ErrorChecker.compareArrayOfStrings(CHOICE, "Do you not know how to read?", "red");
+                                         
+        switch(choice) {
+            case "choose": 
+                mainPlayer.chooseLazerSwordsman("lazer swordsman");      
+            break; 
+                                 
+            case "back": 
+                mainPlayer.printCrateInfo();
+            break;      
+        }
     }
 
     public void rogueInfo(){
@@ -72,6 +133,19 @@ public class Classes {
                         "HP: 150" + '\n' + "MP: 100" + '\n' + "SPD: 1.50" + '\n' + "ATK: 7"
                                         + '\n' + "DEF: 2",
                         "yellow");
+
+        Printer.print("Would you like to choose Rogue? [choose] [back]");
+        String choice = ErrorChecker.compareArrayOfStrings(CHOICE, "Do you not know how to read?", "red");
+                                         
+        switch(choice) {
+            case "choose": 
+                mainPlayer.chooseRogue("rogue");                
+            break; 
+                                 
+            case "back": 
+                mainPlayer.printCrateInfo();
+            break;      
+        }
     }
 
     public void mysticInfo() {
@@ -88,6 +162,19 @@ public class Classes {
                     "HP: 200" + '\n' + "MP: 100" + '\n' + "SPD: 1.25" + '\n' + "ATK: 7"
                                     + '\n' + "DEF: 3",
                     "purple");
+
+        Printer.print("Would you like to choose Mystic? [choose] [back]");
+        String choice = ErrorChecker.compareArrayOfStrings(CHOICE, "Do you not know how to read?", "red");
+                                         
+        switch(choice) {
+            case "choose": 
+                mainPlayer.chooseMystic("mystic");                      
+            break; 
+                                 
+            case "back": 
+                mainPlayer.printCrateInfo();
+            break;      
+        }   
     }
 
     public void reverendInfo() {
@@ -100,6 +187,19 @@ public class Classes {
             "HP: 100" + '\n' + "MP: 200" + '\n' + "SPD: 1.25" + '\n' + "ATK: 3"
                             + '\n' + "DEF: 3",
             "white");
-    }
 
+        Printer.print("Would you like to choose Reverend? [choose] [back]");
+        String choice = ErrorChecker.compareArrayOfStrings(CHOICE, "Do you not know how to read?", "red");
+                                         
+        switch(choice) {
+            case "choose": 
+                mainPlayer.chooseReverend("reverend");                       
+            break; 
+                                 
+            case "back": 
+                mainPlayer.printCrateInfo();
+            break;      
+        }
+    }
+        
 }

@@ -1,6 +1,8 @@
 import java.util.Scanner;
 
 public class Player {
+        String playerClass; 
+
         final String CLASSES[] = { "cyborg", "hacker", "terminator", "laser swordsman", "rogue", "mystic" };
         Stats playerStats;
 
@@ -23,7 +25,7 @@ public class Player {
                 "The Hunker Down ability increases ATK, but removes chance of dodging an attack. "};
 
         final String SWORDSMAN_ATTACKS[] = {"Swift Thrust of the Sword", "Fatal Erruption Of Bullets", "Lightning Clone Strike", "Rest"};
-        final String SWORDSMAN_ATTACKS_INFO[] = {"",
+        final String SWORDSMAN_ATTACKS_INFO[] = {"The Swordsman outpasses their enemy to deal a powerful blow",
                 "",
                 "",
                 ""};
@@ -48,9 +50,8 @@ public class Player {
         
         private final String CHOOSE_CRATE_AND_CRATE_INFO[] = {"1", "2", "3", "4", "5", "6", "7", "M1", "M2", "M3", "M4", "M5", "M6", "M7"};
         
-        private final String CHOOSE_CRATE[] = {"1", "2", "3", "4", "5", "6", "7"};
-        
-        private final String CRATE_INFO[] = {"M1", "M2", "M3", "M4", "M5", "M6", "M7"};
+        // private final String CHOOSE_CRATE[] = {"1", "2", "3", "4", "5", "6", "7"};
+        // private final String CRATE_INFO[] = {"M1", "M2", "M3", "M4", "M5", "M6", "M7"};
         
 
         public String chosenAttacks[];
@@ -133,138 +134,147 @@ public class Player {
         
                 Printer.printItalizcizedColor("Enter the number of the crate to choose it. Enter [M#] to get more info on the crate\n", "purple");
 
+                Classes classInfo = new Classes(); 
                 String chooseCrateOrCrateInfo = ErrorChecker.compareArrayOfStrings(CHOOSE_CRATE_AND_CRATE_INFO, "It's not that hard to choose a proper option is it?", "red");
 
                 switch(chooseCrateOrCrateInfo) {
                         case "1": 
-                        
+                                chooseCyborg("cyborg");
                         break; 
                          
                         
                         case "2": 
-                        
+                                chooseHacker("hacker");
                         break; 
 
                         
                         case "3": 
-                        
+                                chooseTerminator("terminator");
                         break; 
 
 
                         case "4": 
-                        
+                                chooseLazerSwordsman("lazer swordsman");
                         break; 
 
 
                         case "5": 
-                        
+                                chooseRogue("rogue");
                         break; 
 
                         
                         case "6": 
-                        
+                                chooseMystic("mystic");
                         break; 
                         
 
                         case "7": 
-                        
+                                chooseReverend("reverend");
                         break; 
 
 
                         case "M1": 
-                        
+                                classInfo.cyborgInfo();
                         break; 
                         
 
                         case "M2": 
-                        
+                                classInfo.hackerInfo(); 
                         break; 
 
                         
                         case "M3": 
-                        
+                                classInfo.terminatorInfo();
                         break; 
                         
                         
                         case "M4": 
-                        
+                                classInfo.lazerSwordsmanInfo();
                         break; 
 
                         
                         case "M5": 
-                        
+                                classInfo.rogueInfo();
                         break; 
 
                         
                         case "M6": 
-                        
+                                classInfo.mysticInfo();
                         break; 
 
 
                         case "M7": 
-                        
+                                classInfo.reverendInfo();
                         break; 
                 }
                  
-        }
+        } //end of printCrateInfo method 
 
-        /**
-         * * CLASS SELECTION AND STAT DISTRIBUTION
-         * This part of the code makes the user enter one of the classes listed above,
-         * and then
-         * creates the character's stats based off of those inputted values.
-         * TODO: Finish writing out classes and determining base stats | NEARLY
-         * FINISHED, MAY NEED TO ADD ADJUSTMENTS
-         * TODO: Implement random perks
-         */
-
-        // yellow cyan
-        // Creates the player by asking questions and stuff. Chooses classes
-        public void classSelection() {
-                //* Asks which class to be
-                System.out.println();
-                Printer.printColor("Which class would you like to select?", "white");
-                String chosenClass = ErrorChecker.compareArrayOfStrings(CLASSES, "Please choose a valid class",
-                                "purple");
-                switch (chosenClass) {
-                        // * string param must be all lower-case
-                        case "cyborg":
-                                playerStats = new Stats(200.0, 100.0, 1.00, 5.0, 7.0, 4.0, 5.0, 8.0, 100.0, 6.0,
+        public void chooseCyborg(String chosenClass){
+                playerStats = new Stats(200.0, 100.0, 1.00, 5.0, 7.0, 4.0, 5.0, 8.0, 100.0, 6.0,
                                                 3.0, 0.0, 0.0, 0.0,
                                                 0.0, 1.0);
-                                Printer.printColor("You chose Cyborg.", "cyan");
+                Printer.printColor("Cyborg, a good choice.", "blue");
+                chosenAttacks = CYBORG_ATTACKS;
 
-                                playerStats.getInfo(chosenClass);
-                                chosenAttacks = CYBORG_ATTACKS;
-                                break;
-                        case "hacker":
-                                playerStats = new Stats(300.0, 80.0, 0.75, 3.0, 8.0, 1.0, 7.0, 10.0, 150.0, 8.0,
+                chosenClass = playerClass; 
+        }
+
+        public void chooseHacker(String chosenClass){
+                playerStats = new Stats(300.0, 80.0, 0.75, 3.0, 8.0, 1.0, 7.0, 10.0, 150.0, 8.0,
                                                 1.0, 0.0, 0.0, 0.0,
                                                 0.0, 1.0);
-                                Printer.printColor("You chose Hacker.", "cyan");
+                Printer.printColor("Hacker, a good choice.", "green");
+                chosenAttacks = HACKER_ATTACKS;
 
-                                playerStats.getInfo(chosenClass);
-                                chosenAttacks = HACKER_ATTACKS;
-                                break;
-                        case "terminator":
-                                Printer.printColor("You chose Terminator.", "cyan");
-                                chosenAttacks = TERMINATOR_ATTACKS;
-                                break;
-                        case "laser swordsman":
-                                Printer.printColor("You chose Laser Swordsman.", "cyan");
-                                chosenAttacks = SWORDSMAN_ATTACKS;
-                                break;
-                        case "rogue":
-                                Printer.printColor("You chose Rogue.", "cyan");
-                                chosenAttacks = ROGUE_ATTACKS;
-                                break;
-                        case "mystic":
-                                Printer.printColor("You chose Mystic.", "cyan");
-                                chosenAttacks = MYSTIC_ATTACKS;
-                                break;
+                chosenClass = playerClass; 
+        }
 
-                }
+        public void chooseTerminator(String chosenClass){
+                playerStats = new Stats(300.0, 90.0, 0.8, 5.0, 8.0, 0.0, 7.0, 10.0, 200.0, 9.0, 3.0, 0.0, 0.0, 0.0, 0.0, 1.0);
 
+                Printer.printColor("Terminator, a good choice.", "red");
+                chosenAttacks = TERMINATOR_ATTACKS;
+
+                chosenClass = playerClass; 
+        }
+
+        public void chooseLazerSwordsman(String chosenClass){
+                playerStats = new Stats(200.0, 130.0, 1.25, 8.0, 4.0, 4.0, 5.0, 7.0, 100.0, 4.0, 4.0, 0.0, 0.0, 0.0, 0.0, 1.0);
+
+                Printer.printColor("Lazer Swordsman, a good choice.", "cyan");
+                chosenAttacks = TERMINATOR_ATTACKS;
+
+                chosenClass = playerClass; 
+        }
+
+        public void chooseRogue(String chosenClass){
+                playerStats = new Stats(125.0, 150.0, 2.0, 9.0, 10.0, 6.0, 2.0, 3.0, 130.0, 3.0, 3.0, 5.0, 0.0, 0.0, 0.0, 1.0);
+
+                Printer.printColor("Rogue, a good choice.", "yellow");
+                chosenAttacks = TERMINATOR_ATTACKS;
+
+                chosenClass = playerClass; 
+                
+        }
+
+        public void chooseMystic(String chosenClass){
+                playerStats = new Stats(175.0, 200.0, 1.0, 7.0, 1.0, 10.0, 4.0, 5.0, 150.0, 3.0, 5.0, 0.0, 0.0, 0.0, 0.0, 1.0);
+
+                Printer.printColor("Mystic, a good choice.", "purple");
+                chosenAttacks = TERMINATOR_ATTACKS;
+
+                chosenClass = playerClass; 
+        }
+
+        public void chooseReverend(String chosenClass){
+                playerStats = new Stats(100, 250, 1.25, 3.0, 0.0, 6.0, 4.0, 6.0, 200.0, 1.0, 6.0, 0.0, 5.0, 0.0, 0.0, 1.0);
+
+                Printer.printColor("Reverend, a good choice.", "red");
+                chosenAttacks = TERMINATOR_ATTACKS;
+
+                chosenClass = playerClass; 
+                
         }
 
         public void quickBreak() {

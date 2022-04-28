@@ -1,4 +1,5 @@
 import java.util.Random;
+import java.util.Scanner;
 
 public class Combat extends Moves{
     String[] mobAttacks;
@@ -6,7 +7,15 @@ public class Combat extends Moves{
     Double playerTurnRate, mobTurnRate;
     Player player;
     Random random = new Random();
-    
+    Scanner scan = new Scanner(System.in);
+
+    /**
+     * Constructs a fight between a player and a mob. 
+     * @param player this is the player who is fighting the mob
+     * @param playerStats this is the stats of that player
+     * @param mobStats this is the stats of the mob
+     * @param mobAttacks this is the list of possible mob attacks. 
+     */
     Combat(Player player, Stats playerStats, Stats mobStats , String[] mobAttacks){
         this.playerStats = playerStats;
         this.player = player;
@@ -38,76 +47,63 @@ public class Combat extends Moves{
         playerTurnRate += playerStats.currentSpd;
     }
 
-    public void playerAttack() {
-        
-    }
 
-    public void mobAttack() {
+    
 
-    }
-
+    /**
+     * Prints out a list of the attacks of the user, along with all the options like leave and inventory. 
+     * todo: Implement leave and inventory options. 
+     */
     public void listAttacks() {
         Printer.printColor("Here are your moves:\n", "cyan");
         for (int i = 0; i < player.chosenAttacks.length; i++) {
             Printer.printColor("("+ i + ") "+ player.chosenAttacks[i], "white");
         }
     }
-
-    public void disabled(Stats playerStats, Stats victimStats) {
-        
-    }
-
-    public boolean didDodge(Stats victimStats, double missMultiplier) {
-        double effectiveDodge = victimStats.currentDodge * missMultiplier;
-        if(random.nextDouble() <= effectiveDodge) {
-            return true;
-        }
-        return false;
-    }
-
-    public double applyCrit(Stats attackerStats, double damage) {
-        double critDamage = attackerStats.currentCritDmg * damage;
-        if(random.nextDouble() <= attackerStats.currentCritRate / 100){
-            return critDamage;
-        }
-        return damage;
-    }
     
-    public void doMove(int index, Stats playerStats, Stats victimStats) {
+    public void playerMove( Stats attackerStats, Stats victimStats) {
+        int attackMPcost;
+        int index= 0;
         //checks if we are a cyborg class
         if (player.chosenAttacks == player.CYBORG_ATTACKS){
-            switch (index) {
+            do{
+                while(!scan.hasNextInt()){
+                    Printer.print("Please enter an integer between 1 and 4");
+                    scan.next();
+                }
+
+                index = scan.nextInt();
+                switch (index) {
                 case 1:
-                    laser_barrage(playerStats, victimStats);
-                    break;
+                    attackMPcost = 5;
+                    if(attackMPcost > attackerStats.currentMP){tooTired(); break;}
+                    laser_barrage(attackerStats, victimStats);
+                    return;
                 case 2:
-                    charged_shot(playerStats, victimStats);
-                    break;
+                    attackMPcost = 10;
+                    if(attackMPcost > attackerStats.currentMP){tooTired(); break;}
+                    charged_shot(attackerStats, victimStats);
+                    return;
                 case 3:
-                    cyber_shield(playerStats, victimStats);
-                    break;
+                    attackMPcost = 5;
+                    if(attackMPcost > playerStats.currentMP){tooTired(); break;}
+                    cyber_shield(attackerStats, victimStats);
+                    return;
                 case 4:
-                    overload(playerStats, victimStats);
+                    attackMPcost = 20;
+                    if(attackMPcost > playerStats.currentMP){tooTired(); break;}
+                    overload(attackerStats, victimStats);
+                    return;
+                default: 
+                    Printer.print("Please enter a valid number: ");
                     break;
-            }
+                }
+            } while(true);   
         }
 
         //checks if we are a hacker
         else if (player.chosenAttacks == player.HACKER_ATTACKS){
-            switch (index) {
-                case 1:
-                    drone_army(playerStats, victimStats);
-                    break;
-                case 2:
-                    stolen_missile(playerStats, victimStats);
-                    break;
-                case 3:
-                    watchful_vulture(playerStats, victimStats);
-                    break;
-                case 4:
-                    in_the_system(playerStats, victimStats);
-                    break;
-            }
+            hackAttack(attackerStats, victimStats);
         }
 
         //checks if we are a terminator
@@ -149,16 +145,16 @@ public class Combat extends Moves{
         else if (player.chosenAttacks == player.ROGUE_ATTACKS){
             switch (index) {
                 case 1:
-                    machine_gun_fury(playerStats, victimStats);
+                    quick_blast(playerStats, victimStats);
                     break;
                 case 2:
-                    first_impact_fists(playerStats, victimStats);
+                    death_strike(playerStats, victimStats);
                     break;
                 case 3:
-                    decieving_blast_of_cybernetic_proportions(playerStats, victimStats);
+                    secret_mushroom_strike(playerStats, victimStats);
                     break;
                 case 4:
-                    hunker_down(playerStats, victimStats);
+                    forbidden_smoke(playerStats, victimStats);
                     break;
             }
         }
@@ -167,16 +163,16 @@ public class Combat extends Moves{
         else if (player.chosenAttacks == player.MYSTIC_ATTACKS){
             switch (index) {
                 case 1:
-                    machine_gun_fury(playerStats, victimStats);
+                    dragon_shatter(playerStats, victimStats);
                     break;
                 case 2:
-                    first_impact_fists(playerStats, victimStats);
+                    simple_strike(playerStats, victimStats);
                     break;
                 case 3:
-                    decieving_blast_of_cybernetic_proportions(playerStats, victimStats);
+                    frost_eruption(playerStats, victimStats);
                     break;
                 case 4:
-                    hunker_down(playerStats, victimStats);
+                    burning_prison(playerStats, victimStats);
                     break;
             }
         }
@@ -185,18 +181,28 @@ public class Combat extends Moves{
         else {
             switch (index) {
                 case 1:
-                    machine_gun_fury(playerStats, victimStats);
+                    holy_flash_of_radiant_light(playerStats, victimStats);
                     break;
                 case 2:
-                    first_impact_fists(playerStats, victimStats);
+                    divine_smite(playerStats, victimStats);
                     break;
                 case 3:
-                    decieving_blast_of_cybernetic_proportions(playerStats, victimStats);
+                    holy_healing(playerStats, victimStats);
                     break;
                 case 4:
-                    hunker_down(playerStats, victimStats);
+                    prayer(playerStats, victimStats);
                     break;
             }
         }        
     }
+
+
+    /**
+     * Does the mobs move
+     */
+    public void mobMove() {
+
+    }
+
+    
 }

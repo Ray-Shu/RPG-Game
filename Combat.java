@@ -197,11 +197,6 @@ public class Combat extends Moves{
                     hunker_down(playerStats, victimStats);
                     break;
             }
-        }
-
-
-
-        
-        
+        }        
     }
 }

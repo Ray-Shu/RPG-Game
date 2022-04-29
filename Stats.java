@@ -5,13 +5,15 @@ public class Stats {
                         maxCritRate, maxCritDmg, maxLuck;
         public double currentHP, currentMP, currentSpd, currentAtk, currentPhysDmg, currentMagicDmg, currentDef, currentEnd, currentStam,
                 currentPhysRes, currentMagicRes, currentDodge, currentVit, currentCritRate, currentCritDmg, currentLuck;
-
         double allStats[];
         String displayStats[];
         //? When you change one of the variables after this is declared, will the number in the array change with it? 
         double currentStats[] = {currentHP, currentMP, currentSpd, currentAtk, currentPhysDmg, currentMagicDmg, currentDef, currentEnd, currentStam, 
                 currentPhysRes, currentMagicRes, currentDodge, currentVit, currentCritRate, currentCritDmg, currentLuck};
-        
+        int level = 1;
+        int xp = 0;
+        final int XP_TO_LVL_UP = 100;
+
         /**
          * This class will contain information about the stats of the player and the
          * mobs.
@@ -108,7 +110,23 @@ public class Stats {
                 }
         }
 
+        public void addXP(int xpGained) {
+                xp =+ xpGained;
+                checkXP();
+        }
+
+        public void checkXP() {
+                if(xp / XP_TO_LVL_UP == 1){
+                        xp-= XP_TO_LVL_UP;
+                        levelUp();
+                        checkXP();
+                }
+        }
+
         public void levelUp() {
+                Printer.printColor("---------------------------------------------------------", "yellow");
+                Printer.printColor("Congratulations! Your level has increased!", "yellow");
+                Printer.printColor("---------------------------------------------------------", "yellow");
                 Double statPercentageIncreasePerLevel = 1.05;
                 for (int i = 0; i < allStats.length; i++) {
                         allStats[i] = allStats[i] * statPercentageIncreasePerLevel;

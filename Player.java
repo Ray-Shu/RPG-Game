@@ -7,46 +7,53 @@ public class Player {
         Stats playerStats;
 
         final String CYBORG_ATTACKS[] = {"Laser Barrage", "Charged Shot", "Cyber Shield", "Overload"};
+        final int CYBORG_ATTACK_COSTS[] = {5,15,5,20};
         final String CYBORG_ATTACK_INFO[] = {"Laser Barrage unleashes a flury of low damage laser shots on the opponents", 
                 "The Charged Shot unleashes a powerful blast capable dealing major damage", 
                 "The Cyber Shield increases defence for the next 3 turns", 
                 "Overload greatly increases attack for the next 3 turns"};
 
         final String HACKER_ATTACKS[] = {"Drone Army", "Stolen Missile", "Watchful Vulture", "Watchful Vulture"};
+        final int HACKER_ATTACK_COSTS[] = {5,20,5,10};
         final String HACKER_ATTACKS_INFO[] = {"Drone Army summons an army of drones dealing large damage as they attack over 3 turns",
                 "With the Stolen Missile ability, the hacker siezes a missile from the government and tries to use it to destroy their enemies",
                 "The hacker's Watchful Vulture ability uses realtime satalite imagery to locate enemies and ensure hits for the next 3 turns",
                 "The hacker gets \"In The System\" with their final ability to disable their enemy robots for 2 turns"};
 
         final String TERMINATOR_ATTACKS[] = {"Machine Gun Fury", "First Impact Fists", "Deceiving Blast of Cybernetic Proportions", "Hunker Down"};
+        final int TERMINATOR_ATTACK_COSTS[] = {10,5,10,10};
         final String TERMINATOR_ATTACKS_INFO[] = {"The Terminator unleashes their Machine gun to deal major damage to opponents",
                 "The Terminator gets a heavily impactful strike on their enemy. ",
                 "The Terminators special move surprises enemies and blinding them for 2 turns. ",
                 "The Hunker Down ability increases ATK, but removes chance of dodging an attack. "};
 
         final String SWORDSMAN_ATTACKS[] = {"Swift Thrust of the Sword", "Fatal Erruption Of Bullets", "Lightning Clone Strike", "Rest"};
-        final String SWORDSMAN_ATTACKS_INFO[] = {"The Swordsman outpasses their enemy to deal a powerful blow",
-                "",
-                "",
-                ""};
-        
-        final String ROGUE_ATTACKS[] = {"Quick Blast", "Death Strike", "Secret Mushroom Strike", "Forbidden Smoke of the Holy Tree"};
-        final String ROGUE_ATTACKS_INFO[] = {"",
-                "",
-                "",
-                ""};
-        
+        final int SWORDSMAN_ATTACK_COSTS[] = {7,13,25,0};
+        final String SWORDSMAN_ATTACKS_INFO[] = {"The Swordsman outpasses their enemy to deal a powerful blow. ",
+                "The Swordsman uses a gun to eliminate their enemies. ",
+                "The Swordsman's moves at supersonic speeds to summon clones which all attack the enemy. ",
+                "The Swordsman Sleeps"};
+       
+        final String ROGUE_ATTACKS[] = {"Quick Blast", "Death Strike", "Secret Mushroom Strike", "Forbidden Smoke"};
+        final int ROGUE_ATTACK_COSTS[] = {4,12,10,5};
+        final String ROGUE_ATTACKS_INFO[] = {"The agile Rogue quickly blasts the enemy with explosives before they get to react. ",
+                "The Rogue Sneaks up on their opponent and strikes them down. ",
+                "The Rogue poisins their opponent",
+                "The Rogue uses smoke to decieve their enemy. "};
+       
         final String MYSTIC_ATTACKS[] = {"Dragon Shatter", "Simple Strike", "Frost Erruption" , "Burning Prison"};
-        final String MYSTIC_ATTACKS_INFO[] = {"",
-                "",
-                "",
-                ""};
-        
-        final String REVEREND_ATTACKS[] = {"holy_flash_of_radiant_light", "divine_smite", "holy_healing", "prayer"};
-        final String REVEREND_ATTACKS_INFO[] = {"",
-                "",
-                "",
-                ""};
+        final int MYSTIC_ATTACK_COSTS[] = {20,10,10,5};
+        final String MYSTIC_ATTACKS_INFO[] = {"Summons a dragon who strikes their opponent, dealing major damage. ",
+                "The attack uses a small blast of mana to damage their opponent. ",
+                "Frost Erruption slows the enemies and does a little damage. ",
+                "The Mystic traps their enemy in a burning prison!"}; 
+
+        final String REVEREND_ATTACKS[] = {"holy flash of radiant light", "divine smite", "holy healing", "prayer"};
+        final int REVEREND_ATTACK_COSTS[] = {10,20,10,10};
+        final String REVEREND_ATTACKS_INFO[] = {"The Reverend manipulates the divine light to blind the enemy and deal major damage!",
+                "The divine smite summons lightning to stun enemies and deal major damage. ",
+                "Holy healing heals the player",
+                "The prayer increases attack and speed. "};
         
         private final String CHOOSE_CRATE_AND_CRATE_INFO[] = {"1", "2", "3", "4", "5", "6", "7", "M1", "M2", "M3", "M4", "M5", "M6", "M7"};
         
@@ -55,13 +62,12 @@ public class Player {
         
 
         public String chosenAttacks[];
-        public String descriptionOfAttacks[];
-        private static Scanner scan = new Scanner(System.in);
+        public int chosenAttacksCost[];
         public static String characterName;
 
         public void printCrateInfo() {
                 //* CRATE ONE INFO - Cyborg
-                Printer.printColor("[1] Crate One:", "blue"); 
+                Printer.printColor("[1] Crate One - Cyborg:", "blue"); 
                 Printer.print("Battered Spectral Helm");
                 Printer.print("Battered Spectral Chestplate");
                 Printer.print("Battered Spectral Greaves"); 
@@ -72,7 +78,7 @@ public class Player {
         
         
                 //* CRATE TWO INFO - Hacker
-                Printer.printColor("[2] Crate Two:", "green"); 
+                Printer.printColor("[2] Crate Two - Hacker:", "green"); 
                 Printer.print("Battered Spectral Helm");
                 Printer.print("Battered Spectral Chestplate");
                 Printer.print("Battered Spectral Greaves"); 
@@ -83,7 +89,7 @@ public class Player {
         
         
                 //* CRATE THREE INFO - Terminator
-                Printer.printColor("[3] Crate Three:", "red"); 
+                Printer.printColor("[3] Crate Three - Terminator:", "red"); 
                 Printer.print("Battered Spectral Helm");
                 Printer.print("Battered Spectral Chestplate");
                 Printer.print("Battered Spectral Greaves"); 
@@ -93,7 +99,7 @@ public class Player {
                 System.out.println();
         
                 //* CRATE FOUR INFO - Lazer Swordsman
-                Printer.printColor("[4] Crate Four:", "cyan"); 
+                Printer.printColor("[4] Crate Four - Lazer Swordsman:", "cyan"); 
                 Printer.print("Battered Spectral Visor");
                 Printer.print("Battered Spectral Quasiplate");
                 Printer.print("Battered Spectral Chaps"); 
@@ -103,7 +109,7 @@ public class Player {
                 System.out.println();
         
                 //* CRATE FIVE INFO - Rogue
-                Printer.printColor("[5] Crate Five:", "yellow"); 
+                Printer.printColor("[5] Crate Five - Rogue:", "yellow"); 
                 Printer.print("Battered Spectral Visor");
                 Printer.print("Battered Spectral Quasiplate");
                 Printer.print("Battered Spectral Chaps"); 
@@ -113,7 +119,7 @@ public class Player {
                 System.out.println();
         
                 //* CRATE SIX INFO - Mystic
-                Printer.printColor("[6] Crate Six:", "purple"); 
+                Printer.printColor("[6] Crate Six - Mystic:", "purple"); 
                 Printer.print("Battered Spectral Hood ");
                 Printer.print("Battered Spectral Robe");
                 Printer.print("Battered Spectral Leggings"); 
@@ -123,7 +129,7 @@ public class Player {
                 System.out.println();
          
                 //* CRATE SEVEN INFO - Reverend
-                Printer.printColor("[7] Crate Seven:", "white"); 
+                Printer.printColor("[7] Crate Seven - Reverend:", "white"); 
                 Printer.print("Battered Spectral Hood");
                 Printer.print("Battered Spectral Robe");
                 Printer.print("Battered Spectral Leggings"); 
@@ -135,7 +141,8 @@ public class Player {
                 Printer.printItalizcizedColor("Enter the number of the crate to choose it. Enter [M#] to get more info on the crate\n", "purple");
 
                 Classes classInfo = new Classes(); 
-                String chooseCrateOrCrateInfo = ErrorChecker.compareArrayOfStrings(CHOOSE_CRATE_AND_CRATE_INFO, "It's not that hard to choose a proper option is it?", "red");
+                //scan.nextLine();
+                String chooseCrateOrCrateInfo = ErrorChecker.compareArrayOfStrings(CHOOSE_CRATE_AND_CRATE_INFO, "It's not that hard to choose a proper option, is it?", "red");
 
                 switch(chooseCrateOrCrateInfo) {
                         case "1": 
@@ -212,58 +219,56 @@ public class Player {
 
         public void chooseCyborg(String chosenClass){
                 playerStats = new Stats(200.0, 100.0, 1.00, 5.0, 7.0, 4.0, 5.0, 8.0, 100.0, 6.0,
-                                                3.0, 0.0, 0.0, 0.0,
-                                                0.0, 1.0);
+                                                3.0, 1.0, 1.0, 1.0, 1.0, 1.0);
                 Printer.printColor("Cyborg, a good choice.", "blue");
                 chosenAttacks = CYBORG_ATTACKS;
-
+                chosenAttacksCost = CYBORG_ATTACK_COSTS;
                 chosenClass = playerClass; 
         }
 
         public void chooseHacker(String chosenClass){
                 playerStats = new Stats(300.0, 80.0, 0.75, 3.0, 8.0, 1.0, 7.0, 10.0, 150.0, 8.0,
-                                                1.0, 0.0, 0.0, 0.0,
-                                                0.0, 1.0);
+                                                1.0, 1.0, 1.0, 1.0, 1.0, 1.0);
                 Printer.printColor("Hacker, a good choice.", "green");
                 chosenAttacks = HACKER_ATTACKS;
-
+                chosenAttacksCost = HACKER_ATTACK_COSTS;
                 chosenClass = playerClass; 
         }
 
         public void chooseTerminator(String chosenClass){
-                playerStats = new Stats(300.0, 90.0, 0.8, 5.0, 8.0, 0.0, 7.0, 10.0, 200.0, 9.0, 3.0, 0.0, 0.0, 0.0, 0.0, 1.0);
+                playerStats = new Stats(300.0, 90.0, 0.8, 5.0, 8.0, 0.0, 7.0, 10.0, 200.0, 9.0, 3.0, 1.0, 1.0, 1.0, 1.0, 1.0);
 
                 Printer.printColor("Terminator, a good choice.", "red");
                 chosenAttacks = TERMINATOR_ATTACKS;
-
+                chosenAttacksCost = TERMINATOR_ATTACK_COSTS;
                 chosenClass = playerClass; 
         }
 
         public void chooseLazerSwordsman(String chosenClass){
-                playerStats = new Stats(200.0, 130.0, 1.25, 8.0, 4.0, 4.0, 5.0, 7.0, 100.0, 4.0, 4.0, 0.0, 0.0, 0.0, 0.0, 1.0);
+                playerStats = new Stats(200.0, 130.0, 1.25, 8.0, 4.0, 4.0, 5.0, 7.0, 100.0, 4.0, 4.0, 1.0, 1.0, 1.0, 1.0, 1.0);
 
                 Printer.printColor("Lazer Swordsman, a good choice.", "cyan");
-                chosenAttacks = TERMINATOR_ATTACKS;
-
+                chosenAttacks = SWORDSMAN_ATTACKS;
+                chosenAttacksCost = SWORDSMAN_ATTACK_COSTS;
                 chosenClass = playerClass; 
         }
 
         public void chooseRogue(String chosenClass){
-                playerStats = new Stats(125.0, 150.0, 2.0, 9.0, 10.0, 6.0, 2.0, 3.0, 130.0, 3.0, 3.0, 5.0, 0.0, 0.0, 0.0, 1.0);
+                playerStats = new Stats(125.0, 150.0, 2.0, 9.0, 10.0, 6.0, 2.0, 3.0, 130.0, 3.0, 3.0, 5.0, 1.0, 1.0, 1.0, 1.0);
 
                 Printer.printColor("Rogue, a good choice.", "yellow");
-                chosenAttacks = TERMINATOR_ATTACKS;
-
+                chosenAttacks = ROGUE_ATTACKS;
+                chosenAttacksCost = ROGUE_ATTACK_COSTS;
                 chosenClass = playerClass; 
                 
         }
 
         public void chooseMystic(String chosenClass){
-                playerStats = new Stats(175.0, 200.0, 1.0, 7.0, 1.0, 10.0, 4.0, 5.0, 150.0, 3.0, 5.0, 0.0, 0.0, 0.0, 0.0, 1.0);
+                playerStats = new Stats(175.0, 200.0, 1.0, 7.0, 1.0, 10.0, 4.0, 5.0, 150.0, 3.0, 5.0, 1.0, 1.0, 1.0, 1.0, 1.0);
 
                 Printer.printColor("Mystic, a good choice.", "purple");
-                chosenAttacks = TERMINATOR_ATTACKS;
-
+                chosenAttacks = MYSTIC_ATTACKS;
+                chosenAttacksCost = MYSTIC_ATTACK_COSTS;
                 chosenClass = playerClass; 
         }
 
@@ -271,8 +276,8 @@ public class Player {
                 playerStats = new Stats(100, 250, 1.25, 3.0, 0.0, 6.0, 4.0, 6.0, 200.0, 1.0, 6.0, 0.0, 5.0, 0.0, 0.0, 1.0);
 
                 Printer.printColor("Reverend, a good choice.", "red");
-                chosenAttacks = TERMINATOR_ATTACKS;
-
+                chosenAttacks = REVEREND_ATTACKS;
+                chosenAttacksCost = REVEREND_ATTACK_COSTS;
                 chosenClass = playerClass; 
                 
         }

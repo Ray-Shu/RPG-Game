@@ -5,7 +5,7 @@ public class Moves {
 
     Random random = new Random();
     Scanner scan = new Scanner(System.in);
-
+    StatsCalculator calculator = new StatsCalculator();
 
     //* General stuff
 
@@ -34,17 +34,6 @@ public class Moves {
         return false;
     }
 
-    /**
-     * Sees if the attack crit. Returns the damage if it crit or if it did not crit. 
-     */
-    public double applyCrit(Stats attackerStats, double damage) {
-        double critDamage = attackerStats.currentCritDmg * damage;
-        if(random.nextDouble() <= attackerStats.currentCritRate / 100){
-            return critDamage;
-        }
-        return damage;
-    }
-
     //* THESE ARE THE PLAYER'S ATTACKS
 
      // CYBORG ATTACKS: 
@@ -61,21 +50,25 @@ public class Moves {
                     case 1:
                     attackMPcost = 5;
                     if(attackMPcost > attackerStats.currentMP){tooTired(); break;}
+                    attackerStats.currentMP -= attackMPcost;
                     laser_barrage(attackerStats, victimStats);
                     return;
                 case 2:
                     attackMPcost = 10;
                     if(attackMPcost > attackerStats.currentMP){tooTired(); break;}
+                    attackerStats.currentMP -= attackMPcost;
                     charged_shot(attackerStats, victimStats);
                     return;
                 case 3:
                     attackMPcost = 5;
                     if(attackMPcost > attackerStats.currentMP){tooTired(); break;}
+                    attackerStats.currentMP -= attackMPcost;
                     cyber_shield(attackerStats, victimStats);
                     return;
                 case 4:
                     attackMPcost = 20;
                     if(attackMPcost > attackerStats.currentMP){tooTired(); break;}
+                    attackerStats.currentMP -= attackMPcost;
                     overload(attackerStats, victimStats);
                     return;
                     default: 
@@ -86,19 +79,20 @@ public class Moves {
     }
 
     public void laser_barrage (Stats attackerStats, Stats victimStats) {
-        
+        Printer.printColor("Sending Laser Barrage!", "red");
     }
 
     public void charged_shot (Stats attackerStats, Stats victimStats) {
+        Printer.printColor("Sending charged shot!", "red");
 
     }
 
     public void cyber_shield (Stats attackerStats, Stats victimStats) {
-
+        Printer.printColor("Increasing defence stats!", "blue");
     }
 
     public void overload (Stats attackerStats, Stats victimStats) {
-
+        Printer.printColor("Increasing attack stats!", "yellow");
     }
 
     // HACKER ATTACKS: 
@@ -115,21 +109,25 @@ public class Moves {
                     case 1:
                         attackMPcost = 5;
                         if(attackMPcost > attackerStats.currentMP){tooTired(); break;}
+                        attackerStats.currentMP -= attackMPcost;
                         drone_army(attackerStats, victimStats);
                         return;
                     case 2:
                         attackMPcost = 20;
                         if(attackMPcost > attackerStats.currentMP){tooTired(); break;}
+                        attackerStats.currentMP -= attackMPcost;
                         stolen_missile(attackerStats, victimStats);
                         return;
                     case 3:
                         attackMPcost = 5;
                         if(attackMPcost > attackerStats.currentMP){tooTired(); break;}
+                        attackerStats.currentMP -= attackMPcost;
                         watchful_vulture(attackerStats, victimStats);
                         return;
                     case 4:
                         attackMPcost = 10;
                         if(attackMPcost > attackerStats.currentMP){tooTired(); break;}
+                        attackerStats.currentMP -= attackMPcost;
                         in_the_system(attackerStats, victimStats);
                         return;
                     default: 
@@ -142,19 +140,19 @@ public class Moves {
 
 
     public void drone_army (Stats attackerStats, Stats victimStats) {
-
+        Printer.printColor("Summoning drone army!", "green");
     }
 
     public void stolen_missile (Stats attackerStats, Stats victimStats) {
-
+        Printer.printColor("Stealing missile", "blue");
     }
 
     public void watchful_vulture (Stats attackerStats, Stats victimStats) {
-
+        Printer.printColor("Increasing defence stats!", "blue");
     }
 
     public void in_the_system (Stats attackerStats, Stats victimStats) {
-
+        Printer.printColor("Increasing defence stats!", "blue");
     }
 
     // TERMINATOR ATTACKS:
@@ -172,21 +170,25 @@ public class Moves {
                     case 1:
                     attackMPcost = 10;
                     if(attackMPcost > attackerStats.currentMP){tooTired(); break;}
+                    attackerStats.currentMP -= attackMPcost;
                     machine_gun_fury(attackerStats, victimStats);
                     return;
                 case 2:
                     attackMPcost = 5;
                     if(attackMPcost > attackerStats.currentMP){tooTired(); break;}
+                    attackerStats.currentMP -= attackMPcost;
                     first_impact_fists(attackerStats, victimStats);
                     return;
                 case 3:
                     attackMPcost = 10;
                     if(attackMPcost > attackerStats.currentMP){tooTired(); break;}
+                    attackerStats.currentMP -= attackMPcost;
                     decieving_blast_of_cybernetic_proportions(attackerStats, victimStats);
                     return;
                 case 4:
                     attackMPcost = 10;
                     if(attackMPcost > attackerStats.currentMP){tooTired(); break;}
+                    attackerStats.currentMP -= attackMPcost;
                     hunker_down(attackerStats, victimStats);
                     return;
                 default: 
@@ -282,19 +284,19 @@ public class Moves {
                     quick_blast(attackerStats, victimStats);
                     return;
                 case 2:
-                    attackMPcost = 13;
+                    attackMPcost = 12;
                     if(attackMPcost > attackerStats.currentMP){tooTired(); break;}
                     attackerStats.currentMP -= attackMPcost;
                     death_strike(attackerStats, victimStats);
                     return;
                 case 3:
-                    attackMPcost = 25;
+                    attackMPcost = 10;
                     if(attackMPcost > attackerStats.currentMP){tooTired(); break;}
                     attackerStats.currentMP -= attackMPcost;
                     secret_mushroom_strike(attackerStats, victimStats);
                     return;
                 case 4:
-                    attackMPcost = 0;
+                    attackMPcost = 5;
                     if(attackMPcost > attackerStats.currentMP){tooTired(); break;}
                     attackerStats.currentMP -= attackMPcost;
                     forbidden_smoke(attackerStats, victimStats);
@@ -330,34 +332,34 @@ public class Moves {
                 index = scan.nextInt();
                 switch (index) {
                     case 1:
-                    attackMPcost = 7;
+                    attackMPcost = 22;
                     if(attackMPcost > attackerStats.currentMP){tooTired(); break;}
                     attackerStats.currentMP -= attackMPcost;
-                    swift_thrust_of_the_sword(attackerStats, victimStats);
+                    dragon_shatter(attackerStats, victimStats);
                     return;
                 case 2:
-                    attackMPcost = 13;
+                    attackMPcost = 10;
                     if(attackMPcost > attackerStats.currentMP){tooTired(); break;}
                     attackerStats.currentMP -= attackMPcost;
-                    fatal_erruption_of_bullets(attackerStats, victimStats);
+                    simple_strike(attackerStats, victimStats);
                     return;
                 case 3:
-                    attackMPcost = 25;
+                    attackMPcost = 10;
                     if(attackMPcost > attackerStats.currentMP){tooTired(); break;}
                     attackerStats.currentMP -= attackMPcost;
-                    lightning_clone_strike(attackerStats, victimStats);
+                    frost_eruption(attackerStats, victimStats);
                     return;
                 case 4:
-                    attackMPcost = 0;
+                    attackMPcost = 5;
                     if(attackMPcost > attackerStats.currentMP){tooTired(); break;}
                     attackerStats.currentMP -= attackMPcost;
-                    death_strike(attackerStats, victimStats);
+                    burning_prison(attackerStats, victimStats);
                     return;
                 default: 
                     Printer.print("Please enter a valid number: ");
                     break;
                 }
-            swordsmanAttack(attackerStats, victimStats);
+            mysticAttack(attackerStats, victimStats);
     }
 
     public void dragon_shatter (Stats attackerStats, Stats victimStats) {
@@ -374,6 +376,46 @@ public class Moves {
     }
 
     // REVEREND ATTACKS: 
+
+    public void reverendAttack(Stats attackerStats, Stats victimStats) {
+        int attackMPcost;
+        int index= 0;
+        while(!scan.hasNextInt()){
+                    Printer.print("Please enter an integer");
+                    scan.next();
+                }
+                index = scan.nextInt();
+                switch (index) {
+                    case 1:
+                    attackMPcost = 10;
+                    if(attackMPcost > attackerStats.currentMP){tooTired(); break;}
+                    attackerStats.currentMP -= attackMPcost;
+                    dragon_shatter(attackerStats, victimStats);
+                    return;
+                case 2:
+                    attackMPcost = 20;
+                    if(attackMPcost > attackerStats.currentMP){tooTired(); break;}
+                    attackerStats.currentMP -= attackMPcost;
+                    simple_strike(attackerStats, victimStats);
+                    return;
+                case 3:
+                    attackMPcost = 10;
+                    if(attackMPcost > attackerStats.currentMP){tooTired(); break;}
+                    attackerStats.currentMP -= attackMPcost;
+                    frost_eruption(attackerStats, victimStats);
+                    return;
+                case 4:
+                    attackMPcost = 10;
+                    if(attackMPcost > attackerStats.currentMP){tooTired(); break;}
+                    attackerStats.currentMP -= attackMPcost;
+                    burning_prison(attackerStats, victimStats);
+                    return;
+                default: 
+                    Printer.print("Please enter a valid number: ");
+                    break;
+                }
+            reverendAttack(attackerStats, victimStats);
+    }
     public void holy_flash_of_radiant_light (Stats attackerStats, Stats victimStats) {
 
     }

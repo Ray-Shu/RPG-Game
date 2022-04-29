@@ -8,7 +8,7 @@ public class Combat extends Moves{
     Player player;
     Random random = new Random();
     Scanner scan = new Scanner(System.in);
-
+    int[] attackCosts;
     /**
      * Constructs a fight between a player and a mob. 
      * @param player this is the player who is fighting the mob
@@ -21,6 +21,7 @@ public class Combat extends Moves{
         this.player = player;
         this.mobStats = mobStats;
         this.mobAttacks = mobAttacks;
+        this.attackCosts = player.chosenAttacksCost;
     }
 
     /**
@@ -55,112 +56,39 @@ public class Combat extends Moves{
      * todo: Implement leave and inventory options. 
      */
     public void listAttacks() {
+        int i = 0;
         Printer.printColor("Here are your moves:\n", "cyan");
-        for (int i = 0; i < player.chosenAttacks.length; i++) {
+        while(i < player.chosenAttacks.length) {
             Printer.printColor("("+ i + ") "+ player.chosenAttacks[i], "white");
+            i++;
         }
+        Printer.print("("+i+") Inventory");
     }
     
     public void playerMove( Stats attackerStats, Stats victimStats) {
-        int attackMPcost;
-        int index= 0;
-        //checks if we are a cyborg class
+        listAttacks();
+        
+        //checks which class we are, and then prompts them to answer a thing. 
         if (player.chosenAttacks == player.CYBORG_ATTACKS){
             cyborgAttack(attackerStats, victimStats);
         }
-
-        //checks if we are a hacker
         else if (player.chosenAttacks == player.HACKER_ATTACKS){
             hackAttack(attackerStats, victimStats);
         }
-
-        //checks if we are a terminator
         else if (player.chosenAttacks == player.TERMINATOR_ATTACKS){
-            switch (index) {
-                case 1:
-                    machine_gun_fury(playerStats, victimStats);
-                    break;
-                case 2:
-                    first_impact_fists(playerStats, victimStats);
-                    break;
-                case 3:
-                    decieving_blast_of_cybernetic_proportions(playerStats, victimStats);
-                    break;
-                case 4:
-                    hunker_down(playerStats, victimStats);
-                    break;
-            }
+            terminatorAttack(attackerStats, victimStats);
         }
-        //checks if we are a Laser Swordsman
         else if (player.chosenAttacks == player.SWORDSMAN_ATTACKS){
-            switch (index) {
-                case 1:
-                    swift_thrust_of_the_sword(playerStats, victimStats);
-                    break;
-                case 2:
-                    fatal_erruption_of_bullets(playerStats, victimStats);
-                    break;
-                case 3:
-                    lightning_clone_strike(playerStats, victimStats);
-                    break;
-                case 4:
-                    rest(playerStats);
-                    break;
-            }
+            swordsmanAttack(attackerStats, victimStats);
         }
-
-        //checks if we are a rogue
         else if (player.chosenAttacks == player.ROGUE_ATTACKS){
-            switch (index) {
-                case 1:
-                    quick_blast(playerStats, victimStats);
-                    break;
-                case 2:
-                    death_strike(playerStats, victimStats);
-                    break;
-                case 3:
-                    secret_mushroom_strike(playerStats, victimStats);
-                    break;
-                case 4:
-                    forbidden_smoke(playerStats, victimStats);
-                    break;
-            }
+            rogueAttack(attackerStats, victimStats);
         }
-
-        //checks if we are a Mystic
         else if (player.chosenAttacks == player.MYSTIC_ATTACKS){
-            switch (index) {
-                case 1:
-                    dragon_shatter(playerStats, victimStats);
-                    break;
-                case 2:
-                    simple_strike(playerStats, victimStats);
-                    break;
-                case 3:
-                    frost_eruption(playerStats, victimStats);
-                    break;
-                case 4:
-                    burning_prison(playerStats, victimStats);
-                    break;
-            }
+            mysticAttack(attackerStats, victimStats);
         }
-
-        // we are the reverend
         else {
-            switch (index) {
-                case 1:
-                    holy_flash_of_radiant_light(playerStats, victimStats);
-                    break;
-                case 2:
-                    divine_smite(playerStats, victimStats);
-                    break;
-                case 3:
-                    holy_healing(playerStats, victimStats);
-                    break;
-                case 4:
-                    prayer(playerStats, victimStats);
-                    break;
-            }
+            reverendAttack(attackerStats, victimStats);
         }        
     }
 

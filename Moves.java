@@ -70,22 +70,22 @@ public class Moves {
                     return;
                 case 3:
                     attackMPcost = 5;
-                    if(attackMPcost > playerStats.currentMP){tooTired(); break;}
+                    if(attackMPcost > attackerStats.currentMP){tooTired(); break;}
                     cyber_shield(attackerStats, victimStats);
                     return;
                 case 4:
                     attackMPcost = 20;
-                    if(attackMPcost > playerStats.currentMP){tooTired(); break;}
+                    if(attackMPcost > attackerStats.currentMP){tooTired(); break;}
                     overload(attackerStats, victimStats);
                     return;
                     default: 
                         Printer.print("Please enter a valid number: ");
                         break;
                 }
-            hackAttack(attackerStats, victimStats);
+            cyborgAttack(attackerStats, victimStats);
     }
 
-     public void laser_barrage (Stats attackerStats, Stats victimStats) {
+    public void laser_barrage (Stats attackerStats, Stats victimStats) {
         
     }
 
@@ -158,6 +158,44 @@ public class Moves {
     }
 
     // TERMINATOR ATTACKS:
+    
+
+    public void terminatorAttack(Stats attackerStats, Stats victimStats) {
+        int attackMPcost;
+        int index= 0;
+        while(!scan.hasNextInt()){
+                    Printer.print("Please enter an integer");
+                    scan.next();
+                }
+                index = scan.nextInt();
+                switch (index) {
+                    case 1:
+                    attackMPcost = 10;
+                    if(attackMPcost > attackerStats.currentMP){tooTired(); break;}
+                    machine_gun_fury(attackerStats, victimStats);
+                    return;
+                case 2:
+                    attackMPcost = 5;
+                    if(attackMPcost > attackerStats.currentMP){tooTired(); break;}
+                    first_impact_fists(attackerStats, victimStats);
+                    return;
+                case 3:
+                    attackMPcost = 10;
+                    if(attackMPcost > attackerStats.currentMP){tooTired(); break;}
+                    decieving_blast_of_cybernetic_proportions(attackerStats, victimStats);
+                    return;
+                case 4:
+                    attackMPcost = 10;
+                    if(attackMPcost > attackerStats.currentMP){tooTired(); break;}
+                    hunker_down(attackerStats, victimStats);
+                    return;
+                default: 
+                    Printer.print("Please enter a valid number: ");
+                    break;
+                }
+            terminatorAttack(attackerStats, victimStats);
+    }
+
     public void machine_gun_fury (Stats attackerStats, Stats victimStats) {
 
     }
@@ -172,6 +210,47 @@ public class Moves {
     }
     
     // LAZER SWORDSMAN ATTACKS: 
+
+    public void swordsmanAttack(Stats attackerStats, Stats victimStats) {
+        int attackMPcost;
+        int index= 0;
+        while(!scan.hasNextInt()){
+                    Printer.print("Please enter an integer");
+                    scan.next();
+                }
+                index = scan.nextInt();
+                switch (index) {
+                    case 1:
+                    attackMPcost = 7;
+                    if(attackMPcost > attackerStats.currentMP){tooTired(); break;}
+                    attackerStats.currentMP -= attackMPcost;
+                    swift_thrust_of_the_sword(attackerStats, victimStats);
+                    return;
+                case 2:
+                    attackMPcost = 13;
+                    if(attackMPcost > attackerStats.currentMP){tooTired(); break;}
+                    attackerStats.currentMP -= attackMPcost;
+                    fatal_erruption_of_bullets(attackerStats, victimStats);
+                    return;
+                case 3:
+                    attackMPcost = 25;
+                    if(attackMPcost > attackerStats.currentMP){tooTired(); break;}
+                    attackerStats.currentMP -= attackMPcost;
+                    lightning_clone_strike(attackerStats, victimStats);
+                    return;
+                case 4:
+                    attackMPcost = 0;
+                    if(attackMPcost > attackerStats.currentMP){tooTired(); break;}
+                    attackerStats.currentMP -= attackMPcost;
+                    death_strike(attackerStats, victimStats);
+                    return;
+                default: 
+                    Printer.print("Please enter a valid number: ");
+                    break;
+                }
+            swordsmanAttack(attackerStats, victimStats);
+    }
+
     public void swift_thrust_of_the_sword (Stats attackerStats, Stats victimStats) {
         
     }
@@ -186,6 +265,46 @@ public class Moves {
     }
 
     // ROGUE ATTACKS: 
+
+    public void rogueAttack(Stats attackerStats, Stats victimStats) {
+        int attackMPcost;
+        int index= 0;
+        while(!scan.hasNextInt()){
+                    Printer.print("Please enter an integer");
+                    scan.next();
+                }
+                index = scan.nextInt();
+                switch (index) {
+                    case 1:
+                    attackMPcost = 4;
+                    if(attackMPcost > attackerStats.currentMP){tooTired(); break;}
+                    attackerStats.currentMP -= attackMPcost;
+                    quick_blast(attackerStats, victimStats);
+                    return;
+                case 2:
+                    attackMPcost = 13;
+                    if(attackMPcost > attackerStats.currentMP){tooTired(); break;}
+                    attackerStats.currentMP -= attackMPcost;
+                    death_strike(attackerStats, victimStats);
+                    return;
+                case 3:
+                    attackMPcost = 25;
+                    if(attackMPcost > attackerStats.currentMP){tooTired(); break;}
+                    attackerStats.currentMP -= attackMPcost;
+                    secret_mushroom_strike(attackerStats, victimStats);
+                    return;
+                case 4:
+                    attackMPcost = 0;
+                    if(attackMPcost > attackerStats.currentMP){tooTired(); break;}
+                    attackerStats.currentMP -= attackMPcost;
+                    forbidden_smoke(attackerStats, victimStats);
+                    return;
+                default: 
+                    Printer.print("Please enter a valid number: ");
+                    break;
+                }
+            rogueAttack(attackerStats, victimStats);
+    }
     public void quick_blast (Stats attackerStats, Stats victimStats) {
 
     }
@@ -200,6 +319,47 @@ public class Moves {
     }
 
     // MYSTIC ATTACKS: 
+
+    public void mysticAttack(Stats attackerStats, Stats victimStats) {
+        int attackMPcost;
+        int index= 0;
+        while(!scan.hasNextInt()){
+                    Printer.print("Please enter an integer");
+                    scan.next();
+                }
+                index = scan.nextInt();
+                switch (index) {
+                    case 1:
+                    attackMPcost = 7;
+                    if(attackMPcost > attackerStats.currentMP){tooTired(); break;}
+                    attackerStats.currentMP -= attackMPcost;
+                    swift_thrust_of_the_sword(attackerStats, victimStats);
+                    return;
+                case 2:
+                    attackMPcost = 13;
+                    if(attackMPcost > attackerStats.currentMP){tooTired(); break;}
+                    attackerStats.currentMP -= attackMPcost;
+                    fatal_erruption_of_bullets(attackerStats, victimStats);
+                    return;
+                case 3:
+                    attackMPcost = 25;
+                    if(attackMPcost > attackerStats.currentMP){tooTired(); break;}
+                    attackerStats.currentMP -= attackMPcost;
+                    lightning_clone_strike(attackerStats, victimStats);
+                    return;
+                case 4:
+                    attackMPcost = 0;
+                    if(attackMPcost > attackerStats.currentMP){tooTired(); break;}
+                    attackerStats.currentMP -= attackMPcost;
+                    death_strike(attackerStats, victimStats);
+                    return;
+                default: 
+                    Printer.print("Please enter a valid number: ");
+                    break;
+                }
+            swordsmanAttack(attackerStats, victimStats);
+    }
+
     public void dragon_shatter (Stats attackerStats, Stats victimStats) {
 
     }

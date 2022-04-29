@@ -66,39 +66,7 @@ public class Combat extends Moves{
         int index= 0;
         //checks if we are a cyborg class
         if (player.chosenAttacks == player.CYBORG_ATTACKS){
-            do{
-                while(!scan.hasNextInt()){
-                    Printer.print("Please enter an integer between 1 and 4");
-                    scan.next();
-                }
-
-                index = scan.nextInt();
-                switch (index) {
-                case 1:
-                    attackMPcost = 5;
-                    if(attackMPcost > attackerStats.currentMP){tooTired(); break;}
-                    laser_barrage(attackerStats, victimStats);
-                    return;
-                case 2:
-                    attackMPcost = 10;
-                    if(attackMPcost > attackerStats.currentMP){tooTired(); break;}
-                    charged_shot(attackerStats, victimStats);
-                    return;
-                case 3:
-                    attackMPcost = 5;
-                    if(attackMPcost > playerStats.currentMP){tooTired(); break;}
-                    cyber_shield(attackerStats, victimStats);
-                    return;
-                case 4:
-                    attackMPcost = 20;
-                    if(attackMPcost > playerStats.currentMP){tooTired(); break;}
-                    overload(attackerStats, victimStats);
-                    return;
-                default: 
-                    Printer.print("Please enter a valid number: ");
-                    break;
-                }
-            } while(true);   
+            cyborgAttack(attackerStats, victimStats);
         }
 
         //checks if we are a hacker

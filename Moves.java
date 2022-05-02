@@ -19,20 +19,10 @@ public class Moves {
     /**
      * Skips that player for a few turns
      */
-    public void disabled(int howManyTurns, Stats playerStats, Stats victimStats) {
-        
+    public void disabled(int howManyTurns, Stats victimStats) {
+        victimStats.howLongDisabled = howManyTurns;
     }
 
-    /**
-     * Checks if the opponent did dodge the attack. 
-     */
-    public boolean didDodge(Stats victimStats, double missMultiplier) {
-        double effectiveDodge = victimStats.currentDodge * missMultiplier;
-        if(random.nextDouble() <= effectiveDodge) {
-            return true;
-        }
-        return false;
-    }
 
     //* THESE ARE THE PLAYER'S ATTACKS
 
@@ -80,19 +70,37 @@ public class Moves {
 
     public void laser_barrage (Stats attackerStats, Stats victimStats) {
         Printer.printColor("Sending Laser Barrage!", "red");
+        StatsCalculator statsCalculator = new StatsCalculator();
+        double damage = 5 * attackerStats.currentAtk;
+        double missMultiplier = 1.0;
+        if (statsCalculator.didDodge(victimStats, missMultiplier)){
+            Printer.print("Your attack missed!");
+        } else { 
+            int damageDealt = (int)statsCalculator.trueDamage(attackerStats, victimStats, damage);
+            Printer.printColor("Your attack did " + damageDealt + " damage!",  "cyan");
+        }
+
     }
 
     public void charged_shot (Stats attackerStats, Stats victimStats) {
         Printer.printColor("Sending charged shot!", "red");
+        double damage = 15 * attackerStats.currentAtk;
+        double missMultiplier = 1.3;
+        //int damageDealt = StatsCalculator.trueAttack(attackerStats, victimStats, damage, missMultiplier);
+        //Printer.printColor("Your attack did " + damageDealt + " damage!",  "cyan");
 
     }
 
     public void cyber_shield (Stats attackerStats, Stats victimStats) {
         Printer.printColor("Increasing defence stats!", "blue");
+        attackerStats.currentDef *= 1.5;
+        Printer.printColor("Your defence has increased by 50% ",  "cyan");
     }
 
     public void overload (Stats attackerStats, Stats victimStats) {
         Printer.printColor("Increasing attack stats!", "yellow");
+        attackerStats.currentAtk *= 1.5;
+        Printer.printColor("Your Attack has increased by 50% ",  "cyan");
     }
 
     // HACKER ATTACKS: 
@@ -110,7 +118,7 @@ public class Moves {
                         attackMPcost = 5;
                         if(attackMPcost > attackerStats.currentMP){tooTired(); break;}
                         attackerStats.currentMP -= attackMPcost;
-                        drone_army(attackerStats, victimStats);
+                        lock_on(attackerStats, victimStats);
                         return;
                     case 2:
                         attackMPcost = 20;
@@ -139,8 +147,10 @@ public class Moves {
 
 
 
-    public void drone_army (Stats attackerStats, Stats victimStats) {
-        Printer.printColor("Summoning drone army!", "green");
+    public void lock_on (Stats attackerStats, Stats victimStats) {
+        //using high precision missile to lock onto enemies. 
+        
+        
     }
 
     public void stolen_missile (Stats attackerStats, Stats victimStats) {

@@ -8,9 +8,17 @@ public class Main {
             // Town town = new Town("Golden", 1, playerAccount);
             // town.characterEnteringTown();
 
-            // *Prologue
-            MainStory story = new MainStory();
-            story.prologue();
+            // MainStory story = new MainStory();
+            // story.prologue();
+
+            Player player = new Player("hsajkfh");
+            Stats playerStats = player.forceCombat();
+            Stats mobStats = new Stats(300.0, 80.0, 0.75, 3.0, 8.0, 1.0, 7.0, 10.0, 150.0, 8.0,
+                                                1.0, 1.0, 1.0, 1.0, 1.0, 1.0);
+            String mobAttacks[] = {};
+            Combat combat = new Combat(player, playerStats, mobStats, mobAttacks);
+            combat.fight();
+            // // *Prologue
 
             // // *Character class selection process
             // Player player = new Player();

@@ -13,7 +13,8 @@ public class Stats {
         int level = 1;
         int xp = 0;
         final int XP_TO_LVL_UP = 100;
-
+        public int howLongDisabled;
+        
         /**
          * This class will contain information about the stats of the player and the
          * mobs.
@@ -79,13 +80,15 @@ public class Stats {
                 double[] allStats = { maxHP, maxMP, maxSpd, maxAtk, maxPhysDmg, maxMagicDmg, maxDef, maxEnd, maxStam, maxPhysRes, maxMagicRes, maxDodge,
                                 maxVit, maxCritRate, maxCritDmg, maxLuck };
 
+                
                 //sets current stats to all stats 
                 for (int i = 0; i < allStats.length; i++) {
+                        
                         currentStats[i] = allStats[i];
-                }
-
+                        }
                 this.allStats = allStats;
 
+                
                 String[] displayStats = { "HP", "MP", "Speed", "Attack", "Physical Damage", "Magic Damage", "Defense",
                                 "Endurance", "Stamina", "Phyical Resistance", "Magic Resistance", "Dodge", "Vitality",
                                 "Crit Rate",
@@ -93,6 +96,8 @@ public class Stats {
 
                 this.displayStats = displayStats;
         }
+
+            
 
         // * prints out the stats of the player
         // more will be added here, this is just to test

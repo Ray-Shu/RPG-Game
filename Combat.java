@@ -24,6 +24,24 @@ public class Combat extends Moves{
         this.attackCosts = player.chosenAttacksCost;
     }
 
+    public void fight() {
+        while(playerStats.currentHP > 0 && mobStats.currentHP > 0){
+            if (isPlayerTurn() || playerStats.howLongDisabled < mobStats.howLongDisabled){
+                Printer.printColor("---------------------------------------------------------------------------------------------", "cyan");
+                Printer.printColor(" It is your turn! Current MP: "+ playerStats.currentMP + " Current HP: "+ playerStats.currentHP + "\n", "cyan");
+                playerMove(playerStats, mobStats);
+                playerTurnOver();
+            }
+            else{
+                Printer.printColor("---------------------------------------------------------------------------------------------", "red");
+                Printer.printColor(" It is the mobs turn! Current MP: "+ mobStats.currentMP + " Current HP: "+ mobStats.currentHP + "\n", "red");
+                mobMove(mobStats, playerStats);
+                mobTurnOver();
+            }
+        }
+        Printer.printColor("Fight Over", "yellow");
+    }
+
     /**
      * Turns are based on speed. The player with the highest speed will get the turn. 
      */
@@ -38,6 +56,7 @@ public class Combat extends Moves{
     public void playerTurnOver() {
         playerTurnRate -= mobTurnRate;
         mobTurnRate += mobStats.currentSpd;
+        System.out.println();
     }
 
     /**
@@ -46,10 +65,17 @@ public class Combat extends Moves{
     public void mobTurnOver() {
         mobTurnRate -= playerTurnRate;
         playerTurnRate += playerStats.currentSpd;
+        System.out.println();
     }
 
 
-    
+    public void playerDeath () {
+
+    }
+
+    public void mobDeath() {
+
+    }
 
     /**
      * Prints out a list of the attacks of the user, along with all the options like leave and inventory. 
@@ -95,8 +121,10 @@ public class Combat extends Moves{
 
     /**
      * Does the mobs move
+     * @param playerStats2
+     * @param mobStats2
      */
-    public void mobMove() {
+    public void mobMove(Stats mobStats2, Stats playerStats2) {
 
     }
 

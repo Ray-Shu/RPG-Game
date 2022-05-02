@@ -7,24 +7,59 @@ public class StatsCalculator {
     /**
      * Sees if the attack crit. Returns the damage if it crit or if it did not crit. 
      */
-    public double applyCrit(Stats attackerStats, double damage) {
-        double critDamage = attackerStats.currentCritDmg * damage;
-        if(random.nextDouble() <= attackerStats.currentCritRate / 100){
+    public double applyCrit(double damage, double critDmg, double critRate) {
+        double critDamage = critDmg * damage;
+        if(random.nextDouble() <= critRate / 100){
+            System.out.println("crit!");
             return critDamage;
         }
         return damage;
     }
 
     /**
-     * A formula to calculate the attack 
-     * 
-     * @param damageStats holds all of the damage stats needed to calculate true attack 
-     * @return trueAttack will be the actual damage dealt 
+     * DODGE WILL BE CALLED BEFORE TRUE ATTACK IS CALLED 
+     * Checks if the opponent did dodge the attack. 
      */
-    public double trueAttack(double[] damageStats) { 
-        double trueAttack = 0; 
+    public boolean didDodge(Stats victimStats, double missMultiplier) {
+        double effectiveDodge = victimStats.currentDodge * missMultiplier;
+        if(random.nextDouble() <= effectiveDodge) {
+            return true;
+        }
+        return false;
+    }
 
-        return trueAttack;
+    /**
+     * 
+     * @param attackerStats - all of the necessary attacker stats to calculate true attack 
+     * @param defenderStats - all of the necessary defender stats 
+     * @return - returns the true damage of the attack, when all of the factors are considered 
+     */
+
+    public double trueDamage(Stats attackerStats, Stats defenderStats, double moveAttack) { 
+        double atk = moveAttack;
+        double magicDmg = attackerStats.currentMagicDmg; 
+        double physDmg = attackerStats.currentPhysDmg; 
+        double cr = attackerStats.currentCritRate; 
+        double cd = attackerStats.currentCritDmg;
+
+        double def = defenderStats.currentDef; 
+        double magicDef = defenderStats.currentMagicRes; 
+        double physDef = defenderStats.currentPhysRes; 
+
+        //calculates the true physical damage 
+        double truePhysDmg = physDmg * (100/(100 + physDef)); 
+
+        //calculates the true magic damage 
+        double trueMagicDmg = magicDmg * (100/(100 + magicDef)); 
+        
+        //combines attack with magicAtk and physAtk 
+        atk = atk + truePhysDmg + trueMagicDmg;
+
+        double trueAtk = atk * (100/(100 + def));
+
+        double trueDamage = applyCrit(trueAtk, cd, cr);
+
+        return trueDamage;
     }
 }
 

@@ -56,7 +56,7 @@ public class MainStory {
 
         Printer.print("\n\"Got your choice? Alright, we'll meet up with you later at the Antarctic Domain. We've still got other people to break out.\" \n\033[3mHowever, just before he leaves, he turns back.\n\033[0m\"Oh right, I forgot to give you this, here.\" \033[3mHe hands you a map and a letter.\033[0m \n\"The letter is a referral so you dont get scammed in shops. Alright, I think that's everything, good luck!\"\n");
         Printer.printItalizcizedColor("The group leaves; silence permeates the air and you check what you recieved. \n","white");
-        Printer.printItalizcizedColor("\"A map and a letter huh.\" \n", "white");
+        Printer.printItalizcizedColor("\"A map and a letter huh.\" You walk out of the shelter, an aura emitting scorn. \nYour countenance reeks with vengeance, and a deep-rooted hatred to those \ncurrently in power. When you were unjustly thrown in prison, you swore to get your revenge. \nNow, it is time to exact it.  \n", "white");
         Printer.printItalizcizedColor("You've unlocked the map for: The Slums", "purple");
 
         System.out.println();

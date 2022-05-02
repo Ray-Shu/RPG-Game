@@ -46,7 +46,7 @@ public class Combat extends Moves{
      * Turns are based on speed. The player with the highest speed will get the turn. 
      */
     public boolean isPlayerTurn() {
-        if (playerTurnRate> mobTurnRate){return true;}
+        if (playerTurnRate > mobTurnRate){return true;}
         else{return false;}
     }
     

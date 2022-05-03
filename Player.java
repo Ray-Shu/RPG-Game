@@ -13,9 +13,9 @@ public class Player {
                 "The Cyber Shield increases defence for the next 3 turns", 
                 "Overload greatly increases attack for the next 3 turns"};
 
-        final String HACKER_ATTACKS[] = {"Drone Army", "Stolen Missile", "Watchful Vulture", "Watchful Vulture"};
+        final String HACKER_ATTACKS[] = {"Lock on", "Stolen Missile", "Watchful Vulture", "Watchful Vulture"};
         final int HACKER_ATTACK_COSTS[] = {5,20,5,10};
-        final String HACKER_ATTACKS_INFO[] = {"Drone Army summons an army of drones dealing large damage as they attack over 3 turns",
+        final String HACKER_ATTACKS_INFO[] = {"With lock on, the Hacker uses a high precision rifle and advanced optics to guarantee a hit",
                 "With the Stolen Missile ability, the hacker siezes a missile from the government and tries to use it to destroy their enemies",
                 "The hacker's Watchful Vulture ability uses realtime satalite imagery to locate enemies and ensure hits for the next 3 turns",
                 "The hacker gets \"In The System\" with their final ability to disable their enemy robots for 2 turns"};
@@ -64,7 +64,19 @@ public class Player {
         public String chosenAttacks[];
         public int chosenAttacksCost[];
         public static String characterName;
-        public int howLongDisabled;
+
+        public Stats forceCombat() {
+                return playerStats;
+        }
+
+        Player() {
+
+        }
+
+        Player(String name){
+                chooseCyborg("cyborg");
+        }
+
         public void printCrateInfo() {
                 //* CRATE ONE INFO - Cyborg
                 Printer.printColor("[1] Crate One - Cyborg:", "blue"); 

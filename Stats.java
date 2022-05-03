@@ -5,15 +5,16 @@ public class Stats {
                         maxCritRate, maxCritDmg, maxLuck;
         public double currentHP, currentMP, currentSpd, currentAtk, currentPhysDmg, currentMagicDmg, currentDef, currentEnd, currentStam,
                 currentPhysRes, currentMagicRes, currentDodge, currentVit, currentCritRate, currentCritDmg, currentLuck;
+
         double allStats[];
         String displayStats[];
-        //? When you change one of the variables after this is declared, will the number in the array change with it? 
-        double currentStats[] = {currentHP, currentMP, currentSpd, currentAtk, currentPhysDmg, currentMagicDmg, currentDef, currentEnd, currentStam, 
-                currentPhysRes, currentMagicRes, currentDodge, currentVit, currentCritRate, currentCritDmg, currentLuck};
-        int level = 1;
-        int xp = 0;
-        final int XP_TO_LVL_UP = 100;
+        double currentStats[];
 
+        int level = 1;
+        double xp = 0;
+        final int XP_TO_LVL_UP = 100;
+        public int howLongDisabled;
+        
         /**
          * This class will contain information about the stats of the player and the
          * mobs.
@@ -79,13 +80,31 @@ public class Stats {
                 double[] allStats = { maxHP, maxMP, maxSpd, maxAtk, maxPhysDmg, maxMagicDmg, maxDef, maxEnd, maxStam, maxPhysRes, maxMagicRes, maxDodge,
                                 maxVit, maxCritRate, maxCritDmg, maxLuck };
 
-                //sets current stats to all stats 
-                for (int i = 0; i < allStats.length; i++) {
-                        currentStats[i] = allStats[i];
-                }
+                //converts the 'max' variables to 'current' 
+                currentHP = maxHP; 
+                currentMP = maxMP; 
+                currentSpd = maxSpd; 
+                currentAtk = maxAtk; 
+                currentPhysDmg = maxPhysDmg; 
+                currentMagicDmg = maxMagicDmg; 
+                currentDef = maxDef; 
+                currentEnd = maxEnd; 
+                currentStam = maxStam; 
+                currentPhysRes = maxPhysRes; 
+                currentMagicRes = maxMagicRes; 
+                currentDodge = maxDodge; 
+                currentVit = maxVit; 
+                currentCritRate = maxCritRate; 
+                currentCritDmg = maxCritDmg; 
+                currentLuck = maxLuck;
 
+                double currentStats[] = {currentHP, currentMP, currentSpd, currentAtk, currentPhysDmg, currentMagicDmg, currentDef, currentEnd, currentStam, 
+                        currentPhysRes, currentMagicRes, currentDodge, currentVit, currentCritRate, currentCritDmg, currentLuck};
+                
                 this.allStats = allStats;
+                this.currentStats = currentStats; 
 
+                
                 String[] displayStats = { "HP", "MP", "Speed", "Attack", "Physical Damage", "Magic Damage", "Defense",
                                 "Endurance", "Stamina", "Phyical Resistance", "Magic Resistance", "Dodge", "Vitality",
                                 "Crit Rate",
@@ -93,6 +112,8 @@ public class Stats {
 
                 this.displayStats = displayStats;
         }
+
+            
 
         // * prints out the stats of the player
         // more will be added here, this is just to test

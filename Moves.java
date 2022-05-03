@@ -1,11 +1,14 @@
 import java.util.Random;
 import java.util.Scanner;
+import java.text.DecimalFormat;
 
 public class Moves {
 
     Random random = new Random();
     Scanner scan = new Scanner(System.in);
     StatsCalculator calculator = new StatsCalculator();
+    DecimalFormat df = new DecimalFormat("###.00");
+    StatsCalculator statsCalculator = new StatsCalculator();
 
     //* General stuff
 
@@ -70,24 +73,16 @@ public class Moves {
 
     public void laser_barrage (Stats attackerStats, Stats victimStats) {
         Printer.printColor("Sending Laser Barrage!", "red");
-        StatsCalculator statsCalculator = new StatsCalculator();
-        double damage = 5 * attackerStats.currentAtk;
-        double missMultiplier = 1.0;
-        if (statsCalculator.didDodge(victimStats, missMultiplier)){
-            Printer.print("Your attack missed!");
-        } else { 
-            int damageDealt = (int)statsCalculator.trueDamage(attackerStats, victimStats, damage);
-            Printer.printColor("Your attack did " + damageDealt + " damage!",  "cyan");
-        }
-
+        double moveAttack = 5 * attackerStats.currentAtk;
+        double missMultiplier = 1.0; 
+        statsCalculator.doDamage(attackerStats, victimStats, moveAttack, missMultiplier);
     }
 
     public void charged_shot (Stats attackerStats, Stats victimStats) {
         Printer.printColor("Sending charged shot!", "red");
-        double damage = 15 * attackerStats.currentAtk;
+        double moveAttack = 7.5 * attackerStats.currentAtk;
         double missMultiplier = 1.3;
-        //int damageDealt = StatsCalculator.trueAttack(attackerStats, victimStats, damage, missMultiplier);
-        //Printer.printColor("Your attack did " + damageDealt + " damage!",  "cyan");
+        statsCalculator.doDamage(attackerStats, victimStats, moveAttack, missMultiplier); 
 
     }
 
@@ -148,13 +143,18 @@ public class Moves {
 
 
     public void lock_on (Stats attackerStats, Stats victimStats) {
-        //using high precision missile to lock onto enemies. 
-        
+        Printer.printColor("Firing high precision missile to lock onto enemies", "yellow");
+        double moveAttack = 5 * attackerStats.currentAtk;
+        double missMultiplier = 0.8; 
+        statsCalculator.doDamage(attackerStats, victimStats, moveAttack, missMultiplier);
         
     }
 
     public void stolen_missile (Stats attackerStats, Stats victimStats) {
         Printer.printColor("Stealing missile", "blue");
+        double moveAttack = 16 * attackerStats.currentAtk;
+        double missMultiplier = 2; 
+        statsCalculator.doDamage(attackerStats, victimStats, moveAttack, missMultiplier);
     }
 
     public void watchful_vulture (Stats attackerStats, Stats victimStats) {

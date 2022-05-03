@@ -1,14 +1,17 @@
 import java.util.Random;
 import java.util.Scanner;
+import java.text.DecimalFormat;
 
 public class Combat extends Moves{
     String[] mobAttacks;
     Stats  mobStats, playerStats;
-    Double playerTurnRate, mobTurnRate;
+    double playerTurnRate, mobTurnRate;
     Player player;
     Random random = new Random();
     Scanner scan = new Scanner(System.in);
     int[] attackCosts;
+    DecimalFormat df = new DecimalFormat("###.00");
+
     /**
      * Constructs a fight between a player and a mob. 
      * @param player this is the player who is fighting the mob
@@ -22,19 +25,24 @@ public class Combat extends Moves{
         this.mobStats = mobStats;
         this.mobAttacks = mobAttacks;
         this.attackCosts = player.chosenAttacksCost;
-    }
+
+        mobTurnRate = mobStats.currentSpd;
+        playerTurnRate = playerStats.currentSpd;    }
 
     public void fight() {
         while(playerStats.currentHP > 0 && mobStats.currentHP > 0){
             if (isPlayerTurn() || playerStats.howLongDisabled < mobStats.howLongDisabled){
-                Printer.printColor("---------------------------------------------------------------------------------------------", "cyan");
-                Printer.printColor(" It is your turn! Current MP: "+ playerStats.currentMP + " Current HP: "+ playerStats.currentHP + "\n", "cyan");
+                
+                Printer.print("Mob turn Rate: "+ mobTurnRate + " Player turn Rate: "+ playerTurnRate);
+                Printer.printColor("----------------------------------------------------------", "cyan");
+                Printer.printColor(" It is your turn! Current MP: "+ playerStats.currentMP + " Current HP: "+ df.format(playerStats.currentHP) + "\n", "cyan");
                 playerMove(playerStats, mobStats);
                 playerTurnOver();
             }
             else{
-                Printer.printColor("---------------------------------------------------------------------------------------------", "red");
-                Printer.printColor(" It is the mobs turn! Current MP: "+ mobStats.currentMP + " Current HP: "+ mobStats.currentHP + "\n", "red");
+                Printer.print("Mob turn Rate: "+ mobTurnRate + " Player turn Rate: "+ playerTurnRate);
+                Printer.printColor("----------------------------------------------------------", "red");
+                Printer.printColor(" It is the mobs turn! Current MP: "+ mobStats.currentMP + " Current HP: "+ df.format(mobStats.currentHP) + "\n", "red");
                 mobMove(mobStats, playerStats);
                 mobTurnOver();
             }
@@ -46,7 +54,7 @@ public class Combat extends Moves{
      * Turns are based on speed. The player with the highest speed will get the turn. 
      */
     public boolean isPlayerTurn() {
-        if (playerTurnRate > mobTurnRate){return true;}
+        if (playerTurnRate >= mobTurnRate){return true;}
         else{return false;}
     }
     
@@ -54,7 +62,7 @@ public class Combat extends Moves{
      * After an attack, we subtract the other player's turn rate to it and then give the other player their turn rate. 
      */
     public void playerTurnOver() {
-        playerTurnRate -= mobTurnRate;
+        playerTurnRate -= mobStats.currentSpd;
         mobTurnRate += mobStats.currentSpd;
         System.out.println();
     }
@@ -63,7 +71,7 @@ public class Combat extends Moves{
      * Same as player turn rate, but opposite. 
      */
     public void mobTurnOver() {
-        mobTurnRate -= playerTurnRate;
+        mobTurnRate -= playerStats.currentSpd;
         playerTurnRate += playerStats.currentSpd;
         System.out.println();
     }
@@ -85,10 +93,11 @@ public class Combat extends Moves{
         int i = 0;
         Printer.printColor("Here are your moves:\n", "cyan");
         while(i < player.chosenAttacks.length) {
-            Printer.printColor("("+ i + ") "+ player.chosenAttacks[i], "white");
+            Printer.printColor("("+ (i + 1) + ") "+ player.chosenAttacks[i], "white");
             i++;
         }
-        Printer.print("("+i+") Inventory");
+        Printer.print("("+(i + 1)+") Inventory\n -------------------------------------------------");
+
     }
     
     public void playerMove( Stats attackerStats, Stats victimStats) {

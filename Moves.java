@@ -77,15 +77,15 @@ public class Moves {
         double missMultiplier = 1.0; 
         statsCalculator.doDamage(attackerStats, victimStats, moveAttack, missMultiplier);
     }
-
+    
     public void charged_shot (Stats attackerStats, Stats victimStats) {
         Printer.printColor("Sending charged shot!", "red");
         double moveAttack = 7.5 * attackerStats.currentAtk;
         double missMultiplier = 1.3;
         statsCalculator.doDamage(attackerStats, victimStats, moveAttack, missMultiplier); 
-
+        
     }
-
+    
     public void cyber_shield (Stats attackerStats, Stats victimStats) {
         Printer.printColor("Increasing defence stats!", "blue");
         attackerStats.currentDef *= 1.5;
@@ -110,7 +110,7 @@ public class Moves {
                 index = scan.nextInt();
                 switch (index) {
                     case 1:
-                        attackMPcost = 5;
+                    attackMPcost = 5;
                         if(attackMPcost > attackerStats.currentMP){tooTired(); break;}
                         attackerStats.currentMP -= attackMPcost;
                         lock_on(attackerStats, victimStats);
@@ -156,13 +156,15 @@ public class Moves {
         double missMultiplier = 2; 
         statsCalculator.doDamage(attackerStats, victimStats, moveAttack, missMultiplier);
     }
-
+    
     public void watchful_vulture (Stats attackerStats, Stats victimStats) {
         Printer.printColor("Increasing defence stats!", "blue");
+        
     }
-
+    
     public void in_the_system (Stats attackerStats, Stats victimStats) {
-        Printer.printColor("Increasing defence stats!", "blue");
+        Printer.printColor("Disabling the enemies...", "blue");
+        disabled(2, victimStats);
     }
 
     // TERMINATOR ATTACKS:
@@ -209,10 +211,16 @@ public class Moves {
     }
 
     public void machine_gun_fury (Stats attackerStats, Stats victimStats) {
-
+        Printer.printColor("Unleashing the Machine Gun!", "cyan");
+        double moveAttack =  9* attackerStats.currentAtk;
+        double missMultiplier = 0.7; 
+        statsCalculator.doDamage(attackerStats, victimStats, moveAttack, missMultiplier);
     }
     public void first_impact_fists (Stats attackerStats, Stats victimStats) {
-
+        Printer.printColor("Time to stike fast!", "cyan");
+        double moveAttack =  6* attackerStats.currentAtk;
+        double missMultiplier = 1.3; 
+        statsCalculator.doDamage(attackerStats, victimStats, moveAttack, missMultiplier);
     }
     public void decieving_blast_of_cybernetic_proportions (Stats attackerStats, Stats victimStats) {
 

@@ -10,14 +10,14 @@ public class Player {
         final int CYBORG_ATTACK_COSTS[] = {5,15,5,20};
         final String CYBORG_ATTACK_INFO[] = {"Laser Barrage unleashes a flury of low damage laser shots on the opponents", 
                 "The Charged Shot unleashes a powerful blast capable dealing major damage", 
-                "The Cyber Shield increases defence for the next 3 turns", 
+                "The Cyber Shield increases defense for the next 3 turns", 
                 "Overload greatly increases attack for the next 3 turns"};
 
         final String HACKER_ATTACKS[] = {"Lock on", "Stolen Missile", "Watchful Vulture", "Watchful Vulture"};
         final int HACKER_ATTACK_COSTS[] = {5,20,5,10};
         final String HACKER_ATTACKS_INFO[] = {"With lock on, the Hacker uses a high precision rifle and advanced optics to guarantee a hit",
-                "With the Stolen Missile ability, the hacker siezes a missile from the government and tries to use it to destroy their enemies",
-                "The hacker's Watchful Vulture ability uses realtime satalite imagery to locate enemies and ensure hits for the next 3 turns",
+                "With the Stolen Missile ability, the hacker seizes a missile from the government and tries to use it to destroy their enemies",
+                "The hacker's Watchful Vulture ability uses realtime satellite imagery to locate enemies and ensure hits for the next 3 turns",
                 "The hacker gets \"In The System\" with their final ability to disable their enemy robots for 2 turns"};
 
         final String TERMINATOR_ATTACKS[] = {"Machine Gun Fury", "First Impact Fists", "Deceiving Blast of Cybernetic Proportions", "Hunker Down"};
@@ -27,9 +27,9 @@ public class Player {
                 "The Terminators special move surprises enemies and blinding them for 2 turns. ",
                 "The Hunker Down ability increases ATK, but removes chance of dodging an attack. "};
 
-        final String SWORDSMAN_ATTACKS[] = {"Swift Thrust of the Sword", "Fatal Erruption Of Bullets", "Lightning Clone Strike", "Rest"};
+        final String SWORDSMAN_ATTACKS[] = {"Swift Thrust of the Sword", "Fatal Eruption Of Bullets", "Lightning Clone Strike", "Rest"};
         final int SWORDSMAN_ATTACK_COSTS[] = {7,13,25,0};
-        final String SWORDSMAN_ATTACKS_INFO[] = {"The Swordsman outpasses their enemy to deal a powerful blow. ",
+        final String SWORDSMAN_ATTACKS_INFO[] = {"The Swordsman outpaces their enemy to deal a powerful blow. ",
                 "The Swordsman uses a gun to eliminate their enemies. ",
                 "The Swordsman's moves at supersonic speeds to summon clones which all attack the enemy. ",
                 "The Swordsman Sleeps"};
@@ -38,14 +38,14 @@ public class Player {
         final int ROGUE_ATTACK_COSTS[] = {4,12,10,5};
         final String ROGUE_ATTACKS_INFO[] = {"The agile Rogue quickly blasts the enemy with explosives before they get to react. ",
                 "The Rogue Sneaks up on their opponent and strikes them down. ",
-                "The Rogue poisins their opponent",
-                "The Rogue uses smoke to decieve their enemy. "};
+                "The Rogue poisons their opponent",
+                "The Rogue uses smoke to deceive their enemy. "};
        
-        final String MYSTIC_ATTACKS[] = {"Dragon Shatter", "Simple Strike", "Frost Erruption" , "Burning Prison"};
+        final String MYSTIC_ATTACKS[] = {"Dragon Shatter", "Simple Strike", "Frost Eruption" , "Burning Prison"};
         final int MYSTIC_ATTACK_COSTS[] = {20,10,10,5};
         final String MYSTIC_ATTACKS_INFO[] = {"Summons a dragon who strikes their opponent, dealing major damage. ",
                 "The attack uses a small blast of mana to damage their opponent. ",
-                "Frost Erruption slows the enemies and does a little damage. ",
+                "Frost Eruption slows the enemies and does a little damage. ",
                 "The Mystic traps their enemy in a burning prison!"}; 
 
         final String REVEREND_ATTACKS[] = {"holy flash of radiant light", "divine smite", "holy healing", "prayer"};

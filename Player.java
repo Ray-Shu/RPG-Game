@@ -64,7 +64,7 @@ public class Player {
         public String chosenAttacks[];
         public int chosenAttacksCost[];
         public static String characterName;
-
+        public int howLongDisabled;
         public void printCrateInfo() {
                 //* CRATE ONE INFO - Cyborg
                 Printer.printColor("[1] Crate One - Cyborg:", "blue"); 

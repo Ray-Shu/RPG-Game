@@ -180,7 +180,7 @@ public class Moves {
                 index = scan.nextInt();
                 switch (index) {
                     case 1:
-                    attackMPcost = 10;
+                    attackMPcost = 15;
                     if(attackMPcost > attackerStats.currentMP){tooTired(); break;}
                     attackerStats.currentMP -= attackMPcost;
                     machine_gun_fury(attackerStats, victimStats);
@@ -217,7 +217,7 @@ public class Moves {
         statsCalculator.doDamage(attackerStats, victimStats, moveAttack, missMultiplier);
     }
     public void first_impact_fists (Stats attackerStats, Stats victimStats) {
-        Printer.printColor("Time to stike fast!", "cyan");
+        Printer.printColor("Time to strike fast!", "cyan");
         double moveAttack =  6* attackerStats.currentAtk;
         double missMultiplier = 1.3; 
         statsCalculator.doDamage(attackerStats, victimStats, moveAttack, missMultiplier);

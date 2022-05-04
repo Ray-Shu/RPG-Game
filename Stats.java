@@ -81,6 +81,24 @@ public class Stats {
                                 maxVit, maxCritRate, maxCritDmg, maxLuck };
 
                 //converts the 'max' variables to 'current' 
+                currentToMax();
+                
+                double currentStats[] = {currentHP, currentMP, currentSpd, currentAtk, currentPhysDmg, currentMagicDmg, currentDef, currentEnd, currentStam, 
+                        currentPhysRes, currentMagicRes, currentDodge, currentVit, currentCritRate, currentCritDmg, currentLuck};
+                
+                this.allStats = allStats;
+                this.currentStats = currentStats; 
+
+                
+                String[] displayStats = { "HP", "MP", "Speed", "Attack", "Physical Damage", "Magic Damage", "Defense",
+                                "Endurance", "Stamina", "Phyical Resistance", "Magic Resistance", "Dodge", "Vitality",
+                                "Crit Rate",
+                                "Crit Damage", "Luck" };
+
+                this.displayStats = displayStats;
+        }
+
+        public void currentToMax(){
                 currentHP = maxHP; 
                 currentMP = maxMP; 
                 currentSpd = maxSpd; 
@@ -97,23 +115,7 @@ public class Stats {
                 currentCritRate = maxCritRate; 
                 currentCritDmg = maxCritDmg; 
                 currentLuck = maxLuck;
-
-                double currentStats[] = {currentHP, currentMP, currentSpd, currentAtk, currentPhysDmg, currentMagicDmg, currentDef, currentEnd, currentStam, 
-                        currentPhysRes, currentMagicRes, currentDodge, currentVit, currentCritRate, currentCritDmg, currentLuck};
-                
-                this.allStats = allStats;
-                this.currentStats = currentStats; 
-
-                
-                String[] displayStats = { "HP", "MP", "Speed", "Attack", "Physical Damage", "Magic Damage", "Defense",
-                                "Endurance", "Stamina", "Phyical Resistance", "Magic Resistance", "Dodge", "Vitality",
-                                "Crit Rate",
-                                "Crit Damage", "Luck" };
-
-                this.displayStats = displayStats;
         }
-
-            
 
         // * prints out the stats of the player
         // more will be added here, this is just to test

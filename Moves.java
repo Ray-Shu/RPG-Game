@@ -151,15 +151,15 @@ public class Moves {
     }
 
     public void stolen_missile (Stats attackerStats, Stats victimStats) {
-        Printer.printColor("Stealing missile", "blue");
+        Printer.printColor("Hijacking Government missile...", "blue");
         double moveAttack = 16 * attackerStats.currentAtk;
         double missMultiplier = 2; 
         statsCalculator.doDamage(attackerStats, victimStats, moveAttack, missMultiplier);
     }
     
     public void watchful_vulture (Stats attackerStats, Stats victimStats) {
-        Printer.printColor("Increasing defence stats!", "blue");
-        
+        Printer.printColor("Increasing accuracy...", "blue");
+        //victimStats.currentDodge /= 2;
     }
     
     public void in_the_system (Stats attackerStats, Stats victimStats) {
@@ -217,16 +217,18 @@ public class Moves {
         statsCalculator.doDamage(attackerStats, victimStats, moveAttack, missMultiplier);
     }
     public void first_impact_fists (Stats attackerStats, Stats victimStats) {
-        Printer.printColor("Time to strike fast!", "cyan");
+        Printer.printColor("Time to strike fast!", "blue");
         double moveAttack =  6* attackerStats.currentAtk;
         double missMultiplier = 1.3; 
         statsCalculator.doDamage(attackerStats, victimStats, moveAttack, missMultiplier);
     }
     public void decieving_blast_of_cybernetic_proportions (Stats attackerStats, Stats victimStats) {
-
+        Printer.printColor("Blinding the enemy! ", "yellow");
     }
     public void hunker_down (Stats attackerStats, Stats victimStats) {
-
+        Printer.printColor("Moving to a defensive position! ", "purple");
+        attackerStats.currentDodge = 0;
+        attackerStats.currentAtk *= 1.5;
     }
     
     // LAZER SWORDSMAN ATTACKS: 
@@ -262,7 +264,7 @@ public class Moves {
                     attackMPcost = 0;
                     if(attackMPcost > attackerStats.currentMP){tooTired(); break;}
                     attackerStats.currentMP -= attackMPcost;
-                    death_strike(attackerStats, victimStats);
+                    medatation(attackerStats);
                     return;
                 default: 
                     Printer.print("Please enter a valid number: ");
@@ -271,17 +273,31 @@ public class Moves {
             swordsmanAttack(attackerStats, victimStats);
     }
 
+
     public void swift_thrust_of_the_sword (Stats attackerStats, Stats victimStats) {
-        
+        Printer.printColor("The Swordsman outpaces their enemy to deal a powerful blow!", "green");
+        double moveAttack = 6 * attackerStats.currentAtk;
+        double missMultiplier = 1.2; 
+        statsCalculator.doDamage(attackerStats, victimStats, moveAttack, missMultiplier);
     }
     public void fatal_erruption_of_bullets (Stats attackerStats, Stats victimStats) {
-
+        Printer.printColor("The Swordsman uses a gun to eliminate their enemies!", "yellow");
+        double moveAttack = 15 * attackerStats.currentAtk;
+        double missMultiplier = 0.6; 
+        statsCalculator.doDamage(attackerStats, victimStats, moveAttack, missMultiplier);
     }
+    
     public void lightning_clone_strike (Stats attackerStats, Stats victimStats) {
+        Printer.printColor("The Swordsman's moves at supersonic speeds to summon clones which all attack the enemy!", "white");
+        double moveAttack = 20 * attackerStats.currentAtk;
+        double missMultiplier = 0.2; 
+        statsCalculator.doDamage(attackerStats, victimStats, moveAttack, missMultiplier);
 
     }
-    public void rest (Stats attackerStats) {
-
+    public void medatation (Stats attackerStats) {
+        Printer.printColor("The swordsman is meditating to gain MP and HP...", "purple");
+        attackerStats.currentMP += 15;
+        attackerStats.currentHP =+ 50;
     }
 
     // ROGUE ATTACKS: 
@@ -325,12 +341,25 @@ public class Moves {
                 }
             rogueAttack(attackerStats, victimStats);
     }
+
+    //This attack deals minor damage to opponents and speeds up the attacker
+    //todo: Implement speed up and down in stats so we cannot go past a certain speed. 
     public void quick_blast (Stats attackerStats, Stats victimStats) {
-
+        Printer.printColor("Quickly planting explosives before running away!", "purple");
+        double moveAttack = 4 * attackerStats.currentAtk;
+        double missMultiplier = 1.3; 
+        //attackerStats.currentSpd *= 1.2;
+        statsCalculator.doDamage(attackerStats, victimStats, moveAttack, missMultiplier);
     }
+
+    //this attack is a blunt force attack dealing major damage to the enemies
     public void death_strike (Stats attackerStats, Stats victimStats) {
-
+        Printer.printColor("The Rogue Sneaks up on their opponent and strikes them down. ", "white");
+        double moveAttack = 12 * attackerStats.currentAtk;
+        double missMultiplier = 0.3; 
+        statsCalculator.doDamage(attackerStats, victimStats, moveAttack, missMultiplier);
     }
+    
     public void secret_mushroom_strike (Stats attackerStats, Stats victimStats) {
 
     }

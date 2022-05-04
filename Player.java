@@ -3,7 +3,7 @@ import java.util.Scanner;
 public class Player {
         String playerClass; 
 
-        final String CLASSES[] = { "cyborg", "hacker", "terminator", "laser swordsman", "rogue", "mystic" };
+        final String CLASSES[] = { "cyborg", "hacker", "terminator", "laser swordsman", "rogue", "mystic", "reverend" };
         Stats playerStats;
 
         final String CYBORG_ATTACKS[] = {"Laser Barrage", "Charged Shot", "Cyber Shield", "Overload"};
@@ -27,7 +27,7 @@ public class Player {
                 "The Terminators special move surprises enemies and blinding them for 2 turns. ",
                 "The Hunker Down ability increases ATK, but removes chance of dodging an attack. "};
 
-        final String SWORDSMAN_ATTACKS[] = {"Swift Thrust of the Sword", "Fatal Eruption Of Bullets", "Lightning Clone Strike", "Rest"};
+        final String SWORDSMAN_ATTACKS[] = {"Swift Thrust of the Sword", "Fatal Eruption Of Bullets", "Lightning Clone Strike", "Meditation"};
         final int SWORDSMAN_ATTACK_COSTS[] = {7,13,25,0};
         final String SWORDSMAN_ATTACKS_INFO[] = {"The Swordsman outpaces their enemy to deal a powerful blow. ",
                 "The Swordsman uses a gun to eliminate their enemies. ",

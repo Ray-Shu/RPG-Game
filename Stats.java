@@ -6,6 +6,8 @@ public class Stats {
         public double currentHP, currentMP, currentSpd, currentAtk, currentPhysDmg, currentMagicDmg, currentDef, currentEnd, currentStam,
                 currentPhysRes, currentMagicRes, currentDodge, currentVit, currentCritRate, currentCritDmg, currentLuck;
 
+        public double speedMultiplier = 1, atkMultiplier = 1, hpMultiplier = 1, dodgeMultiplier = 1, defMultiplier = 1;
+        
         double allStats[];
         String displayStats[];
         double currentStats[];
@@ -13,8 +15,7 @@ public class Stats {
         int level = 1;
         double xp = 0;
         final int XP_TO_LVL_UP = 100;
-        public int howLongDisabled;
-        
+        public int howLongDisabled, howLongSpeedUp, howLongAtkUp, howLongDefUp, howLongDodgeUp;
         /**
          * This class will contain information about the stats of the player and the
          * mobs.
@@ -164,4 +165,106 @@ public class Stats {
         public void rest() {
                 currentMP = maxMP;
         }
+
+        //* SPEED MULTIPLIER STUFF
+        //returns a boolean reguarding wether not the user can increase their speed. 
+        public boolean canSpeedUp() {
+                if(speedMultiplier == 2){return false;}
+                else{return true;}
+        }
+
+        //increases the player's speed multiplier
+        public void applySpeedUp(double multiplier){
+                speedMultiplier *= multiplier;
+                //maxes speed out at two
+                if(speedMultiplier >= 2){
+                        speedMultiplier = 2;
+                }
+                //if they enter 1 for the speed up, speed up multiplier goes to 1. 
+                if(multiplier == 1){
+                        speedMultiplier = 1;
+                }
+        }
+
+        public void speedUpTime(double multiplier, int howLongSpeedUp){
+                this.howLongSpeedUp += howLongSpeedUp;
+                applySpeedUp(multiplier);
+        }
+
+        //* ATTACK MULTIPLIER BOOST STUFF
+        //returns a boolean reguarding wether not the user can increase their atk. 
+        public boolean canAtkUp() {
+                if(atkMultiplier == 2){return false;}
+                else{return true;}
+        }
+
+        //increases the player's attack multiplier
+        public void applyAttackUp(double multiplier){
+                atkMultiplier *= multiplier;
+                //maxes speed out at two
+                if(atkMultiplier >= 2){
+                        atkMultiplier = 2;
+                }
+                //if they enter 1 for the speed up, speed up multiplier goes to 1. 
+                if(multiplier == 1){
+                        atkMultiplier = 1;
+                }
+        }
+
+        public void atkUpTime(double multiplier, int howLongAtkUp){
+                this.howLongAtkUp += howLongAtkUp;
+                applyAttackUp(multiplier);
+        }
+
+        //* DEFENCE MULTIPLIER STUFF
+        //returns a boolean reguarding wether not the user can increase their atk. 
+        public boolean canDefUp() {
+                if(defMultiplier == 2){return false;}
+                else{return true;}
+        }
+
+        //applies the player's def multiplier
+        public void applyDefenceUp(double multiplier){
+                defMultiplier *= multiplier;
+                //maxes def out at two
+                if(defMultiplier >= 3){
+                        defMultiplier = 3;
+                }
+                //if they enter 1 for the def up, def up multiplier goes to 1. 
+                if(multiplier == 1){
+                        defMultiplier = 1;
+                }
+        }
+
+        public void defUpTime(double multiplier, int howLongDefUp){
+                this.howLongDefUp += howLongDefUp;
+                applyDefenceUp(multiplier);
+        }
+
+        //* DODGE MULTIPLIER STUFF
+        //returns a boolean reguarding wether not the user can increase their atk. 
+        public boolean canDodgeUp() {
+                if(dodgeMultiplier == 2){return false;}
+                else{return true;}
+        }
+
+        //increases the player's speed multiplier
+        public void applyDodgeUp(double multiplier){
+                dodgeMultiplier *= multiplier;
+                //maxes speed out at two
+                if(dodgeMultiplier >= 20){
+                        dodgeMultiplier = 20;
+                }
+                //if they enter 1 for the speed up, speed up multiplier goes to 1. 
+                if(multiplier == 1){
+                        dodgeMultiplier = 1;
+                }
+        }
+
+        public void dodgeUpTime(double multiplier, int howLongDodgeUp){
+                this.howLongDodgeUp += howLongDodgeUp;
+                applyDodgeUp(multiplier);
+        }
+
+        
 }

@@ -27,7 +27,7 @@ public class StatsCalculator {
      * Checks if the opponent did dodge the attack. 
      */
     public boolean didDodge(Stats victimStats, double missMultiplier) {
-        double dodge = victimStats.currentDodge / 100; 
+        double dodge = victimStats.currentDodge * victimStats.dodgeMultiplier / 100; 
         double effectiveDodge = dodge * missMultiplier;
         double chance = random.nextDouble(1);
 
@@ -46,13 +46,13 @@ public class StatsCalculator {
      */
 
     public void doDamage(Stats attackerStats, Stats victimStats, double moveAttack, double missMultiplier) { 
-        double atk = moveAttack;
+        double atk = moveAttack * attackerStats.atkMultiplier;
         double magicDmg = attackerStats.currentMagicDmg; 
         double physDmg = attackerStats.currentPhysDmg; 
         double cr = attackerStats.currentCritRate; 
         double cd = attackerStats.currentCritDmg;
 
-        double def = victimStats.currentDef; 
+        double def = victimStats.currentDef * victimStats.defMultiplier;
         double magicDef = victimStats.currentMagicRes; 
         double physDef = victimStats.currentPhysRes; 
 

@@ -87,14 +87,14 @@ public class Moves {
     }
     
     public void cyber_shield (Stats attackerStats, Stats victimStats) {
-        Printer.printColor("Increasing defence stats!", "blue");
-        attackerStats.currentDef *= 1.5;
+        Printer.printColor("Increasing defence stats for 3 turns!", "blue");
+        attackerStats.defUpTime(1.5, 4);
         Printer.printColor("Your defence has increased by 50% ",  "cyan");
     }
 
     public void overload (Stats attackerStats, Stats victimStats) {
-        Printer.printColor("Increasing attack stats!", "yellow");
-        attackerStats.currentAtk *= 1.5;
+        Printer.printColor("Increasing attack stats for 3 rounds!", "yellow");
+        attackerStats.atkUpTime(1.5, 4);
         Printer.printColor("Your Attack has increased by 50% ",  "cyan");
     }
 
@@ -157,9 +157,10 @@ public class Moves {
         statsCalculator.doDamage(attackerStats, victimStats, moveAttack, missMultiplier);
     }
     
+    
     public void watchful_vulture (Stats attackerStats, Stats victimStats) {
-        Printer.printColor("Increasing accuracy...", "blue");
-        //victimStats.currentDodge /= 2;
+        Printer.printColor("Increasing accuracy for 3 turns", "blue");
+        victimStats.dodgeUpTime(0.1, 4);
     }
     
     public void in_the_system (Stats attackerStats, Stats victimStats) {
@@ -223,12 +224,12 @@ public class Moves {
         statsCalculator.doDamage(attackerStats, victimStats, moveAttack, missMultiplier);
     }
     public void decieving_blast_of_cybernetic_proportions (Stats attackerStats, Stats victimStats) {
-        Printer.printColor("Blinding the enemy! ", "yellow");
+        Printer.printColor("Blinding the enemy for 2 rounds! ", "yellow");
+        attackerStats.dodgeUpTime(20, 3);
     }
     public void hunker_down (Stats attackerStats, Stats victimStats) {
         Printer.printColor("Moving to a defensive position! ", "purple");
-        attackerStats.currentDodge = 0;
-        attackerStats.currentAtk *= 1.5;
+        attackerStats.atkUpTime(1.3, 3);
     }
     
     // LAZER SWORDSMAN ATTACKS: 
@@ -292,10 +293,11 @@ public class Moves {
         double moveAttack = 20 * attackerStats.currentAtk;
         double missMultiplier = 0.2; 
         statsCalculator.doDamage(attackerStats, victimStats, moveAttack, missMultiplier);
-
     }
     public void medatation (Stats attackerStats) {
-        Printer.printColor("The swordsman is meditating to gain MP and HP...", "purple");
+        Printer.printColor("The swordsman is meditating to gain MP, SPD and HP...", "purple");
+        //speeds up character by 20% for 2 rounds
+        attackerStats.speedUpTime(1.2, 2);
         attackerStats.currentMP += 15;
         attackerStats.currentHP =+ 50;
     }
@@ -348,7 +350,7 @@ public class Moves {
         Printer.printColor("Quickly planting explosives before running away!", "purple");
         double moveAttack = 4 * attackerStats.currentAtk;
         double missMultiplier = 1.3; 
-        //attackerStats.currentSpd *= 1.2;
+        attackerStats.speedUpTime(1.2, 2);
         statsCalculator.doDamage(attackerStats, victimStats, moveAttack, missMultiplier);
     }
 
@@ -360,10 +362,15 @@ public class Moves {
         statsCalculator.doDamage(attackerStats, victimStats, moveAttack, missMultiplier);
     }
     
+    //todo: Implement decay status effect
     public void secret_mushroom_strike (Stats attackerStats, Stats victimStats) {
-
+        
     }
     public void forbidden_smoke (Stats attackerStats, Stats victimStats) {
+        Printer.printColor("The rogue smokes the enemy, increasing mobility and their dodge capabilities!", "grey");
+        //speeds up character by 20% for 2 rounds
+        attackerStats.speedUpTime(1.5, 4);
+        attackerStats.dodgeUpTime(4, 4);
 
     }
 
@@ -410,16 +417,27 @@ public class Moves {
     }
 
     public void dragon_shatter (Stats attackerStats, Stats victimStats) {
-
+        Printer.printColor("Summoning Dragon to strike!", "white");
+        double moveAttack = 20 * attackerStats.currentAtk;
+        double missMultiplier = 1.4; 
+        statsCalculator.doDamage(attackerStats, victimStats, moveAttack, missMultiplier);
     }
     public void simple_strike (Stats attackerStats, Stats victimStats) {
-
+        Printer.printColor("Using the simple mana strike!", "white");
+        double moveAttack = 5 * attackerStats.currentAtk;
+        double missMultiplier = 0.5; 
+        statsCalculator.doDamage(attackerStats, victimStats, moveAttack, missMultiplier);
     }
+
     public void frost_eruption (Stats attackerStats, Stats victimStats) {
-
+        Printer.printColor("Freezing the enemy", "cyan");
+        victimStats.speedUpTime(0.25, 4);
+        victimStats.dodgeUpTime(0.5, 4);
     }
-    public void burning_prison (Stats attackerStats, Stats victimStats) {
 
+    public void burning_prison (Stats attackerStats, Stats victimStats) {
+        Printer.printColor("TRAPPING THE ENEMY!", "red");
+        disabled(3, victimStats);
     }
 
     // REVEREND ATTACKS: 

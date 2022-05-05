@@ -88,7 +88,25 @@ public class MainStory {
         quickBreak(1500); 
         //end of flashback
 
-        Printer.printItalizcizedColor("\"Haaah...\" You sigh, you make your way down a barren and \ndirtied street. Thinking about the past will always, \nwithout fail, give you migraines. ", "white");
+        Printer.printItalizcizedColor("\"Haaah...\" You sigh, you make your way down a barren and \ndirtied street. Thinking about the past will always, \nwithout fail, make your head spin. ", "white");
+        quickBreak(1000);
+        Printer.printItalizcizedColor("Right as you close your eyes, you hear the sound of \nparting dust; and one moment later, you're on your \nknees, a jagged knife to your throat: it light blue \nsheen on it.\n", "white");
+        quickBreak(1000); 
+        Printer.printItalizcizedColor("You keep calm; these things happen frequently during \nyour time serving Scarlet Rot. \n", "white");
+        quickBreak(1000); 
+        Printer.print("\"What do you want?\" \n" );
+        quickBreak(1000);
+        Printer.print("A coarse reply, \"Hand over the letter, and I'll give you a painless death.\" \n");
+        quickBreak(1000); 
+        Printer.printItalizcizedColor("Hilarity overwhelms you; this guy's a weakling! The \nknife scratches your throat as you snort at his empty \nthreat. \n", "white");
+        quickBreak(1000);
+        Printer.printItalizcizedColor("Before he can say another word, you elbow his stomach, \nand you snatch the knife right as his grip loosens. \nAs he's stumbling, you kick his legs and he falls on \nthe ground. \n", "white");
+        quickBreak(1000); 
+        Printer.printItalizcizedColor("As you're about to concuss him with your feet, he \nactivates some sort of mechanism to teleport a safe \ndistance from you. \n", "white");
+        quickBreak(1000); 
+        Printer.printItalizcizedColor("Fortunately, you've already equipped all of the gear \ngiven to you beforehand, knowing that The Slum's is \nhome to the depraved and malicious: doing anything \nto survive and thrive in a resource-less floor. \n", "white");
+        quickBreak(1000);
+
     
     }
 

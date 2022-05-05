@@ -53,12 +53,14 @@ public class Moves {
                     charged_shot(attackerStats, victimStats);
                     return;
                 case 3:
+                    if(!attackerStats.canDefUp()){Printer.printColor("DEF already buffed to max!", "red");break;}
                     attackMPcost = 5;
                     if(attackMPcost > attackerStats.currentMP){tooTired(); break;}
                     attackerStats.currentMP -= attackMPcost;
                     cyber_shield(attackerStats, victimStats);
                     return;
                 case 4:
+                    if(!attackerStats.canAtkUp()){Printer.printColor("ATK already buffed to max!", "red");break;}
                     attackMPcost = 20;
                     if(attackMPcost > attackerStats.currentMP){tooTired(); break;}
                     attackerStats.currentMP -= attackMPcost;
@@ -199,6 +201,7 @@ public class Moves {
                     decieving_blast_of_cybernetic_proportions(attackerStats, victimStats);
                     return;
                 case 4:
+                    if(!attackerStats.canAtkUp()){Printer.printColor("ATK already buffed to max!", "red");break;}  
                     attackMPcost = 10;
                     if(attackMPcost > attackerStats.currentMP){tooTired(); break;}
                     attackerStats.currentMP -= attackMPcost;
@@ -229,7 +232,7 @@ public class Moves {
     }
     public void hunker_down (Stats attackerStats, Stats victimStats) {
         Printer.printColor("Moving to a defensive position! ", "purple");
-        attackerStats.atkUpTime(1.3, 3);
+        attackerStats.atkUpTime(1.5, 3);
     }
     
     // LAZER SWORDSMAN ATTACKS: 
@@ -332,10 +335,13 @@ public class Moves {
                     secret_mushroom_strike(attackerStats, victimStats);
                     return;
                 case 4:
+                    
                     attackMPcost = 5;
                     if(attackMPcost > attackerStats.currentMP){tooTired(); break;}
                     attackerStats.currentMP -= attackMPcost;
                     forbidden_smoke(attackerStats, victimStats);
+                    if(!attackerStats.canSpeedUp()){Printer.printColor("Speed buff maxed out!", "yellow");}
+                    if(!attackerStats.canDodgeUp()){Printer.printColor("Dodge buff maxed out!", "yellow");}
                     return;
                 default: 
                     Printer.print("Please enter a valid number: ");
@@ -345,7 +351,6 @@ public class Moves {
     }
 
     //This attack deals minor damage to opponents and speeds up the attacker
-    //todo: Implement speed up and down in stats so we cannot go past a certain speed. 
     public void quick_blast (Stats attackerStats, Stats victimStats) {
         Printer.printColor("Quickly planting explosives before running away!", "purple");
         double moveAttack = 4 * attackerStats.currentAtk;
@@ -364,8 +369,10 @@ public class Moves {
     
     //todo: Implement decay status effect
     public void secret_mushroom_strike (Stats attackerStats, Stats victimStats) {
-        
+        Printer.printColor("The Rogue Poisins the enemy, weakening their defence", "green");
+        victimStats.dodgeUpTime(0.4, 4);
     }
+    
     public void forbidden_smoke (Stats attackerStats, Stats victimStats) {
         Printer.printColor("The rogue smokes the enemy, increasing mobility and their dodge capabilities!", "grey");
         //speeds up character by 20% for 2 rounds
@@ -455,25 +462,27 @@ public class Moves {
                     attackMPcost = 10;
                     if(attackMPcost > attackerStats.currentMP){tooTired(); break;}
                     attackerStats.currentMP -= attackMPcost;
-                    dragon_shatter(attackerStats, victimStats);
+                    holy_flash_of_radiant_light(attackerStats, victimStats);
                     return;
                 case 2:
                     attackMPcost = 20;
                     if(attackMPcost > attackerStats.currentMP){tooTired(); break;}
                     attackerStats.currentMP -= attackMPcost;
-                    simple_strike(attackerStats, victimStats);
+                    divine_smite(attackerStats, victimStats);
                     return;
                 case 3:
                     attackMPcost = 10;
                     if(attackMPcost > attackerStats.currentMP){tooTired(); break;}
                     attackerStats.currentMP -= attackMPcost;
-                    frost_eruption(attackerStats, victimStats);
+                    holy_healing(attackerStats);
                     return;
                 case 4:
                     attackMPcost = 10;
                     if(attackMPcost > attackerStats.currentMP){tooTired(); break;}
                     attackerStats.currentMP -= attackMPcost;
-                    burning_prison(attackerStats, victimStats);
+                    prayer(attackerStats);
+                    if(!attackerStats.canSpeedUp()){Printer.printColor("Speed buff maxed out!", "yellow");}
+                    if(!attackerStats.canAtkUp()){Printer.printColor("Atk buff maxed out!", "yellow");}
                     return;
                 default: 
                     Printer.print("Please enter a valid number: ");
@@ -482,15 +491,24 @@ public class Moves {
             reverendAttack(attackerStats, victimStats);
     }
     public void holy_flash_of_radiant_light (Stats attackerStats, Stats victimStats) {
-
+        Printer.printColor("Unleashing God's light on the enemy!", "yellow");
+        double moveAttack = 8 * attackerStats.currentAtk;
+        double missMultiplier = 1.3; 
+        statsCalculator.doDamage(attackerStats, victimStats, moveAttack, missMultiplier);
     }
     public void divine_smite (Stats attackerStats, Stats victimStats) {
-
+        Printer.printColor("Thunder Release!!!", "white");
+        double moveAttack = 13 * attackerStats.currentAtk;
+        double missMultiplier = 1.8; 
+        statsCalculator.doDamage(attackerStats, victimStats, moveAttack, missMultiplier);
     }
-    public void holy_healing (Stats attackerStats, Stats victimStats) {
-
+    public void holy_healing (Stats attackerStats) {
+        Printer.printColor("Healing up!", "yellow");
+        attackerStats.heal();
     }
-    public void prayer (Stats attackerStats, Stats victimStats) {
-        
+    public void prayer (Stats attackerStats) {
+        Printer.printColor("Praying to the lord!", "cyan");
+        attackerStats.atkUpTime(2, 3);
+        attackerStats.speedUpTime(2, 3);
     }
 }

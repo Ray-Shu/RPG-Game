@@ -8,9 +8,8 @@ public class Stats {
 
         public double speedMultiplier = 1, atkMultiplier = 1, hpMultiplier = 1, dodgeMultiplier = 1, defMultiplier = 1;
         
-        double allStats[];
+        double allStats[], currentStats[];
         String displayStats[];
-        double currentStats[];
 
         int level = 1;
         double xp = 0;

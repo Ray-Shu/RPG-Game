@@ -19,7 +19,7 @@ public class Main {
 
             // *StoryLine (currently working on chapter One)
             MainStory story = new MainStory();
-            //story.prologue();
+            // //story.prologue();
             story.chapterOne(); 
 
 

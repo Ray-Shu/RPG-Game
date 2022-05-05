@@ -74,7 +74,7 @@ public class Player {
         }
 
         Player(String name){
-                chooseCyborg("cyborg");
+                chooseHacker("hacker");
         }
 
         public void printCrateInfo() {

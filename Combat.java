@@ -43,13 +43,14 @@ public class Combat extends Moves{
             else if (mobStats.howLongDisabled == 0){
                 Printer.print("Mob turn Rate: "+ mobTurnRate + " Player turn Rate: "+ playerTurnRate);
                 Printer.printColor("----------------------------------------------------------", "red");
-                Printer.printColor(" It is the mobs turn! Current MP: "+ mobStats.currentMP + " Current HP: "+ df.format(mobStats.currentHP) + "\n", "red");
+                Printer.printColor(" It is the opponents turn! Current MP: "+ mobStats.currentMP + " Current HP: "+ df.format(mobStats.currentHP) + "\n", "red");
                 mobMove(mobStats, playerStats);
                 checkMobBoosts();
                 mobTurnOver();
             }
             isAnyoneDisabled();
         }
+        whoDied();
         Printer.printColor("Fight Over", "yellow");
     }
 
@@ -82,14 +83,14 @@ public class Combat extends Moves{
     }
 
 
-    public void playerDeath () {
-
+    public void whoDied () {
+        if(playerStats.currentHP <= 0){
+            Printer.printColor("Player has been defeated", "red");
+        }
+        else{
+            Printer.printColor("Mob has been defeated!", "green");
+        }
     }
-
-    public void mobDeath() {
-
-    }
-
     /**
      * Prints out a list of the attacks of the user, along with all the options like leave and inventory. 
      * todo: Implement leave and inventory options. 
@@ -142,6 +143,7 @@ public class Combat extends Moves{
                 Printer.printColor("----------------------------------------------------------", "red");
                 Printer.printColor("Mob is disabled!!!" ,"red");
                 mobStats.howLongDisabled --;
+                mobTurnOver();
                 Printer.printColor("----------------------------------------------------------", "red");
             }
 
@@ -150,6 +152,7 @@ public class Combat extends Moves{
                 Printer.printColor("----------------------------------------------------------", "red");
                 Printer.printColor("Player is disabled!!!" ,"red");
                 playerStats.howLongDisabled --;
+                playerTurnOver();
                 Printer.printColor("----------------------------------------------------------", "red");
             }
     }
@@ -239,7 +242,7 @@ public class Combat extends Moves{
      * @param mobStats2
      */
     public void mobMove(Stats mobStats2, Stats playerStats2) {
-
+        
     }
 
     

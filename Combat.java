@@ -38,6 +38,7 @@ public class Combat extends Moves{
                 Printer.printColor(" It is your turn! Current MP: "+ playerStats.currentMP + " Current HP: "+ df.format(playerStats.currentHP) + "\n", "cyan");
                 playerMove(playerStats, mobStats);
                 checkPlayerBoosts();
+                Printer.printColor("----------------------------------------------------------", "cyan");
                 playerTurnOver();
             }
             else if (mobStats.howLongDisabled == 0){
@@ -46,6 +47,7 @@ public class Combat extends Moves{
                 Printer.printColor(" It is the opponents turn! Current MP: "+ mobStats.currentMP + " Current HP: "+ df.format(mobStats.currentHP) + "\n", "red");
                 mobMove(mobStats, playerStats);
                 checkMobBoosts();
+                Printer.printColor("----------------------------------------------------------", "red");
                 mobTurnOver();
             }
             isAnyoneDisabled();
@@ -100,7 +102,7 @@ public class Combat extends Moves{
         int i = 0;
         Printer.printColor("Here are your moves:\n", "cyan");
         while(i < player.chosenAttacks.length) {
-            Printer.printColor("("+ (i + 1) + ") "+ player.chosenAttacks[i], "white");
+            Printer.printColor("("+ (i + 1) + ") "+ player.chosenAttacks[i] + "\n MP COST: "+ attackCosts[i] + "\n", "white");
             i++;
         }
         Printer.print("("+(i + 1)+") Inventory\n -------------------------------------------------");

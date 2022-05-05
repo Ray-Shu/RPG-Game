@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Random;
 import java.util.Scanner;
 import java.text.DecimalFormat;
@@ -11,23 +13,27 @@ public class Combat extends Moves{
     Scanner scan = new Scanner(System.in);
     int[] attackCosts;
     DecimalFormat df = new DecimalFormat("###.00");
+    MobSummoner mobSummoner;
 
     /**
      * Constructs a fight between a player and a mob. 
      * @param player this is the player who is fighting the mob
      * @param playerStats this is the stats of that player
      * @param mobStats this is the stats of the mob
-     * @param mobAttacks this is the list of possible mob attacks. 
+     * @param mobAttacks this is the list of possible mob attacks.
+     * @param mobAttacksCost is the mp cost for the mobs attacks 
      */
-    Combat(Player player, Stats playerStats, Stats mobStats , String[] mobAttacks){
+    Combat(Player player, Stats playerStats, Stats mobStats , String[] mobAttacks, String[] mobAttacksCost, MobSummoner mobSummoner){
         this.playerStats = playerStats;
         this.player = player;
         this.mobStats = mobStats;
         this.mobAttacks = mobAttacks;
         this.attackCosts = player.chosenAttacksCost;
+        this.mobSummoner = mobSummoner;
 
         mobTurnRate = mobStats.currentSpd;
-        playerTurnRate = playerStats.currentSpd;    }
+        playerTurnRate = playerStats.currentSpd;   
+    }
 
     public void fight() {
         while(playerStats.currentHP > 0 && mobStats.currentHP > 0){
@@ -36,7 +42,7 @@ public class Combat extends Moves{
                 Printer.print("Mob turn Rate: "+ mobTurnRate + " Player turn Rate: "+ playerTurnRate);
                 Printer.printColor("----------------------------------------------------------", "cyan");
                 Printer.printColor(" It is your turn! Current MP: "+ playerStats.currentMP + " Current HP: "+ df.format(playerStats.currentHP) + "\n", "cyan");
-                playerMove(playerStats, mobStats);
+                playerMove();
                 checkPlayerBoosts();
                 Printer.printColor("----------------------------------------------------------", "cyan");
                 playerTurnOver();
@@ -45,7 +51,7 @@ public class Combat extends Moves{
                 Printer.print("Mob turn Rate: "+ mobTurnRate + " Player turn Rate: "+ playerTurnRate);
                 Printer.printColor("----------------------------------------------------------", "red");
                 Printer.printColor(" It is the opponents turn! Current MP: "+ mobStats.currentMP + " Current HP: "+ df.format(mobStats.currentHP) + "\n", "red");
-                mobMove(mobStats, playerStats);
+                mobMove();
                 checkMobBoosts();
                 Printer.printColor("----------------------------------------------------------", "red");
                 mobTurnOver();
@@ -93,10 +99,10 @@ public class Combat extends Moves{
             Printer.printColor("Mob has been defeated!", "green");
         }
     }
+
     /**
      * Prints out a list of the attacks of the user, along with all the options like leave and inventory. 
-     * todo: Implement leave and inventory options. 
-     * todo: Implement mp costs
+     * todo: Implement leave and inventory options.
      */
     public void listAttacks() {
         int i = 0;
@@ -112,30 +118,30 @@ public class Combat extends Moves{
     /**
      * Prints out the player's moves, then does the attack based on their response. 
      */
-    public void playerMove( Stats attackerStats, Stats victimStats) {
+    public void playerMove() {
         listAttacks();
         
         //checks which class we are, and then prompts them to answer a thing. 
         if (player.chosenAttacks == player.CYBORG_ATTACKS){
-            cyborgAttack(attackerStats, victimStats);
+            cyborgAttack(playerStats, mobStats);
         }
         else if (player.chosenAttacks == player.HACKER_ATTACKS){
-            hackAttack(attackerStats, victimStats);
+            hackAttack(playerStats, mobStats);
         }
         else if (player.chosenAttacks == player.TERMINATOR_ATTACKS){
-            terminatorAttack(attackerStats, victimStats);
+            terminatorAttack(playerStats, mobStats);
         }
         else if (player.chosenAttacks == player.SWORDSMAN_ATTACKS){
-            swordsmanAttack(attackerStats, victimStats);
+            swordsmanAttack(playerStats, mobStats);
         }
         else if (player.chosenAttacks == player.ROGUE_ATTACKS){
-            rogueAttack(attackerStats, victimStats);
+            rogueAttack(playerStats, mobStats);
         }
         else if (player.chosenAttacks == player.MYSTIC_ATTACKS){
-            mysticAttack(attackerStats, victimStats);
+            mysticAttack(playerStats, mobStats);
         }
         else {
-            reverendAttack(attackerStats, victimStats);
+            reverendAttack(playerStats, mobStats);
         }        
     }
 
@@ -243,8 +249,27 @@ public class Combat extends Moves{
      * @param playerStats2
      * @param mobStats2
      */
-    public void mobMove(Stats mobStats2, Stats playerStats2) {
+    public void mobMove() {
+
+        double mp = mobStats.currentMP;
+        ArrayList<Integer> movesWeCanDo = new ArrayList<Integer>();
+
+
+        for (int i = 0; i < attackCosts.length; i++) {
+            if(attackCosts[i] <= mp){
+                movesWeCanDo.add(i);
+            }
+        }
+        if(movesWeCanDo.isEmpty()){
+            System.out.println("ENEMY HAS NO MORE MANA!");
+            return;
+        };
         
+        Random random = new Random();
+        int index = random.nextInt(movesWeCanDo.size());
+        if(mobAttacks == mobSummoner.CYBER_PUNK_ATTACKS){
+            cyberPunkAttack(index);
+        }
     }
 
     

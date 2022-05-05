@@ -511,5 +511,21 @@ public class Moves {
         attackerStats.speedUpTime(2, 3);
     }
 
-    
+    public void cyberPunkAttack(int index) {
+        if(index==1){
+            
+        }
+        if(index ==2){
+
+        }
+        if(index==3){
+
+        }
+        if(index ==4){
+
+        }
+
+    }
+
+
 }

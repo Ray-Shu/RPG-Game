@@ -15,4 +15,6 @@ public class MobSummoner {
         cyber_punk_level = lvl;
         return new Stats(cyberPunkValues[0]*lvlMultiplier, cyberPunkValues[1]*lvlMultiplier, cyberPunkValues[2]*lvlMultiplier, cyberPunkValues[3]*lvlMultiplier, cyberPunkValues[4]*lvlMultiplier, cyberPunkValues[5]*lvlMultiplier, cyberPunkValues[6]*lvlMultiplier, cyberPunkValues[7]*lvlMultiplier, cyberPunkValues[8]*lvlMultiplier, cyberPunkValues[9]*lvlMultiplier, cyberPunkValues[10]*lvlMultiplier, cyberPunkValues[11]*lvlMultiplier, cyberPunkValues[12]*lvlMultiplier, cyberPunkValues[13]*lvlMultiplier, cyberPunkValues[14]*lvlMultiplier, cyberPunkValues[15]*lvlMultiplier);
     }
+
+    
 }

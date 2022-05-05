@@ -1,4 +1,6 @@
 public class Main {
+    
+    static MobSummoner mobSummoner = new MobSummoner();
     public static void main(String[] args) {
         boolean finishedGame = false;
 
@@ -12,9 +14,12 @@ public class Main {
             //* Combat Testing (using class: cyborg)
             Player player = new Player("hsajkfh");
             Stats playerStats = player.forceCombat();
-            Stats mobStats = new Stats(300.0, 80.0, 0.75, 3.0, 8.0, 1.0, 7.0, 10.0, 150.0, 8.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0);
-            String mobAttacks[] = {};
-            Combat combat = new Combat(player, playerStats, mobStats, mobAttacks);
+
+            Stats mobStats = mobSummoner.newCyberPunk(1);
+            String mobAttacks[] = mobSummoner.CYBER_PUNK_ATTACKS;
+            String mobAttacksCost[] = mobSummoner.CYBER_PUNK_ATTACKS;
+
+            Combat combat = new Combat(player, playerStats, mobStats, mobAttacks, mobAttacksCost, mobSummoner);
             combat.fight();
 
             // *StoryLine (currently working on chapter One)

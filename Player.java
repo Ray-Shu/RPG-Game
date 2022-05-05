@@ -13,9 +13,9 @@ public class Player {
                 "The Cyber Shield increases defense for the next 3 turns", 
                 "Overload greatly increases attack for the next 3 turns"};
 
-        final String HACKER_ATTACKS[] = {"Lock on", "Stolen Missile", "Watchful Vulture", "In The System"};
+        final String HACKER_ATTACKS[] = {"Virus Attack", "Stolen Missile", "Watchful Vulture", "In The System"};
         final int HACKER_ATTACK_COSTS[] = {5,20,5,10};
-        final String HACKER_ATTACKS_INFO[] = {"With lock on, the Hacker uses a high precision rifle and advanced optics to guarantee a hit",
+        final String HACKER_ATTACKS_INFO[] = {"The hacker uses a virus to destroy enemy systems, dealing strong damage!",
                 "With the Stolen Missile ability, the hacker seizes a missile from the government and tries to use it to destroy their enemies",
                 "The hacker's Watchful Vulture ability uses realtime satellite imagery to locate enemies and ensure hits for the next 3 turns",
                 "The hacker gets \"In The System\" with their final ability to disable their enemy robots for 2 turns"};

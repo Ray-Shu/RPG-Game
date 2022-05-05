@@ -115,7 +115,7 @@ public class Moves {
                     attackMPcost = 5;
                         if(attackMPcost > attackerStats.currentMP){tooTired(); break;}
                         attackerStats.currentMP -= attackMPcost;
-                        lock_on(attackerStats, victimStats);
+                        virus(attackerStats, victimStats);
                         return;
                     case 2:
                         attackMPcost = 20;
@@ -144,12 +144,11 @@ public class Moves {
 
 
 
-    public void lock_on (Stats attackerStats, Stats victimStats) {
-        Printer.printColor("Firing high precision missile to lock onto enemies", "yellow");
+    public void virus (Stats attackerStats, Stats victimStats) {
+        Printer.printColor("The hacker uses a virus to harm enemy systems!", "yellow");
         double moveAttack = 5 * attackerStats.currentAtk;
         double missMultiplier = 0.8; 
         statsCalculator.doDamage(attackerStats, victimStats, moveAttack, missMultiplier);
-        
     }
 
     public void stolen_missile (Stats attackerStats, Stats victimStats) {
@@ -511,4 +510,6 @@ public class Moves {
         attackerStats.atkUpTime(2, 3);
         attackerStats.speedUpTime(2, 3);
     }
+
+    
 }

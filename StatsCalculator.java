@@ -82,6 +82,43 @@ public class StatsCalculator {
         Printer.printColor("Your attack did " + df.format(trueDamage) + " damage!",  "cyan");
     
     }
+    public void mobDoDamage(Stats attackerStats, Stats victimStats, double moveAttack, double missMultiplier) { 
+        double atk = moveAttack * attackerStats.atkMultiplier;
+        double magicDmg = attackerStats.currentMagicDmg; 
+        double physDmg = attackerStats.currentPhysDmg; 
+        double cr = attackerStats.currentCritRate; 
+        double cd = attackerStats.currentCritDmg;
+
+        double def = victimStats.currentDef * victimStats.defMultiplier;
+        double magicDef = victimStats.currentMagicRes; 
+        double physDef = victimStats.currentPhysRes; 
+
+        //calculates the true physical damage 
+        double truePhysDmg = physDmg * (100/(100 + physDef)); 
+
+        //calculates the true magic damage 
+        double trueMagicDmg = magicDmg * (100/(100 + magicDef)); 
+        
+        //combines attack with magicAtk and physAtk 
+        atk = atk + truePhysDmg + trueMagicDmg;
+
+        double trueAtk = atk * (100/(100 + def));
+
+        if (didDodge(victimStats, missMultiplier)){
+            Printer.print("You dodged enemy attack!");
+            return;
+        }
+
+        double trueDamage = applyCrit(trueAtk, cd, cr);
+
+        double randomDamageMultiplier = random.nextDouble(50);
+        
+        trueDamage = trueDamage + (trueDamage * (randomDamageMultiplier / 100));  
+
+        victimStats.currentHP -= trueDamage;
+        Printer.printColor("Their attack did " + df.format(trueDamage) + " damage!",  "cyan");
+    
+    }
 }
 
 

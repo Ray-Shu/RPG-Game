@@ -39,7 +39,7 @@ public class Combat extends Moves{
         while(playerStats.currentHP > 0 && mobStats.currentHP > 0){
             if (isPlayerTurn() && playerStats.howLongDisabled == 0){
                 
-                Printer.print("Mob turn Rate: "+ mobTurnRate + " Player turn Rate: "+ playerTurnRate);
+                Printer.print("Mob turn Rate: "+ df.format(mobTurnRate) + " Player turn Rate: "+ df.format(playerTurnRate));
                 Printer.printColor("----------------------------------------------------------", "cyan");
                 Printer.printColor(" It is your turn! Current MP: "+ playerStats.currentMP + " Current HP: "+ df.format(playerStats.currentHP) + "\n", "cyan");
                 playerMove();
@@ -108,7 +108,7 @@ public class Combat extends Moves{
         int i = 0;
         Printer.printColor("Here are your moves:\n", "cyan");
         while(i < player.chosenAttacks.length) {
-            Printer.printColor("("+ (i + 1) + ") "+ player.chosenAttacks[i] + "\n MP COST: "+ attackCosts[i] + "\n", "white");
+            Printer.printColor("("+ (i + 1) + ") "+ player.chosenAttacks[i] + "\tMP COST: "+ attackCosts[i] + "\n", "white");
             i++;
         }
         Printer.print("("+(i + 1)+") Inventory\n -------------------------------------------------");
@@ -268,7 +268,7 @@ public class Combat extends Moves{
         Random random = new Random();
         int index = random.nextInt(movesWeCanDo.size());
         if(mobAttacks == mobSummoner.CYBER_PUNK_ATTACKS){
-            cyberPunkAttack(index);
+            cyberPunkAttack(mobStats, playerStats, index);
         }
     }
 

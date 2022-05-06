@@ -511,18 +511,29 @@ public class Moves {
         attackerStats.speedUpTime(2, 3);
     }
 
-    public void cyberPunkAttack(int index) {
-        if(index==1){
-            
+    public void cyberPunkAttack(Stats attackerStats, Stats victimStats, int index) {
+        if(index==0){
+            Printer.printColor("Punk Robot Hits with the classic right hook!", "white");
+            double moveAttack = 3 * attackerStats.currentAtk;
+            double missMultiplier = 1.8; 
+            statsCalculator.mobDoDamage(attackerStats, victimStats, moveAttack, missMultiplier);
         }
-        if(index ==2){
-
+        if(index ==1){
+            Printer.printColor("The Punk uses Bionic Crunch!", "white");
+            double moveAttack = 6 * attackerStats.currentAtk;
+            double missMultiplier = 1.8; 
+            statsCalculator.mobDoDamage(attackerStats, victimStats, moveAttack, missMultiplier);
         }
-        if(index==3){
-
+        if(index==2){
+            Printer.printColor("Enemy puts uses a weak kick!", "white");
+            double moveAttack = 2 * attackerStats.currentAtk;
+            double missMultiplier = 1.8; 
+            statsCalculator.mobDoDamage(attackerStats, victimStats, moveAttack, missMultiplier);
         }
-        if(index ==4){
-
+        if(index ==3){
+            Printer.printColor("Enemy drinks alcohol to increase speed and atk!", "white");
+            attackerStats.atkUpTime(2, 3);
+            attackerStats.speedUpTime(2, 3);
         }
 
     }

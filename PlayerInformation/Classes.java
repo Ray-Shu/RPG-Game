@@ -1,4 +1,7 @@
+package PlayerInformation;
+
 import java.util.Scanner;
+import Tools.*;
 
 public class Classes {  
 

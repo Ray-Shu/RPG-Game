@@ -1,4 +1,9 @@
+package StoryInformation;
+
 import java.util.Scanner;
+import Tools.*;
+import PlayerInformation.*;
+import fightInfo.*;
 
 public class MainStory {
     public static Printer print = new Printer();
@@ -88,9 +93,9 @@ public class MainStory {
         quickBreak(1500); 
         //end of flashback
 
-        Printer.printItalizcizedColor("\"Haaah...\" You sigh, you make your way down a barren and \ndirtied street. Thinking about the past will always, \nwithout fail, make your head spin. ", "white");
+        Printer.printItalizcizedColor("\"Haaah...\" You sigh, you make your way down a barren and \ndirtied street. Thinking about the past will always, \nwithout fail, make your head spin. \n", "white");
         quickBreak(1000);
-        Printer.printItalizcizedColor("Right as you close your eyes, you hear the sound of \nparting dust; and one moment later, you're on your \nknees, a jagged knife to your throat: it light blue \nsheen on it.\n", "white");
+        Printer.printItalizcizedColor("Right as you close your eyes, you hear the sound of \nparting dust; and one moment later, you're on your \nknees, a jagged knife to your throat: a light blue \nsheen on it.\n", "white");
         quickBreak(1000); 
         Printer.printItalizcizedColor("You keep calm; these things happen frequently during \nyour time serving Scarlet Rot. \n", "white");
         quickBreak(1000); 
@@ -104,8 +109,24 @@ public class MainStory {
         quickBreak(1000); 
         Printer.printItalizcizedColor("As you're about to concuss him with your feet, he \nactivates some sort of mechanism to teleport a safe \ndistance from you. \n", "white");
         quickBreak(1000); 
-        Printer.printItalizcizedColor("Fortunately, you've already equipped all of the gear \ngiven to you beforehand, knowing that The Slum's is \nhome to the depraved and malicious: doing anything \nto survive and thrive in a resource-less floor. \n", "white");
+        Printer.printItalizcizedColor("Fortunately, you've already equipped all of the gear \ngiven to you beforehand, knowing that The Slums is \nhome to the depraved and malicious: doing anything \nto survive and thrive in a resource-less floor. \n", "white");
         quickBreak(1000);
+        Printer.printItalizcizedColor("You see the man more clearly now. He has a slim, yet\n muscular body, donning obsidian-black armour and a \ndark blue hood. He reaches into his pocket, and \ngrabs an unknown technological cube. \n", "white");
+        quickBreak(1000); 
+        Printer.printItalizcizedColor("The cube luminates, and surrounds the both of you \nin a circular dome. \n", "white");
+        quickBreak(1000); 
+        Printer.printItalizcizedColor("\"Don't try to escape; the walls are made with electric-infused chromium - it'll just liquify your body and I won't be able \nto frame your head.\"", "white");
+        quickBreak(1000); 
+        Printer.printItalizcizedColor("\"I'm already being targetted? How? Did they put a tracker on me? Oh well, lets get this over with. I'll have to be more \ncareful in the future.\" \n", "white");
+        quickBreak(1000); 
+        Printer.printItalizcizedColor("You get ready for combat...", "purple");
+        quickBreak(1000); 
+
+        //*GETS ALL OF THE INFO OF MC'S CLASS AND STATS ------------------------------------------------------------
+        Stats playerStats = mainPlayer.getPlayerStats();
+        Combat fightAgainstAssassin = new Combat(mainPlayer, playerStats, )
+
+
 
     
     }

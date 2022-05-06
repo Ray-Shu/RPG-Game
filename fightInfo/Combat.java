@@ -1,8 +1,11 @@
+package fightInfo; 
+
 import java.util.ArrayList;
 import java.util.Random;
 import java.util.Scanner;
 import java.text.DecimalFormat;
-
+import PlayerInformation.*;
+import Tools.*;
 /**
  * This class does all the stuff we need to have a fight
  */
@@ -19,7 +22,6 @@ public class Combat extends Moves{
     private int[] attackCosts;
     private Player player;
 
-
     /**
      * Constructs the arena for a fight between a mob and a player. 
      * Does not call the fight method, but might make it later. 
@@ -31,7 +33,7 @@ public class Combat extends Moves{
      * @param mobAttacksCost is the mp cost for the mobs attacks 
      * @param mobSummoner - this is the thing mobSummoner which has a lot of the information about the summoner
      */
-    Combat(Player player, Stats playerStats, Stats mobStats , String[] mobAttacks, String[] mobAttacksCost, MobSummoner mobSummoner){
+    public Combat(Player player, Stats playerStats, Stats mobStats , String[] mobAttacks, int[] mobAttacksCost, MobSummoner mobSummoner){
 
         this.playerStats = playerStats;
         this.player = player;
@@ -39,6 +41,7 @@ public class Combat extends Moves{
         this.mobAttacks = mobAttacks;
         this.attackCosts = player.chosenAttacksCost;
         this.mobSummoner = mobSummoner;
+        attackCosts = mobAttacksCost;
 
         mobTurnRate = mobStats.currentSpd;
         playerTurnRate = playerStats.currentSpd;   
@@ -48,17 +51,26 @@ public class Combat extends Moves{
     /**
      * Starts a fight between the player and the mob, before 
      */
-    public void fight() {
+    public void fight(boolean isTutorial) {
+        boolean hasPlayerAttacked = isTutorial, hasMobAttacked = isTutorial;
 
         while(playerStats.currentHP > 0 && mobStats.currentHP > 0){
 
             if (isPlayerTurn() && playerStats.howLongDisabled == 0){
                 
-                Printer.print("Mob turn Rate: "+ df.format(mobTurnRate) + " Player turn Rate: "+ df.format(playerTurnRate));
                 Printer.printColor("----------------------------------------------------------", "cyan");
-                Printer.printColor(" It is your turn! Current MP: "+ playerStats.currentMP + " Current HP: "+ df.format(playerStats.currentHP) + "\n", "cyan");
+
+                if(hasPlayerAttacked){
+                    Printer.print("Welcome to combat! Both you and your opponents have attacks which use MP. \n Your goal is to use those attacks to defeat your enemy before dying or running out of MP! \n");
+                    hasPlayerAttacked = false;
+                }
+
+                Printer.printColor(" It is your turn! Current MP: "+ playerStats.currentMP + " Enemy HP: "+ df.format(mobStats.currentHP) + "\n", "cyan");
+                
+
                 playerMove();
                 checkPlayerBoosts();
+                Printer.printColor("Enemy HP after attack: "+ df.format(mobStats.currentHP) + "\n", "cyan");
                 Printer.printColor("----------------------------------------------------------", "cyan");
                 playerTurnOver();
 
@@ -66,11 +78,16 @@ public class Combat extends Moves{
 
             else if (mobStats.howLongDisabled == 0){
 
-                Printer.print("Mob turn Rate: "+ mobTurnRate + " Player turn Rate: "+ playerTurnRate);
                 Printer.printColor("----------------------------------------------------------", "red");
-                Printer.printColor(" It is the opponents turn! Current MP: "+ mobStats.currentMP + " Current HP: "+ df.format(mobStats.currentHP) + "\n", "red");
+
+                if(hasMobAttacked){
+                    Printer.print("Watch out! It is the enemies turn and they are going to attack you, dealing damage. ");
+                    hasMobAttacked = false;
+                }
+                Printer.printColor(" It is the opponents turn! Current MP: "+ mobStats.currentMP + " Your HP: "+ df.format(playerStats.currentHP) + "\n", "red");
                 mobMove();
                 checkMobBoosts();
+                Printer.printColor("Your HP After Attack: "+ df.format(playerStats.currentHP) + "\n", "red");
                 Printer.printColor("----------------------------------------------------------", "red");
                 mobTurnOver();
 
@@ -119,7 +136,7 @@ public class Combat extends Moves{
     public void whoDied () {
 
         if(playerStats.currentHP <= 0){
-            Printer.printColor(player.getName() + " has been defeated", "red");
+            Printer.printColor(player.getPlayerName() + " has been defeated", "red");
         }
 
         else{
@@ -136,7 +153,7 @@ public class Combat extends Moves{
         int i = 0;
         Printer.printColor("Here are your moves:\n", "cyan");
         while(i < player.chosenAttacks.length) {
-            Printer.printColor("("+ (i + 1) + ") "+ player.chosenAttacks[i] + "\tMP COST: "+ attackCosts[i] + "\n", "white");
+            Printer.printColor("("+ (i + 1) + ") "+ player.chosenAttacks[i] + "\tMP COST: "+ attackCosts[i], "white");
             i++;
         }
         Printer.print("("+(i + 1)+") Inventory\n -------------------------------------------------");
@@ -150,22 +167,22 @@ public class Combat extends Moves{
         listAttacks();
         
         //checks which class we are, and then prompts them to answer a thing. 
-        if (player.chosenAttacks == player.CYBORG_ATTACKS){
+        if (player.chosenAttacks == player.getCyborgAttacks()){
             cyborgAttack(playerStats, mobStats);
         }
-        else if (player.chosenAttacks == player.HACKER_ATTACKS){
+        else if (player.chosenAttacks == player.getHackerAttacks()){
             hackAttack(playerStats, mobStats);
         }
-        else if (player.chosenAttacks == player.TERMINATOR_ATTACKS){
+        else if (player.chosenAttacks == player.getTerminatorAttacks()){
             terminatorAttack(playerStats, mobStats);
         }
-        else if (player.chosenAttacks == player.SWORDSMAN_ATTACKS){
+        else if (player.chosenAttacks == player.getSwordsmanAttacks()){
             swordsmanAttack(playerStats, mobStats);
         }
-        else if (player.chosenAttacks == player.ROGUE_ATTACKS){
+        else if (player.chosenAttacks == player.getRogueAttacks()){
             rogueAttack(playerStats, mobStats);
         }
-        else if (player.chosenAttacks == player.MYSTIC_ATTACKS){
+        else if (player.chosenAttacks == player.getMysticAttacks()){
             mysticAttack(playerStats, mobStats);
         }
         else {

@@ -1,6 +1,8 @@
+package Tools;
+
 import java.util.Random;
 import java.text.DecimalFormat;
-
+import PlayerInformation.*;
 public class StatsCalculator {
     // * Calculates all of the stats for stuff 
     Random random = new Random();

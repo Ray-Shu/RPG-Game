@@ -1,6 +1,10 @@
+package fightInfo;
+
 import java.util.Random;
 import java.util.Scanner;
 import java.text.DecimalFormat;
+import Tools.*;
+import PlayerInformation.*;
 
 public class Moves {
 

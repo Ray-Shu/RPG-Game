@@ -1,8 +1,12 @@
+package TownInfo;
+
 import java.util.Arrays;
 import java.util.Scanner;
+import PlayerInformation.*;
+import Tools.*;
 
 public class Merchant {
-    public int[] priceOfItem;
+    public double[] priceOfItem;
     public String[] itemsForSale, thingsToDo;
     public String shopName, greeting, farewell, errorMessage, color;
     private Town town;
@@ -13,7 +17,7 @@ public class Merchant {
      * This gets all the data we will need for the merchant, including what they might sell, what they say, and what they do. 
      * * Basically creates the shop. 
      * @param itemsForSale this is an array of all the items for sale
-     * @param priceOfItem this is an array which holds the pricing of all the items listed above. 
+     * @param priceOfItem2 this is an array which holds the pricing of all the items listed above. 
      * @param shopName this is the name of the business
      * @param thingsToDo this is the things u can do within a building, for example, you can buy, sell, or leave in a shop
      * @param greeting this is what they say at the start
@@ -21,17 +25,16 @@ public class Merchant {
      * @param errorMessage this is what they say to you if you say the wrong thing. 
      * @param color this is the color of the text in the store. 
      */
-    Merchant(Bank playerAccount, Town town, String[] itemsForSale, int[] priceOfItem, String shopName, String[] thingsToDo, String greeting, String farewell, String errorMessage, String color) {
+    Merchant(Bank playerAccount, Town town, String[] itemsForSale, double[] priceOfItem2, String shopName, String[] thingsToDo, String greeting, String farewell, String errorMessage, String color) {
         
         this.itemsForSale = itemsForSale;
-        this.priceOfItem = priceOfItem;
+        this.priceOfItem = priceOfItem2;
         this.shopName = shopName;
         this.greeting = greeting;
         this.farewell = farewell;
         this.thingsToDo = thingsToDo;
         this.errorMessage = errorMessage;
         this.color = color;
-        this.town = town;
         this.playerAccount = playerAccount;
 
     }

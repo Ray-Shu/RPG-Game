@@ -1,3 +1,6 @@
+package PlayerInformation;
+import Tools.*;
+
 public class Player {
         String playerClass; 
 
@@ -54,26 +57,24 @@ public class Player {
                 "The prayer increases attack and speed. "};
         
         private final String CHOOSE_CRATE_AND_CRATE_INFO[] = {"1", "2", "3", "4", "5", "6", "7", "M1", "M2", "M3", "M4", "M5", "M6", "M7"};
-        
-        // private final String CHOOSE_CRATE[] = {"1", "2", "3", "4", "5", "6", "7"};
-        // private final String CRATE_INFO[] = {"M1", "M2", "M3", "M4", "M5", "M6", "M7"};
-        
 
         public String chosenAttacks[];
         public int chosenAttacksCost[];
-        public static String characterName;
-
+        public String playerName;
+        //*Testing combat stuff
         public Stats forceCombat() {
                 return playerStats;
         }
 
-        Player() {
+        public Player() {
 
         }
 
-        Player(String name){
+        public Player(String name){
                 chooseHacker("hacker");
+                playerName = name;
         }
+        //*End of testing combat stuff
 
         public void printCrateInfo() {
                 //* CRATE ONE INFO - Cyborg
@@ -292,6 +293,10 @@ public class Player {
                 
         }
 
+        public Stats getPlayerStats() {
+                return playerStats; 
+        }
+
         public void quickBreak() {
                 try {
                         Thread.sleep(0);
@@ -300,8 +305,30 @@ public class Player {
                 }
         }
         
-        public String getName(){
-                return characterName;
+        public String getPlayerName() {
+                return playerName;
+        }
+        
+        public String[] getCyborgAttacks(){
+                return CYBORG_ATTACKS;
+        }
+        public String[] getHackerAttacks(){
+                return HACKER_ATTACKS;
+        }
+        public String[] getTerminatorAttacks(){
+                return TERMINATOR_ATTACKS;
+        }
+        public String[] getReverendAttacks(){
+                return REVEREND_ATTACKS;
+        }
+        public String[] getMysticAttacks(){
+                return MYSTIC_ATTACKS;
+        }
+        public String[] getRogueAttacks(){
+                return ROGUE_ATTACKS;
+        }
+        public String[] getSwordsmanAttacks(){
+                return SWORDSMAN_ATTACKS;
         }
 
 }

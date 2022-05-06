@@ -1,3 +1,6 @@
+package PlayerInformation;
+
+import Tools.*;
 
 public class Stats {
 
@@ -60,7 +63,7 @@ public class Stats {
          // ?                  Maybe impacts miss. 
          */
 
-        Stats(double hp, double mp, double spd, double atk, double pd, double md, double def, double end, double stam,
+        public Stats(double hp, double mp, double spd, double atk, double pd, double md, double def, double end, double stam,
                         double physRes, double magicRes, double dodge, double vit, double cr, double cd, double luck) {
                 maxHP = hp;
                 maxMP = mp;

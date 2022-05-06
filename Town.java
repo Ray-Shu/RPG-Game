@@ -12,6 +12,7 @@ public class Town {
     int floorLvl;
 
     // * INFORMATION REGARDING WHAT EACH STORE WILL CONTAIN
+    //TODO: Must make actual stores later, and customizability to make it so not every town is the same.
 
     private static String[] shopForSale = { "car", "shoe", "pizza", "macaroni" };
     private static int[] shopPrices = { 100, 10, 99, 88 };

@@ -1,5 +1,5 @@
 public class Bank {
-    public static double balance;
+    public double balance;
 
     /**
      * Creates a bank account with a certain amount of money

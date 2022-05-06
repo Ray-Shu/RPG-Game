@@ -5,7 +5,7 @@ public class StatsCalculator {
     // * Calculates all of the stats for stuff 
     Random random = new Random();
     DecimalFormat df = new DecimalFormat("###.00");
-
+    
     /**
      * Sees if the attack crit. Returns the damage if it crit or if it did not crit. 
      */
@@ -39,19 +39,22 @@ public class StatsCalculator {
     }
 
     /**
-     * 
+     * Calculates the proper amount of damage a character should do
      * @param attackerStats - all of the necessary attacker stats to calculate true attack 
      * @param defenderStats - all of the necessary defender stats 
+     * @param moveAttack - the strength of the attack
+     * @param missMultiplier - makes an attack more or less likely to strike the target. 
      * @return - returns the true damage of the attack, when all of the factors are considered 
      */
 
     public void doDamage(Stats attackerStats, Stats victimStats, double moveAttack, double missMultiplier) { 
+
+        //These are the stats that we will need for calculating the correct damage
         double atk = moveAttack * attackerStats.atkMultiplier;
         double magicDmg = attackerStats.currentMagicDmg; 
         double physDmg = attackerStats.currentPhysDmg; 
         double cr = attackerStats.currentCritRate; 
         double cd = attackerStats.currentCritDmg;
-
         double def = victimStats.currentDef * victimStats.defMultiplier;
         double magicDef = victimStats.currentMagicRes; 
         double physDef = victimStats.currentPhysRes; 
@@ -67,6 +70,7 @@ public class StatsCalculator {
 
         double trueAtk = atk * (100/(100 + def));
 
+        //Checks if the attack will hit or not
         if (didDodge(victimStats, missMultiplier)){
             Printer.print("Your attack missed!");
             return;
@@ -76,19 +80,21 @@ public class StatsCalculator {
 
         double randomDamageMultiplier = random.nextDouble(50);
         
+        //calculates the damage which the player will take after crit and randomization
         trueDamage = trueDamage + (trueDamage * (randomDamageMultiplier / 100));  
-
         victimStats.currentHP -= trueDamage;
+
         Printer.printColor("Your attack did " + df.format(trueDamage) + " damage!",  "cyan");
     
     }
     public void mobDoDamage(Stats attackerStats, Stats victimStats, double moveAttack, double missMultiplier) { 
+
+        //These are the stats that we will need for calculating the correct damage
         double atk = moveAttack * attackerStats.atkMultiplier;
         double magicDmg = attackerStats.currentMagicDmg; 
         double physDmg = attackerStats.currentPhysDmg; 
         double cr = attackerStats.currentCritRate; 
         double cd = attackerStats.currentCritDmg;
-
         double def = victimStats.currentDef * victimStats.defMultiplier;
         double magicDef = victimStats.currentMagicRes; 
         double physDef = victimStats.currentPhysRes; 
@@ -104,6 +110,7 @@ public class StatsCalculator {
 
         double trueAtk = atk * (100/(100 + def));
 
+        //Checks if the attack will hit or not
         if (didDodge(victimStats, missMultiplier)){
             Printer.print("You dodged enemy attack!");
             return;
@@ -113,9 +120,10 @@ public class StatsCalculator {
 
         double randomDamageMultiplier = random.nextDouble(50);
         
+        //calculates the damage which the player will take after crit and randomization
         trueDamage = trueDamage + (trueDamage * (randomDamageMultiplier / 100));  
-
         victimStats.currentHP -= trueDamage;
+
         Printer.printColor("Their attack did " + df.format(trueDamage) + " damage!",  "cyan");
     
     }

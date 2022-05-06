@@ -1,29 +1,38 @@
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Random;
 import java.util.Scanner;
 import java.text.DecimalFormat;
 
+/**
+ * This class does all the stuff we need to have a fight
+ */
 public class Combat extends Moves{
-    String[] mobAttacks;
-    Stats  mobStats, playerStats;
-    double playerTurnRate, mobTurnRate;
-    Player player;
-    Random random = new Random();
-    Scanner scan = new Scanner(System.in);
-    int[] attackCosts;
-    DecimalFormat df = new DecimalFormat("###.00");
-    MobSummoner mobSummoner;
+    
+    private DecimalFormat df = new DecimalFormat("###.00");
+    private Scanner scan = new Scanner(System.in);
+    private Random random = new Random();
+
+    private double playerTurnRate, mobTurnRate;
+    private Stats  mobStats, playerStats;
+    private MobSummoner mobSummoner;
+    private String[] mobAttacks;
+    private int[] attackCosts;
+    private Player player;
+
 
     /**
-     * Constructs a fight between a player and a mob. 
+     * Constructs the arena for a fight between a mob and a player. 
+     * Does not call the fight method, but might make it later. 
+     * 
      * @param player this is the player who is fighting the mob
      * @param playerStats this is the stats of that player
      * @param mobStats this is the stats of the mob
      * @param mobAttacks this is the list of possible mob attacks.
      * @param mobAttacksCost is the mp cost for the mobs attacks 
+     * @param mobSummoner - this is the thing mobSummoner which has a lot of the information about the summoner
      */
     Combat(Player player, Stats playerStats, Stats mobStats , String[] mobAttacks, String[] mobAttacksCost, MobSummoner mobSummoner){
+
         this.playerStats = playerStats;
         this.player = player;
         this.mobStats = mobStats;
@@ -33,10 +42,16 @@ public class Combat extends Moves{
 
         mobTurnRate = mobStats.currentSpd;
         playerTurnRate = playerStats.currentSpd;   
+
     }
 
+    /**
+     * Starts a fight between the player and the mob, before 
+     */
     public void fight() {
+
         while(playerStats.currentHP > 0 && mobStats.currentHP > 0){
+
             if (isPlayerTurn() && playerStats.howLongDisabled == 0){
                 
                 Printer.print("Mob turn Rate: "+ df.format(mobTurnRate) + " Player turn Rate: "+ df.format(playerTurnRate));
@@ -46,8 +61,11 @@ public class Combat extends Moves{
                 checkPlayerBoosts();
                 Printer.printColor("----------------------------------------------------------", "cyan");
                 playerTurnOver();
+
             }
+
             else if (mobStats.howLongDisabled == 0){
+
                 Printer.print("Mob turn Rate: "+ mobTurnRate + " Player turn Rate: "+ playerTurnRate);
                 Printer.printColor("----------------------------------------------------------", "red");
                 Printer.printColor(" It is the opponents turn! Current MP: "+ mobStats.currentMP + " Current HP: "+ df.format(mobStats.currentHP) + "\n", "red");
@@ -55,11 +73,16 @@ public class Combat extends Moves{
                 checkMobBoosts();
                 Printer.printColor("----------------------------------------------------------", "red");
                 mobTurnOver();
+
             }
+
             isAnyoneDisabled();
+
         }
+
         whoDied();
         Printer.printColor("Fight Over", "yellow");
+
     }
 
     /**
@@ -90,14 +113,19 @@ public class Combat extends Moves{
         scan.next();
     }
 
-
+    /**
+     * Checks who died. 
+     */
     public void whoDied () {
+
         if(playerStats.currentHP <= 0){
-            Printer.printColor("Player has been defeated", "red");
+            Printer.printColor(player.getName() + " has been defeated", "red");
         }
+
         else{
-            Printer.printColor("Mob has been defeated!", "green");
+            Printer.printColor(mobSummoner.getMobName() + " has been defeated!", "green");
         }
+
     }
 
     /**
@@ -265,7 +293,6 @@ public class Combat extends Moves{
             return;
         };
         
-        Random random = new Random();
         int index = random.nextInt(movesWeCanDo.size());
         if(mobAttacks == mobSummoner.CYBER_PUNK_ATTACKS){
             cyberPunkAttack(mobStats, playerStats, index);

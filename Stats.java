@@ -1,8 +1,9 @@
-import java.util.Arrays;
 
 public class Stats {
+
         public double maxHP, maxMP, maxSpd, maxAtk, maxPhysDmg, maxMagicDmg, maxDef, maxEnd, maxStam, maxPhysRes, maxMagicRes, maxDodge, maxVit,
                         maxCritRate, maxCritDmg, maxLuck;
+
         public double currentHP, currentMP, currentSpd, currentAtk, currentPhysDmg, currentMagicDmg, currentDef, currentEnd, currentStam,
                 currentPhysRes, currentMagicRes, currentDodge, currentVit, currentCritRate, currentCritDmg, currentLuck;
 
@@ -15,6 +16,7 @@ public class Stats {
         double xp = 0;
         final int XP_TO_LVL_UP = 100;
         public int howLongDisabled, howLongSpeedUp, howLongAtkUp, howLongDefUp, howLongDodgeUp;
+
         /**
          * This class will contain information about the stats of the player and the
          * mobs.
@@ -133,11 +135,13 @@ public class Stats {
                 }
         }
 
+        //Adds xp to the user
         public void addXP(int xpGained) {
                 xp =+ xpGained;
                 checkXP();
         }
 
+        //checks if the user is ready for a level up
         public void checkXP() {
                 if(xp / XP_TO_LVL_UP == 1){
                         xp-= XP_TO_LVL_UP;
@@ -146,6 +150,7 @@ public class Stats {
                 }
         }
 
+        //levels up the user
         public void levelUp() {
                 Printer.printColor("---------------------------------------------------------", "yellow");
                 Printer.printColor("Congratulations! Your level has increased!", "yellow");
@@ -157,10 +162,12 @@ public class Stats {
                 }
         }
 
+        //heals the person/mob
         public void heal() {
                 currentHP = maxHP;
         }
 
+        //Recovers mp
         public void rest() {
                 currentMP = maxMP;
         }
@@ -185,6 +192,7 @@ public class Stats {
                 }
         }
 
+        //increases the players speed up time for a while. 
         public void speedUpTime(double multiplier, int howLongSpeedUp){
                 this.howLongSpeedUp += howLongSpeedUp;
                 applySpeedUp(multiplier);

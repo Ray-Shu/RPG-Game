@@ -1,5 +1,3 @@
-import java.util.Scanner;
-
 public class Player {
         String playerClass; 
 
@@ -302,5 +300,8 @@ public class Player {
                 }
         }
         
+        public String getName(){
+                return characterName;
+        }
 
 }

@@ -14,7 +14,7 @@ public class StatsCalculator {
     public double applyCrit(double damage, double critDmg, double critRate) {
         critDmg = 2;
         double critDamage = critDmg * damage;
-        double chance = random.nextDouble(100);
+        double chance = random.nextDouble() * 100; 
 
         if(chance <= critRate){
             Printer.printColor("Critical hit!", "red");
@@ -29,9 +29,9 @@ public class StatsCalculator {
      * Checks if the opponent did dodge the attack. 
      */
     public boolean didDodge(Stats victimStats, double missMultiplier) {
-        double dodge = victimStats.currentDodge * victimStats.dodgeMultiplier / 100; 
-        double effectiveDodge = dodge * missMultiplier;
-        double chance = random.nextDouble(1);
+        double victimDodge = victimStats.currentDodge * (victimStats.dodgeMultiplier / 100); 
+        double effectiveDodge = victimDodge * missMultiplier;
+        double chance = random.nextDouble();
 
         if(chance <= effectiveDodge) {
             return true;
@@ -80,10 +80,10 @@ public class StatsCalculator {
 
         double trueDamage = applyCrit(trueAtk, cd, cr);
 
-        double randomDamageMultiplier = random.nextDouble(50);
+        double randomDamageMultiplier = random.nextDouble() * 20;
         
         //calculates the damage which the player will take after crit and randomization
-        trueDamage = trueDamage + (trueDamage * (randomDamageMultiplier / 100));  
+        trueDamage = (trueDamage + (trueDamage * (randomDamageMultiplier / 100))) / 1.35;  
         victimStats.currentHP -= trueDamage;
 
         Printer.printColor("Your attack did " + df.format(trueDamage) + " damage!",  "cyan");
@@ -120,7 +120,7 @@ public class StatsCalculator {
 
         double trueDamage = applyCrit(trueAtk, cd, cr);
 
-        double randomDamageMultiplier = random.nextDouble(50);
+        double randomDamageMultiplier = random.nextInt(50);
         
         //calculates the damage which the player will take after crit and randomization
         trueDamage = trueDamage + (trueDamage * (randomDamageMultiplier / 100));  

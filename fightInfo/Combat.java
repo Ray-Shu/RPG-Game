@@ -19,7 +19,8 @@ public class Combat extends Moves{
     private Stats  mobStats, playerStats;
     private MobSummoner mobSummoner;
     private String[] mobAttacks;
-    private int[] attackCosts;
+    private int[] mobAttackCosts;
+    private int[] playerAttackCosts;
     private Player player;
 
     /**
@@ -37,11 +38,11 @@ public class Combat extends Moves{
 
         this.playerStats = playerStats;
         this.player = player;
+        this.playerAttackCosts = player.chosenAttacksCost;
         this.mobStats = mobStats;
         this.mobAttacks = mobAttacks;
-        this.attackCosts = player.chosenAttacksCost;
         this.mobSummoner = mobSummoner;
-        attackCosts = mobAttacksCost;
+        this.mobAttackCosts = mobAttacksCost;
 
         mobTurnRate = mobStats.currentSpd;
         playerTurnRate = playerStats.currentSpd;   
@@ -52,25 +53,27 @@ public class Combat extends Moves{
      * Starts a fight between the player and the mob, before 
      */
     public void fight(boolean isTutorial) {
-        boolean hasPlayerAttacked = isTutorial, hasMobAttacked = isTutorial;
+        boolean hasMobAttacked = isTutorial;
 
         while(playerStats.currentHP > 0 && mobStats.currentHP > 0){
+
+            if (isTutorial) {
+                Printer.printColor("\nWelcome to your first fight! Both you and your opponent will have attacks which use MP. \nYour goal is to use those attacks to defeat your enemy before dying or running out of MP! \n", "purple"); 
+                isTutorial = false;
+            }
 
             if (isPlayerTurn() && playerStats.howLongDisabled == 0){
                 
                 Printer.printColor("----------------------------------------------------------", "cyan");
 
-                if(hasPlayerAttacked){
-                    Printer.print("Welcome to combat! Both you and your opponents have attacks which use MP. \n Your goal is to use those attacks to defeat your enemy before dying or running out of MP! \n");
-                    hasPlayerAttacked = false;
-                }
-
-                Printer.printColor(" It is your turn! Current MP: "+ playerStats.currentMP + " Enemy HP: "+ df.format(mobStats.currentHP) + "\n", "cyan");
+                Printer.printColor("It is your turn! Your current MP: "+ playerStats.currentMP + " | Enemy HP: "+ df.format(mobStats.currentHP) + "\n", "cyan");
                 
 
                 playerMove();
                 checkPlayerBoosts();
-                Printer.printColor("Enemy HP after attack: "+ df.format(mobStats.currentHP) + "\n", "cyan");
+                System.out.println();
+
+                Printer.printColor("Enemy HP after attack: " + checkIfZeroHP("mob") + "\n", "cyan");
                 Printer.printColor("----------------------------------------------------------", "cyan");
                 playerTurnOver();
 
@@ -81,13 +84,15 @@ public class Combat extends Moves{
                 Printer.printColor("----------------------------------------------------------", "red");
 
                 if(hasMobAttacked){
-                    Printer.print("Watch out! It is the enemies turn and they are going to attack you, dealing damage. ");
+                    Printer.print("Watch out! It is the enemies turn and they are going to attack you! ");
                     hasMobAttacked = false;
                 }
-                Printer.printColor(" It is the opponents turn! Current MP: "+ mobStats.currentMP + " Your HP: "+ df.format(playerStats.currentHP) + "\n", "red");
+                Printer.printColor("It is the opponents turn! " + mobSummoner.getMobName() + "'s current MP: " + mobStats.currentMP + " Your HP: "+ df.format(playerStats.currentHP) + "\n", "red");
                 mobMove();
                 checkMobBoosts();
-                Printer.printColor("Your HP After Attack: "+ df.format(playerStats.currentHP) + "\n", "red");
+                System.out.println();
+
+                Printer.printColor("Your HP After Attack: " +  checkIfZeroHP("player") + "\n", "red");
                 Printer.printColor("----------------------------------------------------------", "red");
                 mobTurnOver();
 
@@ -100,6 +105,28 @@ public class Combat extends Moves{
         whoDied();
         Printer.printColor("Fight Over", "yellow");
 
+    }
+
+    //*Doesn't display negative numbers when whoever is killed
+    public String checkIfZeroHP(String whoseTurn) {
+        if(whoseTurn.equalsIgnoreCase("player")) {
+            if (playerStats.currentHP < 0) {
+                return "0";
+            } else {
+                return df.format(playerStats.currentHP);
+            }
+       
+        }
+
+        if(whoseTurn.equalsIgnoreCase("mob")) {
+            if (mobStats.currentHP < 0){
+                return "0";
+            } else {
+                return df.format(mobStats.currentHP);
+            }
+        }
+
+        return whoseTurn;
     }
 
     /**
@@ -153,10 +180,10 @@ public class Combat extends Moves{
         int i = 0;
         Printer.printColor("Here are your moves:\n", "cyan");
         while(i < player.chosenAttacks.length) {
-            Printer.printColor("("+ (i + 1) + ") "+ player.chosenAttacks[i] + "\tMP COST: "+ attackCosts[i], "white");
+            Printer.printColor("("+ (i + 1) + ") "+ player.chosenAttacks[i] + "\tMP COST: "+ playerAttackCosts[i], "white");
             i++;
         }
-        Printer.print("("+(i + 1)+") Inventory\n -------------------------------------------------");
+        Printer.print("("+(i + 1)+") Inventory\n----------------------------------------------------------");
 
     }
     
@@ -188,6 +215,37 @@ public class Combat extends Moves{
         else {
             reverendAttack(playerStats, mobStats);
         }        
+    }
+    
+    /**
+     * Does the mobs move
+     * 
+     * @param playerStats2
+     * @param mobStats2
+     */
+    public void mobMove() {
+
+        double mp = mobStats.currentMP;
+        ArrayList<Integer> movesWeCanDo = new ArrayList<Integer>();
+
+        for (int i = 0; i < mobAttackCosts.length; i++) {
+            if (mobAttackCosts[i] <= mp) {
+                movesWeCanDo.add(i);
+            }
+        }
+        if (movesWeCanDo.isEmpty()) {
+            System.out.println("ENEMY HAS NO MORE MANA!");
+            return;
+        }
+        ;
+
+        int index = random.nextInt(movesWeCanDo.size());
+        if (mobAttacks == mobSummoner.CYBER_PUNK_ATTACKS) {
+            cyberPunkAttack(mobStats, playerStats, index);
+        }
+        if (mobAttacks == mobSummoner.GREATER_WILL_ASSASSIN_ATTACKS) {
+            // greaterWillAssassinAttack(mobStats, playerStats, index);
+        }
     }
 
     public void isAnyoneDisabled(){
@@ -289,32 +347,7 @@ public class Combat extends Moves{
 
     }
 
-    /**
-     * Does the mobs move
-     * @param playerStats2
-     * @param mobStats2
-     */
-    public void mobMove() {
-
-        double mp = mobStats.currentMP;
-        ArrayList<Integer> movesWeCanDo = new ArrayList<Integer>();
-
-
-        for (int i = 0; i < attackCosts.length; i++) {
-            if(attackCosts[i] <= mp){
-                movesWeCanDo.add(i);
-            }
-        }
-        if(movesWeCanDo.isEmpty()){
-            System.out.println("ENEMY HAS NO MORE MANA!");
-            return;
-        };
-        
-        int index = random.nextInt(movesWeCanDo.size());
-        if(mobAttacks == mobSummoner.CYBER_PUNK_ATTACKS){
-            cyberPunkAttack(mobStats, playerStats, index);
-        }
-    }
+    
 
     
 }

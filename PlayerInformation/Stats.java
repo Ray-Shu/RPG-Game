@@ -124,7 +124,7 @@ public class Stats {
 
         // * prints out the stats of the player
         // more will be added here, this is just to test
-        public void getInfo(String chosenClass) {
+        public void getClassInfo(String chosenClass) {
 
                 Printer.printColor(
                                 chosenClass.substring(0, 1).toUpperCase() + chosenClass.substring(1).toLowerCase()
@@ -132,7 +132,7 @@ public class Stats {
                                 "white");
                 System.out.println();
                 int i = 0;
-                for (Double element : allStats) {
+                for (Double element : currentStats) {
                         Printer.printColor(displayStats[i] + ": " + String.valueOf(element), "white");
                         i++;
                 }

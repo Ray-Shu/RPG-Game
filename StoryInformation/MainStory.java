@@ -124,7 +124,7 @@ public class MainStory {
 
         //*GETS ALL OF THE INFO OF MC'S CLASS AND STATS ------------------------------------------------------------
         Stats playerStats = mainPlayer.getPlayerStats();
-        Combat fightAgainstAssassin = new Combat(mainPlayer, playerStats, )
+        //TODOCombat fightAgainstAssassin = new Combat(mainPlayer, playerStats, )
 
 
 

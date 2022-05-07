@@ -156,20 +156,20 @@ public class Moves {
     }
 
     public void stolen_missile (Stats attackerStats, Stats victimStats) {
-        Printer.printColor("Hijacking Government missile...", "blue");
-        double moveAttack = 16 * attackerStats.currentAtk;
+        Printer.printColor("Hijacking government missile...", "blue");
+        double moveAttack = 17.5 * attackerStats.currentAtk;
         double missMultiplier = 2; 
         statsCalculator.doDamage(attackerStats, victimStats, moveAttack, missMultiplier);
     }
     
     
     public void watchful_vulture (Stats attackerStats, Stats victimStats) {
-        Printer.printColor("Increasing accuracy for 3 turns", "blue");
+        Printer.printColor("Increasing accuracy (3 turns)", "blue");
         victimStats.dodgeUpTime(0.1, 4);
     }
     
     public void in_the_system (Stats attackerStats, Stats victimStats) {
-        Printer.printColor("Disabling the enemies...", "blue");
+        Printer.printColor("Disabling the enemies (2 turns)...", "blue");
         disabled(2, victimStats);
     }
 
@@ -271,7 +271,7 @@ public class Moves {
                     attackMPcost = 0;
                     if(attackMPcost > attackerStats.currentMP){tooTired(); break;}
                     attackerStats.currentMP -= attackMPcost;
-                    medatation(attackerStats);
+                    meditation(attackerStats);
                     return;
                 default: 
                     Printer.print("Please enter a valid number: ");
@@ -300,7 +300,7 @@ public class Moves {
         double missMultiplier = 0.2; 
         statsCalculator.doDamage(attackerStats, victimStats, moveAttack, missMultiplier);
     }
-    public void medatation (Stats attackerStats) {
+    public void meditation (Stats attackerStats) {
         Printer.printColor("The swordsman is meditating to gain MP, SPD and HP...", "purple");
         //speeds up character by 20% for 2 rounds
         attackerStats.speedUpTime(1.2, 2);
@@ -515,32 +515,82 @@ public class Moves {
         attackerStats.speedUpTime(2, 3);
     }
 
+
+
+    //*ENEMY ATTACKS
     public void cyberPunkAttack(Stats attackerStats, Stats victimStats, int index) {
+        int attackMpCost; 
+
         if(index==0){
-            Printer.printColor("Punk Robot Hits with the classic right hook!", "white");
+            attackMpCost = 5; 
+            Printer.printColor("Punk Robot uses the classic right hook!", "white");
             double moveAttack = 3 * attackerStats.currentAtk;
             double missMultiplier = 1.8; 
+            attackerStats.currentMP -= attackMpCost;
             statsCalculator.mobDoDamage(attackerStats, victimStats, moveAttack, missMultiplier);
         }
         if(index ==1){
+            attackMpCost = 8;
             Printer.printColor("The Punk uses Bionic Crunch!", "white");
             double moveAttack = 6 * attackerStats.currentAtk;
             double missMultiplier = 1.8; 
+            attackerStats.currentMP -= attackMpCost;
             statsCalculator.mobDoDamage(attackerStats, victimStats, moveAttack, missMultiplier);
         }
         if(index==2){
-            Printer.printColor("Enemy puts uses a weak kick!", "white");
+            attackMpCost = 3;
+            Printer.printColor("Punk Robot uses a weak kick!", "white");
             double moveAttack = 2 * attackerStats.currentAtk;
             double missMultiplier = 1.8; 
+            attackerStats.currentMP -= attackMpCost;
             statsCalculator.mobDoDamage(attackerStats, victimStats, moveAttack, missMultiplier);
         }
         if(index ==3){
-            Printer.printColor("Enemy drinks alcohol to increase speed and atk!", "white");
+            attackMpCost = 10;
+            Printer.printColor("Cyberpunk drinks alcohol to increase speed and atk!", "white");
+            attackerStats.currentMP -= attackMpCost;
             attackerStats.atkUpTime(2, 3);
             attackerStats.speedUpTime(2, 3);
         }
 
     }
+    
+    //TODO: will finish implementing this mob later
+    public void greaterWillAssassin(Stats attackerStats, Stats victimStats, int index) {
+        if (index == 0) {
+            //Chromium Daggers
+            Printer.printColor("Greater Will Assassin throws 3 chromium daggers at you!", "white");
+            double moveAttack = 3 * attackerStats.currentAtk;
+            double missMultiplier = 2.1;
+            statsCalculator.mobDoDamage(attackerStats, victimStats, moveAttack, missMultiplier);
+        }
+        //TODO: will edit these moves if i forget
+        if (index == 1) {
+            //Nano-electric Volley
+            Printer.printColor("The Punk uses Bionic Crunch!", "white");
+            double moveAttack = 6 * attackerStats.currentAtk;
+            double missMultiplier = 1.4;
+            statsCalculator.mobDoDamage(attackerStats, victimStats, moveAttack, missMultiplier);
+        }
+        if (index == 2) {
+            //Frenzied Kicks
+            Printer.printColor("Enemy puts uses a weak kick!", "white");
+            double moveAttack = 2 * attackerStats.currentAtk;
+            double missMultiplier = 1.9;
+            statsCalculator.mobDoDamage(attackerStats, victimStats, moveAttack, missMultiplier);
+        }
+        if (index == 3) {
+            //Cruel Assassin's Flowing Fist
+            Printer.printColor("Enemy drinks alcohol to increase speed and atk!", "white");
+            double moveAttack = 2 * attackerStats.currentAtk; 
+            //double missMultiplier = =
+            attackerStats.atkUpTime(2, 3);
+            attackerStats.speedUpTime(2, 3);
+        }
+
+    }
+
+    
 
 
 }

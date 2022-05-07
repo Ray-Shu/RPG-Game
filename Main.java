@@ -15,7 +15,7 @@ public class Main {
             // Town town = new Town("Golden", 1, playerAccount);
             // town.characterEnteringTown();
            
-            // //* Combat Testing (using class: cyborg)
+            //* Combat Testing (using class: cyborg)
             Player player = new Player("hsajkfh");
             Stats playerStats = player.forceCombat();
 
@@ -35,6 +35,15 @@ public class Main {
             finishedGame = true;
 
         }
+
+        /**
+         * SOME BUGS THAT I'VE FOUND WHILE TESTING SOME STUFF
+         * IF I DONT GET AROUND TO FIXING THEM, ILL LIST THEM HERE
+         * 
+         * BUGS:
+         * nothing happens if player mp is out 
+         * 
+         */
 
     }
 }

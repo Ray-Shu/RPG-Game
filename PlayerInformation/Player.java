@@ -21,21 +21,21 @@ public class Player {
                 "The hacker's Watchful Vulture ability uses realtime satellite imagery to locate enemies and ensure hits for the next 3 turns",
                 "The hacker gets \"In The System\" with their final ability to disable their enemy robots for 2 turns"};
 
-        final String TERMINATOR_ATTACKS[] = {"Machine Gun Fury", "First Impact Fists", "Deceiving Blast of Cybernetic Proportions", "Hunker Down"};
+        final String TERMINATOR_ATTACKS[] = {"Machine Gun Fury\t\t\t", "First Impact Fists\t\t\t", "Deceiving Blast of Cybernetic Proportions", "Hunker Down\t\t\t\t"};
         final int TERMINATOR_ATTACK_COSTS[] = {10,5,10,10};
         final String TERMINATOR_ATTACKS_INFO[] = {"The Terminator unleashes their Machine gun to deal major damage to opponents",
                 "The Terminator gets a heavily impactful strike on their enemy. ",
                 "The Terminators special move surprises enemies and blinding them for 2 turns. ",
                 "The Hunker Down ability increases ATK, but removes chance of dodging an attack. "};
 
-        final String SWORDSMAN_ATTACKS[] = {"Swift Thrust of the Sword", "Fatal Eruption Of Bullets", "Lightning Clone Strike", "Meditation"};
+        final String SWORDSMAN_ATTACKS[] = {"Swift Thrust of the Sword", "Fatal Eruption Of Bullets", "Lightning Clone Strike", "Meditation\t\t"};
         final int SWORDSMAN_ATTACK_COSTS[] = {7,13,25,0};
         final String SWORDSMAN_ATTACKS_INFO[] = {"The Swordsman outpaces their enemy to deal a powerful blow. ",
                 "The Swordsman uses a gun to eliminate their enemies. ",
                 "The Swordsman's moves at supersonic speeds to summon clones which all attack the enemy. ",
                 "The Swordsman Sleeps"};
        
-        final String ROGUE_ATTACKS[] = {"Quick Blast", "Death Strike", "Secret Mushroom Strike", "Forbidden Smoke"};
+        final String ROGUE_ATTACKS[] = {"Quick Blast\t\t", "Death Strike\t", "Secret Mushroom Strike", "Forbidden Smoke\t"};
         final int ROGUE_ATTACK_COSTS[] = {4,12,10,5};
         final String ROGUE_ATTACKS_INFO[] = {"The agile Rogue quickly blasts the enemy with explosives before they get to react. ",
                 "The Rogue Sneaks up on their opponent and strikes them down. ",
@@ -49,7 +49,7 @@ public class Player {
                 "Frost Eruption slows the enemies and does a little damage. ",
                 "The Mystic traps their enemy in a burning prison!"}; 
 
-        final String REVEREND_ATTACKS[] = {"holy flash of radiant light", "divine smite", "holy healing", "prayer"};
+        final String REVEREND_ATTACKS[] = {"Holy Flash of Radiant Light\t", "Divine Smite\t\t", "Holy Healing\t\t", "Prayer\t\t\t"};
         final int REVEREND_ATTACK_COSTS[] = {10,20,10,10};
         final String REVEREND_ATTACKS_INFO[] = {"The Reverend manipulates the divine light to blind the enemy and deal major damage!",
                 "The divine smite summons lightning to stun enemies and deal major damage. ",
@@ -71,7 +71,7 @@ public class Player {
         }
 
         public Player(String name){
-                chooseHacker("hacker");
+                chooseReverend("reverend");
                 playerName = name;
         }
         //*End of testing combat stuff

@@ -143,18 +143,20 @@ public class Combat extends Moves{
     public void playerTurnOver() {
         playerTurnRate -= mobStats.currentSpd;
         mobTurnRate += mobStats.currentSpd * mobStats.speedMultiplier;
-        Printer.printItalizcizedColor("Type any letter to continue...", "white");
-        scan.next();
+        // Printer.printItalizcizedColor("Type any letter to continue...", "white");
+        // scan.next();
+        quickBreak(1000);
     }
-
+    
     /**
      * Same as player turn rate, but opposite. 
      */
     public void mobTurnOver() {
         mobTurnRate -= playerStats.currentSpd;
         playerTurnRate += playerStats.currentSpd * playerStats.speedMultiplier;
-        Printer.printItalizcizedColor("Type any letter to continue...", "white");
-        scan.next();
+        // Printer.printItalizcizedColor("Type any letter to continue...", "white");
+        // scan.next();
+        quickBreak(1000);
     }
 
     /**
@@ -348,10 +350,20 @@ public class Combat extends Moves{
                 }
             }
 
-
+        
     }
 
-    
+    /**
+     * input the time in milliseconds 
+     * @param t - time in milliseconds
+     */
+    public void quickBreak(int t) {
+        try {
+                Thread.sleep(t);
+        } catch (InterruptedException e) {
+                e.printStackTrace();
+        }
+    }
 
     
 }

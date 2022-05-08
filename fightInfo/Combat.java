@@ -234,7 +234,8 @@ public class Combat extends Moves{
             }
         }
         if (movesWeCanDo.isEmpty()) {
-            System.out.println("ENEMY HAS NO MORE MANA!");
+            System.out.println("The enemy has run out of battery!");
+            mobStats.currentHP = 0;
             return;
         }
         ;

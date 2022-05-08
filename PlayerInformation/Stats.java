@@ -1,5 +1,4 @@
 package PlayerInformation;
-
 import Tools.*;
 
 public class Stats {
@@ -166,8 +165,13 @@ public class Stats {
         }
 
         //heals the person/mob
-        public void heal() {
-                currentHP = maxHP;
+        public void heal(double howMuchHeal) {
+                if(currentHP + howMuchHeal > maxHP){
+                        currentHP = maxHP;
+                        return;
+                }
+                currentHP += howMuchHeal;
+                
         }
 
         //Recovers mp

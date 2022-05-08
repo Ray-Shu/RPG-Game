@@ -123,8 +123,18 @@ public class MainStory {
         quickBreak(1000); 
 
         //*GETS ALL OF THE INFO OF MC'S CLASS AND STATS ------------------------------------------------------------
+        MobSummoner mobSummoner = new MobSummoner();
         Stats playerStats = mainPlayer.getPlayerStats();
-        //TODOCombat fightAgainstAssassin = new Combat(mainPlayer, playerStats, )
+        Stats mobStats = mobSummoner.newGreaterWillAssassin(1);
+        String mobAttacks[] = mobSummoner.GREATER_WILL_ASSASSIN_ATTACKS;
+        int mobAttacksCost[] = mobSummoner.GREATER_WILL_ASSASSIN_COSTS;
+        Combat chapter_One_Fight_One = new Combat(mainPlayer, playerStats, mobStats, mobAttacks, mobAttacksCost, mobSummoner);
+        chapter_One_Fight_One.fight(true);
+
+        //*END OF FIGHT 
+
+        //TODO: will finish storyline later
+        Printer.printItalizcizedColor("The assassin falls to the ground.", "white");
 
 
 

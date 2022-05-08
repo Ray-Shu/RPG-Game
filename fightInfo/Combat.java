@@ -244,7 +244,10 @@ public class Combat extends Moves{
             cyberPunkAttack(mobStats, playerStats, index);
         }
         if (mobAttacks == mobSummoner.GREATER_WILL_ASSASSIN_ATTACKS) {
-            // greaterWillAssassinAttack(mobStats, playerStats, index);
+            greaterWillAssassinAttack(mobStats, playerStats, index);
+        }
+        if (mobAttacks == mobSummoner.NANO_BOT_ATTACKS) {
+            nanoBotClusterAttacks(mobStats, playerStats, index);
         }
     }
 

@@ -19,16 +19,16 @@ public class Main {
             Player player = new Player("hsajkfh");
             Stats playerStats = player.forceCombat();
 
-            Stats mobStats = mobSummoner.newCyberPunk(1);
-            String mobAttacks[] = mobSummoner.CYBER_PUNK_ATTACKS;
-            int mobAttacksCost[] = mobSummoner.CP_MP_COSTS;
+            Stats mobStats = mobSummoner.newNanoBotCluster(1);
+            String mobAttacks[] = mobSummoner.NANO_BOT_ATTACKS;
+            int mobAttacksCost[] = mobSummoner.NANO_BOT_COST;
 
             Combat combat = new Combat(player, playerStats, mobStats, mobAttacks, mobAttacksCost, mobSummoner);
             combat.fight(true);
 
-            // *StoryLine (currently working on chapter One)
+            // //*StoryLine (currently working on chapter One)
             // MainStory story = new MainStory();
-            // //story.prologue();
+            // story.prologue();
             // story.chapterOne(); 
 
 
@@ -44,6 +44,8 @@ public class Main {
          * nothing happens if player mp is out 
          * 
          */
+
+         //? Possibly make healing heal around 40% hp? 
 
     }
 }

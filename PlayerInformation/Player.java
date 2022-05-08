@@ -71,7 +71,7 @@ public class Player {
         }
 
         public Player(String name){
-                chooseReverend("reverend");
+                chooseMystic("mystic");
                 playerName = name;
         }
         //*End of testing combat stuff

@@ -428,7 +428,7 @@ public class Moves {
 
     public void dragon_shatter (Stats attackerStats, Stats victimStats) {
         Printer.printColor("Summoning Dragon to strike!", "white");
-        double moveAttack = 20 * attackerStats.currentAtk;
+        double moveAttack = 12 * attackerStats.currentAtk;
         double missMultiplier = 1.4; 
         statsCalculator.doDamage(attackerStats, victimStats, moveAttack, missMultiplier);
     }
@@ -555,40 +555,93 @@ public class Moves {
 
     }
     
-    //TODO: will finish implementing this mob later
-    public void greaterWillAssassin(Stats attackerStats, Stats victimStats, int index) {
+    public void greaterWillAssassinAttack(Stats attackerStats, Stats victimStats, int index) {
+        int attackMpCost; 
+
         if (index == 0) {
             //Chromium Daggers
+            attackMpCost = 10; 
             Printer.printColor("Greater Will Assassin throws 3 chromium daggers at you!", "white");
             double moveAttack = 3 * attackerStats.currentAtk;
             double missMultiplier = 2.1;
+            attackerStats.currentMP -= attackMpCost; 
             statsCalculator.mobDoDamage(attackerStats, victimStats, moveAttack, missMultiplier);
         }
-        //TODO: will edit these moves if i forget
         if (index == 1) {
             //Nano-electric Volley
-            Printer.printColor("The Punk uses Bionic Crunch!", "white");
+            attackMpCost = 15; 
+            Printer.printColor("Greater Will Assassin throws many electrifying nano projectiles at you!", "white");
             double moveAttack = 6 * attackerStats.currentAtk;
             double missMultiplier = 1.4;
+            attackerStats.currentMP -= attackMpCost;
             statsCalculator.mobDoDamage(attackerStats, victimStats, moveAttack, missMultiplier);
         }
         if (index == 2) {
             //Frenzied Kicks
-            Printer.printColor("Enemy puts uses a weak kick!", "white");
+            attackMpCost = 6;
+            Printer.printColor("Assassin uses a series of swift kicks!", "white");
             double moveAttack = 2 * attackerStats.currentAtk;
             double missMultiplier = 1.9;
+            attackerStats.currentMP -= attackMpCost;
             statsCalculator.mobDoDamage(attackerStats, victimStats, moveAttack, missMultiplier);
         }
         if (index == 3) {
             //Cruel Assassin's Flowing Fist
-            Printer.printColor("Enemy drinks alcohol to increase speed and atk!", "white");
-            double moveAttack = 2 * attackerStats.currentAtk; 
-            //double missMultiplier = =
-            attackerStats.atkUpTime(2, 3);
-            attackerStats.speedUpTime(2, 3);
+            attackMpCost = 8;
+            Printer.printColor("Greater Will Assassin uses the rock-smashing flowing fist technique!", "white");
+            double moveAttack = 2.5 * attackerStats.currentAtk; 
+            double missMultiplier = 1.5;
+            attackerStats.currentMP -= attackMpCost;
+            statsCalculator.mobDoDamage(attackerStats, victimStats, moveAttack, missMultiplier);
+           
         }
 
     }
+
+    public void nanoBotClusterAttacks(Stats attackerStats, Stats victimStats, int index) {
+        int attackMpCost;
+
+        if (index == 0) {
+            // Synethic Infection
+            attackMpCost = 5;
+            Printer.printColor("The Nano-Bots swarm around you and infect your body!", "white");
+            double moveAttack = 2.5 * attackerStats.currentAtk;
+            double missMultiplier = 0;
+            attackerStats.currentMP -= attackMpCost;
+            statsCalculator.mobDoDamage(attackerStats, victimStats, moveAttack, missMultiplier);
+        }
+        if (index == 1) {
+            // Integrated Combustion
+            attackMpCost = 10;
+            Printer.printColor("Each Nano-Bot charges towards you and explodes around you!", "white");
+            double moveAttack = 7 * attackerStats.currentAtk;
+            double missMultiplier = 1.4;
+            attackerStats.currentMP -= attackMpCost;
+            statsCalculator.mobDoDamage(attackerStats, victimStats, moveAttack, missMultiplier);
+        }
+        if (index == 2) {
+            // Coordinated Ion Drill 
+            attackMpCost = 7;
+            Printer.printColor("The Nano-Bot Cluster fires radioactive ions towards you!", "white");
+            double moveAttack = 4 * attackerStats.currentAtk;
+            double missMultiplier = 1.9;
+            attackerStats.currentMP -= attackMpCost;
+            statsCalculator.mobDoDamage(attackerStats, victimStats, moveAttack, missMultiplier);
+        }
+        if (index == 3) {
+            // Neon-Laser Cascade
+            attackMpCost = 8;
+            Printer.printColor("Making distance from you, the Nano-Bot Cluster fires off neon-laser beams toward you!", "white");
+            double moveAttack = 4.3 * attackerStats.currentAtk;
+            double missMultiplier = 1.5;
+            attackerStats.currentMP -= attackMpCost;
+            statsCalculator.mobDoDamage(attackerStats, victimStats, moveAttack, missMultiplier);
+
+        }
+
+    }
+
+
 
     
 

@@ -1,7 +1,12 @@
 package PlayerInformation;
+import java.text.DecimalFormat;
+
 import Tools.*;
 
+ 
 public class Stats {
+
+        private DecimalFormat df = new DecimalFormat("###.00");
 
         public double maxHP, maxMP, maxSpd, maxAtk, maxPhysDmg, maxMagicDmg, maxDef, maxEnd, maxStam, maxPhysRes, maxMagicRes, maxDodge, maxVit,
                         maxCritRate, maxCritDmg, maxLuck;
@@ -165,12 +170,17 @@ public class Stats {
         }
 
         //heals the person/mob
-        public void heal(double howMuchHeal) {
-                if(currentHP + howMuchHeal > maxHP){
-                        currentHP = maxHP;
+        //combatHeal is used when players or opponents use moves that specifically heal
+        //DIFFERENT THAN FULL HEALING FROM DEATH --> we can implement a new method for that
+      
+        public void combatHeal(double howMuchHeal, Stats attackerStats) {
+                Printer.printColor("Healed: " + df.format(howMuchHeal) + " HP.","yellow");
+                if(attackerStats.currentHP + howMuchHeal > attackerStats.maxHP){
+                        attackerStats.currentHP = attackerStats.maxHP;
                         return;
                 }
-                currentHP += howMuchHeal;
+
+                attackerStats.currentHP += howMuchHeal;
                 
         }
 

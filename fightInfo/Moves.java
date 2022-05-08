@@ -507,10 +507,11 @@ public class Moves {
     }
     public void holy_healing (Stats attackerStats) {
         Printer.printColor("Healing up!", "yellow");
-        attackerStats.heal(attackerStats.maxHP *= 0.2);
+        double howMuchHeal = (attackerStats.maxHP * 0.35) + (random.nextDouble() * 10);
+        attackerStats.combatHeal(howMuchHeal, attackerStats);
     }
     public void prayer (Stats attackerStats) {
-        Printer.printColor("Praying to the lord!", "cyan");
+        Printer.printColor("Praying to the lord...", "cyan");
         attackerStats.atkUpTime(2, 3);
         attackerStats.speedUpTime(2, 3);
     }

@@ -16,7 +16,7 @@ public class Main {
             // town.characterEnteringTown();
            
             //* Combat Testing (using class: cyborg)
-            Player player = new Player("hsajkfh");
+            Player player = new Player("bruhmoment");
             Stats playerStats = player.forceCombat();
 
             Stats mobStats = mobSummoner.newNanoBotCluster(1);

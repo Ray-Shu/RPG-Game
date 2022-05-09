@@ -327,8 +327,21 @@ public class Player {
         public String[] getRogueAttacks(){
                 return ROGUE_ATTACKS;
         }
-        public String[] getSwordsmanAttacks(){
-                return SWORDSMAN_ATTACKS;
+        public String[] getSwordsmanAttacks(){return SWORDSMAN_ATTACKS;}
+
+        public void playerDied() {
+                System.out.println("\u001B[31m" + 
+                        " ▓██   ██▓ ▒█████   █    ██    ▓█████▄  ██▓▓█████ ▓█████▄ " + 
+                        " ▒██  ██▒▒██▒  ██▒ ██  ▓██▒   ▒██▀ ██▌▓██▒▓█   ▀ ▒██▀ ██▌"+
+                        " ▒██ ██░▒██░  ██▒▓██  ▒██░   ░██   █▌▒██▒▒███   ░██   █▌"+
+                        " ░ ▐██▓░▒██   ██░▓▓█  ░██░   ░▓█▄   ▌░██░▒▓█  ▄ ░▓█▄   ▌"+
+                        " ░ ██▒▓░░ ████▓▒░▒▒█████▓    ░▒████▓ ░██░░▒████▒░▒████▓ "+
+                        " ██▒▒▒ ░ ▒░▒░▒░ ░▒▓▒ ▒ ▒     ▒▒▓  ▒ ░▓  ░░ ▒░ ░ ▒▒▓  ▒ "+
+                        "▓██ ░▒░   ░ ▒ ▒░ ░░▒░ ░ ░     ░ ▒  ▒  ▒ ░ ░ ░  ░ ░ ▒  ▒ "+
+                        "▒ ▒ ░░  ░ ░ ░ ▒   ░░░ ░ ░     ░ ░  ░  ▒ ░   ░    ░ ░  ░ "+
+                        "░ ░         ░ ░     ░           ░     ░     ░  ░   ░    "+
+                        "░ ░                           ░                  ░"+
+                         "\u001B[31m");
         }
 
 }

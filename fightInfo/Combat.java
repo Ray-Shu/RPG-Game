@@ -149,7 +149,7 @@ public class Combat extends Moves{
     }
     
     /**
-     * Same as player turn rate, but opposite. 
+     * Same as player turn rate, but for the mob class. 
      */
     public void mobTurnOver() {
         mobTurnRate -= playerStats.currentSpd;

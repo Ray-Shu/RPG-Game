@@ -17,6 +17,7 @@ public class Main {
            
             //* Combat Testing (using class: cyborg)
             Player player = new Player("bruhmoment");
+            player.playerDied();
             Stats playerStats = player.forceCombat();
 
             Stats mobStats = mobSummoner.newNanoBotCluster(1);

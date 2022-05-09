@@ -14,7 +14,7 @@ public class Town {
     String townName;
     Bank playerAccount;
     int floorLvl;
-
+    Guild guild;
     // * INFORMATION REGARDING WHAT EACH STORE WILL CONTAIN
     //TODO: Must make actual stores later, and customizability to make it so not every town is the same.
 
@@ -39,11 +39,21 @@ public class Town {
         allMerchants.forEach((e) -> {
             System.out.println(e.shopName);  
         });
+        System.out.println(guild.getGuildName());
     }
 
     public void addBuilding(Bank playerAccount, String[] itemsForSale, double[] priceOfItem, String shopName, String[] thingsToDo, String greeting, String farewell, String errorMessage, String color){
         allMerchants.add(new Merchant(playerAccount, this, itemsForSale, priceOfItem, shopName, thingsToDo, greeting, farewell, errorMessage, color));
     }
+
+    public void addGuild(Guild guild){
+        this.guild = guild;
+    }
+
+    public void addDungeon(){
+
+    }
+
 
     public void characterEnteringTown() {
 

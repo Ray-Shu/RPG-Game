@@ -5,7 +5,7 @@ public class Player {
         String playerClass; 
 
         final String CLASSES[] = { "cyborg", "hacker", "terminator", "laser swordsman", "rogue", "mystic", "reverend" };
-        Stats playerStats;
+        public Stats playerStats;
 
         final String CYBORG_ATTACKS[] = {"Laser Barrage", "Charged Shot", "Cyber Shield", "Overload"};
         final int CYBORG_ATTACK_COSTS[] = {5,15,5,20};
@@ -329,7 +329,7 @@ public class Player {
         }
         public String[] getSwordsmanAttacks(){return SWORDSMAN_ATTACKS;}
 
-        public void playerDied() {
+        public static void playerDied() {
                 System.out.println("\u001B[31m" + 
                         "-----------------------------------------------------------\n"+
                         " ▓██   ██▓ ▒█████   █    ██    ▓█████▄  ██▓▓█████ ▓█████▄ \n" + 

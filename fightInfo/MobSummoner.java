@@ -44,7 +44,7 @@ public class MobSummoner {
         mobName = "Greater Will Assassin"; 
         chosenMobAttacks = GREATER_WILL_ASSASSIN_ATTACKS; 
 
-        double lvlMultiplier = 1 + lvl / 10 - 0.1;
+        double lvlMultiplier = 1 + (double)lvl/10 - 0.1;
 
         return new Stats( GreaterWillAssassinStats[0] * lvlMultiplier, GreaterWillAssassinStats[1] * lvlMultiplier, GreaterWillAssassinStats[2] * lvlMultiplier, 
                 GreaterWillAssassinStats[3] * lvlMultiplier, GreaterWillAssassinStats[4] * lvlMultiplier, GreaterWillAssassinStats[5] * lvlMultiplier,
@@ -58,8 +58,8 @@ public class MobSummoner {
         mobName = "Nano-Bot Cluster"; 
         chosenMobAttacks = NANO_BOT_ATTACKS; 
 
-        double lvlMultiplier = 1 + lvl / 10 - 0.1;
-
+        double lvlMultiplier = 1 + (double)lvl/10 - 0.1;
+        
         return new Stats(
                 nanoBotStats[0] * lvlMultiplier, nanoBotStats[1] * lvlMultiplier, nanoBotStats[2] * lvlMultiplier,
                 nanoBotStats[3] * lvlMultiplier, nanoBotStats[4] * lvlMultiplier, nanoBotStats[5] * lvlMultiplier,

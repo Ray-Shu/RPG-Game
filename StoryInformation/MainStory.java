@@ -1,6 +1,8 @@
 package StoryInformation;
 
 import java.util.Scanner;
+
+import PlayerAssistants.*;
 import Tools.*;
 import PlayerInformation.*;
 import fightInfo.*;
@@ -92,7 +94,12 @@ public class MainStory {
         Printer.printItalizcizedColor("The guards strong-arm you out of the room as you hear \nderisive laughter behind you... \n", "red");
         quickBreak(1500); 
         //end of flashback
-
+    
+    }
+    //TODO: reset ppoint
+    public void chapter_One_Reset_Point_One(){
+        Stats playerStats = mainPlayer.getPlayerStats();
+        Checkpoints chapter_One_checkpoint_One = new Checkpoints(playerStats);
         Printer.printItalizcizedColor("\"Haaah...\" You sigh, you make your way down a barren and \ndirtied street. Thinking about the past will always, \nwithout fail, make your head spin. \n", "white");
         quickBreak(1000);
         Printer.printItalizcizedColor("Right as you close your eyes, you hear the sound of \nparting dust; and one moment later, you're on your \nknees, a jagged knife to your throat: a light blue \nsheen on it.\n", "white");
@@ -123,8 +130,8 @@ public class MainStory {
         quickBreak(1000); 
 
         //*GETS ALL OF THE INFO OF MC'S CLASS AND STATS ------------------------------------------------------------
+        //Test: Player player = new Player("aaa");
         MobSummoner mobSummoner = new MobSummoner();
-        Stats playerStats = mainPlayer.getPlayerStats();
         Stats mobStats = mobSummoner.newGreaterWillAssassin(1);
         String mobAttacks[] = mobSummoner.GREATER_WILL_ASSASSIN_ATTACKS;
         int mobAttacksCost[] = mobSummoner.GREATER_WILL_ASSASSIN_COSTS;
@@ -134,11 +141,9 @@ public class MainStory {
         //*END OF FIGHT 
 
         //TODO: will finish storyline later
-        Printer.printItalizcizedColor("The assassin falls to the ground.", "white");
-
-
-
-    
+        if(chapter_One_Fight_One.didPlayerDie()) {
+            
+        }
     }
 
     /**

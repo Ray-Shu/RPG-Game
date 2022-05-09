@@ -1,7 +1,7 @@
 import fightInfo.*;
 import PlayerInformation.*;
 import StoryInformation.*;
-
+import PlayerAssistants.*;
 public class Main {
     
     static MobSummoner mobSummoner = new MobSummoner();
@@ -14,23 +14,30 @@ public class Main {
             // Bank playerAccount = new Bank(1000);
             // Town town = new Town("Golden", 1, playerAccount);
             // town.characterEnteringTown();
+            
            
             //* Combat Testing (using class: cyborg)
-            Player player = new Player("bruhmoment");
-            player.playerDied();
-            Stats playerStats = player.forceCombat();
+            // Player player = new Player("bruhmoment");
+            // player.playerDied();
+            //Checkpoints checkpoint = new Checkpoint(player);
+            
 
-            Stats mobStats = mobSummoner.newNanoBotCluster(1);
-            String mobAttacks[] = mobSummoner.NANO_BOT_ATTACKS;
-            int mobAttacksCost[] = mobSummoner.NANO_BOT_COST;
+            // Stats mobStats = mobSummoner.newNanoBotCluster(1);
+            // String mobAttacks[] = mobSummoner.NANO_BOT_ATTACKS;
+            // int mobAttacksCost[] = mobSummoner.NANO_BOT_COST;
 
-            Combat combat = new Combat(player, playerStats, mobStats, mobAttacks, mobAttacksCost, mobSummoner);
-            combat.fight(true);
+            // do {
+            //checkpoints.backToCheckpoint();
+            //Time to fight
+            // Combat combat = new Combat(player, player.playerStats, mobStats, mobAttacks, mobAttacksCost, mobSummoner);
+            // combat.fight(true);
+            // } while(combat.hasPlayerDied());
 
-            // //*StoryLine (currently working on chapter One)
-            // MainStory story = new MainStory();
-            // story.prologue();
-            // story.chapterOne(); 
+            
+            //*StoryLine (currently working on chapter One)
+            MainStory story = new MainStory();
+            //story.prologue();
+            story.chapterOne(); 
 
 
             finishedGame = true;

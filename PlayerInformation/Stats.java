@@ -107,6 +107,12 @@ public class Stats {
                 this.displayStats = displayStats;
         }
 
+        public double[] getCurrentStats(){
+                double currentStats[] = {currentHP, currentMP, currentSpd, currentAtk, currentPhysDmg, currentMagicDmg, currentDef, currentEnd, currentStam, 
+                        currentPhysRes, currentMagicRes, currentDodge, currentVit, currentCritRate, currentCritDmg, currentLuck};
+                return currentStats;
+        }
+
         public void currentToMax(){
                 currentHP = maxHP; 
                 currentMP = maxMP; 

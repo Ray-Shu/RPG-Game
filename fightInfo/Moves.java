@@ -365,7 +365,7 @@ public class Moves {
     //this attack is a blunt force attack dealing major damage to the enemies
     public void death_strike (Stats attackerStats, Stats victimStats) {
         Printer.printColor("The Rogue Sneaks up on their opponent and strikes them down. ", "white");
-        double moveAttack = 12 * attackerStats.currentAtk;
+        double moveAttack = 6 * attackerStats.currentAtk;
         double missMultiplier = 0.3; 
         statsCalculator.doDamage(attackerStats, victimStats, moveAttack, missMultiplier);
     }
@@ -501,7 +501,7 @@ public class Moves {
     }
     public void divine_smite (Stats attackerStats, Stats victimStats) {
         Printer.printColor("Thunder Release!!!", "white");
-        double moveAttack = 13 * attackerStats.currentAtk;
+        double moveAttack = 14.5 * attackerStats.currentAtk;
         double missMultiplier = 1.8; 
         statsCalculator.doDamage(attackerStats, victimStats, moveAttack, missMultiplier);
     }
@@ -572,7 +572,7 @@ public class Moves {
             //Nano-electric Volley
             attackMpCost = 15; 
             Printer.printColor("Greater Will Assassin throws many electrifying nano projectiles at you!", "white");
-            double moveAttack = 6 * attackerStats.currentAtk;
+            double moveAttack = 5 * attackerStats.currentAtk;
             double missMultiplier = 1.4;
             attackerStats.currentMP -= attackMpCost;
             statsCalculator.mobDoDamage(attackerStats, victimStats, moveAttack, missMultiplier);

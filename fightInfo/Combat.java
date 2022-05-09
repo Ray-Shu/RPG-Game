@@ -22,7 +22,7 @@ public class Combat extends Moves{
     private int[] mobAttackCosts;
     private int[] playerAttackCosts;
     private Player player;
-
+    private boolean hasPlayerDied = false;
     /**
      * Constructs the arena for a fight between a mob and a player. 
      * Does not call the fight method, but might make it later. 
@@ -104,6 +104,7 @@ public class Combat extends Moves{
 
         whoDied();
         Printer.printColor("Fight Over", "yellow");
+        return;
 
     }
 
@@ -162,16 +163,27 @@ public class Combat extends Moves{
     /**
      * Checks who died. 
      */
-    public void whoDied () {
-
+    private void whoDied () {
+        
         if(playerStats.currentHP <= 0){
-            Printer.printColor(player.getPlayerName() + " has been defeated", "red");
+            Player.playerDied();
+            
         }
 
         else{
-            Printer.printColor(mobSummoner.getMobName() + " has been defeated!", "green");
+            Printer.printColor(mobSummoner.getMobName() + " has been defeated[!}!", "green");
         }
 
+    }
+
+    public boolean didPlayerDie() {
+        if(playerStats.currentHP <= 0){
+            return true;
+        }
+
+        else{
+            return false;
+        }
     }
 
     /**
@@ -365,5 +377,7 @@ public class Combat extends Moves{
         }
     }
 
-    
+    // public boolean hasPlayerDied(){
+    //      return hasPlayerDied;
+    // }
 }

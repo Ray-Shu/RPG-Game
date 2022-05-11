@@ -194,7 +194,7 @@ public class Classes {
         // character description 
         Printer.printItalizcizedColor("Often associated to dieties, the Reverend is a patient, devoted individual. \nFavoured by the Holy Order, the Reverend uses his abilities to strengthen the weakened, and cure the infected. ","yellow"); 
         Printer.printColor(
-            "HP: 100" + '\n' + "MP: 200" + '\n' + "SPD: 1.25" + '\n' + "ATK: 3"
+            "HP: 150" + '\n' + "MP: 200" + '\n' + "SPD: 1.25" + '\n' + "ATK: 3"
                             + '\n' + "DEF: 3",
             "white");
 

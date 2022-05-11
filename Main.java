@@ -12,8 +12,9 @@ public class Main {
 
             //*Town Testing
             // Bank playerAccount = new Bank(1000);
-            // Town town = new Town("Golden", 1, playerAccount);
-            // town.characterEnteringTown();
+            // TownMaker townMaker = new Townmaker(playerAccount);
+            //townMaker.makeSlums;
+            //townMaker.runSlums;
             
            
             //* Combat Testing (using class: cyborg)
@@ -35,12 +36,16 @@ public class Main {
 
             
             //*StoryLine (currently working on chapter One)
-            MainStory story = new MainStory();
-            //story.prologue();
-            story.chapterOne(); 
+            // MainStory story = new MainStory();
+            // story.prologue();
+            
+            
+            //*InventoryTesting
+            Inventory inventory = new Inventory(); 
+            inventory.showInventory();
 
 
-            finishedGame = true;
+            // finishedGame = true;
 
         }
 
@@ -49,11 +54,15 @@ public class Main {
          * IF I DONT GET AROUND TO FIXING THEM, ILL LIST THEM HERE
          * 
          * BUGS:
-         * nothing happens if player mp is out 
-         * 
+         * unmappable character for encoding windows keeps occuring 
+         * for now, copy past: javac -encoding UTF-8 PlayerInformation/Player.java 
+         * until theres a better fix
          */
 
-         //? Possibly make healing heal around 40% hp? 
 
     }
+
+//     public void goToCurrentTown(){
+//         townMaker.goToCurrentTown();
+//     }
 }

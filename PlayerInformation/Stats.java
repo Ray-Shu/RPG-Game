@@ -146,7 +146,7 @@ public class Stats {
                         Printer.printColor(displayStats[i] + ": " + String.valueOf(element), "white");
                         i++;
                 }
-        }
+        } 
 
         //Adds xp to the user
         public void addXP(int xpGained) {
@@ -188,6 +188,11 @@ public class Stats {
 
                 attackerStats.currentHP += howMuchHeal;
                 
+        }
+
+        //heals player back to full health
+        public void hospitalHeal(){
+                currentHP = maxHP;
         }
 
         //Recovers mp

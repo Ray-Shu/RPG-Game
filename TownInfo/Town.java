@@ -35,19 +35,29 @@ public class Town {
         this.floorLvl = floorLvl;
     }
 
+    /**
+     * Shows a list of all the buildings plus the guilds
+     */
     public void showBuildings(){
         allMerchants.forEach((e) -> {
             System.out.println(e.shopName);  
         });
-        System.out.println(guild.getGuildName());
+        System.out.println(townName + " Adventurers Guild");
     }
 
-    public void addBuilding(Bank playerAccount, String[] itemsForSale, double[] priceOfItem, String shopName, String[] thingsToDo, String greeting, String farewell, String errorMessage, String color){
-        allMerchants.add(new Merchant(playerAccount, this, itemsForSale, priceOfItem, shopName, thingsToDo, greeting, farewell, errorMessage, color));
+    //@return's the name of the townn
+    public String getTownName(){return townName;}
+
+    //adds a new building to the town. 
+    public void addBuilding(Player player, Stats playerStats, Bank playerAccount, String[] itemsForSale, double[] priceOfItem, String shopName, String[] thingsToDo, String greeting, String farewell, String errorMessage, String color){
+        allMerchants.add(new Merchant(player, playerStats, playerAccount, this, itemsForSale, priceOfItem, shopName, thingsToDo, greeting, farewell, errorMessage, color));
+        namesOfThingsInTown.add(shopName);
     }
 
+    //adds a guild to the town. 
     public void addGuild(Guild guild){
         this.guild = guild;
+        namesOfThingsInTown.add(townName + " Adventurers Guild");
     }
 
     public void addDungeon(){
@@ -66,17 +76,26 @@ public class Town {
 
         // gets them to enter a shop name as to where they want to go, and then runs
         // that shop.
-        String whereMerchantWantsToGO = ErrorChecker.compareArrayOfStrings(
+        String whereMerchantWantsToGO = ErrorChecker.compareArrayOfStrings(namesOfThingsInTown.toArray(new String[namesOfThingsInTown.size()]), 
+                    "Sorry could you repeat that?", "blue");
             
-        //makes the names of all the things in town into an actual array, then uses that to check if the user
-        //enters that value
-        namesOfThingsInTown.toArray(new String[namesOfThingsInTown.size()]),
-        "Sorry could you repeat that?", "blue");
-
         //once we have a value, we let them shop at one of the places they asked for. 
         //this checks which name of the shop they entered, then sends them in. 
         allMerchants.forEach((e) -> {
-            if (whereMerchantWantsToGO == e.getShopName()) {
+            if (whereMerchantWantsToGO.equalsIgnoreCase(e.getShopName())) {
+                e.shop();
+                return;
+            }
+        });
+        if(whereMerchantWantsToGO == townName + " Adventurers Guild"){
+            guild.runGuild();
+        }
+    }
+
+    //runs Hospital
+    public void runHospital(){
+        allMerchants.forEach((e) -> {
+            if(e.shopName.equalsIgnoreCase("Hospital")){
                 e.shop();
                 return;
             }

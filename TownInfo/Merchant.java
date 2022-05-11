@@ -12,6 +12,8 @@ public class Merchant {
     private Town town;
     public Bank playerAccount;
     private Scanner scan = new Scanner(System.in);
+	private Stats playerStats;
+	private Player player;
 
     /**
      * This gets all the data we will need for the merchant, including what they might sell, what they say, and what they do. 
@@ -25,8 +27,10 @@ public class Merchant {
      * @param errorMessage this is what they say to you if you say the wrong thing. 
      * @param color this is the color of the text in the store. 
      */
-    Merchant(Bank playerAccount, Town town, String[] itemsForSale, double[] priceOfItem2, String shopName, String[] thingsToDo, String greeting, String farewell, String errorMessage, String color) {
+    Merchant(Player player, Stats playerStats, Bank playerAccount, Town town, String[] itemsForSale, double[] priceOfItem2, String shopName, String[] thingsToDo, String greeting, String farewell, String errorMessage, String color) {
         
+        this.player = player;
+        this.playerStats = playerStats;
         this.itemsForSale = itemsForSale;
         this.priceOfItem = priceOfItem2;
         this.shopName = shopName;
@@ -65,6 +69,21 @@ public class Merchant {
                 for (int i = 0; i < itemsForSale.length; i++) {
                     System.out.println(itemsForSale[i]+ " for " + priceOfItem[i] + " grams of gold");
                 }
+
+                String whatTheyWant = ErrorChecker.compareArrayOfStrings(itemsForSale, errorMessage, color);
+
+                for (int i = 0; i < itemsForSale.length; i++) {
+
+                    if(itemsForSale[i].equals(whatTheyWant)){
+
+                        if(playerAccount.doesPlayerHaveEnoughMoney(priceOfItem[i])){
+                            playerAccount.withdraw(priceOfItem[i]);
+                            //inventory.addItem(itemsForSale[i]);
+                            Printer.printColor("Thank you for your money! Your remaining balance is " + playerAccount.balance, color);
+                        }
+                        
+                    }
+                }
                 break;
 
             // This will allow us to sell some of the items in our inventory. 
@@ -85,6 +104,7 @@ public class Merchant {
             //? Maybe you can buy into health insurance to get reduced healing rates
             case "get healing":
                 Printer.printColor("Healing you: ", color);
+                playerStats.hospitalHeal();
                 break;
 
             //shows bank account balance

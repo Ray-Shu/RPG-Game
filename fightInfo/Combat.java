@@ -104,6 +104,7 @@ public class Combat extends Moves{
 
         whoDied();
         Printer.printColor("Fight Over", "yellow");
+        Printer.printColor(". \n. \n. \n", "yellow");
         return;
 
     }

@@ -61,6 +61,8 @@ public class Player {
         public String chosenAttacks[];
         public int chosenAttacksCost[];
         public String playerName;
+        String chosenClass; 
+
         //*Testing combat stuff
         public Stats forceCombat() {
                 return playerStats;
@@ -234,7 +236,8 @@ public class Player {
                 Printer.printColor("Cyborg, a good choice.", "blue");
                 chosenAttacks = CYBORG_ATTACKS;
                 chosenAttacksCost = CYBORG_ATTACK_COSTS;
-                chosenClass = playerClass; 
+                this.chosenClass = chosenClass; 
+                
         }
 
         public void chooseHacker(String chosenClass){
@@ -243,7 +246,7 @@ public class Player {
                 Printer.printColor("Hacker, a good choice.", "green");
                 chosenAttacks = HACKER_ATTACKS;
                 chosenAttacksCost = HACKER_ATTACK_COSTS;
-                chosenClass = playerClass; 
+                this.chosenClass = chosenClass; 
         }
 
         public void chooseTerminator(String chosenClass){
@@ -252,7 +255,7 @@ public class Player {
                 Printer.printColor("Terminator, a good choice.", "red");
                 chosenAttacks = TERMINATOR_ATTACKS;
                 chosenAttacksCost = TERMINATOR_ATTACK_COSTS;
-                chosenClass = playerClass; 
+                this.chosenClass = chosenClass; 
         }
 
         public void chooseLazerSwordsman(String chosenClass){
@@ -261,7 +264,7 @@ public class Player {
                 Printer.printColor("Lazer Swordsman, a good choice.", "cyan");
                 chosenAttacks = SWORDSMAN_ATTACKS;
                 chosenAttacksCost = SWORDSMAN_ATTACK_COSTS;
-                chosenClass = playerClass; 
+                this.chosenClass = chosenClass; 
         }
 
         public void chooseRogue(String chosenClass){
@@ -270,7 +273,7 @@ public class Player {
                 Printer.printColor("Rogue, a good choice.", "yellow");
                 chosenAttacks = ROGUE_ATTACKS;
                 chosenAttacksCost = ROGUE_ATTACK_COSTS;
-                chosenClass = playerClass; 
+                this.chosenClass = chosenClass; 
                 
         }
 
@@ -280,16 +283,16 @@ public class Player {
                 Printer.printColor("Mystic, a good choice.", "purple");
                 chosenAttacks = MYSTIC_ATTACKS;
                 chosenAttacksCost = MYSTIC_ATTACK_COSTS;
-                chosenClass = playerClass; 
+                this.chosenClass = chosenClass; 
         }
 
         public void chooseReverend(String chosenClass){
-                playerStats = new Stats(100, 250, 1.25, 3.0, 0.0, 6.0, 4.0, 6.0, 200.0, 1.0, 6.0, 0.0, 5.0, 0.0, 0.0, 1.0);
+                playerStats = new Stats(150, 250, 1.25, 3.0, 0.0, 6.0, 4.0, 6.0, 200.0, 1.0, 6.0, 0.0, 5.0, 0.0, 0.0, 1.0);
 
                 Printer.printColor("Reverend, a good choice.", "red");
                 chosenAttacks = REVEREND_ATTACKS;
                 chosenAttacksCost = REVEREND_ATTACK_COSTS;
-                chosenClass = playerClass; 
+                this.chosenClass = chosenClass; 
                 
         }
 
@@ -303,6 +306,10 @@ public class Player {
                 } catch (InterruptedException e) {
                         e.printStackTrace();
                 }
+        }
+
+        public String getChosenClass() {
+                return chosenClass; 
         }
         
         public String getPlayerName() {

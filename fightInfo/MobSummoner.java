@@ -5,6 +5,7 @@ public class MobSummoner {
 
     private String mobName;
     public String chosenMobAttacks[];
+    public int[] chosenAttackCosts;
 
     public final String CYBER_PUNK_ATTACKS[] = {"Right Hook!", "Bionic Crunch", "Weak Kick", "Drunken Fist!" };
     public final int CP_MP_COSTS[] = {5,8,3,10};
@@ -12,11 +13,11 @@ public class MobSummoner {
 
     public final String GREATER_WILL_ASSASSIN_ATTACKS[] = {"Chromium Daggers!", "Nano-electric Volley!", "Frenzied Kicks!", "Cruel Assassin's Flowing Fist!"};
     public final int GREATER_WILL_ASSASSIN_COSTS[] = {10, 15, 6, 8};
-    public double[] GreaterWillAssassinStats = {140, 60, 2.0, 5.0, 6.0, 4.0, 3.5, 4.0, 140.0, 4.0, 4.0, 4.0, 2.0, 3.0, 9.0, 1.0};
+    public double[] GreaterWillAssassinStats = {140, 60, 1.0, 3.5, 6.0, 4.0, 3.5, 4.0, 140.0, 4.0, 4.0, 4.0, 2.0, 3.0, 9.0, 1.0};
 
     public final String NANO_BOT_ATTACKS[] = {"Synthetic Infection!", "Integrated Combustion!", "Coordinated Ion Drill!", "Neon-Laser Cascade!"}; 
     public final int NANO_BOT_COST[] = {5, 10, 7, 8}; 
-    public double[] nanoBotStats = {150, 60, 1.7, 4.0, 7.0, 1.0, 2.5, 2.0, 130, 2.0, 1.0, 2.0, 1.0, 4.5, 4.0, 1.0}; 
+    public double[] nanoBotStats = {150, 60, 0.9, 3.0, 5.0, 1.0, 2.5, 2.0, 130, 2.0, 1.0, 2.0, 1.0, 4.5, 4.0, 1.0}; 
 
     // ion drill: fire radioactive ions towards you
     
@@ -29,7 +30,7 @@ public class MobSummoner {
         
         mobName = "Cyberpunk";
         chosenMobAttacks = CYBER_PUNK_ATTACKS;
-
+        chosenAttackCosts = CP_MP_COSTS;
         //Calculates the mob's stats based on their level
         double lvlMultiplier = 1 + (double)lvl/10 - 0.1;
 
@@ -43,6 +44,7 @@ public class MobSummoner {
     public Stats newGreaterWillAssassin(int lvl){
         mobName = "Greater Will Assassin"; 
         chosenMobAttacks = GREATER_WILL_ASSASSIN_ATTACKS; 
+        chosenAttackCosts = GREATER_WILL_ASSASSIN_COSTS;
 
         double lvlMultiplier = 1 + (double)lvl/10 - 0.1;
 
@@ -57,6 +59,7 @@ public class MobSummoner {
     public Stats newNanoBotCluster(int lvl) {
         mobName = "Nano-Bot Cluster"; 
         chosenMobAttacks = NANO_BOT_ATTACKS; 
+        chosenAttackCosts = NANO_BOT_COST;
 
         double lvlMultiplier = 1 + (double)lvl/10 - 0.1;
         
@@ -75,4 +78,13 @@ public class MobSummoner {
         return mobName;
     }
     
+    //@return chosen Attacks
+    public String[] getChosenAttacks(){
+        return chosenMobAttacks;
+    }
+
+    //@return cost of the mobs attacks
+    public int[] getChosenAttackCosts(){
+        return chosenAttackCosts;
+    }
 }

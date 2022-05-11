@@ -30,4 +30,11 @@ public class Bank {
     public void deposit (double amount) {
         balance += amount;
     }
+
+    public boolean doesPlayerHaveEnoughMoney(double amount){
+        if(balance - amount >= 0){
+            return true;
+        }
+        return false;
+    }
 }

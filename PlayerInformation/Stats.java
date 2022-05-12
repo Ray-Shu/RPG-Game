@@ -156,7 +156,7 @@ public class Stats {
 
         //checks if the user is ready for a level up
         public void checkXP() {
-                if(xp / XP_TO_LVL_UP == 1){
+                if(xp / XP_TO_LVL_UP >= 1){
                         xp-= XP_TO_LVL_UP;
                         levelUp();
                         checkXP();

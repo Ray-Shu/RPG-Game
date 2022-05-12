@@ -87,7 +87,7 @@ public class Town {
                 return;
             }
         });
-        if(whereMerchantWantsToGO == townName + " Adventurers Guild"){
+        if(whereMerchantWantsToGO.equalsIgnoreCase(townName + " Adventurers Guild")){
             guild.runGuild();
         }
     }

@@ -8,18 +8,18 @@ public class Guild {
 
     private String townName;
     private String color;
-    ArrayList<Missions> allMissions = new ArrayList<Missions>();
-    ArrayList<String>namesOfAllMissions = new ArrayList<String>();
+    private ArrayList<Missions> allMissions = new ArrayList<Missions>();
+    private ArrayList<String>namesOfAllMissions = new ArrayList<String>();
 
-    String slum1MissionName = "Save Train from bandits";
-    String[] slum1MissionOpponents = {"cyber punk", "nano bot cluster", "greater will assassin"};
-    int[] slum1MissionOpponentLevels = {1, 2, 3};
-    String slum1MissionProblem = "Bandits have attacked the hyperloop. Defeat them all to earn a bounty!";
-    String slum1MissionGreeting = "Help us! The bandits are attempting to hijack the train!";
-    String slum1MissionThankYou = "Thank you so much for your help!";
-    int slum1MissionXPReward = 250;
-    String[] slum1MissionItems = new String[5];
-    String slum1MissionColor = "blue";
+    private String slum1MissionName = "Save Train from bandits";
+    private String[] slum1MissionOpponents = {"cyber punk", "nano bot cluster", "greater will assassin"};
+    private int[] slum1MissionOpponentLevels = {1, 2, 3};
+    private String slum1MissionProblem = "Bandits have attacked the hyperloop. Defeat them all to earn a bounty!";
+    private String slum1MissionGreeting = "Help us! The bandits are attempting to hijack the train!";
+    private String slum1MissionThankYou = "Thank you so much for your help!";
+    private int slum1MissionXPReward = 250;
+    private String[] slum1MissionItems = new String[5];
+    private String slum1MissionColor = "blue";
 
     /**
      * Creates the guild and makes it based on the name of the town
@@ -52,8 +52,15 @@ public class Guild {
 
         printMissions();
 
+        Printer.printColor("\nWhich mission would you like to go on?", color);
         String missionToDo = ErrorChecker.compareArrayOfStrings(namesOfAllMissions.toArray(new String[namesOfAllMissions.size()]), "Sorry please repeat that!", color);
         
+        allMissions.forEach((e) -> {
+            if (missionToDo.equalsIgnoreCase(e.getMissionName())) {
+                e.runMission();
+                return;
+            }
+        });
     }
 
    

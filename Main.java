@@ -2,6 +2,8 @@ import fightInfo.*;
 import PlayerInformation.*;
 import StoryInformation.*;
 import PlayerAssistants.*;
+import TownInfo.*;
+
 public class Main {
     
     static MobSummoner mobSummoner = new MobSummoner();
@@ -11,14 +13,15 @@ public class Main {
         while (!finishedGame) {
 
             //*Town Testing
-            // Bank playerAccount = new Bank(1000);
-            // TownMaker townMaker = new Townmaker(playerAccount);
-            //townMaker.makeSlums;
-            //townMaker.runSlums;
+            Player player = new Player("bruhmoment");
+            Bank playerAccount = new Bank(1000);
+            TownMaker townMaker = new TownMaker(playerAccount,player, player.forceCombat());
+            townMaker.makeSlums();
+            townMaker.runSlums();
             
            
             //* Combat Testing (using class: cyborg)
-            // Player player = new Player("bruhmoment");
+            //Player player = new Player("bruhmoment");
             // player.playerDied();
             //Checkpoints checkpoint = new Checkpoint(player);
             
@@ -40,9 +43,9 @@ public class Main {
             // story.prologue();
             
             
-            //*InventoryTesting
-            Inventory inventory = new Inventory(); 
-            inventory.showInventory();
+            // //*InventoryTesting
+            // Inventory inventory = new Inventory(); 
+            // inventory.showInventory();
 
 
             // finishedGame = true;

@@ -18,7 +18,7 @@ public class Missions {
     private boolean isMissionComplete = false;
 	private Guild guild; 
 
-    Missions(Guild guild, Town town, String missionName, String[] mobNames, int[] MobLevels, Player player, Stats playerStats, String problem, String greeting, String thankYouFarewell, String color, int XP_Reward, String[] itemRewards){
+    Missions(Guild guild, Town town, String missionName, String[] mobNames, int[] mobLevels, Player player, Stats playerStats, String problem, String greeting, String thankYouFarewell, String color, int XP_Reward, String[] itemRewards){
         
         this.guild = guild;
         this.town = town;
@@ -44,7 +44,8 @@ public class Missions {
     //prints out the information about the mission, including the missions name, rewards, and problem. 
     public void printMissionInfo(){
         Printer.printColor(missionName + ": ", color);
-        Printer.printItalizcizedColor( problem + "\nRewards: " + XP_Reward + "XP & " + itemRewards.toString(),"grey");
+        Printer.printItalizcizedColor( problem + "\nRewards: " + XP_Reward + "XP", "grey");
+        // Printer.printItalizcizedColor( problem + "\nRewards: " + XP_Reward + "XP & " + itemRewards.toString(),"grey");
     }
 
     /**
@@ -60,6 +61,7 @@ public class Missions {
         //For each mob in the battle, we will have to fight it with our current Stats. Goal is to defeat all enemies, then we get our reward. 
         for (int i = 0; i < mobNames.length; i++) {
 
+            Printer.printColor("Watch out! A level "+ mobLevels[i] + " "+ mobNames[i] + " has appeared!!! \n", color);
             //makes the stats of the current mob equal to the stats of the 
             if(mobNames[i].equalsIgnoreCase("Cyber Punk")){
                 currentMobStats = mobSummoner.newCyberPunk(mobLevels[i]);
@@ -86,6 +88,8 @@ public class Missions {
                 return;
             }
             Printer.printColor((i+1) + "/" + mobNames.length + " mob's defeated!\n", "green");
+
+            quickBreak(2000);
         }
         missionSuccessful();
     }
@@ -96,11 +100,16 @@ public class Missions {
  * Runs the stuff if the mission is successful. 
  */
     public void missionSuccessful(){
+
         Printer.printColor(thankYouFarewell, color);
-        playerStats.addXP(XP_Reward);
         Printer.printColor("Rewards: " + XP_Reward + "XP & " + itemRewards.toString(),"grey\n");
+        quickBreak(1000);
+        playerStats.addXP(XP_Reward);
         isMissionComplete = true;
-        
+        Printer.printColor("\nTeleporting back to town!\n", color);
+        quickBreak(1000);
+        town.characterEnteringTown();
+
     }
 
 /**
@@ -111,5 +120,18 @@ public class Missions {
         town.runHospital();
         playerStats.hospitalHeal();
         return;
+    }
+
+
+    /**
+     * input the time in milliseconds 
+     * @param t - time in milliseconds
+     */
+    public void quickBreak(int t) {
+        try {
+                Thread.sleep(t);
+        } catch (InterruptedException e) {
+                e.printStackTrace();
+        }
     }
 }

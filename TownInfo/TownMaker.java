@@ -20,14 +20,14 @@ public class TownMaker{
 	private Stats playerStats;
 	private Player player;
 
-    TownMaker(Bank playerAccount, Player player, Stats playerStats){
+    public TownMaker(Bank playerAccount, Player player, Stats playerStats){
         this.playerAccount = playerAccount;
         this.player = player;
         this.playerStats = playerStats;
     }
 
     public void makeSlums(){
-        slums = new Town("The Slums", 1, playerAccount);
+        slums = new Town("Slums", 1, playerAccount);
         slums.addBuilding(player, playerStats, playerAccount, notStoreItems, notStorePrices, slumBankName, thingsToDoInSlumBank, greeting4SlumBank, farewell4SlumBank, error4SlumBank, colorOfSlumBank);
         slums.addBuilding(player, playerStats, playerAccount, notStoreItems, notStorePrices, "Hospital",thingsToDoAtHospital, "Welcome to the Hospital! We are ready to heal you!", "Thank you for coming", "Sorry could you repeat that?", "white");
         Guild slumsAdventurersGuild = new Guild(slums, player, playerStats);

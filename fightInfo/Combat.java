@@ -172,7 +172,7 @@ public class Combat extends Moves{
         }
 
         else{
-            Printer.printColor(mobSummoner.getMobName() + " has been defeated[!}!", "green");
+            Printer.printColor(mobSummoner.getMobName() + " has been defeated!", "green");
         }
 
     }

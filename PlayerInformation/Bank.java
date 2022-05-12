@@ -7,7 +7,7 @@ public class Bank {
      * Creates a bank account with a certain amount of money
      * @param balance is the initial balance of the account
      */
-    Bank(double balance){
+    public Bank(double balance){
         this.balance = balance;
     }
     

@@ -126,7 +126,8 @@ public class Merchant {
         }        
     }
     
-   
+    
+
     public String getShopName() {
         return shopName;
     }

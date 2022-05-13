@@ -3,6 +3,11 @@ package PlayerInformation;
 public class Armours {
     String armourType;  //light | heavy | mage 
     String armour;  //what the armour is 
+    String headPiece; 
+    String chestPiece; 
+    String legPiece; 
+    String boots; 
+
     Stats playerStats; 
 
     double armourSetHP; 
@@ -43,11 +48,15 @@ public class Armours {
 
     //TODO: implement a "check what youre wearing thing to implement additional armour stats"
 
-    public Armours(String armour, String armourType, Stats playerStats) {
-        this.armour = armour; 
-        this.armourType = armourType; 
+    public Armours(Stats playerStats) {
         this.playerStats = playerStats; 
-        checkArmour(); 
+    }
+
+    public void equipArmour(String armourType, String headPiece, String chestPiece, String legPiece, String boots){ 
+        this.headPiece = headPiece; 
+        this.chestPiece = chestPiece; 
+        this.legPiece = legPiece; 
+        this.boots = boots; 
     }
 
 

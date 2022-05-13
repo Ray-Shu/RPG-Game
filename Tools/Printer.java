@@ -81,6 +81,18 @@ public class Printer {
         public static void printItalizcizedColor (String whatToPrint, String color){
            printColor(START_ITALICIZED + whatToPrint + END_ITALICIZED , color);
         }
+
+        /**
+        * input the time in milliseconds 
+        * @param t - time in milliseconds
+        */
+        public static void quickBreak(int t) {
+            try {
+                    Thread.sleep(t);
+            } catch (InterruptedException e) {
+                    e.printStackTrace();
+            }
+        }
     }
 
 

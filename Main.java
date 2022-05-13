@@ -1,6 +1,9 @@
 import fightInfo.*;
 import PlayerInformation.*;
 import StoryInformation.*;
+
+import java.util.ArrayList;
+
 import PlayerAssistants.*;
 import TownInfo.*;
 
@@ -11,18 +14,18 @@ public class Main {
         boolean finishedGame = false;
 
         while (!finishedGame) {
-
-            //*Town Testing
-            Player player = new Player("bruhmoment");
-            Bank playerAccount = new Bank(1000);
-            TownMaker townMaker = new TownMaker(playerAccount,player, player.forceCombat());
-            townMaker.makeSlums();
-            townMaker.runSlums();
+ 
+            // // *Town Testing
+            // Player player = new Player("bruhmoment");
+            // Bank playerAccount = new Bank(1000);
+            // TownMaker townMaker = new TownMaker(playerAccount,player, player.forceCombat());
+            // townMaker.makeSlums();
+            // townMaker.runSlums();
             
            
             //* Combat Testing (using class: cyborg)
-            //Player player = new Player("bruhmoment");
-            // player.playerDied();
+            // Player player = new Player("bruhmoment");
+            // player.playerDied();the
             //Checkpoints checkpoint = new Checkpoint(player);
             
 
@@ -43,12 +46,11 @@ public class Main {
             // story.prologue();
             
             
-            // //*InventoryTesting
-            // Inventory inventory = new Inventory(); 
-            // inventory.showInventory();
+            //*InventoryTesting
+            inventoryTest(); 
 
 
-            // finishedGame = true;
+            finishedGame = true;
 
         }
 
@@ -68,4 +70,24 @@ public class Main {
 //     public void goToCurrentTown(){
 //         townMaker.goToCurrentTown();
 //     }
+
+    public static void inventoryTest(){
+        ArrayList<String> itemsToAdd = new ArrayList<String>(); 
+            itemsToAdd.add("mana potion");
+            itemsToAdd.add("health potion");
+            itemsToAdd.add("Superior Spectral Helm"); 
+            itemsToAdd.add("Speed potion"); 
+            itemsToAdd.add("cyborg weapon"); 
+            itemsToAdd.add("xenon blaster");
+            //itemsToAdd.add("Rogue helm"); 
+            itemsToAdd.add("Mage hood");
+
+
+            Player player = new Player("test"); 
+            Stats playerStats = player.getPlayerStats(); 
+            Inventory inventory = new Inventory(playerStats); 
+            inventory.addInventory(itemsToAdd);
+            inventory.playerInventoryAddEquippedArmour("Battered Spectral Helm", "Battered Spectral Chestplate", "Battered Spectral Leggings", null);
+            inventory.showInventory();
+    }
 }

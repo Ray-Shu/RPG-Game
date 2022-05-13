@@ -105,6 +105,7 @@ public class Merchant {
             case "get healing":
                 Printer.printColor("Healing you: ", color);
                 playerStats.hospitalHeal();
+                playerStats.rest();
                 break;
 
             //shows bank account balance
@@ -126,10 +127,27 @@ public class Merchant {
         }        
     }
     
-   
-    public String getShopName() {
-        return shopName;
-    }
+    /**
+     * This method is run after player dies to give them a nice wakeup. After a death, they will get sent to the hospital and healed. 
+     */
+   public void playerDiedWakeup(){
 
+        Printer.printColor("You wake up in the hosptal bed feeling terrible pain.\nYou need to say something to get the attention of a nurse", "cyan");
+        scan.next();
+
+        Printer.printItalizcizedColor("Don't strain yourself! You're very lucky that our healer got to you when she did.\n You need to rest\n", "cyan");
+        playerStats.rest();
+        playerStats.hospitalHeal();
+
+        Printer.printColor("You go to sleep, and wake up three days later feeling refreshed...", "cyan");
+        Printer.quickBreak(1000);
+        shop();
+
+    }   
+
+    //returns the shopname
+    public String getShopName() {return shopName;}
+
+    
 }
 

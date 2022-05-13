@@ -16,9 +16,12 @@ public class Missions {
     private Combat combat;
     private Town town;
     private boolean isMissionComplete = false;
-	private Guild guild; 
+	private Guild guild;
+	private int recommendedLevel; 
 
-    Missions(Guild guild, Town town, String missionName, String[] mobNames, int[] mobLevels, Player player, Stats playerStats, String problem, String greeting, String thankYouFarewell, String color, int XP_Reward, String[] itemRewards){
+    //TODO: ADD COMMENTS TO THIS PART
+    //I will do later, cause my extensions do not work with liveshare and this would take ages.
+    Missions(Guild guild, Town town, String missionName, String[] mobNames, int[] mobLevels, Player player, Stats playerStats, String problem, String greeting, String thankYouFarewell, String color, int XP_Reward, String[] itemRewards, int recommendedLevel){
         
         this.guild = guild;
         this.town = town;
@@ -33,7 +36,7 @@ public class Missions {
         this.XP_Reward = XP_Reward;
         this.itemRewards = itemRewards;
         this.greeting = greeting;
-
+        this.recommendedLevel = recommendedLevel;
     }
 
     //returns the name of the mission
@@ -43,8 +46,8 @@ public class Missions {
 
     //prints out the information about the mission, including the missions name, rewards, and problem. 
     public void printMissionInfo(){
-        Printer.printColor(missionName + ": ", color);
         Printer.printItalizcizedColor( problem + "\nRewards: " + XP_Reward + "XP", "grey");
+        Printer.printColor("This mission is recommended for level " + recommendedLevel+ " players", color);
         // Printer.printItalizcizedColor( problem + "\nRewards: " + XP_Reward + "XP & " + itemRewards.toString(),"grey");
     }
 
@@ -89,7 +92,7 @@ public class Missions {
             }
             Printer.printColor((i+1) + "/" + mobNames.length + " mob's defeated!\n", "green");
 
-            quickBreak(2000);
+            Printer.quickBreak(2000);
         }
         missionSuccessful();
     }
@@ -103,11 +106,11 @@ public class Missions {
 
         Printer.printColor(thankYouFarewell, color);
         Printer.printColor("Rewards: " + XP_Reward + "XP & " + itemRewards.toString(),"grey\n");
-        quickBreak(1000);
+        Printer.quickBreak(1000);
         playerStats.addXP(XP_Reward);
         isMissionComplete = true;
         Printer.printColor("\nTeleporting back to town!\n", color);
-        quickBreak(1000);
+        Printer.quickBreak(1000);
         town.characterEnteringTown();
 
     }
@@ -117,21 +120,7 @@ public class Missions {
  */
     public void missionFailed(){
         Printer.printColor("Teleporting back to town for recovery...","cyan");
-        town.runHospital();
-        playerStats.hospitalHeal();
+        town.playerNeedsHospital();
         return;
-    }
-
-
-    /**
-     * input the time in milliseconds 
-     * @param t - time in milliseconds
-     */
-    public void quickBreak(int t) {
-        try {
-                Thread.sleep(t);
-        } catch (InterruptedException e) {
-                e.printStackTrace();
-        }
     }
 }

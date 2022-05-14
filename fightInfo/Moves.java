@@ -16,6 +16,7 @@ public class Moves {
 
     //* General stuff
 
+    
     /**
      * Prints out that they are too tired. 
      */
@@ -487,6 +488,8 @@ public class Moves {
                     if(!attackerStats.canSpeedUp()){Printer.printColor("Speed buff maxed out!", "yellow");}
                     if(!attackerStats.canAtkUp()){Printer.printColor("Atk buff maxed out!", "yellow");}
                     return;
+                //case 5: 
+                    
                 default: 
                     Printer.print("Please enter a valid number: ");
                     break;

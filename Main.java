@@ -22,23 +22,27 @@ public class Main {
             // townMaker.makeSlums();
             // townMaker.runSlums();
             
-           
+            // *InventoryTesting
+            //inventoryTest();
+
             //* Combat Testing (using class: cyborg)
-            // Player player = new Player("bruhmoment");
-            // player.playerDied();the
-            //Checkpoints checkpoint = new Checkpoint(player);
+            Player player = new Player("bruhmoment");
+            Stats playerStats = player.getPlayerStats();
+            Player.playerDied();
+            Checkpoints checkpoint = new Checkpoints(playerStats);
             
 
-            // Stats mobStats = mobSummoner.newNanoBotCluster(1);
-            // String mobAttacks[] = mobSummoner.NANO_BOT_ATTACKS;
-            // int mobAttacksCost[] = mobSummoner.NANO_BOT_COST;
+            Stats mobStats = mobSummoner.newNanoBotCluster(1);
+            String mobAttacks[] = mobSummoner.NANO_BOT_ATTACKS;
+            int mobAttacksCost[] = mobSummoner.NANO_BOT_COST;
+            Combat combat = new Combat(player, player.playerStats, mobStats, mobAttacks, mobAttacksCost, mobSummoner);
 
-            // do {
-            //checkpoints.backToCheckpoint();
+            do {
+            checkpoint.backToCheckpoint();
             //Time to fight
-            // Combat combat = new Combat(player, player.playerStats, mobStats, mobAttacks, mobAttacksCost, mobSummoner);
-            // combat.fight(true);
-            // } while(combat.hasPlayerDied());
+            combat.fight(true);
+            } while(combat.didPlayerDie());
+            
 
             
             //*StoryLine (currently working on chapter One)
@@ -46,8 +50,7 @@ public class Main {
             // story.prologue();
             
             
-            //*InventoryTesting
-            inventoryTest(); 
+             
 
 
             finishedGame = true;
@@ -65,6 +68,7 @@ public class Main {
          */
 
 
+         //Will work more on inventory; need to have it sync with Combat and implement 'leave' function in inventory
     }
 
 //     public void goToCurrentTown(){
@@ -73,21 +77,20 @@ public class Main {
 
     public static void inventoryTest(){
         ArrayList<String> itemsToAdd = new ArrayList<String>(); 
-            itemsToAdd.add("mana potion");
-            itemsToAdd.add("health potion");
-            itemsToAdd.add("Superior Spectral Helm"); 
-            itemsToAdd.add("Speed potion"); 
-            itemsToAdd.add("cyborg weapon"); 
-            itemsToAdd.add("xenon blaster");
+            
             //itemsToAdd.add("Rogue helm"); 
             itemsToAdd.add("Mage hood");
-
+            itemsToAdd.add("mana potion");
+            itemsToAdd.add("health potion");
+            itemsToAdd.add("Superior Spectral Helm");
+            itemsToAdd.add("Speed potion");
+            itemsToAdd.add("cyborg weapon");
+            itemsToAdd.add("xenon blaster");
 
             Player player = new Player("test"); 
-            Stats playerStats = player.getPlayerStats(); 
-            Inventory inventory = new Inventory(playerStats); 
-            inventory.addInventory(itemsToAdd);
-            inventory.playerInventoryAddEquippedArmour("Battered Spectral Helm", "Battered Spectral Chestplate", "Battered Spectral Leggings", null);
-            inventory.showInventory();
+            // Stats playerStats = player.getPlayerStats(); 
+            //inventory.addInventory(itemsToAdd);
+            // inventory.playerInventoryAddEquippedArmour("Battered Spectral Helm", "Battered Spectral Chestplate", "Battered Spectral Leggings", null);
+            // inventory.showInventory();
     }
 }

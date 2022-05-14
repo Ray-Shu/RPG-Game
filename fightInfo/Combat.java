@@ -23,6 +23,8 @@ public class Combat extends Moves{
     private int[] playerAttackCosts;
     private Player player;
     private boolean hasPlayerDied = false;
+    public Inventory playerInventory; 
+
     /**
      * Constructs the arena for a fight between a mob and a player. 
      * Does not call the fight method, but might make it later. 
@@ -46,7 +48,7 @@ public class Combat extends Moves{
 
         mobTurnRate = mobStats.currentSpd;
         playerTurnRate = playerStats.currentSpd;   
-
+        
     }
 
     /**
@@ -68,8 +70,15 @@ public class Combat extends Moves{
 
                 Printer.printColor("It is your turn! Your current MP: "+ playerStats.currentMP + " | Enemy HP: "+ df.format(mobStats.currentHP) + "\n", "cyan");
                 
+                listAttacks();
 
-                playerMove();
+                int showInventory = scan.nextInt();
+                if(showInventory != 5){ 
+                    playerMove();
+                } else {
+                    player.showInventory();
+                }
+                
                 checkPlayerBoosts();
                 System.out.println();
 
@@ -198,15 +207,13 @@ public class Combat extends Moves{
             Printer.printColor("("+ (i + 1) + ") "+ player.chosenAttacks[i] + "\tMP COST: "+ playerAttackCosts[i], "white");
             i++;
         }
-        Printer.print("("+(i + 1)+") Inventory\n----------------------------------------------------------");
-
+        Printer.print("("+(i + 1)+") Inventory\n----------------------------------------------------------");        
     }
     
     /**
      * Prints out the player's moves, then does the attack based on their response. 
      */
     public void playerMove() {
-        listAttacks();
         
         //checks which class we are, and then prompts them to answer a thing. 
         if (player.chosenAttacks == player.getCyborgAttacks()){

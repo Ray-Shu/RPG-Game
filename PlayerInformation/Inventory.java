@@ -18,8 +18,9 @@ public class Inventory {
 
     ArrayList<String> playerInventory = new ArrayList<String>(maxStorage); 
 
-    public Inventory(Stats playerStats) { 
-        Armours armour = new Armours(playerStats);
+    public Inventory() { 
+        
+        //Armours armour = new Armours();
     }   
 
     public void addInventory(ArrayList<String> itemsToAdd) {
@@ -93,6 +94,11 @@ public class Inventory {
         Printer.print("\n\n[" + storageUsed + "]" + "/" + "[" + maxStorage + "]"); 
 
         Printer.printColor("--------------------------------------------------------------------------------------------------------------------------------","yellow");
+
+        Printer.printColor("\n\n[E] Exit Inventory","yellow");
+
+        
+
         
     }
 

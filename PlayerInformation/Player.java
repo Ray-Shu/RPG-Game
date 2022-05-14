@@ -1,4 +1,6 @@
 package PlayerInformation;
+import java.util.ArrayList;
+
 import Tools.*;
 
 public class Player {
@@ -77,6 +79,18 @@ public class Player {
                 playerName = name;
         }
         //*End of testing combat stuff
+
+
+        Inventory playerInventory = new Inventory(); 
+        public void showInventory(){
+                playerInventory.showInventory(); 
+                
+        }
+
+        public void addToInventory(ArrayList<String> itemsToAdd){
+                playerInventory.addInventory(itemsToAdd);
+        }
+
 
         public void printCrateInfo() {
                 //* CRATE ONE INFO - Cyborg

@@ -80,8 +80,16 @@ public class Player {
         }
         //*End of testing combat stuff
 
-
+        /**
+         * ALL INVENTORY RELATED STUFF
+         * Reference to this when showing or adding to inventory
+         */
         Inventory playerInventory = new Inventory(); 
+
+        public void createInventory(){
+                playerInventory.createInventory(playerStats); 
+        }
+
         public void showInventory(){
                 playerInventory.showInventory(); 
                 

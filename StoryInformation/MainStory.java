@@ -59,7 +59,10 @@ public class MainStory {
         // Printer.printColor("Choose the crate you desire.", "purple");
         // quickBreak(5000); 
         mainPlayer.printCrateInfo(); 
-        this.chosenClass = mainPlayer.getChosenClass(); 
+        this.chosenClass = mainPlayer.getChosenClass();
+
+        mainPlayer.createInventory();
+        mainPlayer.showInventory();
 
         // Printer.print("\n\"Got your choice? Alright, we'll meet up with you later at the Antarctic Domain. We've still got other people to break out.\" \n\033[3mHowever, just before he leaves, he turns back.\n\033[0m\"Oh right, I forgot to give you this, here.\" \033[3mHe hands you a map and a letter.\033[0m \n\"The letter is a referral so you dont get scammed in shops, there's also a second paper that shows useful locations here. Alright, I think that's everything, good luck!\"\n");
         // Printer.printItalizcizedColor("The group leaves; silence permeates the air and you check what you recieved. \n","white");

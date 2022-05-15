@@ -25,29 +25,29 @@ public class Main {
             // *InventoryTesting
             //inventoryTest();
 
-            //* Combat Testing (using class: cyborg)
-            Player player = new Player("bruhmoment");
-            Stats playerStats = player.getPlayerStats();
-            Player.playerDied();
-            Checkpoints checkpoint = new Checkpoints(playerStats);
+            // //* Combat Testing (using class: cyborg)
+            // Player player = new Player("bruhmoment");
+            // Stats playerStats = player.getPlayerStats();
+            // Player.playerDied();
+            // Checkpoints checkpoint = new Checkpoints(playerStats);
             
 
-            Stats mobStats = mobSummoner.newNanoBotCluster(1);
-            String mobAttacks[] = mobSummoner.NANO_BOT_ATTACKS;
-            int mobAttacksCost[] = mobSummoner.NANO_BOT_COST;
-            Combat combat = new Combat(player, player.playerStats, mobStats, mobAttacks, mobAttacksCost, mobSummoner);
+            // Stats mobStats = mobSummoner.newNanoBotCluster(1);
+            // String mobAttacks[] = mobSummoner.NANO_BOT_ATTACKS;
+            // int mobAttacksCost[] = mobSummoner.NANO_BOT_COST;
+            // Combat combat = new Combat(player, player.playerStats, mobStats, mobAttacks, mobAttacksCost, mobSummoner);
 
-            do {
-            checkpoint.backToCheckpoint();
-            //Time to fight
-            combat.fight(true);
-            } while(combat.didPlayerDie());
+            // do {
+            // checkpoint.backToCheckpoint();
+            // //Time to fight
+            // combat.fight(true);
+            // } while(combat.didPlayerDie());
             
 
             
             //*StoryLine (currently working on chapter One)
-            // MainStory story = new MainStory();
-            // story.prologue();
+            MainStory story = new MainStory();
+            story.prologue();
             
             
              
@@ -62,8 +62,8 @@ public class Main {
          * IF I DONT GET AROUND TO FIXING THEM, ILL LIST THEM HERE
          * 
          * BUGS:
-         * unmappable character for encoding windows keeps occuring 
-         * for now, copy past: javac -encoding UTF-8 PlayerInformation/Player.java 
+         * unmappable character for encoding windows keeps occuring
+         * for now, copy past: javac -encoding UTF-8 PlayerInformation/Player.java
          * until theres a better fix
          */
 

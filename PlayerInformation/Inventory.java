@@ -7,6 +7,10 @@ import java.util.Scanner;
 import Tools.Printer;
 
 public class Inventory {
+
+    Player mainPlayer;
+    Stats playerStats; 
+
     String headPiece; 
     String chestPiece; 
     String legPiece; 
@@ -16,12 +20,18 @@ public class Inventory {
     int storageUsed; 
     int maxStorage = 5; 
 
+    Scanner in = new Scanner(System.in);
+
     ArrayList<String> playerInventory = new ArrayList<String>(maxStorage); 
 
     public Inventory() { 
         
         //Armours armour = new Armours();
     }   
+
+    public void createInventory(Stats playerStats){
+        this.playerStats = playerStats; 
+    }
 
     public void addInventory(ArrayList<String> itemsToAdd) {
         playerInventory.addAll(itemsToAdd);
@@ -97,7 +107,7 @@ public class Inventory {
 
         Printer.printColor("\n\n[E] Exit Inventory","yellow");
 
-        
+        in.nextLine(); 
 
         
     }

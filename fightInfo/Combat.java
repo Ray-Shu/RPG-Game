@@ -23,7 +23,9 @@ public class Combat extends Moves{
     private int[] playerAttackCosts;
     private Player player;
     private boolean hasPlayerDied = false;
-    public Inventory playerInventory; 
+    public Inventory playerInventory;
+    private String[] playerAttacks;
+    private PlayerCreation creator; 
 
     /**
      * Constructs the arena for a fight between a mob and a player. 
@@ -40,15 +42,15 @@ public class Combat extends Moves{
 
         this.playerStats = playerStats;
         this.player = player;
-        this.playerAttackCosts = player.chosenAttacksCost;
+        this.playerAttackCosts = player.getAttacksCosts();
         this.mobStats = mobStats;
         this.mobAttacks = mobAttacks;
         this.mobSummoner = mobSummoner;
         this.mobAttackCosts = mobAttacksCost;
-
-        mobTurnRate = mobStats.currentSpd;
-        playerTurnRate = playerStats.currentSpd;   
-        
+        this.playerAttacks = player.getChosenAttacks();
+        mobTurnRate = mobStats.getCurrentSpeed();
+        playerTurnRate = playerStats.getCurrentSpeed();   
+        this.creator = player.getCreator();
     }
 
     /**
@@ -96,7 +98,7 @@ public class Combat extends Moves{
                     Printer.print("Watch out! It is the enemies turn and they are going to attack you! ");
                     hasMobAttacked = false;
                 }
-                Printer.printColor("It is the opponents turn! " + mobSummoner.getMobName() + "'s current MP: " + mobStats.currentMP + " Your HP: "+ df.format(playerStats.currentHP) + "\n", "red");
+                Printer.printColor("It is the opponents turn! " + mobSummoner.getMobName() + "'s current MP: " + mobStats.getCurrentMP() + " Your HP: "+ df.format(playerStats.getCurrentHP()) + "\n", "red");
                 mobMove();
                 checkMobBoosts();
                 System.out.println();
@@ -121,19 +123,19 @@ public class Combat extends Moves{
     //*Doesn't display negative numbers when whoever is killed
     public String checkIfZeroHP(String whoseTurn) {
         if(whoseTurn.equalsIgnoreCase("player")) {
-            if (playerStats.currentHP < 0) {
+            if (playerStats.getCurrentHP() < 0) {
                 return "0";
             } else {
-                return df.format(playerStats.currentHP);
+                return df.format(playerStats.getCurrentHP());
             }
        
         }
 
         if(whoseTurn.equalsIgnoreCase("mob")) {
-            if (mobStats.currentHP < 0){
+            if (mobStats.getCurrentHP() < 0){
                 return "0";
             } else {
-                return df.format(mobStats.currentHP);
+                return df.format(mobStats.getCurrentHP());
             }
         }
 
@@ -152,22 +154,22 @@ public class Combat extends Moves{
      * After an attack, we subtract the other player's turn rate to it and then give the other player their turn rate. 
      */
     public void playerTurnOver() {
-        playerTurnRate -= mobStats.currentSpd;
-        mobTurnRate += mobStats.currentSpd * mobStats.speedMultiplier;
+        playerTurnRate -= mobStats.getCurrentSpeed();
+        mobTurnRate += mobStats.getCurrentSpeed() * mobStats.getSpeedMultiplier();
         // Printer.printItalizcizedColor("Type any letter to continue...", "white");
         // scan.next();
-        quickBreak(1000);
+        Printer.quickBreak(1000);
     }
     
     /**
      * Same as player turn rate, but for the mob class. 
      */
     public void mobTurnOver() {
-        mobTurnRate -= playerStats.currentSpd;
-        playerTurnRate += playerStats.currentSpd * playerStats.speedMultiplier;
+        mobTurnRate -= playerStats.getCurrentSpeed();
+        playerTurnRate += playerStats.getCurrentSpeed() * playerStats.getSpeedMultiplier();
         // Printer.printItalizcizedColor("Type any letter to continue...", "white");
         // scan.next();
-        quickBreak(1000);
+        Printer.quickBreak(1000);
     }
 
     /**
@@ -175,7 +177,7 @@ public class Combat extends Moves{
      */
     private void whoDied () {
         
-        if(playerStats.currentHP <= 0){
+        if(playerStats.getCurrentHP() <= 0){
             Player.playerDied();
             
         }
@@ -187,7 +189,7 @@ public class Combat extends Moves{
     }
 
     public boolean didPlayerDie() {
-        if(playerStats.currentHP <= 0){
+        if(playerStats.getCurrentHP() <= 0){
             return true;
         }
 
@@ -203,8 +205,8 @@ public class Combat extends Moves{
     public void listAttacks() {
         int i = 0;
         Printer.printColor("Here are your moves:\n", "cyan");
-        while(i < player.chosenAttacks.length) {
-            Printer.printColor("("+ (i + 1) + ") "+ player.chosenAttacks[i] + "\tMP COST: "+ playerAttackCosts[i], "white");
+        while(i < playerAttacks.length) {
+            Printer.printColor("("+ (i + 1) + ") "+ playerAttacks[i] + "\tMP COST: "+ playerAttackCosts[i], "white");
             i++;
         }
         Printer.print("("+(i + 1)+") Inventory\n----------------------------------------------------------");        
@@ -216,22 +218,22 @@ public class Combat extends Moves{
     public void playerMove() {
         
         //checks which class we are, and then prompts them to answer a thing. 
-        if (player.chosenAttacks == player.getCyborgAttacks()){
+        if (playerAttacks == creator.getCyborgAttacks()){
             cyborgAttack(playerStats, mobStats);
         }
-        else if (player.chosenAttacks == player.getHackerAttacks()){
+        else if (playerAttacks == creator.getHackerAttacks()){
             hackAttack(playerStats, mobStats);
         }
-        else if (player.chosenAttacks == player.getTerminatorAttacks()){
+        else if (playerAttacks == creator.getTerminatorAttacks()){
             terminatorAttack(playerStats, mobStats);
         }
-        else if (player.chosenAttacks == player.getSwordsmanAttacks()){
+        else if (playerAttacks == creator.getSwordsmanAttacks()){
             swordsmanAttack(playerStats, mobStats);
         }
-        else if (player.chosenAttacks == player.getRogueAttacks()){
+        else if (playerAttacks == creator.getRogueAttacks()){
             rogueAttack(playerStats, mobStats);
         }
-        else if (player.chosenAttacks == player.getMysticAttacks()){
+        else if (playerAttacks == creator.getMysticAttacks()){
             mysticAttack(playerStats, mobStats);
         }
         else {
@@ -257,7 +259,7 @@ public class Combat extends Moves{
         }
         if (movesWeCanDo.isEmpty()) {
             System.out.println("The enemy has run out of battery!");
-            mobStats.currentHP = 0;
+            mobStats.setCurrentHP(0.0);
             return;
         }
         ;
@@ -372,20 +374,4 @@ public class Combat extends Moves{
 
         
     }
-
-    /**
-     * input the time in milliseconds 
-     * @param t - time in milliseconds
-     */
-    public void quickBreak(int t) {
-        try {
-                Thread.sleep(t);
-        } catch (InterruptedException e) {
-                e.printStackTrace();
-        }
-    }
-
-    // public boolean hasPlayerDied(){
-    //      return hasPlayerDied;
-    // }
 }

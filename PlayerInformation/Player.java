@@ -3,6 +3,7 @@ import java.util.ArrayList;
 import java.util.jar.Attributes.Name;
 
 import Tools.*;
+import TownInfo.*;
 
 public class Player {
         private String playerClass; 
@@ -12,8 +13,10 @@ public class Player {
         private String playerName, chosenClass;
         private Bank bankAccount; 
         private int playerLevel;
+        private TownMaker townMaker;
+        private PlayerCreation creator;
 
-        public Player(Bank bankAccount, String name, String[] chosenAttacks, int[] chosenAttacksCost, String nameOfClass) {
+        public Player(Stats stats, Bank bankAccount, String name, String[] chosenAttacks, int[] chosenAttacksCost, String nameOfClass, PlayerCreation creator) {
 
                 this.bankAccount = bankAccount;
                 playerName = name;
@@ -21,9 +24,13 @@ public class Player {
                 this.chosenAttacksCost = chosenAttacksCost;
                 chosenClass = nameOfClass;
                 playerLevel = 1;
+                this.creator = creator;
+                playerStats = stats;
         }
 
-        
+        public void makeTownMaker(TownMaker townMaker){
+                this.townMaker = townMaker;
+        }
         //*End of testing combat stuff
 
         /**
@@ -52,7 +59,8 @@ public class Player {
         public String[] getChosenAttacks(){return chosenAttacks;}
         public int[] getAttacksCosts (){return chosenAttacksCost;}
         public int getLevel(){return playerLevel;}
-
+        public Town getCurrentTown() {return townMaker.getCurrentTown();}
+        public PlayerCreation getCreator(){return creator;}
         public void addLevel(){playerLevel++;}
 
         public static void playerDied() {

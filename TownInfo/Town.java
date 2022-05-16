@@ -1,6 +1,8 @@
 package TownInfo;
 
 import java.util.ArrayList;
+import java.util.Scanner;
+
 import PlayerInformation.*;
 import Tools.*;
 
@@ -9,16 +11,15 @@ public class Town {
 
     //this array list will be filled with the names of all the shops in the town. 
     private ArrayList<String> namesOfThingsInTown = new ArrayList<String>();
-    private Merchant bank, hospital, shop;
     private ArrayList<Merchant> allMerchants = new ArrayList<Merchant>();
     private String townName;
-    private Bank playerAccount;
     private int floorLvl;
     private Guild guild;
 	private String color;
     //TODO: Finish making comments
     private Player player;
-
+    private Dungeon dungeon;
+    private Scanner scan = new Scanner(System.in);
 
     /**
      * This is the creation of the town. It sets up all the merchants, links up banking, and gets all the
@@ -32,7 +33,6 @@ public class Town {
         //we need to pass through the players account information so that we can have a single constant account throughout 
         //all of the classes
         this.player = player;
-        this.playerAccount = player.getBank();
         this.townName = townName;
         this.floorLvl = floorLvl;
         this.color =  color;
@@ -42,10 +42,11 @@ public class Town {
      * Shows a list of all the buildings plus the guilds
      */
     public void showBuildings(){
-        allMerchants.forEach((e) -> {
-            Printer.printColor(e.shopName, "white");  
-        });
-        System.out.println(townName + " Adventurers Guild");
+        int i = 1;
+        for (i = 1; i <= allMerchants.size(); i++) {
+            Printer.printColor("("+i+") " + allMerchants.get(i-1).shopName, "white");  
+        }
+        System.out.println("("+i+") " +townName + " Adventurers Guild");
     }
 
     //gets townName
@@ -53,7 +54,7 @@ public class Town {
 
     //adds a new building to the town. 
     public void addBuilding(Player player, Stats playerStats, Bank playerAccount, String[] itemsForSale, double[] priceOfItem, String shopName, String[] thingsToDo, String greeting, String farewell, String errorMessage, String color){
-        allMerchants.add(new Merchant(player, playerStats, playerAccount, this, itemsForSale, priceOfItem, shopName, thingsToDo, greeting, farewell, errorMessage, color));
+        allMerchants.add(new Merchant(player, this, itemsForSale, priceOfItem, shopName, thingsToDo, greeting, farewell, errorMessage, color));
         namesOfThingsInTown.add(shopName);
     }
 
@@ -62,9 +63,10 @@ public class Town {
         this.guild = guild;
         namesOfThingsInTown.add(townName + " Adventurers Guild");
     }
-
-    public void addDungeon(){
-
+    
+    public void addDungeon(Dungeon dungeon){
+        this.dungeon = dungeon;
+        namesOfThingsInTown.add("dungeon");
     }
 
     /**
@@ -74,31 +76,43 @@ public class Town {
 
         // welcomes the character to town
 
-        Printer.printColor("-----------------------------------------------------------"
+        Printer.printColor("-----------------------------------------------------------\n"
             + " Welcome to " + townName + ", traveler on floor " + floorLvl + "!\n"
-            + "Here is a brochure with all you can do here! \n", color);
+            + "Here is a map with all you can do here! \n", color);
         
         showBuildings();
         Printer.printColor("\n" + "Where would you like to visit?", color);
 
         // gets them to enter a shop name as to where they want to go, and then runs
         // that shop.
-        String whereMerchantWantsToGO = ErrorChecker.compareArrayOfStrings(namesOfThingsInTown.toArray(new String[namesOfThingsInTown.size()]), 
-                    "Sorry could you repeat that?", color);
-            
+        int chosenInt;
+        boolean hasPlayerChosen = false;
+        do {
+            while(!scan.hasNextInt()){
+                Printer.printColor("Please enter an integer!", "red");
+                scan.next();
+            }
+            chosenInt = scan.nextInt();
+            if(chosenInt > 0 && chosenInt < (allMerchants.size()+2)){
+                hasPlayerChosen = true;
+            }
+            else{
+                Printer.printColor("Please enter a valid number!", "grey");;
+            }
+        } while (hasPlayerChosen == false);
+
+        hasPlayerChosen = false;
         //once we have a value, we let them shop at one of the places they asked for. 
         //this checks which name of the shop they entered, then sends them in. 
-        allMerchants.forEach((e) -> {
-            
-            if (whereMerchantWantsToGO.equalsIgnoreCase(e.getShopName())) {
-                e.shop();
-                return;
-            }
-
-        });
-        if(whereMerchantWantsToGO.equalsIgnoreCase(townName + " Adventurers Guild")){
+        if(chosenInt <= allMerchants.size()){
+            allMerchants.get((chosenInt-1)).shop();
+        }
+        else if(chosenInt == allMerchants.size() + 1 ){
             guild.runGuild();
         }
+        // if(whereMerchantWantsToGO.equalsIgnoreCase("dungeon")){
+        //     dungeon.characterEnteringDungeon();
+        // }
     }
 
     /**

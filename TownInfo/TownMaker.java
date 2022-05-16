@@ -15,13 +15,13 @@ public class TownMaker{
     private int townLevel = 1;
 
     private String slumBankName = "Broken Bank";
-    private String[] thingsToDoInSlumBank = {"withdraw", "view balance"};
+    private String[] thingsToDoInSlumBank = {"withdraw", "view balance", "leave"};
     private String greeting4SlumBank = "Welcome to the broken bank! How can I help you?";
     private String farewell4SlumBank = "Adios!";
     private String error4SlumBank = "Please repeat that";
     private String colorOfSlumBank = "grey";
     
-    private String[] thingsToDoAtHospital = {"get healing"};
+    private String[] thingsToDoAtHospital = {"get healing", "leave"};
 	private Stats playerStats;
 	private Player player;
 
@@ -31,9 +31,9 @@ public class TownMaker{
      * @param player - The player
      */
     public TownMaker(Player player){
-        this.playerAccount = player.getBank();
+        playerAccount = player.getBank();
         this.player = player;
-        this.playerStats = player.getPlayerStats();
+        playerStats = player.getPlayerStats();
     }
 
     /**
@@ -43,8 +43,9 @@ public class TownMaker{
         slums = new Town("the slums", 1, player, "grey");
         slums.addBuilding(player, playerStats, playerAccount, notStoreItems, notStorePrices, slumBankName, thingsToDoInSlumBank, greeting4SlumBank, farewell4SlumBank, error4SlumBank, colorOfSlumBank);
         slums.addBuilding(player, playerStats, playerAccount, notStoreItems, notStorePrices, "Hospital",thingsToDoAtHospital, "Welcome to the Hospital! We are ready to heal you!", "Thank you for coming", "Sorry could you repeat that?", "white");
-        Guild slumsAdventurersGuild = new Guild(slums, player, playerStats);
+        Guild slumsAdventurersGuild = new Guild(player);
         slums.addGuild(slumsAdventurersGuild);
+        // slums.addDungeon(new Dungeon(bossDialogLines, goldPerMob, xpPerMob, mobStats, mobAttacks, mobLevels, recommendedLvl, requiredLevel, player, town));
     }
 
     //runs the slums. 
@@ -56,18 +57,19 @@ public class TownMaker{
     /**
      * TODO: make multiple towns, and then when we call this method, it will move us to that town. 
      */
-    public void goToCurrentTown(){
+    public Town getCurrentTown(){
         switch (townLevel) {
             case 1:
-                runSlums();
-                break;
+                return slums;
             case 2: 
 
-                break;
+                
+
+            default: 
+                return slums;
         }
     }
 
     //Moves us to the next town
-    public void nextTown(){townLevel++; goToCurrentTown();}
 
 }

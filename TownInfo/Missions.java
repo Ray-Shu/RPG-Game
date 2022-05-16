@@ -17,18 +17,18 @@ public class Missions {
     private Town town;
     private boolean isMissionComplete = false;
 	private Guild guild;
-	private int recommendedLevel; 
+	private int recommendedLevel, cashReward; 
 
     //TODO: ADD COMMENTS TO THIS PART
     //I will do later, cause my extensions do not work with liveshare and this would take ages.
-    Missions(Guild guild, Town town, String missionName, String[] mobNames, int[] mobLevels, Player player, Stats playerStats, String problem, String greeting, String thankYouFarewell, String color, int XP_Reward, String[] itemRewards, int recommendedLevel){
-        
+    Missions(int cashReward, Guild guild, String missionName, String[] mobNames, int[] mobLevels, Player player, String problem, String greeting, String thankYouFarewell, String color, int XP_Reward, String[] itemRewards, int recommendedLevel){
+        this.cashReward = cashReward;
         this.guild = guild;
-        this.town = town;
+        this.town = player.getCurrentTown();
         this.missionName = missionName;
         this.mobNames = mobNames;
         this.player = player;
-        this.playerStats = playerStats;
+        this.playerStats = player.getPlayerStats();
         this.problem = problem;
         this.thankYouFarewell = thankYouFarewell;
         this.mobLevels = mobLevels;
@@ -46,8 +46,9 @@ public class Missions {
 
     //prints out the information about the mission, including the missions name, rewards, and problem. 
     public void printMissionInfo(){
-        Printer.printItalizcizedColor( problem + "\nRewards: " + XP_Reward + "XP", "grey");
-        Printer.printColor("This mission is recommended for level " + recommendedLevel+ " players", color);
+        Printer.printItalizcizedColor( problem  , "grey");
+        Printer.printColor("Rewards: " + XP_Reward + "XP" + " and "+cashReward + " fusion coins!", "green");
+        Printer.printColor("This mission is recommended for level " + recommendedLevel+ " players\n", color);
         // Printer.printItalizcizedColor( problem + "\nRewards: " + XP_Reward + "XP & " + itemRewards.toString(),"grey");
     }
 
@@ -105,10 +106,16 @@ public class Missions {
     public void missionSuccessful(){
 
         Printer.printColor(thankYouFarewell, color);
-        Printer.printColor("Rewards: " + XP_Reward + "XP & " + itemRewards.toString(),"grey\n");
+        isMissionComplete = true;
+
+        Printer.printColor("Distributing " + XP_Reward + " XP... ","yellow");
         Printer.quickBreak(1000);
         playerStats.addXP(XP_Reward);
-        isMissionComplete = true;
+
+        Printer.printColor("Distributing " + cashReward + " Fusion coins... ","green");
+        player.getBank().deposit(cashReward);
+        player.getBank().printBalance();
+
         Printer.printColor("\nTeleporting back to town!\n", color);
         Printer.quickBreak(1000);
         town.characterEnteringTown();

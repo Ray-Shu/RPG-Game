@@ -1,5 +1,7 @@
 package PlayerInformation;
 
+import Tools.Printer;
+
 public class Bank {
     public double balance;
 
@@ -36,5 +38,9 @@ public class Bank {
             return true;
         }
         return false;
+    }
+
+    public void printBalance(){
+        Printer.printColor("Your balance is now "+ balance,"white");
     }
 }

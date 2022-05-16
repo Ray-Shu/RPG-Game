@@ -12,9 +12,13 @@ public class Dungeon {
     private Town town;
     private Stats[] mobStats;
     private String[] mobAttacks;
+    private String[] mobNames;
 
     /**
      * Creates a dungeon for the character to enter to try to get to the next floor. 
+     * @param bossDialogLines   - the lines that the boss says. 
+     * @param goldPerMob        - the amount of gold given per mob defeated. 
+     * @param xpPerMob          - the amount of XP given for defeating a mob. 
      * @param mobStats          - the stats of the mobs
      * @param mobAttacks        - the attacks of the mobs
      * @param mobLevels         - the levels of the mobs   
@@ -23,8 +27,8 @@ public class Dungeon {
      * @param player            - the player entering the dungeon
      * @param town              - the town from which the player is entering the dungeon. 
      */
-    Dungeon(int[] goldPerMob, int[] xpPerMob, Stats[] mobStats, String[] mobAttacks, int[] mobLevels, int recommendedLvl, int requiredLevel, Player player, Town town){
-        
+    Dungeon(String[]mobNames, String[] bossDialogLines, int[] goldPerMob, int[] xpPerMob, Stats[] mobStats, String[] mobAttacks, int[] mobLevels, int recommendedLvl, int requiredLevel, Player player, Town town){
+        this.mobNames = mobNames;
         recommendedLevel = recommendedLvl;
         this.requiredLevel = requiredLevel;
         this.player = player;
@@ -67,6 +71,46 @@ public class Dungeon {
 
 
     public void runDungeon(){
+    //     Stats currentMobStats;
+    //     String[] currentMobAttacks;
+    //     int[] currentMobAttackCosts;
+    //     Printer.printColor("\n-----------------------------------------------------", "blue");
+    //     Printer.printColor("Welcome to the dungeon!!!", "red");
+        
+    //     //For each mob in the battle, we will have to fight it with our current Stats. Goal is to defeat all enemies, then we get our reward. 
+    //     for (int i = 0; i < mobNames.length; i++) {
 
+    //         Printer.printColor("Watch out! A level "+ mobLevels[i] + " "+ mobNames[i] + " has appeared!!! \n", color);
+    //         //makes the stats of the current mob equal to the stats of the 
+    //         if(mobNames[i].equalsIgnoreCase("Cyber Punk")){
+    //             currentMobStats = mobSummoner.newCyberPunk(mobLevels[i]);
+    //         }
+    //         else if(mobNames[i].equalsIgnoreCase("Greater Will Assassin")){
+    //             currentMobStats = mobSummoner.newGreaterWillAssassin(mobLevels[i]);
+    //         }
+    //         else if(mobNames[i].equalsIgnoreCase("Nano Bot Cluster")){
+    //             currentMobStats = mobSummoner.newNanoBotCluster(mobLevels[i]);
+    //         }
+    //         else{
+    //             System.out.println("Incorrect spelling of opponent name");
+    //             return;
+    //         }
+    //         currentMobAttackCosts = mobSummoner.getChosenAttackCosts();
+    //         currentMobAttacks = mobSummoner.getChosenAttacks();
+            
+    //         combat = new Combat(player, playerStats, currentMobStats, currentMobAttacks, currentMobAttackCosts, mobSummoner);
+    //         combat.fight(false);
+
+    //         //if the player died, we go back to the town. 
+    //         if(combat.didPlayerDie() == true){
+    //             missionFailed();
+    //             return;
+    //         }
+    //         Printer.printColor((i+1) + "/" + mobNames.length + " mob's defeated!\n", "green");
+
+    //         Printer.quickBreak(2000);
+    //     }
+    //     missionSuccessful();
+    // }
     }
 }

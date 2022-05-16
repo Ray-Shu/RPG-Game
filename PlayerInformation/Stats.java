@@ -2,6 +2,7 @@ package PlayerInformation;
 import java.text.DecimalFormat;
 
 import Tools.*;
+import TownInfo.Town;
 
  
 public class Stats {
@@ -23,6 +24,18 @@ public class Stats {
         double xp = 0;
         final int XP_TO_LVL_UP = 100;
         public int howLongDisabled, howLongSpeedUp, howLongAtkUp, howLongDefUp, howLongDodgeUp;
+
+
+        public double getCurrentSpeed(){return currentSpd;}
+        public double getSpeedMultiplier(){return speedMultiplier;}
+        public double getCurrentHP(){return currentHP;}
+        public double getCurrentMP(){return currentMP;}
+
+        public void setCurrentHP(double toWhat){
+                currentHP = toWhat;
+        }
+
+
 
         /**
          * This class will contain information about the stats of the player and the

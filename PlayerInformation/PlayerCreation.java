@@ -1,5 +1,6 @@
 package PlayerInformation;
 import Tools.*;
+import TownInfo.TownMaker;
 
 
 public class  PlayerCreation {
@@ -63,16 +64,20 @@ public class  PlayerCreation {
     
     private final String CHOOSE_CRATE_AND_CRATE_INFO[] = {"1", "2", "3", "4", "5", "6", "7", "M1", "M2", "M3", "M4", "M5", "M6", "M7"};
     private Bank bankAccount;
+        private TownMaker townMaker;
 
     public PlayerCreation(Bank bankAccount, String name){
 
         playerName = name;
         this.bankAccount = bankAccount;
-    
+    }
+    public Player testPlayer(){
+        playerStats = new Stats(150, 250, 1.25, 3.0, 0.0, 6.0, 4.0, 6.0, 200.0, 1.0, 6.0, 0.0, 5.0, 0.0, 0.0, 1.0);
+        return new Player(playerStats, bankAccount, playerName,REVEREND_ATTACKS,REVEREND_ATTACK_COSTS,"reverend",this);
     }
 
     public Player getPlayer(){
-        return new Player(bankAccount, playerName, chosenAttacks, chosenAttacksCost, chosenClass); 
+        return new Player(playerStats, bankAccount, playerName, chosenAttacks, chosenAttacksCost, chosenClass,this); 
     }
 
 

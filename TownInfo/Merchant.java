@@ -27,10 +27,10 @@ public class Merchant {
      * @param errorMessage this is what they say to you if you say the wrong thing. 
      * @param color this is the color of the text in the store. 
      */
-    Merchant(Player player, Stats playerStats, Bank playerAccount, Town town, String[] itemsForSale, double[] priceOfItem2, String shopName, String[] thingsToDo, String greeting, String farewell, String errorMessage, String color) {
+    Merchant(Player player,  Town town, String[] itemsForSale, double[] priceOfItem2, String shopName, String[] thingsToDo, String greeting, String farewell, String errorMessage, String color) {
         
         this.player = player;
-        this.playerStats = playerStats;
+        this.playerStats = player.getPlayerStats();
         this.itemsForSale = itemsForSale;
         this.priceOfItem = priceOfItem2;
         this.shopName = shopName;
@@ -39,7 +39,7 @@ public class Merchant {
         this.thingsToDo = thingsToDo;
         this.errorMessage = errorMessage;
         this.color = color;
-        this.playerAccount = playerAccount;
+        this.playerAccount = player.getBank();
 
     }
 

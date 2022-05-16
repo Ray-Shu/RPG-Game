@@ -44,12 +44,18 @@ public class Main {
             // } while(combat.didPlayerDie());
             
 
-            
-            //*StoryLine (currently working on chapter One)
-            MainStory story = new MainStory();
-            story.prologue();
-            
-            
+                    
+            //*Story Line (currently working on chapter One)
+            // MainStory story = new MainStory();
+            // story.prologue();
+                    
+            Bank bank = new Bank(1000);
+            PlayerCreation lord = new PlayerCreation(bank, "Jeff");
+            Player player = lord.testPlayer();
+            TownMaker townMaker = new TownMaker(player);
+            player.makeTownMaker(townMaker);
+            townMaker.makeSlums();
+            townMaker.runSlums();
              
 
 

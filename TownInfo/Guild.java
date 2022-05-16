@@ -55,12 +55,11 @@ public class Guild {
     /**
      * Creates the guild and gives missions based on the town that we are in. 
      * @param town is the town which the guild is currently in
-     * @param playerStats is the stats of the player which we use to create missions
-     * @param player is the player who has missions. 
+     * @param player is the player who has missions.
      */
-    Guild(Town town, Player player, Stats playerStats){
-        this.town = town;
-
+    Guild(Player player){
+        town = player.getCurrentTown();
+        townName = town.getTownName();
         //checks which town we are in, and then creates missions based on that town. 
         switch (town.getTownName().toLowerCase()) {
 
@@ -69,17 +68,17 @@ public class Guild {
                 //color of slum Guild text is red. 
                 color = "red";
                 //Creates slum missions. 
-                Missions slumMission1 = new Missions(this, town, slum1MissionName, slum1MissionOpponents, slum1MissionOpponentLevels, player, playerStats, slum1MissionProblem, slum1MissionGreeting, slum1MissionThankYou, slum1MissionColor, slum1MissionXPReward, slum1MissionItems, slum1MissionRecommendedLevel);
+                Missions slumMission1 = new Missions(1000, this, slum1MissionName, slum1MissionOpponents, slum1MissionOpponentLevels, player, slum1MissionProblem, slum1MissionGreeting, slum1MissionThankYou, slum1MissionColor, slum1MissionXPReward, slum1MissionItems, slum1MissionRecommendedLevel);
                 allMissions.add(slumMission1);
                 namesOfAllMissions.add(slum1MissionName);
 
-                Missions slumMission2 = new Missions(this, town, slum2MissionName, slum2MissionOpponents, slum2MissionOpponentLevels, player, playerStats, slum2MissionProblem, slum2MissionGreeting, slum2MissionThankYou, slum2MissionColor, slum2MissionXPReward, slum2MissionItems, slum2MissionRecommendedLevel);
+                Missions slumMission2 = new Missions(1750, this, slum2MissionName, slum2MissionOpponents, slum2MissionOpponentLevels, player,  slum2MissionProblem, slum2MissionGreeting, slum2MissionThankYou, slum2MissionColor, slum2MissionXPReward, slum2MissionItems, slum2MissionRecommendedLevel);
                 allMissions.add(slumMission2);
                 namesOfAllMissions.add(slum1MissionName);
 
-                Missions slumMission3 = new Missions(this, town, slum3MissionName, slum3MissionOpponents, slum3MissionOpponentLevels, player, playerStats, slum3MissionProblem, slum3MissionGreeting, slum3MissionThankYou, slum3MissionColor, slum3MissionXPReward, slum3MissionItems, slum3MissionRecommendedLevel);
-                allMissions.add(slumMission2);
-                namesOfAllMissions.add(slum1MissionName);
+                Missions slumMission3 = new Missions(2001, this, slum3MissionName, slum3MissionOpponents, slum3MissionOpponentLevels, player,  slum3MissionProblem, slum3MissionGreeting, slum3MissionThankYou, slum3MissionColor, slum3MissionXPReward, slum3MissionItems, slum3MissionRecommendedLevel);
+                allMissions.add(slumMission3);
+                namesOfAllMissions.add(slum2MissionName);
 
                 break;
     
@@ -100,12 +99,14 @@ public class Guild {
 
         printMissions();
 
-        Printer.printColor("\nWhich mission would you like to go on?", color);
         int missionToDo = ErrorChecker.intWithMinAndMax(1, allMissions.size(), "\nWhich mission would you like to go on?", color);
-        if(missionToDo < allMissions.size()){
-            allMissions.get(missionToDo).runMission();
+        
+        if(missionToDo <= allMissions.size()){
+            System.out.println("Running the mission");
+            allMissions.get(missionToDo-1).runMission();
         }
         else{
+            System.out.println("sus");
             town.characterEnteringTown();
         }
     }

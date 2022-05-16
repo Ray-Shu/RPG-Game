@@ -17,6 +17,7 @@ public class Town {
     private Guild guild;
 	private String color;
     //TODO: Finish making comments
+    private Player player;
 
 
     /**
@@ -26,11 +27,12 @@ public class Town {
      * @param floorLvl this is the level of the society. Higher, the more prestigious. 
      * @param playerAccount this is the players bank account
      */
-    Town(String townName, int floorLvl, Bank playerAccount, String color) {
+    Town(String townName, int floorLvl, Player player, String color) {
 
         //we need to pass through the players account information so that we can have a single constant account throughout 
         //all of the classes
-        this.playerAccount = playerAccount;
+        this.player = player;
+        this.playerAccount = player.getBank();
         this.townName = townName;
         this.floorLvl = floorLvl;
         this.color =  color;

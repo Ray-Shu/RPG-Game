@@ -87,7 +87,7 @@ public class Main {
             itemsToAdd.add("cyborg weapon");
             itemsToAdd.add("xenon blaster");
 
-            Player player = new Player("test"); 
+            // Player player = new Player("test"); 
             // Stats playerStats = player.getPlayerStats(); 
             //inventory.addInventory(itemsToAdd);
             // inventory.playerInventoryAddEquippedArmour("Battered Spectral Helm", "Battered Spectral Chestplate", "Battered Spectral Leggings", null);

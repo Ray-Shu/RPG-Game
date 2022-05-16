@@ -21,7 +21,8 @@ public class Combat extends Moves{
     private String[] mobAttacks;
     private int[] mobAttackCosts;
     private int[] playerAttackCosts;
-    private Player player;
+    // private Player player;
+    private PlayerCreation player; 
     private boolean hasPlayerDied = false;
     public Inventory playerInventory;
     private String[] playerAttacks;

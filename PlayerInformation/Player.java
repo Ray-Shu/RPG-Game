@@ -37,9 +37,10 @@ public class Player {
          * ALL INVENTORY RELATED STUFF
          * Reference to this when showing or adding to inventory
          */
-        Inventory playerInventory = new Inventory(); 
 
+        Inventory playerInventory = new Inventory();
         public void createInventory(){
+                
                 playerInventory.createInventory(playerStats); 
         }
 

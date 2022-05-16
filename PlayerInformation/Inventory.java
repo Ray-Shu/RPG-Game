@@ -2,8 +2,9 @@ package PlayerInformation;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Scanner; 
+import java.util.Scanner;
 
+import Tools.ErrorChecker;
 import Tools.Printer;
 
 public class Inventory {
@@ -23,14 +24,26 @@ public class Inventory {
     Scanner in = new Scanner(System.in);
 
     ArrayList<String> playerInventory = new ArrayList<String>(maxStorage); 
+    ArrayList<String> categorizedInventory = new ArrayList<String>();
+
+    String[] inventoryChoice = {"1", "2", "3", "4", "e"}; 
+
+
+    String[] healingPots = {"Strong Healing Potion", "Healing Potion", "Weak Healing Potion"}; 
 
     public Inventory() { 
-        
         //Armours armour = new Armours();
     }   
 
     public void createInventory(Stats playerStats){
         this.playerStats = playerStats; 
+
+        categorizedInventory.add("Healing Potions");
+        categorizedInventory.add("Mana Elixirs");
+        categorizedInventory.add("Revivals");
+        categorizedInventory.add("Misc Potions");
+
+        // TODO: add more necessities
     }
 
     public void addInventory(ArrayList<String> itemsToAdd) {
@@ -50,11 +63,6 @@ public class Inventory {
             }
             
         }
-    }
-
-    public int storageUpgrade() {
-        maxStorage += 5; 
-        return maxStorage; 
     }
     
     /**
@@ -87,30 +95,121 @@ public class Inventory {
         System.out.println();  
 
 
-        ArrayList<String> sortedInventory = new ArrayList<String>(playerInventory);  
-        //* Sorts the arraylist into alphabetical order
-        Collections.sort(sortedInventory, String.CASE_INSENSITIVE_ORDER);
+        //ArrayList<String> sortedInventory = new ArrayList<String>(playerInventory);  
+        // //* Sorts the arraylist into alphabetical order
+        // Collections.sort(sortedInventory, String.CASE_INSENSITIVE_ORDER);
 
-        Printer.printColor("\nItems\n--------------------------------------------------------------------------------------------------------------------------------","yellow");
-        //*Displays items in your inventory, to the side of you armours
-        for (int i = 0; i < sortedInventory.size(); i++) {
-            if( i != 0 && i < sortedInventory.size()) {
+        // Printer.printColor("\nItems\n--------------------------------------------------------------------------------------------------------------------------------","yellow");
+        // //*Displays items in your inventory, to the side of you armours
+        // for (int i = 0; i < sortedInventory.size(); i++) {
+        //     if( i != 0 && i < sortedInventory.size()) {
+        //         System.out.print(" | ");
+        //     }
+        //     System.out.print("[" + (i+1) + "] " + sortedInventory.get(i));
+        //     storageUsed++; 
+            
+        // } 
+        // Printer.print("\n\n[" + storageUsed + "]" + "/" + "[" + maxStorage + "]"); 
+
+        // Printer.printColor("--------------------------------------------------------------------------------------------------------------------------------","yellow");
+
+        // Printer.printColor("\n\n[E] Exit Inventory","yellow");
+
+        // in.nextLine(); 
+        
+
+        Printer.printColor("\nItems\n--------------------------------------------------------------------------------------------------------------------------------\n","yellow");
+        for (int i = 0; i < categorizedInventory.size(); i++) {
+            if (i != 0 && i < categorizedInventory.size()) { 
                 System.out.print(" | ");
             }
-            System.out.print("[" + (i+1) + "] " + sortedInventory.get(i));
-            storageUsed++; 
+            System.out.print("[" + (i+1) + "] " + categorizedInventory.get(i));
+
+
+        }
+        Printer.printColor("\n\n--------------------------------------------------------------------------------------------------------------------------------","yellow");
+        Printer.printColor("\n\n[E] Exit Inventory\n","yellow");
+
+        String inventoryOptions = ErrorChecker.compareArrayOfStrings(inventoryChoice, "Choose a proper input.", "white");
+
+        switch(inventoryOptions){
+            case "1": 
+                healingPotionsList(); 
+                break; 
+
+            case "2":
+                manaElixirList(); 
+                break; 
             
-        } 
-        Printer.print("\n\n[" + storageUsed + "]" + "/" + "[" + maxStorage + "]"); 
+            case "3": 
+                revivalsList(); 
+                break; 
 
-        Printer.printColor("--------------------------------------------------------------------------------------------------------------------------------","yellow");
+            case "4": 
+                miscPotionsList(); 
+                break; 
 
-        Printer.printColor("\n\n[E] Exit Inventory","yellow");
-
-        in.nextLine(); 
-
-        
+            case "e": 
+                return; 
+        }
     }
+
+    //a list of healing potions 
+    public void healingPotionsList() {
+        for (int i = 0; i < healingPots.length; i++) {
+            System.out.println(healingPots[i]);
+        }   
+        Printer.printColor("\n[B] Go back", "yellow");
+
+        String[] chooseOption = {"1", "2", "3", "B"};
+        
+        String option = ErrorChecker.compareArrayOfStrings(chooseOption, "Choose a proper input", "white"); 
+
+        switch(option) {
+            case "1": 
+                break; 
+
+            case "2": 
+                break; 
+
+            case "3": 
+                break; 
+            
+            case "b": 
+                showInventory(); 
+        }
+
+
+        //heals 100% of health 
+        //heals 50% of health 
+        //heals 25% of health 
+    }
+
+    //a list of mana potions
+    public void manaElixirList() {
+        System.out.println("show mana");
+        //restores 100% of mana
+        //restores 50% of mana
+        //restores 25% of mana 
+    }
+
+    //a list of revivals 
+    public void revivalsList() {
+        System.out.println("show revivals");
+        //just have one item that can cheat one death 
+    }
+
+    //a list misc potions() 
+    public void miscPotionsList() {
+        System.out.println("misc potions");
+        //luck potions
+        //crit damage potions
+        //crit rate potions
+        //extra gold potions 
+    }
+
+
+
 
 
 

@@ -6,9 +6,13 @@ import Tools.*;
 public class Classes {  
 
     Scanner in = new Scanner(System.in);    
-    private final String CHOICE[] = {"choose", "back"}; 
-    Player mainPlayer = new Player(); 
+    private final String CHOICE[] = {"choose", "back"};
+    private PlayerCreation creator; 
     
+    Classes(PlayerCreation creator){
+        this.creator = creator;
+    }
+
     public void cyborgInfo(){
 
         // Cyborg
@@ -31,11 +35,11 @@ public class Classes {
                         
         switch(choice) {
             case "choose": 
-                mainPlayer.chooseCyborg("cyborg");
+                creator.chooseCyborg("cyborg");
             break; 
                 
             case "back": 
-                mainPlayer.printCrateInfo();
+                creator.printCrateInfo();
             break;      
                             
             }
@@ -62,11 +66,11 @@ public class Classes {
                                          
         switch(choice) {
             case "choose": 
-                mainPlayer.chooseHacker("Hacker");                      
+                creator.chooseHacker("Hacker");                      
             break; 
                                  
             case "back": 
-                mainPlayer.printCrateInfo();
+                creator.printCrateInfo();
             break;      
         }
         
@@ -91,11 +95,11 @@ public class Classes {
                                                          
         switch(choice) {
             case "choose": 
-                mainPlayer.chooseTerminator("terminator");                          
+                creator.chooseTerminator("terminator");                          
             break; 
                                                  
             case "back": 
-                mainPlayer.printCrateInfo();
+                creator.printCrateInfo();
             break;      
         }
     }
@@ -119,11 +123,11 @@ public class Classes {
                                          
         switch(choice) {
             case "choose": 
-                mainPlayer.chooseLazerSwordsman("lazer swordsman");      
+                creator.chooseLazerSwordsman("lazer swordsman");      
             break; 
                                  
             case "back": 
-                mainPlayer.printCrateInfo();
+                creator.printCrateInfo();
             break;      
         }
     }
@@ -148,11 +152,11 @@ public class Classes {
                                          
         switch(choice) {
             case "choose": 
-                mainPlayer.chooseRogue("rogue");                
+                creator.chooseRogue("rogue");                
             break; 
                                  
             case "back": 
-                mainPlayer.printCrateInfo();
+                creator.printCrateInfo();
             break;      
         }
     }
@@ -178,11 +182,11 @@ public class Classes {
                                          
         switch(choice) {
             case "choose": 
-                mainPlayer.chooseMystic("mystic");                      
+                creator.chooseMystic("mystic");                      
             break; 
                                  
             case "back": 
-                mainPlayer.printCrateInfo();
+                creator.printCrateInfo();
             break;      
         }   
     }
@@ -204,11 +208,11 @@ public class Classes {
                                          
         switch(choice) {
             case "choose": 
-                mainPlayer.chooseReverend("reverend");                       
+                creator.chooseReverend("reverend");                       
             break; 
                                  
             case "back": 
-                mainPlayer.printCrateInfo();
+                creator.printCrateInfo();
             break;      
         }
     }

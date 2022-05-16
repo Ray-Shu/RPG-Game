@@ -28,21 +28,19 @@ public class TownMaker{
     /**
      * Constructs the townmaker by giving the player's account, stats, and their identity. 
      * 
-     * @param playerAccount - The player's bank account
      * @param player - The player
-     * @param playerStats - the stats of the player
      */
-    public TownMaker(Bank playerAccount, Player player, Stats playerStats){
-        this.playerAccount = playerAccount;
+    public TownMaker(Player player){
+        this.playerAccount = player.getBank();
         this.player = player;
-        this.playerStats = playerStats;
+        this.playerStats = player.getPlayerStats();
     }
 
     /**
      * Constructs all of the buildings within the town of slums
      */
     public void makeSlums(){
-        slums = new Town("the slums", 1, playerAccount, "grey");
+        slums = new Town("the slums", 1, player, "grey");
         slums.addBuilding(player, playerStats, playerAccount, notStoreItems, notStorePrices, slumBankName, thingsToDoInSlumBank, greeting4SlumBank, farewell4SlumBank, error4SlumBank, colorOfSlumBank);
         slums.addBuilding(player, playerStats, playerAccount, notStoreItems, notStorePrices, "Hospital",thingsToDoAtHospital, "Welcome to the Hospital! We are ready to heal you!", "Thank you for coming", "Sorry could you repeat that?", "white");
         Guild slumsAdventurersGuild = new Guild(slums, player, playerStats);

@@ -13,7 +13,9 @@ public class MainStory {
     String playerName; 
     String chosenClass;
 
-    Player mainPlayer = new Player();
+    Bank playerAccount = new Bank(1000);
+    PlayerCreation creator;
+    Player mainPlayer;
     Scanner in = new Scanner(System.in);
 
     public String getName() {
@@ -47,6 +49,7 @@ public class MainStory {
         // quickBreak(1500); 
         Printer.print("\"Hey\"! \033[3mA gruff voice calls out to you. \033[0m" + "\"Whats your name, \u001B[31mMister Executioner?\" \u001B[31m");
         getName();
+        creator = new PlayerCreation(playerAccount, playerName);
         Printer.printColor("\"Ahh, so the infamous \u001B[31mexecutioner\u001B[31m \u001B[37mdons the name " + playerName + " huh.\u001B[37m\"\n", "white");
         quickBreak(1000); 
         // Printer.print("\"Well, nice to meet ya and glad that you held your promise. I trust you know what your purpose is, then?\"\n");
@@ -58,8 +61,9 @@ public class MainStory {
         // Printer.printItalizcizedColor("The crates around you luminate in a cyan blue, each projecting \ntheir own hologram of information pertaining to their class.\n", "white");
         // Printer.printColor("Choose the crate you desire.", "purple");
         // quickBreak(5000); 
-        mainPlayer.printCrateInfo(); 
-        this.chosenClass = mainPlayer.getChosenClass();
+        creator.printCrateInfo(); 
+        mainPlayer = creator.getPlayer();
+        this.chosenClass = creator.getChosenClass();
 
         mainPlayer.createInventory();
         mainPlayer.showInventory();

@@ -25,6 +25,9 @@ public class MainStory {
         return playerName;          
     }
 
+    public void startStory() {
+        prologue(); 
+    }
     //*tells the player how they got to this new world. This is pre-character creation. 
     public void prologue() {   
         System.out.println();
@@ -176,6 +179,7 @@ public void chapter_One_Scene_Two(Stats playerStats){
     System.out.println("old stats \n");
     playerStats.getClassInfo(chosenClass);
     playerStats.levelUp();
+    System.out.println("new stats \n");
     playerStats.getClassInfo(chosenClass);
 
     Printer.printItalizcizedColor("scene two start", "white");

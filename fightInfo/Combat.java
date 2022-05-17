@@ -74,8 +74,14 @@ public class Combat extends Moves{
                 Printer.printColor("It is your turn! Your current MP: "+ playerStats.currentMP + " | Enemy HP: "+ df.format(mobStats.currentHP) + "\n", "cyan");
                 
                 listAttacks();
-
-                playerMove();
+                
+                int showInventory = scan.nextInt(); 
+                if(showInventory != 5){
+                    playerMove(); 
+                } else {
+                    player.showInventory(); 
+                }
+            
                 
                 checkPlayerBoosts();
                 System.out.println();

@@ -46,7 +46,7 @@ public class Armours {
 
 
 
-    //TODO: implement a "check what youre wearing thing to implement additional armour stats"
+    //TODO: implement a "check what you're wearing thing to implement additional armour stats"
 
     public Armours(Stats playerStats) {
         this.playerStats = playerStats; 

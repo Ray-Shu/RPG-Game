@@ -22,7 +22,7 @@ public class Combat extends Moves{
     private int[] mobAttackCosts;
     private int[] playerAttackCosts;
     // private Player player;
-    private PlayerCreation player; 
+    private Player player; 
     private boolean hasPlayerDied = false;
     public Inventory playerInventory;
     private String[] playerAttacks;
@@ -75,12 +75,7 @@ public class Combat extends Moves{
                 
                 listAttacks();
 
-                int showInventory = scan.nextInt();
-                if(showInventory != 5){ 
-                    playerMove();
-                } else {
-                    player.showInventory();
-                }
+                playerMove();
                 
                 checkPlayerBoosts();
                 System.out.println();
@@ -220,25 +215,25 @@ public class Combat extends Moves{
         
         //checks which class we are, and then prompts them to answer a thing. 
         if (playerAttacks == creator.getCyborgAttacks()){
-            cyborgAttack(playerStats, mobStats);
+            cyborgAttack(playerStats, mobStats, player);
         }
         else if (playerAttacks == creator.getHackerAttacks()){
-            hackAttack(playerStats, mobStats);
+            hackAttack(playerStats, mobStats, player);
         }
         else if (playerAttacks == creator.getTerminatorAttacks()){
-            terminatorAttack(playerStats, mobStats);
+            terminatorAttack(playerStats, mobStats, player);
         }
         else if (playerAttacks == creator.getSwordsmanAttacks()){
-            swordsmanAttack(playerStats, mobStats);
+            swordsmanAttack(playerStats, mobStats, player);
         }
         else if (playerAttacks == creator.getRogueAttacks()){
-            rogueAttack(playerStats, mobStats);
+            rogueAttack(playerStats, mobStats, player);
         }
         else if (playerAttacks == creator.getMysticAttacks()){
-            mysticAttack(playerStats, mobStats);
+            mysticAttack(playerStats, mobStats, player);
         }
         else {
-            reverendAttack(playerStats, mobStats);
+            reverendAttack(playerStats, mobStats, player);
         }        
     }
     

@@ -19,8 +19,23 @@ public class Missions {
 	private Guild guild;
 	private int recommendedLevel, cashReward; 
 
-    //TODO: ADD COMMENTS TO THIS PART
-    //I will do later, cause my extensions do not work with liveshare and this would take ages.
+    /**
+     * Constructs a mission with all of the information that we will need to run it. 
+     * 
+     * @param cashReward            - The amount of cash that a player receive for completing the mission
+     * @param guild                 - The guild from which the mission is sent from
+     * @param missionName           - The name of the mission
+     * @param mobNames              - The names of the mobs who are in the mission. 
+     * @param mobLevels             - The levels of the mobs in the dungeon
+     * @param player                - The player
+     * @param problem               - The objective of the mission
+     * @param greeting              - What is said to the player once they enter the mission
+     * @param thankYouFarewell      - The farewell to the player if they successfully complete the mission
+     * @param color                 - The color of the text in the mission
+     * @param XP_Reward             - The reward for completing the mission
+     * @param itemRewards           - The reward for completing mission
+     * @param recommendedLevel      - Recommended level for the mission
+     */
     Missions(int cashReward, Guild guild, String missionName, String[] mobNames, int[] mobLevels, Player player, String problem, String greeting, String thankYouFarewell, String color, int XP_Reward, String[] itemRewards, int recommendedLevel){
         this.cashReward = cashReward;
         this.guild = guild;

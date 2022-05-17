@@ -49,6 +49,7 @@ public class Main {
             // MainStory story = new MainStory();
             // story.prologue();
                     
+            //Town Tests
             Bank bank = new Bank(1000);
             PlayerCreation lord = new PlayerCreation(bank, "Jeff");
             Player player = lord.testPlayer();
@@ -57,8 +58,6 @@ public class Main {
             townMaker.makeSlums();
             townMaker.runSlums();
              
-
-
             finishedGame = true;
 
         }

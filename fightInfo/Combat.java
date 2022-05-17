@@ -94,7 +94,7 @@ public class Combat extends Moves{
                     Printer.print("Watch out! It is the enemies turn and they are going to attack you! ");
                     hasMobAttacked = false;
                 }
-                Printer.printColor("It is the opponents turn! " + mobSummoner.getMobName() + "'s current MP: " + mobStats.getCurrentMP() + " Your HP: "+ df.format(playerStats.getCurrentHP()) + "\n", "red");
+                Printer.printColor("It is the opponents turn! " + mobSummoner.getMobName() + "'s current MP: " + df.format(mobStats.getCurrentMP()) + " Your HP: "+ df.format(playerStats.getCurrentHP()) + "\n", "red");
                 mobMove();
                 checkMobBoosts();
                 System.out.println();
@@ -184,14 +184,13 @@ public class Combat extends Moves{
 
     }
 
+    //returns a boolean of whether or not the player has died yet. 
     public boolean didPlayerDie() {
         if(playerStats.getCurrentHP() <= 0){
             return true;
         }
-
-        else{
-            return false;
-        }
+        return false;
+        
     }
 
     /**

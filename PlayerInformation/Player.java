@@ -84,10 +84,27 @@ public class Player {
         public void levelUp(){
                 playerLevel++;
                 Printer.printColor("---------------------------------------------------------", "yellow");
+                Printer.printColor("██      ███████ ██    ██ ███████ ██          ██    ██ ██████  ██ \n"
+                                +"██      ██      ██    ██ ██      ██          ██    ██ ██   ██ ██ \n"
+                               + "██      █████   ██    ██ █████   ██          ██    ██ ██████  ██ \n"
+                                +"██      ██       ██  ██  ██      ██          ██    ██ ██         \n"
+                                +"███████ ███████   ████   ███████ ███████      ██████  ██      ██ \n", "yellow");
                 Printer.printColor("Congratulations! You have reached level " +playerLevel+"!", "yellow");
+                // Printer.printColor("", color);
                 Printer.printColor("---------------------------------------------------------", "yellow");
-
+                playerStats.statsUp(1.1);
         }
+
+        //checks if the user is ready for a level up
+        public void checkXP() {
+                if(playerStats.getXP() / playerStats.getXP_TO_LVL_UP() >= 1){
+                        playerStats.addXP(-playerStats.getXP_TO_LVL_UP());
+                        levelUp();
+                        checkXP();
+                }
+        }
+        
+
 
         public static void playerDied() {
                 System.out.println("\u001B[31m" + 

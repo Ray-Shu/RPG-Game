@@ -26,6 +26,7 @@ public class Main {
             //inventoryTest();
 
             // //* Combat Testing (using class: cyborg)
+            //* Probaly broken...
             // Player player = new Player("bruhmoment");
             // Stats playerStats = player.getPlayerStats();
             // Player.playerDied();
@@ -49,7 +50,7 @@ public class Main {
             MainStory story = new MainStory();
             story.startStory(); 
                     
-            //Town Tests
+            // //* Town Tests
             // Bank bank = new Bank(1000);
             // PlayerCreation lord = new PlayerCreation(bank, "Jeff");
             // Player player = lord.testPlayer();

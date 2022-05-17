@@ -76,6 +76,7 @@ public class Inventory {
         this.boots = boots;
     }
 
+    //Displays the inventory
     public void showInventory() {
 
         //*Displays armours 
@@ -132,7 +133,7 @@ public class Inventory {
 
         String inventoryOptions = ErrorChecker.compareArrayOfStrings(inventoryChoice, "Choose a proper input.", "white");
 
-        switch(inventoryOptions){
+        switch(inventoryOptions.toLowerCase()){
             case "1": 
                 healingPotionsList(); 
                 break; 
@@ -161,11 +162,11 @@ public class Inventory {
         }   
         Printer.printColor("\n[B] Go back", "yellow");
 
-        String[] chooseOption = {"1", "2", "3", "B"};
+        String[] chooseOption = {"1", "2", "3", "b"};
         
         String option = ErrorChecker.compareArrayOfStrings(chooseOption, "Choose a proper input", "white"); 
 
-        switch(option) {
+        switch(option.toLowerCase()) {
             case "1": 
                 break; 
 

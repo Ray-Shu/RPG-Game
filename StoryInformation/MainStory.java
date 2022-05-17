@@ -52,7 +52,7 @@ public class MainStory {
         // Printer.quickBreak(1500); 
         // Printer.printItalizcizedColor("Four individuals lead you to a shelter; it's barren, save for a dim fire \nand some metal crates tossed to the side. The floor is slightly damp \nfrom yesterdays torrent and the neon lights just outside are flickering, \nas if their vitality is being drained away.\n", "white");
         // Printer.quickBreak(1500); 
-        Printer.print("\"Hey\"! \033[3mA gruff voice calls out to you. \033[0m" + "\"Whats your name, \u001B[31mMister Executioner?\" \u001B[31m");
+        Printer.print("\"Hey\"! \033[3mA gruff voice calls out to you. \033[0m" + "\"Whats your name?\"");
         getName();
         creator = new PlayerCreation(playerAccount, playerName);
         Printer.printColor("\"Ahh, so the infamous \u001B[31mexecutioner\u001B[31m \u001B[37mdons the name " + playerName + " huh.\u001B[37m\"\n", "white");
@@ -156,33 +156,52 @@ public class MainStory {
 public void chapter_One_Fight_Scene_One(Checkpoints chapter_One_checkpoint_One){ // param is only checkpoint; remove mainPlayer later (only for test)
     //*GETS ALL OF THE INFO OF MC'S CLASS AND STATS ------------------------------------------------------------
         Stats playerStats = mainPlayer.getPlayerStats();
-        MobSummoner mobSummoner = new MobSummoner();
-        Stats mobStats = mobSummoner.newGreaterWillAssassin(1);
-        String mobAttacks[] = mobSummoner.GREATER_WILL_ASSASSIN_ATTACKS;
-        int mobAttacksCost[] = mobSummoner.GREATER_WILL_ASSASSIN_COSTS;
-        Combat chapter_One_Fight_One = new Combat(mainPlayer, playerStats, mobStats, mobAttacks, mobAttacksCost, mobSummoner);
-        chapter_One_Fight_One.fight(true);
+        // MobSummoner mobSummoner = new MobSummoner();
+        // Stats mobStats = mobSummoner.newGreaterWillAssassin(1);
+        // String mobAttacks[] = mobSummoner.GREATER_WILL_ASSASSIN_ATTACKS;
+        // int mobAttacksCost[] = mobSummoner.GREATER_WILL_ASSASSIN_COSTS;
+        // Combat chapter_One_Fight_One = new Combat(mainPlayer, playerStats, mobStats, mobAttacks, mobAttacksCost, mobSummoner);
+        // chapter_One_Fight_One.fight(true);
 
-        //*END OF FIGHT 
+        // //*END OF FIGHT 
 
-        //TODO: will finish storyline later
-        if(chapter_One_Fight_One.didPlayerDie()) {
-            chapter_One_checkpoint_One.backToCheckpoint();
-            Printer.printItalizcizedColor("Resetting...", "yellow");
-            chapter_One_Reset_Point_One();
-        } else {
-            chapter_One_Scene_Two(playerStats);
-        }
+        // //TODO: will finish storyline later
+        // if(chapter_One_Fight_One.didPlayerDie()) {
+        //     chapter_One_checkpoint_One.backToCheckpoint();
+        //     Printer.printItalizcizedColor("Resetting...", "yellow");
+        //     chapter_One_Reset_Point_One();
+        // } else {
+        //     chapter_One_Scene_Two(playerStats);
+        // }
+        chapter_One_Scene_Two(playerStats);
 }
 
 public void chapter_One_Scene_Two(Stats playerStats){
-    System.out.println("old stats \n");
-    playerStats.getClassInfo(chosenClass);
-    playerStats.levelUp();
-    System.out.println("new stats \n");
-    playerStats.getClassInfo(chosenClass);
+    // System.out.println("old stats \n");
+    // playerStats.getClassInfo(chosenClass);
+    mainPlayer.levelUp();
+    // System.out.println("new stats \n");
+    // playerStats.getClassInfo(chosenClass);
 
-    Printer.printItalizcizedColor("scene two start", "white");
-}
+    System.out.println();
+    Printer.printItalizcizedColor("The assassin falls to the ground, defeated.\nYou stalk towards him as he lays there, face\nin the ground.\n", "white");
+    Printer.printColor("\"Ahck!\" \033[3mHe coughs as you pin him with your foot.\033[0m\n","white");
+    Printer.printColor("\"How'd you already track me.\" \033[3mYou demand, grinding you foot in his back.\033[0m\n", "white");
+    Printer.print("\033[3mHe laughs derisively.\033[0m \"Like I'd tell you, traitorous scum.\"\n"); 
+    Printer.printItalizcizedColor("\"Doesn't seem like he'll spill anything. Guess he has no use to me anymore.\"\n", "white");
+    Printer.printItalizcizedColor("You stab him, quieting his annoying laughter. \n", "white");
+    Printer.printItalizcizedColor("You look around the dirtied town. \"Guess I'll go check around to gather intel.\"", "white");
+    Printer.printItalizcizedColor("You check the map to decide where you go...", "purple");
+
+    TownMaker townMaker = new TownMaker(mainPlayer);
+    mainPlayer.makeTownMaker(townMaker);
+    //TODO: capitalize first letters of the town names
+    townMaker.makeSlums();
+    townMaker.runSlums();
+
+
+
+
+}   
     
 }

@@ -4,38 +4,83 @@ import java.text.DecimalFormat;
 import Tools.*;
 import TownInfo.Town;
 
+
  
 public class Stats {
 
         private DecimalFormat df = new DecimalFormat("###.00");
 
-        public double maxHP, maxMP, maxSpd, maxAtk, maxPhysDmg, maxMagicDmg, maxDef, maxEnd, maxStam, maxPhysRes, maxMagicRes, maxDodge, maxVit,
+        private double maxHP, maxMP, maxSpd, maxAtk, maxPhysDmg, maxMagicDmg, maxDef, maxEnd, maxStam, maxPhysRes, maxMagicRes, maxDodge, maxVit,
                         maxCritRate, maxCritDmg, maxLuck;
-
-        public double currentHP, currentMP, currentSpd, currentAtk, currentPhysDmg, currentMagicDmg, currentDef, currentEnd, currentStam,
+                        
+        private double currentHP, currentMP, currentSpd, currentAtk, currentPhysDmg, currentMagicDmg, currentDef, currentEnd, currentStam,
                 currentPhysRes, currentMagicRes, currentDodge, currentVit, currentCritRate, currentCritDmg, currentLuck;
 
-        public double speedMultiplier = 1, atkMultiplier = 1, hpMultiplier = 1, dodgeMultiplier = 1, defMultiplier = 1;
+        private double speedMultiplier = 1, atkMultiplier = 1, hpMultiplier = 1, dodgeMultiplier = 1, defMultiplier = 1, allStats[], currentStats[];
         
-        double allStats[], currentStats[];
-        String displayStats[];
+        private String displayStats[];
+        private int XP_TO_LVL_UP = 100;
+        private int level, howLongDisabled, howLongSpeedUp, howLongAtkUp, howLongDefUp, howLongDodgeUp, xp = 0;
 
-        int level = 1;
-        double xp = 0;
-        final int XP_TO_LVL_UP = 100;
-        public int howLongDisabled, howLongSpeedUp, howLongAtkUp, howLongDefUp, howLongDodgeUp;
+        
+        //return how long disabled
+        public int getHowLongDisabled(){return howLongDisabled;}
 
+        //sets how long we are disabled for
+        public void setHowLongDisabled(int toWhat){howLongDisabled = toWhat;}
 
+        //returns the length of time speed is up
+        public int getHowLongSpeedUp(){return howLongSpeedUp;}
+
+        //sets how long speed is up for
+        public void setHowLongSpeedUp(int toWhat){howLongSpeedUp = toWhat;}
+
+        //returns the length of time the atk is up for
+        public int getHowLongAtkUp(){return howLongAtkUp;}
+
+        //sets the amount of time attack is up
+        public void setHowLongAtkUp(int toWhat){howLongAtkUp = toWhat;}
+
+        //returns the length of time def is up for 
+        public int getHowLongDefUp(){return howLongDefUp;}
+
+        //sets the amount of time dodge is up
+        public void setHowLongDefUp(int toWhat){howLongDefUp = toWhat;}
+
+        //returns the length of time dodge is up for
+        public int getHowLongDodgeUp(){return howLongDodgeUp;}
+
+        //sets the amount of time dodge is up
+        public void setHowLongDodgeUp(int toWhat){howLongDodgeUp = toWhat;}
+
+	//returns the xp needed to level up. 
+        public int getXP_TO_LVL_UP(){return XP_TO_LVL_UP;}
+
+        //returns the player's xp
+        public int getXP(){return xp;}
+
+        //returns the current speed of the player
         public double getCurrentSpeed(){return currentSpd;}
+
+        //returns the player's speed multiplier
         public double getSpeedMultiplier(){return speedMultiplier;}
+
+        //returns the player's current HP
         public double getCurrentHP(){return currentHP;}
+
+        public double getCurrentAttack(){return currentAtk;}
+
+        //returns current mp
         public double getCurrentMP(){return currentMP;}
 
-        public void setCurrentHP(double toWhat){
-                currentHP = toWhat;
-        }
+        //sets current hp
+        public void setCurrentHP(double toWhat){currentHP = toWhat;}
 
+        //sets current MP
+        public void setCurrentMP(double toWhat){currentMP = toWhat;}
 
+        //returns max HP
+        public double getMaxHP(){return maxHP;}
 
         /**
          * This class will contain information about the stats of the player and the
@@ -145,8 +190,7 @@ public class Stats {
                 currentLuck = maxLuck;
         }
 
-        // * prints out the stats of the player
-        // more will be added here, this is just to test
+        //Prints out the stats of the player
         public void getClassInfo(String chosenClass) {
 
                 Printer.printColor(
@@ -154,35 +198,55 @@ public class Stats {
                                                 + ":",
                                 "white");
                 System.out.println();
-                int i = 0;
-                for (Double element : currentStats) {
-                        Printer.printColor(displayStats[i] + ": " + String.valueOf(element), "white");
-                        i++;
+
+                for (int i = 0; i < displayStats.length; i++) {
+                        double replaceToStats = currentStats[i]; 
+                        Printer.print(displayStats[i] + ": " + df.format(replaceToStats)); 
                 }
         } 
 
         //Adds xp to the user
         public void addXP(int xpGained) {
                 xp =+ xpGained;
-                checkXP();
         }
 
-        //checks if the user is ready for a level up
-        public void checkXP() {
-                if(xp / XP_TO_LVL_UP >= 1){
-                        xp-= XP_TO_LVL_UP;
-                        player.levelUp();
-                        checkXP();
-                }
-        }
+        //increases the stats of the user by a certain percentage for a level up. 
+        public void statsUp(double statPercentageIncreasePerLevel) {
+                XP_TO_LVL_UP *= 1.2;
+                //increases the cur
+                currentHP *= statPercentageIncreasePerLevel; 
+                currentMP *= statPercentageIncreasePerLevel; 
+                currentSpd *= statPercentageIncreasePerLevel; 
+                currentAtk *= statPercentageIncreasePerLevel; 
+                currentPhysDmg *= statPercentageIncreasePerLevel; 
+                currentMagicDmg *= statPercentageIncreasePerLevel; 
+                currentDef *= statPercentageIncreasePerLevel; 
+                currentEnd *= statPercentageIncreasePerLevel; 
+                currentStam *= statPercentageIncreasePerLevel; 
+                currentPhysRes *= statPercentageIncreasePerLevel; 
+                currentMagicRes *= statPercentageIncreasePerLevel; 
+                currentDodge *= statPercentageIncreasePerLevel; 
+                currentVit *= statPercentageIncreasePerLevel; 
+                currentCritRate *= statPercentageIncreasePerLevel; 
+                currentCritDmg *= statPercentageIncreasePerLevel; 
+                currentLuck *= statPercentageIncreasePerLevel;
 
-        //levels up the user
-        public void levelUp() {
-                Double statPercentageIncreasePerLevel = 1.05;
-                for (int i = 0; i < allStats.length; i++) {
-                        allStats[i] = allStats[i] * statPercentageIncreasePerLevel;
-                        currentStats[i] = currentStats[i] * statPercentageIncreasePerLevel;
-                }
+                maxHP *= statPercentageIncreasePerLevel; 
+                maxMP *= statPercentageIncreasePerLevel; 
+                maxSpd *= statPercentageIncreasePerLevel; 
+                maxAtk *= statPercentageIncreasePerLevel; 
+                maxPhysDmg *= statPercentageIncreasePerLevel; 
+                maxMagicDmg *= statPercentageIncreasePerLevel; 
+                maxDef *= statPercentageIncreasePerLevel; 
+                maxEnd *= statPercentageIncreasePerLevel; 
+                maxStam *= statPercentageIncreasePerLevel; 
+                maxPhysRes *= statPercentageIncreasePerLevel; 
+                maxMagicRes *= statPercentageIncreasePerLevel; 
+                maxDodge *= statPercentageIncreasePerLevel; 
+                maxVit *= statPercentageIncreasePerLevel; 
+                maxCritRate *= statPercentageIncreasePerLevel; 
+                maxCritDmg *= statPercentageIncreasePerLevel; 
+                maxLuck *= statPercentageIncreasePerLevel;
         }
 
         //heals the person/mob

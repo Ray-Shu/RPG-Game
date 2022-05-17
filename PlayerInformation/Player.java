@@ -53,16 +53,41 @@ public class Player {
                 playerInventory.addInventory(itemsToAdd);
         }
 
+
+        //returns information about the player.
         public Stats getPlayerStats() {return playerStats;}
+        
+        //returns information about the player.
         public Bank getBank(){return bankAccount;}
+        
+        //returns information about the player.
         public String getName(){return playerName;}
+        
+        //returns information about the player.
         public String getPlayerClass(){return chosenClass;}
+        
+        //returns information about the player.
         public String[] getChosenAttacks(){return chosenAttacks;}
+        
+        //returns information about the player.
         public int[] getAttacksCosts (){return chosenAttacksCost;}
+        
+        //returns information about the player.
         public int getLevel(){return playerLevel;}
+        
+        //returns information about the player.
         public Town getCurrentTown() {return townMaker.getCurrentTown();}
+        
+        //returns information about the player.
         public PlayerCreation getCreator(){return creator;}
-        public void addLevel(){playerLevel++;}
+
+        public void levelUp(){
+                playerLevel++;
+                Printer.printColor("---------------------------------------------------------", "yellow");
+                Printer.printColor("Congratulations! You have reached level " +playerLevel+"!", "yellow");
+                Printer.printColor("---------------------------------------------------------", "yellow");
+
+        }
 
         public static void playerDied() {
                 System.out.println("\u001B[31m" + 

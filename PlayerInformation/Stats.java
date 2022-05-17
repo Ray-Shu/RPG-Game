@@ -171,16 +171,13 @@ public class Stats {
         public void checkXP() {
                 if(xp / XP_TO_LVL_UP >= 1){
                         xp-= XP_TO_LVL_UP;
-                        levelUp();
+                        player.levelUp();
                         checkXP();
                 }
         }
 
         //levels up the user
         public void levelUp() {
-                Printer.printColor("---------------------------------------------------------", "yellow");
-                Printer.printColor("Congratulations! Your level has increased!", "yellow");
-                Printer.printColor("---------------------------------------------------------", "yellow");
                 Double statPercentageIncreasePerLevel = 1.05;
                 for (int i = 0; i < allStats.length; i++) {
                         allStats[i] = allStats[i] * statPercentageIncreasePerLevel;

@@ -60,18 +60,18 @@ public class Combat extends Moves{
     public void fight(boolean isTutorial) {
         boolean hasMobAttacked = isTutorial;
 
-        while(playerStats.currentHP > 0 && mobStats.currentHP > 0){
+        while(playerStats.getCurrentHP() > 0 && mobStats.getCurrentHP() > 0){
 
             if (isTutorial) {
                 Printer.printColor("\nWelcome to your first fight! Both you and your opponent will have attacks which use MP. \nYour goal is to use those attacks to defeat your enemy before dying or running out of MP! \n", "purple"); 
                 isTutorial = false;
             }
 
-            if (isPlayerTurn() && playerStats.howLongDisabled == 0){
+            if (isPlayerTurn() && playerStats.getHowLongDisabled() == 0){
                 
                 Printer.printColor("----------------------------------------------------------", "cyan");
 
-                Printer.printColor("It is your turn! Your current MP: "+ playerStats.currentMP + " | Enemy HP: "+ df.format(mobStats.currentHP) + "\n", "cyan");
+                Printer.printColor("It is your turn! Your current MP: "+ df.format(playerStats.getCurrentMP()) + " | Enemy HP: "+ df.format(mobStats.getCurrentHP()) + "\n", "cyan");
                 
                 listAttacks();
                 
@@ -81,7 +81,7 @@ public class Combat extends Moves{
                 } else {
                     player.showInventory(); 
                 }
-            
+                
                 
                 checkPlayerBoosts();
                 System.out.println();
@@ -92,7 +92,7 @@ public class Combat extends Moves{
 
             }
 
-            else if (mobStats.howLongDisabled == 0){
+            else if (mobStats.getHowLongDisabled() == 0){
 
                 Printer.printColor("----------------------------------------------------------", "red");
 
@@ -118,6 +118,14 @@ public class Combat extends Moves{
         whoDied();
         Printer.printColor("Fight Over", "yellow");
         Printer.printColor(". \n. \n. \n", "yellow");
+
+        //ending boosts: 
+
+        playerStats.setHowLongAtkUp(0);
+        playerStats.setHowLongDefUp(0);
+        playerStats.setHowLongDisabled(0);
+        playerStats.setHowLongDodgeUp(0);
+        playerStats.setHowLongSpeedUp(0);
         return;
 
     }
@@ -250,7 +258,7 @@ public class Combat extends Moves{
      */
     public void mobMove() {
 
-        double mp = mobStats.currentMP;
+        double mp = mobStats.getCurrentMP();
         ArrayList<Integer> movesWeCanDo = new ArrayList<Integer>();
 
         for (int i = 0; i < mobAttackCosts.length; i++) {
@@ -279,19 +287,19 @@ public class Combat extends Moves{
 
     public void isAnyoneDisabled(){
         //Checks if the enemy is disabled. If they are, we will skip their turn and say they are disabled. 
-            if(mobStats.howLongDisabled > 0){
+            if(mobStats.getHowLongDisabled() > 0){
                 Printer.printColor("----------------------------------------------------------", "red");
                 Printer.printColor("Mob is disabled!!!" ,"red");
-                mobStats.howLongDisabled --;
+                mobStats.setHowLongDisabled(mobStats.getHowLongDisabled() -1);
                 mobTurnOver();
                 Printer.printColor("----------------------------------------------------------", "red");
             }
 
             //Checks if the player is disabled. If they are, we will skip their turn and say they are disabled. 
-            if(playerStats.howLongDisabled > 0){
+            if(playerStats.getHowLongDisabled() > 0){
                 Printer.printColor("----------------------------------------------------------", "red");
                 Printer.printColor("Player is disabled!!!" ,"red");
-                playerStats.howLongDisabled --;
+                playerStats.setHowLongDisabled(playerStats.getHowLongDisabled() -1);
                 playerTurnOver();
                 Printer.printColor("----------------------------------------------------------", "red");
             }
@@ -300,35 +308,35 @@ public class Combat extends Moves{
     //checks if any of the player's stats are currently boosts
     public void checkPlayerBoosts(){
         //checks if the player's temp ATK multiplier is active, and then it 
-            if(playerStats.howLongAtkUp > 0){
-                playerStats.howLongAtkUp--;
-                if(playerStats.howLongAtkUp ==0){
+            if(playerStats.getHowLongAtkUp() > 0){
+                playerStats.setHowLongAtkUp(playerStats.getHowLongAtkUp() - 1);
+                if(playerStats.getHowLongAtkUp() ==0){
                     Printer.printColor("Player ATK boost over!", "cyan");
                     playerStats.applyAttackUp(1);
                 }
             }
 
         //checks if the player's attack speed multiplier is active, and then it 
-            if(playerStats.howLongSpeedUp > 0){
-                playerStats.howLongSpeedUp--;
-                if(playerStats.howLongSpeedUp ==0){
+            if(playerStats.getHowLongSpeedUp() > 0){
+                playerStats.setHowLongSpeedUp(playerStats.getHowLongSpeedUp() - 1);
+                if(playerStats.getHowLongSpeedUp()==0){
                     Printer.printColor("Player SPD boost over!", "cyan");
                     playerStats.applyAttackUp(1);
                 }
             }
         //checks if the player's temp def multiplier is active, and then it 
-            if(playerStats.howLongDefUp > 0){
-                playerStats.howLongDefUp--;
-                if(playerStats.howLongDefUp ==0){
+            if(playerStats.getHowLongDefUp()> 0){
+                playerStats.setHowLongDefUp(playerStats.getHowLongDefUp() - 1);
+                if(playerStats.getHowLongDefUp() ==0){
                     Printer.printColor("Player ATK boost over!", "cyan");
                     playerStats.applyDefenceUp(1);
                 }
             }
 
         //checks if the player's temp dodge multiplier is active, and then it 
-            if(playerStats.howLongDodgeUp > 0){
-                playerStats.howLongDodgeUp--;
-                if(playerStats.howLongDodgeUp ==0){
+            if(playerStats.getHowLongDefUp() > 0){
+                playerStats.setHowLongDefUp(playerStats.getHowLongDefUp() - 1);
+                if(playerStats.getHowLongAtkUp() ==0){
                     Printer.printColor("Player SPD boost over!", "cyan");
                     playerStats.applyDodgeUp(1);
                 }
@@ -341,33 +349,33 @@ public class Combat extends Moves{
     //checks if any of the mobs's stats are currently boosts
     public void checkMobBoosts(){
         //checks if the mobs's temp speed multiplier is active, and then it 
-            if(mobStats.howLongSpeedUp > 0){
-                mobStats.howLongSpeedUp--;
-                if(mobStats.howLongSpeedUp ==0){
+            if(mobStats.getHowLongSpeedUp() > 0){
+                mobStats.setHowLongSpeedUp(mobStats.getHowLongSpeedUp() - 1);
+                if(mobStats.getHowLongSpeedUp() ==0){
                     Printer.printColor("Mob SPD boost over!", "cyan");
                     mobStats.applySpeedUp(1);
                 }
             }
             //checks if the mobs's temp atk multiplier is active, and then it 
-            if(mobStats.howLongAtkUp>0){
-                mobStats.howLongAtkUp--;
-                if(mobStats.howLongAtkUp ==0){
+            if(mobStats.getHowLongAtkUp()>0){
+                mobStats.setHowLongAtkUp(mobStats.getHowLongAtkUp() - 1);
+                if(mobStats.getHowLongAtkUp() ==0){
                     Printer.printColor("Mob ATK boost over!", "cyan");
                     mobStats.applyAttackUp(1);
                 }
             }
 
-            if(mobStats.howLongDefUp > 0){
-                mobStats.howLongDefUp--;
-                if(mobStats.howLongDefUp ==0){
+            if(mobStats.getHowLongDefUp() > 0){
+                mobStats.setHowLongDefUp(mobStats.getHowLongDefUp() - 1);
+                if(mobStats.getHowLongDefUp() ==0){
                     Printer.printColor("Mob DEF boost over!", "cyan");
                     mobStats.applyDefenceUp(1);
                 }
             }
             //checks if the mobs's temp dodge multiplier is active, and then it 
-            if(mobStats.howLongDodgeUp > 0){
-                mobStats.howLongDodgeUp--;
-                if(mobStats.howLongDodgeUp ==0){
+            if(mobStats.getHowLongDodgeUp() > 0){
+                mobStats.setHowLongDodgeUp(mobStats.getHowLongDodgeUp() -1);
+                if(mobStats.getHowLongDodgeUp() ==0){
                     Printer.printColor("Mob DODGE boost over!", "cyan");
                     mobStats.applyDodgeUp(1);
                 }

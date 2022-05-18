@@ -106,6 +106,7 @@ public class Merchant {
                 Printer.printColor("Healing you: ", color);
                 playerStats.hospitalHeal();
                 playerStats.rest();
+                shop();
                 break;
 
             //shows bank account balance

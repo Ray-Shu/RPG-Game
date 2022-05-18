@@ -1,6 +1,6 @@
 package PlayerInformation;
 import java.util.ArrayList;
-import java.util.jar.Attributes.Name;
+// import java.util.jar.Attributes.Name;
 
 import Tools.*;
 import TownInfo.*;
@@ -34,25 +34,20 @@ public class Player {
         //*End of testing combat stuff
 
         /**
-         * ALL INVENTORY RELATED STUFF
+         * *ALL INVENTORY RELATED STUFF
          * Reference to this when showing or adding to inventory
          */
-
         Inventory playerInventory = new Inventory();
-        public void createInventory(){
-                
-                playerInventory.createInventory(playerStats); 
-        }
 
-        public void showInventory(){
-                playerInventory.showInventory(); 
-                
-        }
+        public void createInventory(){playerInventory.createInventory(playerStats);}
 
-        public void addToInventory(ArrayList<String> itemsToAdd){
-                playerInventory.addInventory(itemsToAdd);
-        }
+        public void showInventory(){playerInventory.showInventory();}
 
+        public void addToInventory(ArrayList<String> itemsToAdd){playerInventory.addInventory(itemsToAdd);}
+
+        public void addEquippedArmourToInventory(String headPiece, String chestPiece, String legPiece, String boots) {
+                playerInventory.playerInventoryAddEquippedArmour(headPiece, chestPiece, legPiece, boots);
+        }
 
         //returns information about the player.
         public Stats getPlayerStats() {return playerStats;}
@@ -81,32 +76,44 @@ public class Player {
         //returns information about the player.
         public PlayerCreation getCreator(){return creator;}
 
+        //increases the level of the player, tells them they leveled up, and how much they increased by. 
         public void levelUp(){
                 playerLevel++;
                 Printer.printColor("---------------------------------------------------------", "yellow");
-                Printer.printColor("██      ███████ ██    ██ ███████ ██          ██    ██ ██████  ██ \n"
+                System.out.println("\u001B[32m" + 
+                                 "██      ███████ ██    ██ ███████ ██          ██    ██ ██████  ██ \n"
                                 +"██      ██      ██    ██ ██      ██          ██    ██ ██   ██ ██ \n"
                                + "██      █████   ██    ██ █████   ██          ██    ██ ██████  ██ \n"
                                 +"██      ██       ██  ██  ██      ██          ██    ██ ██         \n"
-                                +"███████ ███████   ████   ███████ ███████      ██████  ██      ██ \n", "yellow");
+                                +"███████ ███████   ████   ███████ ███████      ██████  ██      ██ \n \u001B[32m");
                 Printer.printColor("Congratulations! You have reached level " +playerLevel+"!", "yellow");
-                // Printer.printColor("", color);
+                //todo: Make this print out stat increases
                 Printer.printColor("---------------------------------------------------------", "yellow");
                 playerStats.statsUp(1.1);
         }
 
-        //checks if the user is ready for a level up
+        /**
+        * Checks if the user is ready for a level up, and adds a bit of xp. 
+        * @param howMuchXPGained        - the amount of xp gained. 
+        */
         public void checkXP(int howMuchXPGained) {
+                System.out.println("addxp..." + "xp befo");
                 playerStats.addXP(howMuchXPGained);
+                System.out.println("addxp done");
+
+                //if the xp is greater than the required xp to level up, we will level up and check if we can level up again. 
                 if(playerStats.getXP() / playerStats.getXP_TO_LVL_UP() >= 1){
                         playerStats.addXP(-playerStats.getXP_TO_LVL_UP());
                         levelUp();
                         checkXP(0);
                 }
+
         }
         
 
-
+        /**
+         * Runs when thhe player dies. Prints out a cool message.
+         */
         public static void playerDied() {
                 System.out.println("\u001B[31m" + 
                         "-----------------------------------------------------------\n"+

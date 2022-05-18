@@ -44,22 +44,19 @@ public class Main {
 
                     
         //*Story Line (currently working on chapter One)
-        // MainStory story = new MainStory();
-        // story.startStory(); 
+        MainStory story = new MainStory();
+        story.startStory(); 
                     
-        //* Town Tests
-        Bank bank = new Bank(1000);
-        PlayerCreation lord = new PlayerCreation(bank, "Jeff");
-        Player player = lord.testPlayer();
-        TownMaker townMaker = new TownMaker(player);
-        player.makeTownMaker(townMaker);
-        townMaker.makeSlums();
-        townMaker.runSlums();
+        // //* Town Tests
+        // Bank bank = new Bank(1000);
+        // PlayerCreation lord = new PlayerCreation(bank, "Jeff");
+        // Player player = lord.testPlayer();
+        // TownMaker townMaker = new TownMaker(player);
+        // player.makeTownMaker(townMaker);
+        // townMaker.makeTowns();
+        // townMaker.runSlums();
              
             
-
-        
-
         /**
          * SOME BUGS THAT I'VE FOUND WHILE TESTING SOME STUFF
          * IF I DONT GET AROUND TO FIXING THEM, ILL LIST THEM HERE

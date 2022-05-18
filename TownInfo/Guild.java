@@ -99,7 +99,7 @@ public class Guild {
 
         printMissions();
 
-        int missionToDo = ErrorChecker.intWithMinAndMax(1, allMissions.size() + 1, "\nWhich mission would you like to go on?", color);
+        int missionToDo = ErrorChecker.intWithMinAndMax(1, (allMissions.size() + 1), "\nWhich mission would you like to go on?", color);
         
         if(missionToDo <= allMissions.size()){
             allMissions.get(missionToDo-1).runMission();
@@ -115,13 +115,21 @@ public class Guild {
      */
     public void printMissions(){
         int i = 0;
+        //removes completed missions from the array
+        
+        for (int n = 0; n < allMissions.size(); n++) {
+            if(allMissions.get(n).isMissionComplete()){
+                allMissions.remove(n);
+                n--;
+            }
+        }
+
         for (i = 0; i < allMissions.size();i++ ){
-            if(!allMissions.get(i).isMissionComplete()){
+            
             //prints the index of the mission.
                 Printer.printColor("(" + (i+1) + " ) "
                     + allMissions.get(i).getMissionName() + ": ", color);
                 allMissions.get(i).printMissionInfo();
-            }
         }
         Printer.printColor("(" + (i+1) + " ) Leave", color);
     }

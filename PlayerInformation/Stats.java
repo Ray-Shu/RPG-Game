@@ -89,7 +89,7 @@ public class Stats {
         public double getCurrentSpeed() {return currentSpd;}
 
         //returns the player's current atk
-        public double getCurrentAttack(){return currentAtk;}
+        public double getCurrentAttack(){return currentAtk * atkMultiplier;}
 
         //returns the players current physical damage
         public double getCurrentPhysDmg(){return currentPhysDmg;}

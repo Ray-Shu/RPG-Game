@@ -48,7 +48,7 @@ public class Moves {
         //index = scan.nextInt();
         switch (index) {
             case 1:
-            attackMPcost = 5;
+            attackMPcost = 0;
             if(attackMPcost > attackerStats.getCurrentMP()){tooTired(); break;}
             attackerStats.setCurrentMP(attackerStats.getCurrentMP() - attackMPcost);
             laser_barrage(attackerStats, victimStats);
@@ -120,7 +120,7 @@ public class Moves {
 
         switch (index) {
             case 1:
-            attackMPcost = 5;
+            attackMPcost = 0;
                 if(attackMPcost > attackerStats.getCurrentMP()){tooTired(); break;}
                 attackerStats.setCurrentMP(attackerStats.getCurrentMP() - attackMPcost);
                 virus(attackerStats, victimStats);
@@ -190,7 +190,7 @@ public class Moves {
         // index = scan.nextInt();
         switch (index) {
             case 1:
-            attackMPcost = 15;
+            attackMPcost = 0;
             if(attackMPcost > attackerStats.getCurrentMP()){tooTired(); break;}
             attackerStats.setCurrentMP(attackerStats.getCurrentMP() - attackMPcost);
             machine_gun_fury(attackerStats, victimStats);
@@ -255,7 +255,7 @@ public class Moves {
 
         switch (index) {
             case 1:
-            attackMPcost = 7;
+            attackMPcost = 0;
             if(attackMPcost > attackerStats.getCurrentMP()){tooTired(); break;}
             attackerStats.setCurrentMP(attackerStats.getCurrentMP() - attackMPcost);
             swift_thrust_of_the_sword(attackerStats, victimStats);
@@ -325,7 +325,7 @@ public class Moves {
 
         switch (index) {
             case 1:
-            attackMPcost = 4;
+            attackMPcost = 0;
             if(attackMPcost > attackerStats.getCurrentMP()){tooTired(); break;}
             attackerStats.setCurrentMP(attackerStats.getCurrentMP() - attackMPcost);
             quick_blast(attackerStats, victimStats);
@@ -407,7 +407,7 @@ public class Moves {
             dragon_shatter(attackerStats, victimStats);
             return;
         case 2:
-            attackMPcost = 10;
+            attackMPcost = 0;
             if(attackMPcost > attackerStats.getCurrentMP()){tooTired(); break;}
             attackerStats.setCurrentMP(attackerStats.getCurrentMP() - attackMPcost);
             simple_strike(attackerStats, victimStats);
@@ -469,7 +469,7 @@ public class Moves {
 
         switch (index) {
             case 1:
-            attackMPcost = 10;
+            attackMPcost = 0;
             if(attackMPcost > attackerStats.getCurrentMP()){tooTired(); break;}
             attackerStats.setCurrentMP(attackerStats.getCurrentMP() - attackMPcost);
             holy_flash_of_radiant_light(attackerStats, victimStats);

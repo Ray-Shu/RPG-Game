@@ -13,58 +13,58 @@ public class  PlayerCreation {
 
     private final String CLASSES[] = { "cyborg", "hacker", "terminator", "laser swordsman", "rogue", "mystic", "reverend" };
 
-    private final String CYBORG_ATTACKS[] = {"Laser Barrage", "Charged Shot", "Cyber Shield", "Overload"};
-    private final int CYBORG_ATTACK_COSTS[] = {5,15,5,20};
-    private final String CYBORG_ATTACK_INFO[] = {"Laser Barrage unleashes a flury of low damage laser shots on the opponents", 
+    public final String CYBORG_ATTACKS[] = {"Laser Barrage", "Charged Shot", "Cyber Shield", "Overload"};
+    public final int CYBORG_ATTACK_COSTS[] = {0,15,5,20};
+    public final String CYBORG_ATTACK_INFO[] = {"Laser Barrage unleashes a flury of low damage laser shots on the opponents", 
             "The Charged Shot unleashes a powerful blast capable dealing major damage", 
             "The Cyber Shield increases defense for the next 3 turns", 
             "Overload greatly increases attack for the next 3 turns"};
 
     private final String HACKER_ATTACKS[] = {"Virus Attack", "Stolen Missile", "Watchful Vulture", "In The System"};
-    private final int HACKER_ATTACK_COSTS[] = {5,20,5,10};
+    private final int HACKER_ATTACK_COSTS[] = {0,20,5,10};
     private final String HACKER_ATTACKS_INFO[] = {"The hacker uses a virus to destroy enemy systems, dealing strong damage!",
             "With the Stolen Missile ability, the hacker seizes a missile from the government and tries to use it to destroy their enemies",
             "The hacker's Watchful Vulture ability uses realtime satellite imagery to locate enemies and ensure hits for the next 3 turns",
             "The hacker gets \"In The System\" with their final ability to disable their enemy robots for 2 turns"};
 
     private final String TERMINATOR_ATTACKS[] = {"Machine Gun Fury\t\t\t", "First Impact Fists\t\t\t", "Deceiving Blast of Cybernetic Proportions", "Hunker Down\t\t\t\t"};
-    private final int TERMINATOR_ATTACK_COSTS[] = {10,5,10,10};
+    private final int TERMINATOR_ATTACK_COSTS[] = {0,5,10,10};
     private final String TERMINATOR_ATTACKS_INFO[] = {"The Terminator unleashes their Machine gun to deal major damage to opponents",
             "The Terminator gets a heavily impactful strike on their enemy. ",
             "The Terminators special move surprises enemies and blinding them for 2 turns. ",
             "The Hunker Down ability increases ATK, but removes chance of dodging an attack. "};
 
     private final String SWORDSMAN_ATTACKS[] = {"Swift Thrust of the Sword", "Fatal Eruption Of Bullets", "Lightning Clone Strike", "Meditation\t\t"};
-    private final int SWORDSMAN_ATTACK_COSTS[] = {7,13,25,0};
+    private final int SWORDSMAN_ATTACK_COSTS[] = {0,13,25,0};
     private final String SWORDSMAN_ATTACKS_INFO[] = {"The Swordsman outpaces their enemy to deal a powerful blow. ",
             "The Swordsman uses a gun to eliminate their enemies. ",
             "The Swordsman's moves at supersonic speeds to summon clones which all attack the enemy. ",
             "The Swordsman Sleeps"};
     
     private final String ROGUE_ATTACKS[] = {"Quick Blast\t\t", "Death Strike\t", "Secret Mushroom Strike", "Forbidden Smoke\t"};
-    private final int ROGUE_ATTACK_COSTS[] = {4,12,10,5};
+    private final int ROGUE_ATTACK_COSTS[] = {0,12,10,5};
     private final String ROGUE_ATTACKS_INFO[] = {"The agile Rogue quickly blasts the enemy with explosives before they get to react. ",
             "The Rogue Sneaks up on their opponent and strikes them down. ",
             "The Rogue poisons their opponent",
             "The Rogue uses smoke to deceive their enemy. "};
     
     private final String MYSTIC_ATTACKS[] = {"Dragon Shatter", "Simple Strike", "Frost Eruption" , "Burning Prison"};
-    private final int MYSTIC_ATTACK_COSTS[] = {20,10,10,5};
+    private final int MYSTIC_ATTACK_COSTS[] = {20,0,10,5};
     private final String MYSTIC_ATTACKS_INFO[] = {"Summons a dragon who strikes their opponent, dealing major damage. ",
             "The attack uses a small blast of mana to damage their opponent. ",
             "Frost Eruption slows the enemies and does a little damage. ",
             "The Mystic traps their enemy in a burning prison!"}; 
 
-    private final String REVEREND_ATTACKS[] = {"Holy Flash of Radiant Light\t", "Divine Smite\t\t", "Holy Healing\t\t", "Prayer\t\t\t"};
-    private final int REVEREND_ATTACK_COSTS[] = {10,20,10,10};
-    private final String REVEREND_ATTACKS_INFO[] = {"The Reverend manipulates the divine light to blind the enemy and deal major damage!",
+    public final String REVEREND_ATTACKS[] = {"Holy Flash of Radiant Light\t", "Divine Smite\t\t", "Holy Healing\t\t", "Prayer\t\t\t"};
+    public final int REVEREND_ATTACK_COSTS[] = {0,20,10,10};
+    public final String REVEREND_ATTACKS_INFO[] = {"The Reverend manipulates the divine light to blind the enemy and deal major damage!",
             "The divine smite summons lightning to stun enemies and deal major damage. ",
             "Holy healing heals the player",
             "The prayer increases attack and speed. "};
     
-    private final String CHOOSE_CRATE_AND_CRATE_INFO[] = {"1", "2", "3", "4", "5", "6", "7", "M1", "M2", "M3", "M4", "M5", "M6", "M7"};
-    private Bank bankAccount;
-        private TownMaker townMaker;
+    public final String CHOOSE_CRATE_AND_CRATE_INFO[] = {"1", "2", "3", "4", "5", "6", "7", "M1", "M2", "M3", "M4", "M5", "M6", "M7"};
+    public Bank bankAccount;
+    public TownMaker townMaker;
 
     public PlayerCreation(Bank bankAccount, String name){
 
@@ -136,7 +136,7 @@ public class  PlayerCreation {
 
         //* CRATE SIX INFO - Mystic
         Printer.printColor("[6] Crate Six - Mystic:", "purple"); 
-        Printer.print("Battered Spectral Hood ");
+        Printer.print("Battered Spectral Hood");
         Printer.print("Battered Spectral Robe");
         Printer.print("Battered Spectral Leggings"); 
         Printer.print("Battered Spectral Boots");

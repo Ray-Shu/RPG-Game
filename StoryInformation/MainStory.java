@@ -14,6 +14,7 @@ public class MainStory {
     private String playerName; 
     private String chosenClass;
     private Stats playerStats; 
+    private Armours armours; 
 
     private Bank playerAccount = new Bank(1000);
     private PlayerCreation playerCreator;
@@ -28,6 +29,18 @@ public class MainStory {
     public String getName() {
         playerName = in.nextLine(); 
         return playerName;          
+    }
+
+    public void playerInfo() {
+        playerCreator.printCrateInfo(); 
+        mainPlayer = playerCreator.getPlayer();
+        townMaker = new TownMaker(mainPlayer);
+        mainPlayer.makeTownMaker(townMaker);
+        this.chosenClass = playerCreator.getChosenClass();
+        playerStats = mainPlayer.getPlayerStats();
+        Armours armours = new Armours(mainPlayer, chosenClass); 
+        this.armours = armours; 
+        armours.equipArmour("Battered Spectral");
     }
 
     public void startStory() {
@@ -73,16 +86,11 @@ public class MainStory {
         // Printer.quickBreak(5000); 
         
         //*Account Creation Info
-        playerCreator.printCrateInfo(); 
-        mainPlayer = playerCreator.getPlayer();
-        townMaker = new TownMaker(mainPlayer);
-        mainPlayer.makeTownMaker(townMaker);
-        this.chosenClass = playerCreator.getChosenClass();
-        playerStats = mainPlayer.getPlayerStats();
+        playerInfo(); 
 
         //*Used for testing inventory
-        // mainPlayer.createInventory();
-        // mainPlayer.showInventory();
+        mainPlayer.createInventory();
+        mainPlayer.showInventory();
 
         // Printer.print("\n\"Got your choice? Alright, we'll meet up with you later at the Antarctic Domain. We've still got other people to break out.\" \n\033[3mHowever, just before he leaves, he turns back.\n\033[0m\"Oh right, I forgot to give you this, here.\" \033[3mHe hands you a map and a letter.\033[0m \n\"The letter is a referral so you dont get scammed in shops, there's also a second paper that shows useful locations here. Alright, I think that's everything, good luck!\"\n");
         // Printer.printItalizcizedColor("The group leaves; silence permeates the air and you check what you recieved. \n","white");
@@ -167,8 +175,8 @@ public class MainStory {
     //*GETS ALL OF THE INFO OF MC'S CLASS AND STATS ------------------------------------------------------------
         playerStats = mainPlayer.getPlayerStats();
         Stats mobStats = summonMob.newGreaterWillAssassin(2);
-        String mobAttacks[] = summonMob.GREATER_WILL_ASSASSIN_ATTACKS;
-        int mobAttacksCost[] = summonMob.GREATER_WILL_ASSASSIN_COSTS;
+        String mobAttacks[] = summonMob.getGreaterWillAssasinAttacks();
+        int mobAttacksCost[] = summonMob.getGreaterWillAssasinAttackCosts();
         Combat chapter_One_Fight_One = new Combat(mainPlayer, playerStats, mobStats, mobAttacks, mobAttacksCost, summonMob);
         chapter_One_Fight_One.fight(true);
 
@@ -181,12 +189,12 @@ public class MainStory {
             Printer.printItalizcizedColor("How did you lose...", "yellow");
             chapter_One_Reset_Point_One();
         } else {
-            chapter_One_Scene_Two(playerStats);
+            chapter_One_Scene_Two();
         }
-        chapter_One_Scene_Two(playerStats);
+        chapter_One_Scene_Two();
     }
 
-    public void chapter_One_Scene_Two(Stats playerStats){
+    public void chapter_One_Scene_Two(){
         // System.out.println("old stats \n");
         // playerStats.getClassInfo(chosenClass);
         mainPlayer.levelUp();
@@ -206,12 +214,10 @@ public class MainStory {
         TownMaker townMaker = new TownMaker(mainPlayer);
         mainPlayer.makeTownMaker(townMaker);
         //TODO: capitalize first letters of the town names
-        townMaker.makeSlums();
+        townMaker.makeTowns();
         townMaker.runSlums();
 
+    }   
 
+}
 
-
-}   
-    
-    }

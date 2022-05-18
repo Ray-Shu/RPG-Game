@@ -1,127 +1,93 @@
 package PlayerInformation;
 
 public class Armours {
-    String armourType;  //light | heavy | mage 
-    String armour;  //what the armour is 
-    String headPiece; 
-    String chestPiece; 
-    String legPiece; 
-    String boots; 
+    private String armour;  //what the armour is 
+    private String armourType;  //light | heavy | mage 
+    private String headPiece; 
+    private String chestPiece; 
+    private String legPiece; 
+    private String boots; 
 
-    Stats playerStats; 
+    
+    //maxHP, maxMP, maxSpd, maxAtk, maxPhysDmg, maxMagicDmg, maxDef, maxEnd, maxStam, 
+    //maxPhysRes, maxMagicRes, maxDodge, maxVit, maxCritRate,maxCritDmg,maxLuck;
 
-    double armourSetHP; 
-    double armourSetMP; 
-    double armourSetSpd; 
-    double armourSetAtk; 
-    double armourSetPhysDmg; 
-    double armourSetMagicDmg; 
-    double armourSetDef; 
-    double armourSetEnd; 
-    double armourSetStam; 
-    double armourSetPhysRes; 
-    double armourSetMagicRes; 
-    double armourSetDodge; 
-    double armourSetVit; 
-    double armourSetCritRate; 
-    double armourSetCritDmg; 
-    double armourSetLuck;
+    private double armourPieceHP;
+    private double armourPieceMP;
+    private double armourPieceSpd;
+    private double armourPieceAtk;
+    private double armourPiecePhysDmg;
+    private double armourPieceMagicDmg;
+    private double armourPieceDef;
+    private double armourPieceEnd;
+    private double armourPieceStam;
+    private double armourPiecePhysRes;
+    private double armourPieceMagicRes;
+    private double armourPieceDodge;
+    private double armourPieceVit;
+    private double armourPieceCritRate; 
+    private double armourPieceCritDmg;
+    private double armourPieceLuck;
+    private double[] armourStats = {armourPieceHP, armourPieceMP, armourPieceSpd, armourPieceAtk, armourPiecePhysDmg, armourPieceMagicDmg, 
+    armourPieceDef, armourPieceEnd, armourPieceStam, armourPiecePhysRes, armourPieceMagicRes, armourPieceDodge, armourPieceVit, 
+    armourPieceCritRate, armourPieceCritDmg, armourPieceLuck}; 
 
-    double armourPieceHP;
-    double armourPieceMP;
-    double armourPieceSpd;
-    double armourPieceAtk;
-    double armourPiecePhysDmg;
-    double armourPieceMagicDmg;
-    double armourPieceDef;
-    double armourPieceEnd;
-    double armourPieceStam;
-    double armourPiecePhysRes;
-    double armourPieceMagicRes;
-    double armourPieceDodge;
-    double armourPieceVit;
-    double armourPieceCritRate; 
-    double armourPieceCritDmg;
-    double armourPieceLuck;
+    private Stats playerStats;
+    private Player mainPlayer;  
+    private String chosenClass; 
 
-
+    private double[] statsBeforeArmour;
+    private double[] statsAfterArmour; 
+    
+    private String batteredSpectral = "Battered Spectral";
+    private String[] heavyArmour = {"Helm", "Chestplate", "Greaves", "Heelguards"}; 
+    private String[] lightArmour = {"Visor", "Quasiplate", "Chaps", "Shoes"};
+    private String[] mageArmour = {"Hood", "Robe", "Leggings", "Boots" };
 
     //TODO: implement a "check what you're wearing thing to implement additional armour stats"
 
-    public Armours(Stats playerStats) {
-        this.playerStats = playerStats; 
+    public Armours(Player mainPlayer, String chosenClass) {
+        this.mainPlayer = mainPlayer; 
+        this.chosenClass = chosenClass; 
+        this.playerStats = mainPlayer.getPlayerStats();
+
+        statsBeforeArmour = playerStats.getCurrentStats(); 
     }
 
-    public void equipArmour(String armourType, String headPiece, String chestPiece, String legPiece, String boots){ 
-        this.headPiece = headPiece; 
-        this.chestPiece = chestPiece; 
-        this.legPiece = legPiece; 
-        this.boots = boots; 
-    }
-
-
-    //*Check what armour the user is wearing
-    public void checkArmour() {
-        switch(armour.toLowerCase()) {
-            case "battered spectral armour": 
-                batteredSpectralArmourType(); 
-                break; 
-            case "superior spectral armour":
-
-                break;  
-            //TODO: add more armours
+    public void equipArmour(String armour) { 
+        
+        switch (armour.toLowerCase()) {
+            case "battered spectral": 
+                equipBatteredSpectral(); 
+                break;
         }
     }
 
-    private void batteredSpectralArmourType() {
-        switch(armourType.toLowerCase()){
-            case "light": 
+    private void equipBatteredSpectral() {
+        String bs = batteredSpectral; 
+        switch(chosenClass.toLowerCase()) {
+            case "cyborg": 
+                mainPlayer.addEquippedArmourToInventory(bs + " " + heavyArmour[0], bs + " " + heavyArmour[1], bs + " " + heavyArmour[2], bs + " " + heavyArmour[3]);
                 
                 break; 
+            case "hacker": 
 
-            case "heavy": 
+                break;
+            case "terminator": 
+
+                break;
+            case "lazer swordsman": 
 
                 break; 
+            case "rogue": 
 
-            case "mage": 
+                break;
+            case "mystic": 
+
+                break; 
+            case "reverend": 
 
                 break; 
         }
     }
-
-
-    
-    //*STATS ON THE ARMOUR SETS 
-    private void batteredSpectralLightArmourSet() {
-        armourSetHP = 20; 
-        armourSetMP = 20; 
-        armourSetSpd = 0.1; 
-        armourSetAtk = 2; 
-        armourSetPhysDmg = 1; 
-        armourSetMagicDmg = 1; 
-        armourSetDef = 4; 
-        armourSetEnd = 0; 
-        armourSetStam = 10; 
-        armourSetPhysRes = 1; 
-        armourSetMagicRes = 3; 
-        armourSetDodge = 1; 
-        armourSetVit = 1; 
-        armourSetCritRate = 1; 
-        armourSetCritDmg = 3; 
-        armourSetLuck = 2;
-    }
-
-
-
-
-
-    //*armourSet STATS WHEN EQUIPPED 
-
-    
-
-
-
-
-
-    
 }

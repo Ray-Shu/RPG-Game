@@ -18,19 +18,27 @@ public class Printer {
      * @param whatToPrint = the thing we print 1 word at a time. 
      */
     public static void print (String whatToPrint){
-        //splits the words at all the spaces
-        String words[] = whatToPrint.split(" ");
+        // //splits the words at all the spaces
+        // String words[] = whatToPrint.split(" ");
 
-        //prints out each word from the array of words
-        for (String word : words) {
-            try {
-                Thread.sleep(90);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-            System.out.print(word+ " ");
+        // //prints out each word from the array of words
+        // for (String word : words) {
+        //     try {
+        //         Thread.sleep(90);
+        //     } catch (InterruptedException e) {
+        //         e.printStackTrace();
+        //     }
+        //     System.out.print(word+ " ");
 
-            //waits a few seconds. In try catch bc VS code told me too. Something about an error
+        //     //waits a few seconds. In try catch bc VS code told me too. Something about an error
+        // }
+        // System.out.println();
+
+        char[] message = whatToPrint.toCharArray();
+
+        for (char c : message) {
+            System.out.print(c);
+            quickBreak(20);
         }
         System.out.println();
     }
@@ -69,8 +77,14 @@ public class Printer {
                 System.out.print(ANSI_WHITE);
                 break;
         }
-        print(whatToPrint);
-        System.out.print(ANSI_RESET);
+        char[] message = whatToPrint.toCharArray();
+        
+        for (char c : message) {
+            System.out.print(c);
+            quickBreak(20);
+        }
+
+        System.out.println(ANSI_RESET);
         //prints out the color and sets it to white. 
     
         }

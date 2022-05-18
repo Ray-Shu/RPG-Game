@@ -96,11 +96,12 @@ public class Player {
         }
 
         //checks if the user is ready for a level up
-        public void checkXP() {
+        public void checkXP(int howMuchXPGained) {
+                playerStats.addXP(howMuchXPGained);
                 if(playerStats.getXP() / playerStats.getXP_TO_LVL_UP() >= 1){
                         playerStats.addXP(-playerStats.getXP_TO_LVL_UP());
                         levelUp();
-                        checkXP();
+                        checkXP(0);
                 }
         }
         

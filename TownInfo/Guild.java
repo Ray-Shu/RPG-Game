@@ -99,14 +99,12 @@ public class Guild {
 
         printMissions();
 
-        int missionToDo = ErrorChecker.intWithMinAndMax(1, allMissions.size(), "\nWhich mission would you like to go on?", color);
+        int missionToDo = ErrorChecker.intWithMinAndMax(1, allMissions.size() + 1, "\nWhich mission would you like to go on?", color);
         
         if(missionToDo <= allMissions.size()){
-            System.out.println("Running the mission");
             allMissions.get(missionToDo-1).runMission();
         }
         else{
-            System.out.println("sus");
             town.characterEnteringTown();
         }
     }

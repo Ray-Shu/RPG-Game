@@ -122,11 +122,11 @@ public class Combat extends Moves{
 
         //ending boosts: 
 
-        playerStats.setHowLongAtkUp(0);
-        playerStats.setHowLongDefUp(0);
+        playerStats.atkUpTime(1,1);
+        playerStats.defUpTime(1, 1);
         playerStats.setHowLongDisabled(0);
-        playerStats.setHowLongDodgeUp(0);
-        playerStats.setHowLongSpeedUp(0);
+        playerStats.dodgeUpTime(1,0);
+        playerStats.speedUpTime(1,0);
         return;
 
     }   

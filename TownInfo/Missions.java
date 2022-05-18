@@ -125,7 +125,7 @@ public class Missions {
 
         Printer.printColor("Distributing " + XP_Reward + " XP... ","yellow");
         Printer.quickBreak(1000);
-        playerStats.addXP(XP_Reward);
+        player.checkXP(XP_Reward);
 
         Printer.printColor("Distributing " + cashReward + " Fusion coins... ","green");
         player.getBank().deposit(cashReward);

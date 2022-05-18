@@ -171,7 +171,7 @@ public class Stats {
         public void checkXP() {
                 if(xp / XP_TO_LVL_UP >= 1){
                         xp-= XP_TO_LVL_UP;
-                        player.levelUp();
+                        levelUp();
                         checkXP();
                 }
         }

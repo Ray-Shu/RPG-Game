@@ -79,7 +79,7 @@ public class Player {
         //increases the level of the player, tells them they leveled up, and how much they increased by. 
         public void levelUp(){
                 playerLevel++;
-                Printer.printColor("---------------------------------------------------------", "yellow");
+                System.out.println("\u001B[33m-----------------------------------------------------------\u001B[33m");
                 System.out.println("\u001B[32m" + 
                                  "██      ███████ ██    ██ ███████ ██          ██    ██ ██████  ██ \n"
                                 +"██      ██      ██    ██ ██      ██          ██    ██ ██   ██ ██ \n"
@@ -88,7 +88,7 @@ public class Player {
                                 +"███████ ███████   ████   ███████ ███████      ██████  ██      ██ \n \u001B[32m");
                 Printer.printColor("Congratulations! You have reached level " +playerLevel+"!", "yellow");
                 //todo: Make this print out stat increases
-                Printer.printColor("---------------------------------------------------------", "yellow");
+                System.out.println("\u001B[33m-----------------------------------------------------------\u001B[33m");
                 playerStats.statsUp(1.1);
         }
 
@@ -97,9 +97,7 @@ public class Player {
         * @param howMuchXPGained        - the amount of xp gained. 
         */
         public void checkXP(int howMuchXPGained) {
-                System.out.println("addxp..." + "xp befo");
                 playerStats.addXP(howMuchXPGained);
-                System.out.println("addxp done");
 
                 //if the xp is greater than the required xp to level up, we will level up and check if we can level up again. 
                 if(playerStats.getXP() / playerStats.getXP_TO_LVL_UP() >= 1){

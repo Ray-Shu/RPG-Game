@@ -93,8 +93,8 @@ public class Guild {
      * The player has entered the guild, so we tell them the missions they are yet to complete, before running them
      */
     public void runGuild(){
-        Printer.printColor("____________________________________________________\n" 
-                + "Welcome to the " + townName + " adventurers guild!\n\n" 
+        System.out.println("-----------------------------------------------------------");
+        Printer.printColor("Welcome to the " + townName + " adventurers guild!\n\n" 
                 + "Here are some possible missions: \n", color);
 
         printMissions();

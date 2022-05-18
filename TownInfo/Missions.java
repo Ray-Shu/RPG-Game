@@ -74,7 +74,8 @@ public class Missions {
         Stats currentMobStats;
         String[] currentMobAttacks;
         int[] currentMobAttackCosts;
-        Printer.printColor("Teleporting... \n--------------------------------------------", "blue");
+        Printer.printColor("Teleporting...", "blue");
+        System.out.println("-----------------------------------------------------------");
         Printer.printColor(greeting, color);
         
         //For each mob in the battle, we will have to fight it with our current Stats. Goal is to defeat all enemies, then we get our reward. 

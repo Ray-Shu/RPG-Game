@@ -69,8 +69,8 @@ public class Combat extends Moves{
 
             if (isPlayerTurn() && playerStats.getHowLongDisabled() == 0){
                 
-                Printer.printColor("----------------------------------------------------------", "cyan");
-
+                System.out.println("\u001B[36m-----------------------------------------------------------\u001B[36m");
+                
                 Printer.printColor("It is your turn! Your current MP: "+ df.format(playerStats.getCurrentMP()) + " | Enemy HP: "+ df.format(mobStats.getCurrentHP()) + "\n", "cyan");
                 
                 listAttacks();
@@ -88,15 +88,15 @@ public class Combat extends Moves{
                 System.out.println();
 
                 Printer.printColor("Enemy HP after attack: " + checkIfZeroHP("mob") + "\n", "cyan");
-                Printer.printColor("----------------------------------------------------------", "cyan");
+                System.out.println("\u001B[36m-----------------------------------------------------------\u001B[36m");
                 playerTurnOver();
-
+                
             }
 
             else if (mobStats.getHowLongDisabled() == 0){
 
-                Printer.printColor("----------------------------------------------------------", "red");
-
+                System.out.println("\u001B[31m-----------------------------------------------------------\u001B[31m");
+                
                 if(hasMobAttacked){
                     Printer.print("Watch out! It is the enemies turn and they are going to attack you! ");
                     hasMobAttacked = false;
@@ -107,7 +107,7 @@ public class Combat extends Moves{
                 System.out.println();
 
                 Printer.printColor("Your HP After Attack: " +  checkIfZeroHP("player") + "\n", "red");
-                Printer.printColor("----------------------------------------------------------", "red");
+                System.out.println("\u001B[31m-----------------------------------------------------------\u001B[31m");
                 mobTurnOver();
 
             }
@@ -222,10 +222,11 @@ public class Combat extends Moves{
         int i = 0;
         Printer.printColor("Here are your moves:\n", "cyan");
         while(i < playerAttacks.length) {
-            Printer.printColor("("+ (i + 1) + ") "+ playerAttacks[i] + "\tMP COST: "+ playerAttackCosts[i], "white");
+            System.out.println("("+ (i + 1) + ") "+ playerAttacks[i] + "\tMP COST: "+ playerAttackCosts[i]);
             i++;
         }
-        Printer.print("("+(i + 1)+") Inventory\n----------------------------------------------------------");        
+        System.out.println("("+(i + 1)+") Inventory");  
+        System.out.println("\u001B[36m-----------------------------------------------------------\u001B[36m");
     }
     
     /**

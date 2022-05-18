@@ -46,7 +46,7 @@ public class Town {
         for (i = 1; i <= allMerchants.size(); i++) {
             Printer.printColor("("+i+") " + allMerchants.get(i-1).shopName, "white");  
         }
-        System.out.println("("+i+") " +townName + " Adventurers Guild");
+        Printer.printColor("("+i+") " +townName + " Adventurers Guild", "white");  
     }
 
     //gets townName
@@ -75,9 +75,8 @@ public class Town {
     public void characterEnteringTown() {
 
         // welcomes the character to town
-
-        Printer.printColor("-----------------------------------------------------------\n"
-            + " Welcome to " + townName + ", traveler on floor " + floorLvl + "!\n"
+        System.out.println("-----------------------------------------------------------");
+        Printer.printColor("Welcome to " + townName + ", traveler on floor " + floorLvl + "!\n"
             + "Here is a map with all you can do here! \n", color);
         
         showBuildings();

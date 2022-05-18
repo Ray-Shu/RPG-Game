@@ -29,7 +29,7 @@ public class StatsCalculator {
      * Checks if the opponent did dodge the attack. 
      */
     public boolean didDodge(Stats victimStats, double missMultiplier) {
-        double victimDodge = victimStats.currentDodge * (victimStats.dodgeMultiplier / 100); 
+        double victimDodge = victimStats.getCurrentDodge() * (victimStats.getDodgeMultiplier() / 100); 
         double effectiveDodge = victimDodge * missMultiplier;
         double chance = random.nextDouble();
 
@@ -53,13 +53,13 @@ public class StatsCalculator {
 
         //These are the stats that we will need for calculating the correct damage
         double atk = moveAttack * attackerStats.getCurrentAttack();
-        double magicDmg = attackerStats.currentMagicDmg; 
-        double physDmg = attackerStats.currentPhysDmg; 
-        double cr = attackerStats.currentCritRate; 
-        double cd = attackerStats.currentCritDmg;
-        double def = victimStats.currentDef * victimStats.defMultiplier;
-        double magicDef = victimStats.currentMagicRes; 
-        double physDef = victimStats.currentPhysRes; 
+        double magicDmg = attackerStats.getCurrentMagicDmg(); 
+        double physDmg = attackerStats.getCurrentPhysDmg(); 
+        double cr = attackerStats.getCurrentCritRate(); 
+        double cd = attackerStats.getCurrentCritDmg();
+        double def = victimStats.getCurrentDef() * victimStats.getDefMultiplier();
+        double magicDef = victimStats.getCurrentMagicRes(); 
+        double physDef = victimStats.getCurrentPhysRes(); 
 
         //calculates the true physical damage 
         double truePhysDmg = physDmg * (100/(100 + physDef)); 
@@ -92,14 +92,14 @@ public class StatsCalculator {
     public void mobDoDamage(Stats attackerStats, Stats victimStats, double moveAttack, double missMultiplier) { 
 
         //These are the stats that we will need for calculating the correct damage
-        double atk = moveAttack * attackerStats.atkMultiplier;
-        double magicDmg = attackerStats.currentMagicDmg; 
-        double physDmg = attackerStats.currentPhysDmg; 
-        double cr = attackerStats.currentCritRate; 
-        double cd = attackerStats.currentCritDmg;
-        double def = victimStats.currentDef * victimStats.defMultiplier;
-        double magicDef = victimStats.currentMagicRes; 
-        double physDef = victimStats.currentPhysRes; 
+        double atk = moveAttack * attackerStats.getAtkMultiplier();
+        double magicDmg = attackerStats.getCurrentMagicDmg(); 
+        double physDmg = attackerStats.getCurrentPhysDmg(); 
+        double cr = attackerStats.getCurrentCritRate(); 
+        double cd = attackerStats.getCurrentCritDmg();
+        double def = victimStats.getCurrentDef() * victimStats.getDefMultiplier();
+        double magicDef = victimStats.getCurrentMagicRes(); 
+        double physDef = victimStats.getCurrentPhysRes(); 
 
         //calculates the true physical damage 
         double truePhysDmg = physDmg * (100/(100 + physDef)); 

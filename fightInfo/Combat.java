@@ -75,11 +75,12 @@ public class Combat extends Moves{
                 
                 listAttacks();
                 
-                int showInventory = scan.nextInt(); 
-                if(showInventory != 5){
-                    playerMove(); 
+                int option = scan.nextInt(); 
+                if(option != 5){
+                    playerMove(option); 
                 } else {
-                    player.showInventory(); 
+                    showInventory();  
+                    fight(false);
                 }
                 
                 
@@ -128,6 +129,12 @@ public class Combat extends Moves{
         playerStats.setHowLongSpeedUp(0);
         return;
 
+    }   
+
+    //ensures that after the player exits the inventory, they still have their turn 
+    public void showInventory(){
+        player.showInventory();
+        fight(false); 
     }
 
     //*Doesn't display negative numbers when whoever is killed
@@ -224,29 +231,29 @@ public class Combat extends Moves{
     /**
      * Prints out the player's moves, then does the attack based on their response. 
      */
-    public void playerMove() {
+    public void playerMove(int option) {
         
         //checks which class we are, and then prompts them to answer a thing. 
         if (playerAttacks == creator.getCyborgAttacks()){
-            cyborgAttack(playerStats, mobStats, player);
+            cyborgAttack(playerStats, mobStats, player, option);
         }
         else if (playerAttacks == creator.getHackerAttacks()){
-            hackAttack(playerStats, mobStats, player);
+            hackAttack(playerStats, mobStats, player, option);
         }
         else if (playerAttacks == creator.getTerminatorAttacks()){
-            terminatorAttack(playerStats, mobStats, player);
+            terminatorAttack(playerStats, mobStats, player, option);
         }
         else if (playerAttacks == creator.getSwordsmanAttacks()){
-            swordsmanAttack(playerStats, mobStats, player);
+            swordsmanAttack(playerStats, mobStats, player, option);
         }
         else if (playerAttacks == creator.getRogueAttacks()){
-            rogueAttack(playerStats, mobStats, player);
+            rogueAttack(playerStats, mobStats, player, option);
         }
         else if (playerAttacks == creator.getMysticAttacks()){
-            mysticAttack(playerStats, mobStats, player);
+            mysticAttack(playerStats, mobStats, player, option);
         }
         else {
-            reverendAttack(playerStats, mobStats, player);
+            reverendAttack(playerStats, mobStats, player, option);
         }        
     }
     

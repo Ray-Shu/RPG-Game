@@ -7,6 +7,9 @@ public class MobSummoner {
     public String chosenMobAttacks[];
     public int[] chosenAttackCosts;
 
+    //*Used cuz i dont wanna keep checking back and forth if im inputting the right stats, will delete once done
+    //maxHP, maxMP, maxSpd, maxAtk, maxPhysDmg, maxMagicDmg, maxDef, maxEnd, maxStam, maxPhysRes, maxMagicRes, maxDodge, maxVit, maxCritRate,maxCritDmg,maxLuck;
+
     public final String CYBER_PUNK_ATTACKS[] = {"Right Hook!", "Bionic Crunch", "Weak Kick", "Drunken Fist!" };
     public final int CP_MP_COSTS[] = {5,8,3,10};
     public double[] cyberPunkValues = {100.0, 50.0, 0.5, 2.0, 4.0, 1.0, 5.0, 5.0, 40.0, 8.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0};

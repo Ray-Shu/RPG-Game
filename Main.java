@@ -11,57 +11,54 @@ public class Main {
     
     static MobSummoner mobSummoner = new MobSummoner();
     public static void main(String[] args) {
-        boolean finishedGame = false;
 
-        while (!finishedGame) {
- 
-            // // *Town Testing
-            // Player player = new Player("bruhmoment");
-            // Bank playerAccount = new Bank(1000);
-            // TownMaker townMaker = new TownMaker(playerAccount,player, player.forceCombat());
-            // townMaker.makeSlums();
-            // townMaker.runSlums();
+        // // *Town Testing
+        // Player player = new Player("bruhmoment");
+        // Bank playerAccount = new Bank(1000);
+        // TownMaker townMaker = new TownMaker(playerAccount,player, player.forceCombat());
+        // townMaker.makeSlums();
+        // townMaker.runSlums();
             
-            // *InventoryTesting
-            //inventoryTest();
+        // *InventoryTesting
+        //inventoryTest();
 
-            // //* Combat Testing (using class: cyborg)
-            //* Probaly broken...
-            // Player player = new Player("bruhmoment");
-            // Stats playerStats = player.getPlayerStats();
-            // Player.playerDied();
-            // Checkpoints checkpoint = new Checkpoints(playerStats);
+        // //* Combat Testing (using class: cyborg)
+        //* Probaly broken... LOL
+        // Player player = new Player("bruhmoment");
+        // Stats playerStats = player.getPlayerStats();
+        // Player.playerDied();
+        // Checkpoints checkpoint = new Checkpoints(playerStats);
             
 
-            // Stats mobStats = mobSummoner.newNanoBotCluster(1);
-            // String mobAttacks[] = mobSummoner.NANO_BOT_ATTACKS;
-            // int mobAttacksCost[] = mobSummoner.NANO_BOT_COST;
-            // Combat combat = new Combat(player, player.playerStats, mobStats, mobAttacks, mobAttacksCost, mobSummoner);
+        // Stats mobStats = mobSummoner.newNanoBotCluster(1);
+        // String mobAttacks[] = mobSummoner.NANO_BOT_ATTACKS;
+        // int mobAttacksCost[] = mobSummoner.NANO_BOT_COST;
+        // Combat combat = new Combat(player, player.playerStats, mobStats, mobAttacks, mobAttacksCost, mobSummoner);
 
-            // do {
-            // checkpoint.backToCheckpoint();
-            // //Time to fight
-            // combat.fight(true);
-            // } while(combat.didPlayerDie());
+        // do {
+        // checkpoint.backToCheckpoint();
+        // //Time to fight
+        // combat.fight(true);
+        // } while(combat.didPlayerDie());
             
 
                     
-            //*Story Line (currently working on chapter One)
-            // MainStory story = new MainStory();
-            // story.startStory(); 
+        //*Story Line (currently working on chapter One)
+        MainStory story = new MainStory();
+        story.startStory(); 
                     
-            // //* Town Tests
-            Bank bank = new Bank(1000);
-            PlayerCreation lord = new PlayerCreation(bank, "Jeff");
-            Player player = lord.testPlayer();
-            TownMaker townMaker = new TownMaker(player);
-            player.makeTownMaker(townMaker);
-            townMaker.makeSlums();
-            townMaker.runSlums();
+        //* Town Tests
+        // Bank bank = new Bank(1000);
+        // PlayerCreation lord = new PlayerCreation(bank, "Jeff");
+        // Player player = lord.testPlayer();
+        // TownMaker townMaker = new TownMaker(player);
+        // player.makeTownMaker(townMaker);
+        // townMaker.makeSlums();
+        // townMaker.runSlums();
              
-            finishedGame = true;
+            
 
-        }
+        
 
         /**
          * SOME BUGS THAT I'VE FOUND WHILE TESTING SOME STUFF
@@ -71,6 +68,8 @@ public class Main {
          * unmappable character for encoding windows keeps occuring
          * for now, copy past: javac -encoding UTF-8 PlayerInformation/Player.java
          * until theres a better fix
+         * 
+         * the attack 'overload' for cyborg shows a bugged mp cost
          */
 
 

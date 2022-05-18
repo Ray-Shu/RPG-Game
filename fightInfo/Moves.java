@@ -36,14 +36,16 @@ public class Moves {
 
      // CYBORG ATTACKS: 
 
-    public void cyborgAttack(Stats attackerStats, Stats victimStats, Player player) {
+    public void cyborgAttack(Stats attackerStats, Stats victimStats, Player player, int index) {
         int attackMPcost;
-        int index= 0;
-        while(!scan.hasNextInt()){
-            Printer.print("Please enter an integer");
-            scan.next();
-        }
-        index = scan.nextInt();
+
+        // int index= 0;
+        // while(!scan.hasNextInt()){
+        //     Printer.print("Please enter an integer");
+        //     scan.next();
+        // }
+
+        //index = scan.nextInt();
         switch (index) {
             case 1:
             attackMPcost = 5;
@@ -71,9 +73,7 @@ public class Moves {
             attackerStats.setCurrentMP(attackerStats.getCurrentMP() - attackMPcost);
             overload(attackerStats, victimStats);
             return;
-        case 5: 
-            player.showInventory();
-            return;
+    
         default:
             Printer.print("Please enter a valid number: ");
             break;
@@ -109,14 +109,15 @@ public class Moves {
 
     // HACKER ATTACKS: 
 
-    public void hackAttack(Stats attackerStats, Stats victimStats, Player player) {
+    public void hackAttack(Stats attackerStats, Stats victimStats, Player player, int index) {
         int attackMPcost;
-        int index= 0;
-        while(!scan.hasNextInt()){
-            Printer.print("Please enter an integer");
-            scan.next();
-        }
-        index = scan.nextInt();
+        // int index= 0;
+        // while(!scan.hasNextInt()){
+        //     Printer.print("Please enter an integer");
+        //     scan.next();
+        // }
+        // index = scan.nextInt();
+
         switch (index) {
             case 1:
             attackMPcost = 5;
@@ -144,9 +145,8 @@ public class Moves {
                 return;
             default: 
                 Printer.print("Please enter a valid number: ");
-                // break;
-                    player.showInventory();
-                    return;
+                break;
+                    
         }
     }
 
@@ -180,14 +180,14 @@ public class Moves {
     // TERMINATOR ATTACKS:
     
 
-    public void terminatorAttack(Stats attackerStats, Stats victimStats, Player player) {
+    public void terminatorAttack(Stats attackerStats, Stats victimStats, Player player, int index) {
         int attackMPcost;
-        int index= 0;
-        while(!scan.hasNextInt()){
-            Printer.print("Please enter an integer");
-            scan.next();
-        }
-        index = scan.nextInt();
+        // int index= 0;
+        // while(!scan.hasNextInt()){
+        //     Printer.print("Please enter an integer");
+        //     scan.next();
+        // }
+        // index = scan.nextInt();
         switch (index) {
             case 1:
             attackMPcost = 15;
@@ -214,9 +214,7 @@ public class Moves {
             attackerStats.setCurrentMP(attackerStats.getCurrentMP() - attackMPcost);
             hunker_down(attackerStats, victimStats);
             return;
-        case 5: 
-            player.showInventory();
-            return;
+        
         default: 
             Printer.print("Please enter a valid number: ");
             break;
@@ -246,14 +244,15 @@ public class Moves {
     
     // LAZER SWORDSMAN ATTACKS: 
 
-    public void swordsmanAttack(Stats attackerStats, Stats victimStats, Player player) {
+    public void swordsmanAttack(Stats attackerStats, Stats victimStats, Player player, int index) {
         int attackMPcost;
-        int index= 0;
-        while(!scan.hasNextInt()){
-            Printer.print("Please enter an integer");
-            scan.next();
-        }
-        index = scan.nextInt();
+        // int index= 0;
+        // while(!scan.hasNextInt()){
+        //     Printer.print("Please enter an integer");
+        //     scan.next();
+        // }
+        // index = scan.nextInt();
+
         switch (index) {
             case 1:
             attackMPcost = 7;
@@ -281,9 +280,7 @@ public class Moves {
             return;
         default: 
             Printer.print("Please enter a valid number: ");
-            // break;
-                player.showInventory();
-                return;
+            break;     
         }
     }
 
@@ -317,14 +314,15 @@ public class Moves {
 
     // ROGUE ATTACKS: 
 
-    public void rogueAttack(Stats attackerStats, Stats victimStats, Player player) {
+    public void rogueAttack(Stats attackerStats, Stats victimStats, Player player, int index) {
         int attackMPcost;
-        int index= 0;
-        while(!scan.hasNextInt()){
-            Printer.print("Please enter an integer");
-            scan.next();
-        }
-        index = scan.nextInt();
+        // int index= 0;
+        // while(!scan.hasNextInt()){
+        //     Printer.print("Please enter an integer");
+        //     scan.next();
+        // }
+        // index = scan.nextInt();
+
         switch (index) {
             case 1:
             attackMPcost = 4;
@@ -393,14 +391,14 @@ public class Moves {
 
     // MYSTIC ATTACKS: 
 
-    public void mysticAttack(Stats attackerStats, Stats victimStats, Player player) {
+    public void mysticAttack(Stats attackerStats, Stats victimStats, Player player, int index) {
         int attackMPcost;
-        int index= 0;
-        while(!scan.hasNextInt()){
-            Printer.print("Please enter an integer");
-            scan.next();
-        }
-        index = scan.nextInt();
+        // int index= 0;
+        // while(!scan.hasNextInt()){
+        //     Printer.print("Please enter an integer");
+        //     scan.next();
+        // }
+        // index = scan.nextInt();
         switch (index) {
             case 1:
             attackMPcost = 22;
@@ -460,14 +458,15 @@ public class Moves {
 
     // REVEREND ATTACKS: 
 
-    public void reverendAttack(Stats attackerStats, Stats victimStats, Player player) {
+    public void reverendAttack(Stats attackerStats, Stats victimStats, Player player, int index) {
         int attackMPcost;
-        int index= 0;
-        while(!scan.hasNextInt()){
-                    Printer.print("Please enter an integer");
-                    scan.next();
-                }
-        index = scan.nextInt();
+        // int index= 0;
+        // while(!scan.hasNextInt()){
+        //             Printer.print("Please enter an integer");
+        //             scan.next();
+        //         }
+        // index = scan.nextInt();
+
         switch (index) {
             case 1:
             attackMPcost = 10;
@@ -495,10 +494,6 @@ public class Moves {
             if(!attackerStats.canSpeedUp()){Printer.printColor("Speed buff maxed out!", "yellow");}
             if(!attackerStats.canAtkUp()){Printer.printColor("Atk buff maxed out!", "yellow");}
             return;
-        case 5: 
-            player.showInventory();
-            return;
-            
         default: 
             Printer.print("Please enter a valid number: ");
             break;

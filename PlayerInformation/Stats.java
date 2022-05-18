@@ -59,28 +59,129 @@ public class Stats {
         //returns the player's xp
         public int getXP(){return xp;}
 
-        //returns the current speed of the player
-        public double getCurrentSpeed(){return currentSpd;}
 
-        //returns the player's speed multiplier
-        public double getSpeedMultiplier(){return speedMultiplier;}
+        //*STAT MULTIPLIERS
 
+        //returns the players hp multiplier 
+        public double getHPMultiplier() {return hpMultiplier;}
+
+        // returns the player's speed multiplier
+        public double getSpeedMultiplier() {return speedMultiplier;}
+
+        //returns the players atk multiplier
+        public double getAtkMultiplier() {return atkMultiplier;}
+
+        // returns the players defence multiplier
+        public double getDefMultiplier() {return defMultiplier;}
+
+        // returns the players dodge multiplier
+        public double getDodgeMultiplier() {return dodgeMultiplier;}
+        
+
+        //*STAT GETTERS
         //returns the player's current HP
         public double getCurrentHP(){return currentHP;}
 
+        // returns current mp
+        public double getCurrentMP() {return currentMP;}
+
+        // returns the current speed of the player
+        public double getCurrentSpeed() {return currentSpd;}
+
+        //returns the player's current atk
         public double getCurrentAttack(){return currentAtk;}
 
-        //returns current mp
-        public double getCurrentMP(){return currentMP;}
+        //returns the players current physical damage
+        public double getCurrentPhysDmg(){return currentPhysDmg;}
 
-        //sets current hp
+        // returns the players current magic damage
+        public double getCurrentMagicDmg() {return currentMagicDmg;}
+
+        // returns the players current defense 
+        public double getCurrentDef() {return currentDef;}
+
+        // returns the players current endurance 
+        public double getCurrentEnd() {return currentEnd;}
+
+        // returns the players current stamina 
+        public double getCurrentStam() {return currentStam;}
+
+        // returns the players current physical resistance 
+        public double getCurrentPhysRes() {return currentPhysRes;}
+
+        // returns the players current magic resistance 
+        public double getCurrentMagicRes() {return currentMagicRes;}
+
+        // returns the players current dodge 
+        public double getCurrentDodge() {return currentDodge;}
+
+        // returns the players current vitality 
+        public double getCurrentVit() {return currentVit;}
+
+        // returns the players current crit rate
+        public double getCurrentCritRate() {return currentCritRate;}
+
+        // returns the players current crit damage 
+        public double getCurrentCritDmg() {return currentCritDmg;}
+
+        // returns the players current luck
+        public double getCurrentLuck() {return currentLuck;}
+
+
+        //*STAT SETTERS 
+        // sets current hp
         public void setCurrentHP(double toWhat){currentHP = toWhat;}
 
-        //sets current MP
+        // sets current MP
         public void setCurrentMP(double toWhat){currentMP = toWhat;}
+
+        // sets current Spd 
+        public void setCurrentSpd(double toWhat){currentSpd = toWhat;}
+
+        // sets current Atk
+        public void setCurrentAtk(double toWhat){currentAtk = toWhat;}
+
+        // sets current physical damage
+        public void setCurrentPhysDmg(double toWhat){currentPhysDmg = toWhat;}
+
+        // sets current magical damage 
+        public void setCurrentMagicDmg(double toWhat){currentMagicDmg = toWhat;}
+
+        // sets current defense 
+        public void setCurrentDef(double toWhat){currentDef = toWhat;}
+
+        // sets current endurance 
+        public void setCurrentEnd(double toWhat){currentEnd = toWhat;}
+
+        // sets currentStam 
+        public void setCurrentStam(double toWhat){currentStam = toWhat;}
+
+        // sets current physical resistance 
+        public void setCurrentPhysRes(double toWhat){currentPhysRes = toWhat;}
+
+        // sets current magical resistance 
+        public void setCurrentMagicRes(double toWhat){currentMagicRes = toWhat;}
+
+        //sets current dodge 
+        public void setCurrentDodge(double toWhat){currentDodge = toWhat;}
+
+        // sets current vitality
+        public void setCurrentVit(double toWhat){currentVit = toWhat;}
+
+        //sets current crit rate 
+        public void setCurrentCritRate(double toWhat){currentCritRate = toWhat;}
+
+        //sets current crit damage
+        public void setCurrentCritDmg(double toWhat){currentCritDmg = toWhat;}
+
+        //sets current luck 
+        public void setCurrentLuck(double toWhat){currentLuck = toWhat;}
 
         //returns max HP
         public double getMaxHP(){return maxHP;}
+
+        //currentHP, currentMP, currentSpd, currentAtk, currentPhysDmg, currentMagicDmg, currentDef, currentEnd, currentStam,
+                //currentPhysRes, currentMagicRes, currentDodge, currentVit, currentCritRate, currentCritDmg, currentLuck;
 
         /**
          * This class will contain information about the stats of the player and the
@@ -166,8 +267,8 @@ public class Stats {
         }
 
         public double[] getCurrentStats(){
-                double currentStats[] = {currentHP, currentMP, currentSpd, currentAtk, currentPhysDmg, currentMagicDmg, currentDef, currentEnd, currentStam, 
-                        currentPhysRes, currentMagicRes, currentDodge, currentVit, currentCritRate, currentCritDmg, currentLuck};
+                // double currentStats[] = {currentHP, currentMP, currentSpd, currentAtk, currentPhysDmg, currentMagicDmg, currentDef, currentEnd, currentStam, 
+                //         currentPhysRes, currentMagicRes, currentDodge, currentVit, currentCritRate, currentCritDmg, currentLuck};
                 return currentStats;
         }
 

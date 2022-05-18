@@ -13,12 +13,17 @@ public class MainStory {
 
     private String playerName; 
     private String chosenClass;
+    private Stats playerStats; 
 
     private Bank playerAccount = new Bank(1000);
-    private PlayerCreation creator;
+    private PlayerCreation playerCreator;
     private Player mainPlayer;
     private Scanner in = new Scanner(System.in);
     private TownMaker townMaker;
+
+    private Checkpoints checkPoint = new Checkpoints();
+
+    private MobSummoner summonMob = new MobSummoner();
 
     public String getName() {
         playerName = in.nextLine(); 
@@ -54,7 +59,7 @@ public class MainStory {
         // Printer.quickBreak(1500); 
         Printer.print("\"Hey\"! \033[3mA gruff voice calls out to you. \033[0m" + "\"Whats your name?\"");
         getName();
-        creator = new PlayerCreation(playerAccount, playerName);
+        playerCreator = new PlayerCreation(playerAccount, playerName);
         Printer.printColor("\"Ahh, so the infamous \u001B[31mexecutioner\u001B[31m \u001B[37mdons the name " + playerName + " huh.\u001B[37m\"\n", "white");
         Printer.quickBreak(1000); 
         // Printer.print("\"Well, nice to meet ya and glad that you held your promise. I trust you know what your purpose is, then?\"\n");
@@ -66,14 +71,18 @@ public class MainStory {
         // Printer.printItalizcizedColor("The crates around you luminate in a cyan blue, each projecting \ntheir own hologram of information pertaining to their class.\n", "white");
         // Printer.printColor("Choose the crate you desire.", "purple");
         // Printer.quickBreak(5000); 
-        creator.printCrateInfo(); 
-        mainPlayer = creator.getPlayer();
+        
+        //*Account Creation Info
+        playerCreator.printCrateInfo(); 
+        mainPlayer = playerCreator.getPlayer();
         townMaker = new TownMaker(mainPlayer);
         mainPlayer.makeTownMaker(townMaker);
-        this.chosenClass = creator.getChosenClass();
+        this.chosenClass = playerCreator.getChosenClass();
+        playerStats = mainPlayer.getPlayerStats();
 
-        mainPlayer.createInventory();
-        mainPlayer.showInventory();
+        //*Used for testing inventory
+        // mainPlayer.createInventory();
+        // mainPlayer.showInventory();
 
         // Printer.print("\n\"Got your choice? Alright, we'll meet up with you later at the Antarctic Domain. We've still got other people to break out.\" \n\033[3mHowever, just before he leaves, he turns back.\n\033[0m\"Oh right, I forgot to give you this, here.\" \033[3mHe hands you a map and a letter.\033[0m \n\"The letter is a referral so you dont get scammed in shops, there's also a second paper that shows useful locations here. Alright, I think that's everything, good luck!\"\n");
         // Printer.printItalizcizedColor("The group leaves; silence permeates the air and you check what you recieved. \n","white");
@@ -112,15 +121,6 @@ public class MainStory {
         Printer.quickBreak(1500); 
         //end of flashback
 
-        chapter_One_Reset_Point_One();
-    
-    }
-    //TODO: reset ppoint
-    public void chapter_One_Reset_Point_One(){
-
-        Stats playerStats = mainPlayer.getPlayerStats();
-        Checkpoints chapter_One_checkpoint_One = new Checkpoints(playerStats);
-
         Printer.printItalizcizedColor("\"Haaah...\" You sigh, you make your way down a barren and \ndirtied street. Thinking about the past will always, \nwithout fail, make your head spin. \n", "white");
         Printer.quickBreak(1000);
         // Printer.printItalizcizedColor("Right as you close your eyes, you hear the sound of \nparting dust; and one moment later, you're on your \nknees, a jagged knife to your throat: a light blue \nsheen on it.\n", "white");
@@ -147,61 +147,71 @@ public class MainStory {
         // Printer.quickBreak(1000); 
         // Printer.printItalizcizedColor("\"I'm already being targetted? How? Did they put a tracker on me? Oh well, lets get this over with. I'll have to be more \ncareful in the future.\" \n", "white");
         // Printer.quickBreak(1000); 
-        Printer.printItalizcizedColor("You get ready for combat...", "purple");
-        Printer.quickBreak(1000); 
 
-        chapter_One_Fight_Scene_One(chapter_One_checkpoint_One);
+        chapter_One_Reset_Point_One();
     }   
 
-public void chapter_One_Fight_Scene_One(Checkpoints chapter_One_checkpoint_One){ // param is only checkpoint; remove mainPlayer later (only for test)
+    //reset point if the player dies to the lvl 1 assassin lmao
+    public void chapter_One_Reset_Point_One() {
+        checkPoint.createCheckpoint(playerStats);
+
+        Printer.printItalizcizedColor("You get ready for combat...", "purple");
+        Printer.quickBreak(1000);
+
+        chapter_One_Fight_Scene_One();
+
+    }
+
+    //combat against Greater Will Assassin 
+    public void chapter_One_Fight_Scene_One(){ 
     //*GETS ALL OF THE INFO OF MC'S CLASS AND STATS ------------------------------------------------------------
-        Stats playerStats = mainPlayer.getPlayerStats();
-        // MobSummoner mobSummoner = new MobSummoner();
-        // Stats mobStats = mobSummoner.newGreaterWillAssassin(1);
-        // String mobAttacks[] = mobSummoner.GREATER_WILL_ASSASSIN_ATTACKS;
-        // int mobAttacksCost[] = mobSummoner.GREATER_WILL_ASSASSIN_COSTS;
-        // Combat chapter_One_Fight_One = new Combat(mainPlayer, playerStats, mobStats, mobAttacks, mobAttacksCost, mobSummoner);
-        // chapter_One_Fight_One.fight(true);
+        playerStats = mainPlayer.getPlayerStats();
+        Stats mobStats = summonMob.newGreaterWillAssassin(2);
+        String mobAttacks[] = summonMob.GREATER_WILL_ASSASSIN_ATTACKS;
+        int mobAttacksCost[] = summonMob.GREATER_WILL_ASSASSIN_COSTS;
+        Combat chapter_One_Fight_One = new Combat(mainPlayer, playerStats, mobStats, mobAttacks, mobAttacksCost, summonMob);
+        chapter_One_Fight_One.fight(true);
 
-        // //*END OF FIGHT 
+        //*END OF FIGHT 
 
-        // //TODO: will finish storyline later
-        // if(chapter_One_Fight_One.didPlayerDie()) {
-        //     chapter_One_checkpoint_One.backToCheckpoint();
-        //     Printer.printItalizcizedColor("Resetting...", "yellow");
-        //     chapter_One_Reset_Point_One();
-        // } else {
-        //     chapter_One_Scene_Two(playerStats);
-        // }
+        //resets the player to the reset point if player dies
+        //continues the storyline if the player defeats the enemy
+        if(chapter_One_Fight_One.didPlayerDie()) {
+            checkPoint.backToCheckpoint();
+            Printer.printItalizcizedColor("How did you lose...", "yellow");
+            chapter_One_Reset_Point_One();
+        } else {
+            chapter_One_Scene_Two(playerStats);
+        }
         chapter_One_Scene_Two(playerStats);
-}
+    }
 
-public void chapter_One_Scene_Two(Stats playerStats){
-    // System.out.println("old stats \n");
-    // playerStats.getClassInfo(chosenClass);
-    mainPlayer.levelUp();
-    // System.out.println("new stats \n");
-    // playerStats.getClassInfo(chosenClass);
+    public void chapter_One_Scene_Two(Stats playerStats){
+        // System.out.println("old stats \n");
+        // playerStats.getClassInfo(chosenClass);
+        mainPlayer.levelUp();
+        // System.out.println("new stats \n");
+        // playerStats.getClassInfo(chosenClass);
 
-    System.out.println();
-    Printer.printItalizcizedColor("The assassin falls to the ground, defeated.\nYou stalk towards him as he lays there, face\nin the ground.\n", "white");
-    Printer.printColor("\"Ahck!\" \033[3mHe coughs as you pin him with your foot.\033[0m\n","white");
-    Printer.printColor("\"How'd you already track me.\" \033[3mYou demand, grinding you foot in his back.\033[0m\n", "white");
-    Printer.print("\033[3mHe laughs derisively.\033[0m \"Like I'd tell you, traitorous scum.\"\n"); 
-    Printer.printItalizcizedColor("\"Doesn't seem like he'll spill anything. Guess he has no use to me anymore.\"\n", "white");
-    Printer.printItalizcizedColor("You stab him, quieting his annoying laughter. \n", "white");
-    Printer.printItalizcizedColor("You look around the dirtied town. \"Guess I'll go check around to gather intel.\"", "white");
-    Printer.printItalizcizedColor("You check the map to decide where you go...", "purple");
+        System.out.println();
+        Printer.printItalizcizedColor("The assassin falls to the ground, defeated.\nYou stalk towards him as he lays there, face\nin the ground.\n", "white");
+        Printer.printColor("\"Ahck!\" \033[3mHe coughs as you pin him with your foot.\033[0m\n","white");
+        Printer.printColor("\"How'd you already track me.\" \033[3mYou demand, grinding you foot in his back.\033[0m\n", "white");
+        Printer.print("\033[3mHe laughs derisively.\033[0m \"Like I'd tell you, traitorous scum.\"\n"); 
+        Printer.printItalizcizedColor("\"Doesn't seem like he'll spill anything. Guess he has no use to me anymore.\"\n", "white");
+        Printer.printItalizcizedColor("You stab him, quieting his annoying laughter. \n", "white");
+        Printer.printItalizcizedColor("You look around the dirtied town. \"Guess I'll go check around to gather intel.\"", "white");
+        Printer.printItalizcizedColor("You check the map to decide where you go...", "purple");
 
-    TownMaker townMaker = new TownMaker(mainPlayer);
-    mainPlayer.makeTownMaker(townMaker);
-    //TODO: capitalize first letters of the town names
-    townMaker.makeSlums();
-    townMaker.runSlums();
+        TownMaker townMaker = new TownMaker(mainPlayer);
+        mainPlayer.makeTownMaker(townMaker);
+        //TODO: capitalize first letters of the town names
+        townMaker.makeSlums();
+        townMaker.runSlums();
 
 
 
 
 }   
     
-}
+    }

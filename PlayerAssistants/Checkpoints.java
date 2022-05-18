@@ -14,7 +14,7 @@ public class Checkpoints {
         }
 
         public void backToCheckpoint(){
-                playerStats.currentHP = saveStats[0];
+                playerStats.setCurrentHP(saveStats[0]);
                 playerStats.currentMP = saveStats[1];
                 playerStats.currentAtk= saveStats[2];
                 playerStats.currentPhysDmg = saveStats[3];

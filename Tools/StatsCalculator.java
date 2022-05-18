@@ -52,7 +52,7 @@ public class StatsCalculator {
     public void doDamage(Stats attackerStats, Stats victimStats, double moveAttack, double missMultiplier) { 
 
         //These are the stats that we will need for calculating the correct damage
-        double atk = moveAttack * attackerStats.atkMultiplier;
+        double atk = moveAttack * attackerStats.getCurrentAttack();
         double magicDmg = attackerStats.currentMagicDmg; 
         double physDmg = attackerStats.currentPhysDmg; 
         double cr = attackerStats.currentCritRate; 
@@ -84,7 +84,7 @@ public class StatsCalculator {
         
         //calculates the damage which the player will take after crit and randomization
         trueDamage = (trueDamage + (trueDamage * (randomDamageMultiplier / 100))) / 1.35;  
-        victimStats.currentHP -= trueDamage;
+        victimStats.setCurrentHP(victimStats.getCurrentHP() - trueDamage);
 
         Printer.printColor("Your attack did " + df.format(trueDamage) + " damage!",  "cyan");
     
@@ -124,7 +124,7 @@ public class StatsCalculator {
         
         //calculates the damage which the player will take after crit and randomization
         trueDamage = trueDamage + (trueDamage * (randomDamageMultiplier / 100));  
-        victimStats.currentHP -= trueDamage;
+        victimStats.setCurrentHP(victimStats.getCurrentHP() - trueDamage);
 
         Printer.printColor("Their attack did " + df.format(trueDamage) + " damage!",  "cyan");
     

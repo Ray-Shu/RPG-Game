@@ -299,6 +299,7 @@ public class Combat extends Moves{
         }
     
         //gets a random attack from that
+        //TODO: Fix this method so that it will not be based on index, but rather the string
         int index = random.nextInt(movesWeCanDo.size());
         if (mobAttacks == mobSummoner.getCyberPunkAttacks()) {
             cyberPunkAttack(mobStats, playerStats, index);

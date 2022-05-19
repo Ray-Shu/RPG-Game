@@ -39,13 +39,6 @@ public class Moves {
     public void cyborgAttack(Stats attackerStats, Stats victimStats, Player player, int index) {
         int attackMPcost;
 
-        // int index= 0;
-        // while(!scan.hasNextInt()){
-        //     Printer.print("Please enter an integer");
-        //     scan.next();
-        // }
-
-        //index = scan.nextInt();
         switch (index) {
             case 1:
             attackMPcost = 0;
@@ -111,13 +104,6 @@ public class Moves {
 
     public void hackAttack(Stats attackerStats, Stats victimStats, Player player, int index) {
         int attackMPcost;
-        // int index= 0;
-        // while(!scan.hasNextInt()){
-        //     Printer.print("Please enter an integer");
-        //     scan.next();
-        // }
-        // index = scan.nextInt();
-
         switch (index) {
             case 1:
             attackMPcost = 0;
@@ -182,12 +168,6 @@ public class Moves {
 
     public void terminatorAttack(Stats attackerStats, Stats victimStats, Player player, int index) {
         int attackMPcost;
-        // int index= 0;
-        // while(!scan.hasNextInt()){
-        //     Printer.print("Please enter an integer");
-        //     scan.next();
-        // }
-        // index = scan.nextInt();
         switch (index) {
             case 1:
             attackMPcost = 0;
@@ -246,13 +226,6 @@ public class Moves {
 
     public void swordsmanAttack(Stats attackerStats, Stats victimStats, Player player, int index) {
         int attackMPcost;
-        // int index= 0;
-        // while(!scan.hasNextInt()){
-        //     Printer.print("Please enter an integer");
-        //     scan.next();
-        // }
-        // index = scan.nextInt();
-
         switch (index) {
             case 1:
             attackMPcost = 0;
@@ -316,13 +289,6 @@ public class Moves {
 
     public void rogueAttack(Stats attackerStats, Stats victimStats, Player player, int index) {
         int attackMPcost;
-        // int index= 0;
-        // while(!scan.hasNextInt()){
-        //     Printer.print("Please enter an integer");
-        //     scan.next();
-        // }
-        // index = scan.nextInt();
-
         switch (index) {
             case 1:
             attackMPcost = 0;

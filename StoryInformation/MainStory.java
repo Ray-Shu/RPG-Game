@@ -207,8 +207,8 @@ public class MainStory {
         // playerStats.getClassInfo(chosenClass);
 
         System.out.println();
-        Printer.printItalizcizedColor("The assassin falls to the ground, defeated.\nYou stalk towards him as he lays there, face\nin the ground.\n", "white");
-        Printer.printColor("\"Ahck!\" \033[3mHe coughs as you pin him with your foot.\033[0m\n","white");
+        Printer.printItalizcizedColor("The assassin falls to the ground, defeated.\nYou stalk towards him as he lays there, face\nin the muddied dirt\n", "white");
+        Printer.printColor("\"Ahck!\" \033[3mHe coughs as you pin him down.\033[0m\n","white");
         Printer.printColor("\"How'd you already track me.\" \033[3mYou demand, grinding you foot in his back.\033[0m\n", "white");
         Printer.print("\033[3mHe laughs derisively.\033[0m \"Like I'd tell you, traitorous scum.\"\n"); 
         Printer.printItalizcizedColor("\"Doesn't seem like he'll spill anything. Guess he has no use to me anymore.\"\n", "white");

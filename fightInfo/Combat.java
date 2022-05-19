@@ -7,7 +7,7 @@ import java.text.DecimalFormat;
 import PlayerInformation.*;
 import Tools.*;
 /**
- * This class does all the stuff we need to have a fight
+ * This class does all the stuff we need to have a fight. We use information from moves to pull off our combat scenes. 
  */
 public class Combat extends Moves{
     
@@ -19,15 +19,12 @@ public class Combat extends Moves{
     private Stats  mobStats, playerStats;
     private MobSummoner mobSummoner;
     private String[] mobAttacks;
-    private int[] mobAttackCosts;
-    private int[] playerAttackCosts;
-    // private Player player;
+    private int[] mobAttackCosts, playerAttackCosts;
     private Player player; 
-    private boolean hasPlayerDied = false;
-    public Inventory playerInventory;
+    private Inventory playerInventory;
     private String[] playerAttacks;
     private PlayerCreation creator; 
-
+    
     /**
      * Constructs the arena for a fight between a mob and a player. 
      * Does not call the fight method, but might make it later. 
@@ -49,24 +46,33 @@ public class Combat extends Moves{
         this.mobSummoner = mobSummoner;
         this.mobAttackCosts = mobAttacksCost;
         this.playerAttacks = player.getChosenAttacks();
+        this.creator = player.getCreator();
+
         mobTurnRate = mobStats.getCurrentSpeed();
         playerTurnRate = playerStats.getCurrentSpeed();   
-        this.creator = player.getCreator();
+
     }
 
     /**
-     * Starts a fight between the player and the mob, before 
+     * Creates a fight between the player and a robot. They take turns based on who has a higher turn rate,
+     * which is based on the speed of the player and robot, and try to defeat each other before they die. 
+     * 
+     * @param isTutorial        - If it is a tutorial, we will print out some information about how to do combat
      */
     public void fight(boolean isTutorial) {
+
         boolean hasMobAttacked = isTutorial;
 
+        //while no one is dead, we will keep looping the fight
         while(playerStats.getCurrentHP() > 0 && mobStats.getCurrentHP() > 0){
 
+            //checks if it is a tutorial. If it is, we tell the a bit about how to fight. 
             if (isTutorial) {
                 Printer.printColor("\nWelcome to your first fight! Both you and your opponent will have attacks which use MP. \nYour goal is to use those attacks to defeat your enemy before dying or running out of MP! \n", "purple"); 
                 isTutorial = false;
             }
 
+            //if the player is not disabled, and their turn rate is higher than the mobs, they will get a turn. 
             if (isPlayerTurn() && playerStats.getHowLongDisabled() == 0){
                 
                 System.out.println("\u001B[36m-----------------------------------------------------------\u001B[36m");
@@ -93,29 +99,38 @@ public class Combat extends Moves{
                 
             }
 
-            else if (mobStats.getHowLongDisabled() == 0){
+            //if the mob is not disabled and it is the mob's turn, we 
+            else if (!isPlayerTurn() && mobStats.getHowLongDisabled() == 0){
 
                 System.out.println("\u001B[31m-----------------------------------------------------------\u001B[31m");
                 
+                //if it is a tutorial, we will say a warning before the enemies attack once. 
                 if(hasMobAttacked){
                     Printer.print("Watch out! It is the enemies turn and they are going to attack you! ");
                     hasMobAttacked = false;
                 }
+
+                //gives some info about the mob, before attacking and decreasing any timed boosts we may have. 
                 Printer.printColor("It is the opponents turn! " + mobSummoner.getMobName() + "'s current MP: " + df.format(mobStats.getCurrentMP()) + " Your HP: "+ df.format(playerStats.getCurrentHP()) + "\n", "red");
                 mobMove();
                 checkMobBoosts();
                 System.out.println();
 
+                //tells the player some information about their health, before ending the player's turn. 
                 Printer.printColor("Your HP After Attack: " +  checkIfZeroHP("player") + "\n", "red");
                 System.out.println("\u001B[31m-----------------------------------------------------------\u001B[31m");
                 mobTurnOver();
 
             }
 
-            isAnyoneDisabled();
+            //if neither the player or mob is disabled, we will check who is disabled
+            else {
+                isAnyoneDisabled();
+            }
 
         }
 
+        //checks who died, before printing that the fights over.
         whoDied();
         Printer.printColor("Fight Over", "yellow");
         Printer.printColor(". \n. \n. \n", "yellow");

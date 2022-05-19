@@ -29,17 +29,31 @@ public class Bank {
         return balance;
     }
 
+    /**
+     * Puts money into the account
+     * @param amount    - the amount of money the user is putting into the account
+     */
     public void deposit (double amount) {
         balance += amount;
     }
 
+
+    /**
+     * Checks if the player has enough money to make a purchase
+     * @param amount        - the cost of the item
+     * @return boolean      - true if they have enough to buy, false if else. 
+     */
     public boolean doesPlayerHaveEnoughMoney(double amount){
-        if(balance - amount >= 0){
+        //checks if our balance is greater than or equal to the amount the method calls. 
+        if(balance >= amount){
             return true;
         }
         return false;
     }
 
+    /**
+     * Prints out how much money we have in our account. 
+     */
     public void printBalance(){
         Printer.printColor("Your balance is now "+ balance,"white");
     }

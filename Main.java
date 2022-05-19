@@ -44,17 +44,17 @@ public class Main {
 
                     
         //*Story Line (currently working on chapter One)
-        // MainStory story = new MainStory();
-        // story.startStory(); 
+        MainStory story = new MainStory();
+        story.startStory(); 
                     
         // //* Town Tests
-        Bank bank = new Bank(1000);
-        PlayerCreation lord = new PlayerCreation(bank, "Jeff");
-        Player player = lord.testPlayer();
-        TownMaker townMaker = new TownMaker(player);
-        player.makeTownMaker(townMaker);
-        townMaker.makeTowns();
-        townMaker.runSlums();
+        // Bank bank = new Bank(1000);
+        // PlayerCreation lord = new PlayerCreation(bank, "Jeff");
+        // Player player = lord.testPlayer();
+        // TownMaker townMaker = new TownMaker(player);
+        // player.makeTownMaker(townMaker);
+        // townMaker.makeTowns();
+        // townMaker.runSlums();
              
             
         /**
@@ -70,7 +70,6 @@ public class Main {
          */
 
 
-         //Will work more on inventory; need to have it sync with Combat and implement 'leave' function in inventory
     }
 
 //     public void goToCurrentTown(){

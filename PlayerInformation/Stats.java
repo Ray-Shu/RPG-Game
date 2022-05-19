@@ -1,5 +1,6 @@
 package PlayerInformation;
 import java.text.DecimalFormat;
+import java.util.Arrays;
 
 import Tools.*;
 import TownInfo.Town;
@@ -130,52 +131,52 @@ public class Stats {
 
         //*STAT SETTERS 
         // sets current hp
-        public void setCurrentHP(double toWhat){currentHP = toWhat;}
+        public void setCurrentHP(double toWhat){currentHP = toWhat; updateStats();}
 
         // sets current MP
-        public void setCurrentMP(double toWhat){currentMP = toWhat;}
+        public void setCurrentMP(double toWhat){currentMP = toWhat; updateStats();}
 
         // sets current Spd 
-        public void setCurrentSpd(double toWhat){currentSpd = toWhat;}
+        public void setCurrentSpd(double toWhat){currentSpd = toWhat; updateStats();}
 
         // sets current Atk
-        public void setCurrentAtk(double toWhat){currentAtk = toWhat;}
+        public void setCurrentAtk(double toWhat){currentAtk = toWhat; updateStats();}
 
         // sets current physical damage
-        public void setCurrentPhysDmg(double toWhat){currentPhysDmg = toWhat;}
+        public void setCurrentPhysDmg(double toWhat){currentPhysDmg = toWhat; updateStats();}
 
         // sets current magical damage 
-        public void setCurrentMagicDmg(double toWhat){currentMagicDmg = toWhat;}
+        public void setCurrentMagicDmg(double toWhat){currentMagicDmg = toWhat; updateStats();}
 
         // sets current defense 
-        public void setCurrentDef(double toWhat){currentDef = toWhat;}
+        public void setCurrentDef(double toWhat){currentDef = toWhat; updateStats();}
 
         // sets current endurance 
-        public void setCurrentEnd(double toWhat){currentEnd = toWhat;}
+        public void setCurrentEnd(double toWhat){currentEnd = toWhat; updateStats();}
 
         // sets currentStam 
-        public void setCurrentStam(double toWhat){currentStam = toWhat;}
+        public void setCurrentStam(double toWhat){currentStam = toWhat; updateStats();}
 
         // sets current physical resistance 
-        public void setCurrentPhysRes(double toWhat){currentPhysRes = toWhat;}
+        public void setCurrentPhysRes(double toWhat){currentPhysRes = toWhat; updateStats();}
 
         // sets current magical resistance 
-        public void setCurrentMagicRes(double toWhat){currentMagicRes = toWhat;}
+        public void setCurrentMagicRes(double toWhat){currentMagicRes = toWhat; updateStats();}
 
         //sets current dodge 
-        public void setCurrentDodge(double toWhat){currentDodge = toWhat;}
+        public void setCurrentDodge(double toWhat){currentDodge = toWhat; updateStats();}
 
         // sets current vitality
-        public void setCurrentVit(double toWhat){currentVit = toWhat;}
+        public void setCurrentVit(double toWhat){currentVit = toWhat; updateStats();}
 
         //sets current crit rate 
-        public void setCurrentCritRate(double toWhat){currentCritRate = toWhat;}
+        public void setCurrentCritRate(double toWhat){currentCritRate = toWhat; updateStats();}
 
         //sets current crit damage
-        public void setCurrentCritDmg(double toWhat){currentCritDmg = toWhat;}
+        public void setCurrentCritDmg(double toWhat){currentCritDmg = toWhat; updateStats();}
 
         //sets current luck 
-        public void setCurrentLuck(double toWhat){currentLuck = toWhat;}
+        public void setCurrentLuck(double toWhat){currentLuck = toWhat; updateStats();}
 
         //returns max HP
         public double getMaxHP(){return maxHP;}
@@ -266,9 +267,15 @@ public class Stats {
                 this.displayStats = displayStats;
         }
 
+        private void updateStats() {
+                double currentStats[] = {currentHP, currentMP, currentSpd, currentAtk, currentPhysDmg, currentMagicDmg, currentDef, currentEnd, currentStam, 
+                        currentPhysRes, currentMagicRes, currentDodge, currentVit, currentCritRate, currentCritDmg, currentLuck};
+                this.currentStats = Arrays.copyOf(currentStats, currentStats.length); 
+        }
+
         public double[] getCurrentStats(){
-                // double currentStats[] = {currentHP, currentMP, currentSpd, currentAtk, currentPhysDmg, currentMagicDmg, currentDef, currentEnd, currentStam, 
-                //         currentPhysRes, currentMagicRes, currentDodge, currentVit, currentCritRate, currentCritDmg, currentLuck};
+                double currentStats[] = {currentHP, currentMP, currentSpd, currentAtk, currentPhysDmg, currentMagicDmg, currentDef, currentEnd, currentStam, 
+                      currentPhysRes, currentMagicRes, currentDodge, currentVit, currentCritRate, currentCritDmg, currentLuck};
                 return currentStats;
         }
 
@@ -429,7 +436,7 @@ public class Stats {
         //* DEFENCE MULTIPLIER STUFF
         //returns a boolean reguarding wether not the user can increase their atk. 
         public boolean canDefUp() {
-                if(defMultiplier == 2){return false;}
+                if(defMultiplier == 3){return false;}
                 else{return true;}
         }
 
@@ -454,7 +461,7 @@ public class Stats {
         //* DODGE MULTIPLIER STUFF
         //returns a boolean reguarding wether not the user can increase their atk. 
         public boolean canDodgeUp() {
-                if(dodgeMultiplier == 2){return false;}
+                if(dodgeMultiplier == 20){return false;}
                 else{return true;}
         }
 

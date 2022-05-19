@@ -17,6 +17,11 @@ public class Dungeon {
 	private int[] goldPerMob, xpPerMob;
 	private String color;
 
+
+    private MobSummoner summoner = new MobSummoner();
+    private int[] currentMobAttackCosts;
+    private String[] currentMobAttacks;
+    private Stats currentMobStats;
     /**
      * Creates a dungeon for the character to enter to try to get to the next floor. 
      * @param bossDialogLines   - the lines that the boss says. 
@@ -51,6 +56,7 @@ public class Dungeon {
      */
     public void characterEnteringDungeon(){
         Printer.printColor("------------------------------------------------","white");
+
         //checks if they are the required lvl. If not, back to town it is. 
         if(player.getLevel() < requiredLevel){
             Printer.printColor("Sorry! You do not meet the required level! Please leave the dungeon",color);
@@ -67,6 +73,8 @@ public class Dungeon {
 
         //gets their decission
         String answer = ErrorChecker.compareArrayOfStrings(yesOrNo, "Its yes or no...", "color");
+        
+        //if they want into the dungeon, we run the dungeon. If not, we wait a second then leave. 
         if(answer.equalsIgnoreCase("yes")){
             runDungeon();
         }
@@ -79,10 +87,8 @@ public class Dungeon {
 
 
     public void runDungeon(){
-        MobSummoner summoner = new MobSummoner();
-        Stats currentMobStats;
-        String[] currentMobAttacks;
-        int[] currentMobAttackCosts;
+
+        //welcomes them to the dungeon
         Printer.printColor("\n-----------------------------------------------------", "blue");
         Printer.printColor("Welcome to the dungeon!!!", color);
         
@@ -90,24 +96,9 @@ public class Dungeon {
         for (int i = 0; i < mobNames.length - 1; i++) {
 
             Printer.printColor("Watch out! A level "+ mobLevels[i] + " "+ mobNames[i] + " has appeared!!! \n", color);
-            //makes the stats of the current mob equal to the stats of the 
-            if(mobNames[i].equalsIgnoreCase("Cyber Punk")){
-                currentMobStats = summoner.newCyberPunk(mobLevels[i]);
-            }
-            else if(mobNames[i].equalsIgnoreCase("Greater Will Assassin")){
-                currentMobStats = summoner.newGreaterWillAssassin(mobLevels[i]);
-            }
-            else if(mobNames[i].equalsIgnoreCase("Nano Bot Cluster")){
-                currentMobStats = summoner.newNanoBotCluster(mobLevels[i]);
-            }
-            
-            else{
-                System.out.println("Incorrect spelling of opponent name");
-                return;
-            }
-            currentMobAttackCosts = summoner.getChosenAttackCosts();
-            currentMobAttacks = summoner.getChosenAttacks();
-            
+
+            //makes creates a new mob with the given level, with stats based on the level of that mob. 
+            summonMob(mobNames[i], i);          
 
             Combat combat = new Combat(player, player.getPlayerStats(), currentMobStats, currentMobAttacks, currentMobAttackCosts, summoner);
             combat.fight(false);
@@ -115,7 +106,7 @@ public class Dungeon {
             if(combat.didPlayerDie() == true){
                 missionFailed();
                 return;
-            }
+            } 
             Printer.printColor((i+1) + "/" + mobNames.length + " mob's defeated!\n", "green");
 
             Printer.quickBreak(2000);
@@ -125,9 +116,39 @@ public class Dungeon {
             Printer.printColor(line + "\n", color);
         }
 
+        summonMob(mobNames[mobNames.length], mobNames.length);   
+
 
     }
 
+
+    /**
+     * Summons a mob based on a given name and level. 
+     * @param mobName: The name of the mob
+     * @param i: Index
+     */
+    public void summonMob(String mobName, int i){
+        //if Cyber punk, we will summon a new cyberpunk and get the stats for it.
+            if(mobNames[i].equalsIgnoreCase("Cyber Punk")){
+                currentMobStats = summoner.newCyberPunk(mobLevels[i]);
+            }
+            //if Greater will assasin, we will summon a new assasin and get the stats for it.
+            else if(mobNames[i].equalsIgnoreCase("Greater Will Assassin")){
+                currentMobStats = summoner.newGreaterWillAssassin(mobLevels[i]);
+            }
+            else if(mobNames[i].equalsIgnoreCase("Nano Bot Cluster")){
+                currentMobStats = summoner.newNanoBotCluster(mobLevels[i]);
+            }
+            else if(mobNames[i].equalsIgnoreCase("Warden of Dirt")){ 
+                currentMobStats = summoner.newWardenDirtStats(mobLevels[i]);
+            }
+            else{
+                System.out.println("Incorrect spelling of opponent name");
+                return;
+            }
+            currentMobAttackCosts = summoner.getChosenAttackCosts();
+            currentMobAttacks = summoner.getChosenAttacks();
+    }
 
     /**
     * Send player back to hospital if the mission has not been complete. 

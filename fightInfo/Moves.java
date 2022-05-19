@@ -645,6 +645,41 @@ public class Moves {
             statsCalculator.mobDoDamage(attackerStats, victimStats, moveAttack, missMultiplier);
 
         }
+    }
+    
+    public void wardenOfDirtMoves(Stats attackerStats, Stats victimStats, int index) {
+            int attackMpCost;
+
+            if (index == 0) {
+                // Synethic Infection
+                attackMpCost = 40;
+                Printer.printColor("The Warden Hurls a random object at you!", "white");
+                double moveAttack = 8.3 * attackerStats.getCurrentAttack();
+                double missMultiplier = 2;
+                attackerStats.setCurrentMP(attackerStats.getCurrentMP() - attackMpCost);
+                statsCalculator.mobDoDamage(attackerStats, victimStats, moveAttack, missMultiplier);
+            }
+            if (index == 1) {
+                // Integrated Combustion
+                attackMpCost = 20;
+                Printer.printColor("The Warden of Dirt uses Soil of Pestilence! You are plagued by a disease, dealing major damage!", "white");
+                double moveAttack = 19 * attackerStats.getCurrentAttack();
+                double missMultiplier = 0.2;
+                attackerStats.setCurrentMP(attackerStats.getCurrentMP() - attackMpCost);
+                statsCalculator.mobDoDamage(attackerStats, victimStats, moveAttack, missMultiplier);
+            }
+            if (index == 2) {
+                // Coordinated Ion Drill 
+                attackMpCost = 10;
+                Printer.printColor("The Warden uses Rooted, greatly enhancing their defensive capabilities.", "white");
+                attackerStats.defUpTime(3, 4);        attackerStats.applyDefenceUp(4);
+            }
+            if (index == 3) {
+                // Neon-Laser Cascade
+                attackMpCost = 20;
+                Printer.printColor("The Warden of Dirt uses souls of reveangance greatly improve their attack strength!", "white");
+                attackerStats.atkUpTime(2,4);
+            }
 
     }
 

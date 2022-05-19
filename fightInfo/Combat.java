@@ -75,25 +75,29 @@ public class Combat extends Moves{
             //if the player is not disabled, and their turn rate is higher than the mobs, they will get a turn. 
             if (isPlayerTurn() && playerStats.getHowLongDisabled() == 0){
                 
+                //tells player it is their turn and their mp and their enemy's remaining HP
                 System.out.println("\u001B[36m-----------------------------------------------------------\u001B[36m");
-                
                 Printer.printColor("It is your turn! Your current MP: "+ df.format(playerStats.getCurrentMP()) + " | Enemy HP: "+ df.format(mobStats.getCurrentHP()) + "\n", "cyan");
                 
                 listAttacks();
                 
-                int option = scan.nextInt(); 
+                //makes them enter in another number if the option does not correspond to an attack or the inventory. 
+                int option = ErrorChecker.intWithMinAndMax(1, 5, "Choose an attack", "white");
                 if(option != 5){
                     playerMove(option); 
                 } else {
+                    //if they want to use the inventory, we will repeat their turn after it, as they did not make an attack. 
+                    //Repeat is in the show inventory method. 
                     showInventory();  
-                    fight(false);
+                    return;
                 }
                 
-                
+                //checks the player to see if they have any more active boost, and decreases them by one. 
                 checkPlayerBoosts();
                 System.out.println();
 
-                Printer.printColor("Enemy HP after attack: " + checkIfZeroHP("mob") + "\n", "cyan");
+                //the stuff after the character's turn is over. 
+                Printer.printColor("Enemy HP after attack: " + checkIfZeroHP(mobStats) + "\n", "cyan");
                 System.out.println("\u001B[36m-----------------------------------------------------------\u001B[36m");
                 playerTurnOver();
                 
@@ -117,7 +121,7 @@ public class Combat extends Moves{
                 System.out.println();
 
                 //tells the player some information about their health, before ending the player's turn. 
-                Printer.printColor("Your HP After Attack: " +  checkIfZeroHP("player") + "\n", "red");
+                Printer.printColor("Your HP After Attack: " +  checkIfZeroHP(playerStats) + "\n", "red");
                 System.out.println("\u001B[31m-----------------------------------------------------------\u001B[31m");
                 mobTurnOver();
 
@@ -152,30 +156,24 @@ public class Combat extends Moves{
         fight(false); 
     }
 
-    //*Doesn't display negative numbers when whoever is killed
-    public String checkIfZeroHP(String whoseTurn) {
-        if(whoseTurn.equalsIgnoreCase("player")) {
-            if (playerStats.getCurrentHP() < 0) {
-                return "0";
-            } else {
-                return df.format(playerStats.getCurrentHP());
-            }
-       
+    /**
+     * Checks the HP of the player or the mob, before returning the HP as 0 if they are dead, or just formatted. 
+     * @param whoseTurn:    The stats of the person who we want to check
+     * @return a string of the number of whose turn it is. 
+     */
+    public String checkIfZeroHP(Stats whoseTurn) {
+        //if their HP is too low, we will 
+        if (whoseTurn.getCurrentHP() < 0) {
+            return "0";
+        } else {
+            return df.format(whoseTurn.getCurrentHP());
         }
-
-        if(whoseTurn.equalsIgnoreCase("mob")) {
-            if (mobStats.getCurrentHP() < 0){
-                return "0";
-            } else {
-                return df.format(mobStats.getCurrentHP());
-            }
-        }
-
-        return whoseTurn;
+    
     }
 
     /**
-     * Turns are based on speed. The player with the highest speed will get the turn. 
+     * checks if it is the player's turn. Player's turn occurs when their turnrate is greater than or equal to  that of the mob
+     * @return: True if it is the player's turn, false if else. 
      */
     public boolean isPlayerTurn() {
         if (playerTurnRate >= mobTurnRate){return true;}
@@ -188,8 +186,6 @@ public class Combat extends Moves{
     public void playerTurnOver() {
         playerTurnRate -= mobStats.getCurrentSpeed();
         mobTurnRate += mobStats.getCurrentSpeed() * mobStats.getSpeedMultiplier();
-        // Printer.printItalizcizedColor("Type any letter to continue...", "white");
-        // scan.next();
         Printer.quickBreak(1000);
     }
     
@@ -199,8 +195,6 @@ public class Combat extends Moves{
     public void mobTurnOver() {
         mobTurnRate -= playerStats.getCurrentSpeed();
         playerTurnRate += playerStats.getCurrentSpeed() * playerStats.getSpeedMultiplier();
-        // Printer.printItalizcizedColor("Type any letter to continue...", "white");
-        // scan.next();
         Printer.quickBreak(1000);
     }
 
@@ -209,47 +203,53 @@ public class Combat extends Moves{
      */
     private void whoDied () {
         
+        //if it was the player who died, we will play the player death method. 
         if(playerStats.getCurrentHP() <= 0){
             Player.playerDied();
-            
         }
-
+        //if the mob died, we run their death message. 
         else{
             Printer.printColor(mobSummoner.getMobName() + " has been defeated!", "green");
         }
 
     }
 
-    //returns a boolean of whether or not the player has died yet. 
+    /**
+     * Gives a boolean of whether or not it was the player who died in the fight
+     * @return: True if the player did die, false if else. 
+     */
     public boolean didPlayerDie() {
         if(playerStats.getCurrentHP() <= 0){
             return true;
         }
         return false;
-        
     }
 
     /**
      * Prints out a list of the attacks of the user, along with all the options like leave and inventory. 
-     * todo: Implement leave and inventory options.
      */
     public void listAttacks() {
+
         int i = 0;
         Printer.printColor("Here are your moves:\n", "cyan");
+
+        //prints out the name of the attack and its mp cost, and then an index to access it when calling it. 
         while(i < playerAttacks.length) {
             System.out.println("("+ (i + 1) + ") "+ playerAttacks[i] + "\tMP COST: "+ playerAttackCosts[i]);
             i++;
         }
+
         System.out.println("("+(i + 1)+") Inventory");  
         System.out.println("\u001B[36m-----------------------------------------------------------\u001B[36m");
     }
     
     /**
-     * Prints out the player's moves, then does the attack based on their response. 
+     * This method checks which class the player chose by comparing their attacks to the array of cyborg attacks, before 
+     * running those attacks.  
      */
     public void playerMove(int option) {
         
-        //checks which class we are, and then prompts them to answer a thing. 
+        //This checks which class the player is, and then runs their respected moves based on that. 
         if (playerAttacks == creator.getCyborgAttacks()){
             cyborgAttack(playerStats, mobStats, player, option);
         }
@@ -274,7 +274,7 @@ public class Combat extends Moves{
     }
     
     /**
-     * Does the mobs move
+     * Does the mobs move.
      * 
      * @param playerStats2
      * @param mobStats2
@@ -284,18 +284,22 @@ public class Combat extends Moves{
         double mp = mobStats.getCurrentMP();
         ArrayList<Integer> movesWeCanDo = new ArrayList<Integer>();
 
+        //fills an arrayList with all the moves that we could possibly afford with our current mp
         for (int i = 0; i < mobAttackCosts.length; i++) {
             if (mobAttackCosts[i] <= mp) {
                 movesWeCanDo.add(i);
             }
         }
+
+        //If the mob lacks the necessary MP to do an attack, they will die. 
         if (movesWeCanDo.isEmpty()) {
             System.out.println("The enemy has run out of battery!");
             mobStats.setCurrentHP(0.0);
             return;
         }
-        ;
-
+    
+        //gets a random attack from that
+        //TODO: Fix this method so that it will not be based on index, but rather the string
         int index = random.nextInt(movesWeCanDo.size());
         if (mobAttacks == mobSummoner.CYBER_PUNK_ATTACKS) {
             cyberPunkAttack(mobStats, playerStats, index);

@@ -237,7 +237,10 @@ public class MainStory {
         Printer.quickBreak(1000); 
         Printer.print("\033[3mHe continues\033[0m, \"There's a floor teleporter in the middle of each floor, the Sensory Mech will scan your medallion \nand will teleport you to the floor you have earned the medallion floor.\" \n" );
         Printer.quickBreak(1000); 
-        
+        Printer.printItalizcizedColor("\"However.\" \033[3mhe warns.\033[0m \"You aren't able to teleport to floors that you haven't earned medallions for. If you're \nwondering about why many people can collect medallions, it's because the wardens of each floor don't actually \ndie. They are mysterious creatures whose souls are chained to their floor, so each time they're defeated, they regenerate themselves.\" \n", "white");
+        Printer.print("\"Where do I go to fight this warden?\"");
+        Printer.printColor("I wouldn't be so hasty if I were you, these wardens have been reigning over these lands for centuries, their historical \norigins are unknown! But if you still wish to fight them, the warden occupying The Slums is the \u001B[31mWarden of Dirt\u001B[31m.\n", "white");
+        Printer.printColor("\"You can face it by entering the town's dungeon. But the door only unlocks if it deems the participants worthy.\"", "white");
 
 
     }   

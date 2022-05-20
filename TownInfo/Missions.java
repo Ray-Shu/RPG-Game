@@ -17,7 +17,8 @@ public class Missions {
     private Town town;
     private boolean isMissionComplete = false;
 	private Guild guild;
-	private int recommendedLevel, cashReward; 
+	private int recommendedLevel, cashReward;
+	private boolean townAfter; 
 
     /**
      * Constructs a mission with all of the information that we will need to run it. 
@@ -70,7 +71,8 @@ public class Missions {
     /**
      * Runs the mission by teleporting the user, and introducing them to the problem again, before starting the battle. 
      */
-    public void runMission(){
+    public void runMission(boolean townAfter){
+        this.townAfter = !townAfter;
         Stats currentMobStats;
         String[] currentMobAttacks;
         int[] currentMobAttackCosts;
@@ -135,7 +137,9 @@ public class Missions {
         Printer.printColor("\nTeleporting back to town!\n", color);
         Printer.quickBreak(1000);
         
-        town.characterEnteringTown();
+        if(townAfter){
+        town.characterEnteringTown(townAfter);
+        }
 
     }
 

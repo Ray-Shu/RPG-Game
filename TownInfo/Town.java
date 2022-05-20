@@ -64,6 +64,9 @@ public class Town {
         namesOfThingsInTown.add(townName + " Adventurers Guild");
     }
     
+    public Guild getGuild(){
+        return guild;
+    }
     public void addDungeon(Dungeon dungeon){
         this.dungeon = dungeon;
         namesOfThingsInTown.add("dungeon");
@@ -72,7 +75,7 @@ public class Town {
     /**
      * The player moves into the town, so we welcome them, and show them all of the buildings
      */
-    public void characterEnteringTown() {
+    public void characterEnteringTown(boolean returnToStory) {
 
         // welcomes the character to town
         System.out.println("-----------------------------------------------------------");
@@ -104,10 +107,11 @@ public class Town {
         //once we have a value, we let them shop at one of the places they asked for. 
         //this checks which name of the shop they entered, then sends them in. 
         if(chosenInt <= allMerchants.size()){
-            allMerchants.get((chosenInt-1)).shop();
+            allMerchants.get((chosenInt-1)).shop(true);
         }
         else if(chosenInt == allMerchants.size() + 1 ){
-            guild.runGuild();
+        guild.runGuild(returnToStory);
+
         }
         // if(whereMerchantWantsToGO.equalsIgnoreCase("dungeon")){
         //     dungeon.characterEnteringDungeon();

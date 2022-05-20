@@ -69,7 +69,8 @@ public class Main {
          * the attack 'overload' for cyborg shows a bugged mp cost
          */
 
-
+        //!MAKING THE ATTACK STAT RLY HIGH SO I CAN DO TESTS QUICKER 
+        //!IF YOU WANT TO CHANGE IT TO NORMAL, REMOVE THE *(90) MULTIPLIER IN STATS CALCULATOR
     }
 
 //     public void goToCurrentTown(){

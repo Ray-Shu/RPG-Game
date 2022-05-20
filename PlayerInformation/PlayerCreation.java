@@ -13,7 +13,7 @@ public class  PlayerCreation {
 
     private final String CLASSES[] = { "cyborg", "hacker", "terminator", "laser swordsman", "rogue", "mystic", "reverend" };
 
-    public final String CYBORG_ATTACKS[] = {"Laser Barrage", "Charged Shot", "Cyber Shield", "Overload"};
+    public final String CYBORG_ATTACKS[] = {"Laser Barrage", "Charged Shot", "Cyber Shield", "Overload\t"};
     public final int CYBORG_ATTACK_COSTS[] = {0,15,5,20};
     public final String CYBORG_ATTACK_INFO[] = {"Laser Barrage unleashes a flury of low damage laser shots on the opponents", 
             "The Charged Shot unleashes a powerful blast capable dealing major damage", 
@@ -253,7 +253,7 @@ public void chooseHacker(String chosenClass){
 }
 
 public void chooseTerminator(String chosenClass){
-        playerStats = new Stats(300.0, 90.0, 0.8, 5.0, 8.0, 0.0, 7.0, 10.0, 200.0, 9.0, 3.0, 1.0, 1.0, 1.0, 1.0, 1.0);
+        playerStats = new Stats(300.0, 90.0, 0.8, 4.5, 8.0, 0.0, 7.0, 10.0, 200.0, 9.0, 3.0, 1.0, 1.0, 1.0, 1.0, 1.0);
 
         Printer.printColor("Terminator, a good choice.", "red");
         chosenAttacks = TERMINATOR_ATTACKS;
@@ -262,7 +262,7 @@ public void chooseTerminator(String chosenClass){
 }
 
 public void chooseLazerSwordsman(String chosenClass){
-        playerStats = new Stats(200.0, 130.0, 1.25, 8.0, 4.0, 4.0, 5.0, 7.0, 100.0, 4.0, 4.0, 1.0, 1.0, 1.0, 1.0, 1.0);
+        playerStats = new Stats(200.0, 130.0, 1.25, 5.4, 4.0, 4.0, 5.0, 7.0, 100.0, 4.0, 4.0, 1.0, 1.0, 1.0, 1.0, 1.0);
 
         Printer.printColor("Lazer Swordsman, a good choice.", "cyan");
         chosenAttacks = SWORDSMAN_ATTACKS;
@@ -271,7 +271,7 @@ public void chooseLazerSwordsman(String chosenClass){
 }
 
 public void chooseRogue(String chosenClass){
-        playerStats = new Stats(125.0, 150.0, 2.0, 9.0, 10.0, 6.0, 2.0, 3.0, 130.0, 3.0, 3.0, 5.0, 1.0, 1.0, 1.0, 1.0);
+        playerStats = new Stats(125.0, 150.0, 2.0, 5.5, 10.0, 6.0, 2.0, 3.0, 130.0, 3.0, 3.0, 5.0, 1.0, 1.0, 1.0, 1.0);
 
         Printer.printColor("Rogue, a good choice.", "yellow");
         chosenAttacks = ROGUE_ATTACKS;
@@ -281,7 +281,7 @@ public void chooseRogue(String chosenClass){
 }
 
 public void chooseMystic(String chosenClass){
-        playerStats = new Stats(175.0, 200.0, 1.0, 7.0, 1.0, 10.0, 4.0, 5.0, 150.0, 3.0, 5.0, 1.0, 1.0, 1.0, 1.0, 1.0);
+        playerStats = new Stats(175.0, 200.0, 1.0, 5.0, 1.0, 10.0, 4.0, 5.0, 150.0, 3.0, 5.0, 1.0, 1.0, 1.0, 1.0, 1.0);
 
         Printer.printColor("Mystic, a good choice.", "purple");
         chosenAttacks = MYSTIC_ATTACKS;

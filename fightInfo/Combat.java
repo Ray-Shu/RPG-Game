@@ -139,8 +139,8 @@ public class Combat extends Moves{
 
         //ending boosts: 
 
-        playerStats.atkUpTime(1,1);
-        playerStats.defUpTime(1, 1);
+        playerStats.atkUpTime(1,0);
+        playerStats.defUpTime(1, 0);
         playerStats.setHowLongDisabled(0);
         playerStats.dodgeUpTime(1,0);
         playerStats.speedUpTime(1,0);
@@ -357,16 +357,16 @@ public class Combat extends Moves{
             if(playerStats.getHowLongDefUp()> 0){
                 playerStats.setHowLongDefUp(playerStats.getHowLongDefUp() - 1);
                 if(playerStats.getHowLongDefUp() ==0){
-                    Printer.printColor("Player ATK boost over!", "cyan");
+                    Printer.printColor("Player DEF boost over!", "cyan");
                     playerStats.applyDefenceUp(1);
                 }
             }
 
         //checks if the player's temp dodge multiplier is active, and then it 
-            if(playerStats.getHowLongDefUp() > 0){
-                playerStats.setHowLongDefUp(playerStats.getHowLongDefUp() - 1);
-                if(playerStats.getHowLongAtkUp() ==0){
-                    Printer.printColor("Player SPD boost over!", "cyan");
+            if(playerStats.getHowLongDodgeUp() > 0){
+                playerStats.setHowLongDodgeUp(playerStats.getHowLongDodgeUp() - 1);
+                if(playerStats.getHowLongDodgeUp() ==0){
+                    Printer.printColor("Player DODGE boost over!", "cyan");
                     playerStats.applyDodgeUp(1);
                 }
             }

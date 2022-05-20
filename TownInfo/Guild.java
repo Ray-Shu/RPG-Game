@@ -51,6 +51,7 @@ public class Guild {
     private String[] slum3MissionItems = new String[5];
     private String slum3MissionColor = "yellow";
     private int slum3MissionRecommendedLevel = 5;
+	private boolean returnToStory;
     
     /**
      * Creates the guild and gives missions based on the town that we are in. 
@@ -92,20 +93,22 @@ public class Guild {
     /**
      * The player has entered the guild, so we tell them the missions they are yet to complete, before running them
      */
-    public void runGuild(){
+    public void runGuild(boolean returnToStory){
         System.out.println("-----------------------------------------------------------");
+        if(returnToStory){
         Printer.printColor("Welcome to the " + townName + " adventurers guild!\n\n" 
                 + "Here are some possible missions: \n", color);
+        }
 
         printMissions();
 
         int missionToDo = ErrorChecker.intWithMinAndMax(1, (allMissions.size() + 1), "\nWhich mission would you like to go on?", color);
         
         if(missionToDo <= allMissions.size()){
-            allMissions.get(missionToDo-1).runMission();
+            allMissions.get(missionToDo-1).runMission(returnToStory);
         }
         else{
-            town.characterEnteringTown();
+            town.characterEnteringTown(returnToStory);
         }
     }
 
@@ -127,7 +130,7 @@ public class Guild {
         for (i = 0; i < allMissions.size();i++ ){
             
             //prints the index of the mission.
-                Printer.printColor("(" + (i+1) + " ) "
+                Printer.printColor("(" + (i+1) + ") "
                     + allMissions.get(i).getMissionName() + ": ", color);
                 allMissions.get(i).printMissionInfo();
         }

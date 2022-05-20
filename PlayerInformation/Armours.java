@@ -44,15 +44,16 @@ public class Armours {
 
     //battered spectral armour
     private String batteredSpectral = "Battered Spectral";
-    private double[] batteredSpectralHeavyStats = { 15, 10, 0.05, 3, 3, 3, 4, 2, 2, 1, 1, 2, 1, 2, 3, 1 };
+    private String getBatteredSpectral(){return batteredSpectral;}
+    private double[] batteredSpectralHeavyStats = { 15, 10, 0.05, 1.5, 3, 3, 4, 2, 2, 1, 1, 2, 1, 2, 3, 1 };
     private double[] batteredSpectralLightStats = { 10, 10, 0.07, 2, 2, 2, 1.5, 2, 2, 1, 1, 2, 2, 2, 3.5, 2 };
-    private double[] batteredSpectralMageStats = { 12, 12, 0.04, 3.5, 1, 3, 1, 2, 2, 1, 2.5, 1, 2, 3, 2.5, 1.5 };
+    private double[] batteredSpectralMageStats = { 12, 12, 0.04, 2.5, 1, 3, 1, 2, 2, 1, 2.5, 1, 2, 3, 2.5, 1.5 };
 
     //superior spectral armour 
     private String superiorSpectral = "Superior Spectral"; 
-    private double[] superiorSpectralHeavyStats = { 20, 15, 0.06, 4.5, 4.5, 3, 4.5, 2, 3, 3, 1.5, 2, 1.5, 3, 4, 1.5 };
-    private double[] superiorSpectralLightStats = { 13, 15, 0.08, 2.5, 2.5, 2.5, 2, 2.5, 3, 2, 1.5, 3, 2.5, 3, 4.5, 2.5 };
-    private double[] superiorSpectralMageStats = { 18, 20, 0.04, 4, 1, 4.5, 1.5, 2, 2, 2, 3, 1.5, 4, 3.5, 4, 2 };
+    private double[] superiorSpectralHeavyStats = { 20, 15, 0.06, 2.4, 4.5, 3, 4.5, 2, 3, 3, 1.5, 2, 1.5, 3, 4, 1.5 };
+    private double[] superiorSpectralLightStats = { 13, 15, 0.08, 2.1, 2.5, 2.5, 2, 2.5, 3, 2, 1.5, 3, 2.5, 3, 4.5, 2.5 };
+    private double[] superiorSpectralMageStats = { 18, 20, 0.04, 2, 1, 4.5, 1.5, 2, 2, 2, 3, 1.5, 4, 3.5, 4, 2 };
 
     //TODO: implement a "check what you're wearing thing to implement additional armour stats"
 

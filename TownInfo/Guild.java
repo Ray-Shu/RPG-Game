@@ -92,10 +92,14 @@ public class Guild {
     /**
      * The player has entered the guild, so we tell them the missions they are yet to complete, before running them
      */
-    public void runGuild(){
+    public void runGuild(boolean mandatoryMission){
+        
         System.out.println("-----------------------------------------------------------");
-        Printer.printColor("Welcome to the " + townName + " adventurers guild!\n\n" 
+        
+        if(!mandatoryMission){
+            Printer.printColor("Welcome to the " + townName + " adventurers guild!\n\n" 
                 + "Here are some possible missions: \n", color);
+        }
 
         printMissions();
 

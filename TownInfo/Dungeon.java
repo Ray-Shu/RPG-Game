@@ -102,12 +102,15 @@ public class Dungeon {
 
             Combat combat = new Combat(player, player.getPlayerStats(), currentMobStats, currentMobAttacks, currentMobAttackCosts, summoner);
             combat.fight(false);
+
             //if the player died, we go back to the town. 
             if(combat.didPlayerDie() == true){
                 missionFailed();
                 return;
             } 
             Printer.printColor((i+1) + "/" + mobNames.length + " mob's defeated!\n", "green");
+            player.checkXP(xpPerMob[i]);
+            player.getBank().deposit(goldPerMob[i]);
 
             Printer.quickBreak(2000);
         }
@@ -117,6 +120,16 @@ public class Dungeon {
         }
 
         summonMob(mobNames[mobNames.length], mobNames.length);   
+        Combat combat = new Combat(player, player.getPlayerStats(), currentMobStats, currentMobAttacks, currentMobAttackCosts, summoner);
+        combat.fight(false);
+        if(combat.didPlayerDie() == true){
+            missionFailed();
+            return;
+        } 
+
+        player.checkXP(xpPerMob[mobNames.length]);
+        player.getBank().deposit(goldPerMob[mobNames.length]);
+        
 
 
     }

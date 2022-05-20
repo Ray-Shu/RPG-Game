@@ -136,7 +136,7 @@ public class Missions {
         Printer.quickBreak(1000);
         
         town.characterEnteringTown();
-
+        
     }
 
 /**

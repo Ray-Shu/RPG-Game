@@ -22,9 +22,22 @@ public class TownMaker{
     private String error4SlumBank = "Please repeat that";
     private String colorOfSlumBank = "grey";
     
-    private String[] thingsToDoAtHospital = {"get healing", "leave"};
+    private String[] thingsToDoAtHospital = {"Get healed", "leave"};
 	private Stats playerStats;
 	private Player player;
+
+
+    private String slumArmouryName = "Slums Armoury";
+    private String[] thingsToDoInSlumArmoury = {"Buy", "leave"};
+    private String[] slumArmouryItems = {};
+    private int[] slumArmouryPrices = {};
+    private String greeting4SlumArmoury = "Welcome to the armoury! How may I help you?";
+    private String farewell4SlumArmoury = "Please never come again!";
+    private String error4SlumArmoury = "Please repeat that";
+    private String colorOfSlumArmoury = "cyan";
+
+
+
 
     private String teleporterName = "Hyper Loop!";
     private Town[] allTowns = {slums};
@@ -60,7 +73,7 @@ public class TownMaker{
     //runs the slums. 
     //This is temporary. 
     public void runSlums(){
-        slums.characterEnteringTown();
+        slums.characterEnteringTown(true);
     }
 
     /**
@@ -79,6 +92,18 @@ public class TownMaker{
         }
     }
 
-    //Moves us to the next town
+    //gives the current town level
+    public int getCurrentTownLevel(){return currentTownLevel;}
+    
+    //increments the max town level
+    public void increaseMaxTownLevel(){maxTownLevel++;}
+
+    //Decreases the current town level
+    public void decreaseCurrentTownLevel(){maxTownLevel++;}
+
+    //Increases the current town level
+    public void increaseCurrentTownLevel(){currentTownLevel++;}
+
+    public int getMaxTownLevel(){return maxTownLevel;}
 
 }

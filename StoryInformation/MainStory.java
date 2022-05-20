@@ -193,7 +193,7 @@ public class MainStory {
         } else {
             chapter_One_Scene_Two();
         }
-        chapter_One_Scene_Two();
+
     }
 
     public void chapter_One_Scene_Two(){
@@ -203,21 +203,42 @@ public class MainStory {
         // System.out.println("new stats \n");
         // playerStats.getClassInfo(chosenClass);
 
-        System.out.println();
-        Printer.printItalizcizedColor("The assassin falls to the ground, defeated.\nYou stalk towards him as he lays there, face\nin the muddied dirt\n", "white");
-        Printer.printColor("\"Ahck!\" \033[3mHe coughs as you pin him down.\033[0m\n","white");
-        Printer.printColor("\"How'd you already track me.\" \033[3mYou demand, grinding you foot in his back.\033[0m\n", "white");
-        Printer.print("\033[3mHe laughs derisively.\033[0m \"Like I'd tell you, traitorous scum.\"\n"); 
-        Printer.printItalizcizedColor("\"Doesn't seem like he'll spill anything. Guess he has no use to me anymore.\"\n", "white");
-        Printer.printItalizcizedColor("You stab him, quieting his annoying laughter. \n", "white");
-        Printer.printItalizcizedColor("You look around the dirtied town. \"Guess I'll go check around to gather intel.\"", "white");
+        // System.out.println();
+        // Printer.printItalizcizedColor("The assassin falls to the ground, defeated.\nYou stalk towards him as he lays there, face\nin the muddied dirt\n", "white");
+        // Printer.quickBreak(1000);
+        // Printer.printColor("\"Ahck!\" \033[3mHe coughs as you pin him down.\033[0m\n","white");
+        // Printer.quickBreak(1000); 
+        // Printer.printColor("\"How'd you already track me.\" \033[3mYou demand, grinding your foot in his back.\033[0m\n", "white");
+        // Printer.quickBreak(1000);
+        // Printer.print("\033[3mHe laughs derisively.\033[0m \"Like I'd tell you, traitorous scum.\"\n"); 
+        // Printer.quickBreak(1000); 
+        // Printer.printItalizcizedColor("\"Doesn't seem like he'll spill anything. Guess he has no use to me anymore.\"\n", "white");
+        // Printer.quickBreak(1000); 
+        // Printer.printItalizcizedColor("You stab him, quieting his annoying laughter. \n", "white");
+        // Printer.quickBreak(1000); 
+        // Printer.printItalizcizedColor("You look around the dirtied town. \"Guess I'll go check around to gather intel.\"", "white");
+        // Printer.quickBreak(1000); 
         Printer.printItalizcizedColor("You check the map to decide where you go...", "purple");
+        Printer.quickBreak(1000); 
 
         TownMaker townMaker = new TownMaker(mainPlayer);
         mainPlayer.makeTownMaker(townMaker);
-        //TODO: capitalize first letters of the town names
         townMaker.makeTowns();
-        townMaker.runSlums();
+        mainPlayer.getCurrentTown().characterEnteringTown(true);
+        
+
+        Printer.printItalizcizedColor("As you hand in the completion report to the Guildmaster,\nyou ask him about how to advance the floors. \n", "white");
+        Printer.quickBreak(1000);
+        Printer.printColor("\"Ya want outta this wretched place heh? I don't blame ya, I'd prolly make a run for it too, if was strong enough to do so...\" \n", "white");
+        Printer.quickBreak(1000); 
+        Printer.printColor("\"Strong enough? What does that mean?\" \n", "white");
+        Printer.quickBreak(1000); 
+        Printer.print("\"Well aren'tcha livin' under a rock!\" \033[3mThe man bellows.\033[0m \"You oughta defeat the warden of this floor. Once you prove your \nstrength, your given a medallion that you collect. Don't worry about losing it, theres a curse imbued into it, so it \nwill always teleport to you.\"\n");
+        Printer.quickBreak(1000); 
+        Printer.print("\033[3mHe continues\033[0m, \"There's a floor teleporter in the middle of each floor, the Sensory Mech will scan your medallion \nand will teleport you to the floor you have earned the medallion floor.\" \n" );
+        Printer.quickBreak(1000); 
+        
+
 
     }   
 

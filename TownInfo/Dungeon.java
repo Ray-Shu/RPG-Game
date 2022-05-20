@@ -22,6 +22,7 @@ public class Dungeon {
     private int[] currentMobAttackCosts;
     private String[] currentMobAttacks;
     private Stats currentMobStats;
+	private boolean hasDungeonBeenDefeated = false;
     /**
      * Creates a dungeon for the character to enter to try to get to the next floor. 
      * @param bossDialogLines   - the lines that the boss says. 
@@ -61,7 +62,7 @@ public class Dungeon {
         if(player.getLevel() < requiredLevel){
             Printer.printColor("Sorry! You do not meet the required level! Please leave the dungeon",color);
             Printer.quickBreak(1000);
-            town.characterEnteringTown();
+            town.characterEnteringTown(true);
             return;
         }
 
@@ -81,7 +82,7 @@ public class Dungeon {
         else{
             Printer.printColor("Alright if your not going in dont hang around.", "color");
             Printer.quickBreak(1000);
-            town.characterEnteringTown();
+            town.characterEnteringTown(true);
         }
     }
 
@@ -131,6 +132,16 @@ public class Dungeon {
         player.getBank().deposit(goldPerMob[mobNames.length]);
         
 
+        Combat combat = new Combat(player, player.getPlayerStats(), currentMobStats, currentMobAttacks, currentMobAttackCosts, summoner);
+        combat.fight(false);
+
+        if(combat.didPlayerDie() == true){
+            missionFailed();
+            return;
+        } 
+
+        victory();
+
 
     }
 
@@ -172,4 +183,23 @@ public class Dungeon {
         town.playerNeedsHospital();
         return;
     }
+
+    void victory(){
+        Printer.printColor("Congratulations! You have beat the dungeon!!!", "green");
+        Printer.printColor("Distribution your rewards!", "green");
+        player.checkXP(xpPerMob[mobNames.length]);
+        player.getBank().deposit(goldPerMob[mobNames.length]);
+        
+        hasDungeonBeenDefeated = true;
+        Printer.printColor("You can now go to the next town!", color);
+        player.getTownMaker().increaseMaxTownLevel();
+        player.getTownMaker().increaseCurrentTownLevel();
+        player.getCurrentTown().characterEnteringTown(true);
+        return;
+    }   
+
+    public boolean hasDungeonBeenDefeated(){
+        return hasDungeonBeenDefeated;
     }
+
+}

@@ -75,14 +75,14 @@ public class Moves {
 
     public void laser_barrage (Stats attackerStats, Stats victimStats) {
         Printer.printColor("Sending Laser Barrage!", "red");
-        double moveAttack = 5 * attackerStats.getCurrentAttack();
+        double moveAttack = 5;
         double missMultiplier = 1.0; 
         statsCalculator.doDamage(attackerStats, victimStats, moveAttack, missMultiplier);
     }
     
     public void charged_shot (Stats attackerStats, Stats victimStats) {
         Printer.printColor("Sending charged shot!", "red");
-        double moveAttack = 7.5 * attackerStats.getCurrentAttack();
+        double moveAttack = 7.5;
         double missMultiplier = 1.3;
         statsCalculator.doDamage(attackerStats, victimStats, moveAttack, missMultiplier); 
         
@@ -140,14 +140,14 @@ public class Moves {
 
     public void virus (Stats attackerStats, Stats victimStats) {
         Printer.printColor("The hacker uses a virus to harm enemy systems!", "yellow");
-        double moveAttack = 5 * attackerStats.getCurrentAttack();
+        double moveAttack = 5;
         double missMultiplier = 0.8; 
         statsCalculator.doDamage(attackerStats, victimStats, moveAttack, missMultiplier);
     }
 
     public void stolen_missile (Stats attackerStats, Stats victimStats) {
         Printer.printColor("Hijacking government missile...", "blue");
-        double moveAttack = 17.5 * attackerStats.getCurrentAttack();
+        double moveAttack = 9;
         double missMultiplier = 2; 
         statsCalculator.doDamage(attackerStats, victimStats, moveAttack, missMultiplier);
     }
@@ -203,13 +203,13 @@ public class Moves {
 
     public void machine_gun_fury (Stats attackerStats, Stats victimStats) {
         Printer.printColor("Unleashing the Machine Gun!", "cyan");
-        double moveAttack =  9* attackerStats.getCurrentAttack();
+        double moveAttack =  6;
         double missMultiplier = 0.7; 
         statsCalculator.doDamage(attackerStats, victimStats, moveAttack, missMultiplier);
     }
     public void first_impact_fists (Stats attackerStats, Stats victimStats) {
         Printer.printColor("Time to strike fast!", "blue");
-        double moveAttack =  6* attackerStats.getCurrentAttack();
+        double moveAttack =  4;
         double missMultiplier = 1.3; 
         statsCalculator.doDamage(attackerStats, victimStats, moveAttack, missMultiplier);
     }
@@ -260,20 +260,20 @@ public class Moves {
 
     public void swift_thrust_of_the_sword (Stats attackerStats, Stats victimStats) {
         Printer.printColor("The Swordsman outpaces their enemy to deal a powerful blow!", "green");
-        double moveAttack = 6 * attackerStats.getCurrentAttack();
+        double moveAttack = 5.5;
         double missMultiplier = 1.2; 
         statsCalculator.doDamage(attackerStats, victimStats, moveAttack, missMultiplier);
     }
     public void fatal_erruption_of_bullets (Stats attackerStats, Stats victimStats) {
         Printer.printColor("The Swordsman uses a gun to eliminate their enemies!", "yellow");
-        double moveAttack = 15 * attackerStats.getCurrentAttack();
+        double moveAttack = 10;
         double missMultiplier = 0.6; 
         statsCalculator.doDamage(attackerStats, victimStats, moveAttack, missMultiplier);
     }
     
     public void lightning_clone_strike (Stats attackerStats, Stats victimStats) {
         Printer.printColor("The Swordsman's moves at supersonic speeds to summon clones which all attack the enemy!", "white");
-        double moveAttack = 20 * attackerStats.getCurrentAttack();
+        double moveAttack = 13;
         double missMultiplier = 0.2; 
         statsCalculator.doDamage(attackerStats, victimStats, moveAttack, missMultiplier);
     }
@@ -324,7 +324,7 @@ public class Moves {
     //This attack deals minor damage to opponents and speeds up the attacker
     public void quick_blast (Stats attackerStats, Stats victimStats) {
         Printer.printColor("Quickly planting explosives before running away!", "purple");
-        double moveAttack = 4 * attackerStats.getCurrentAttack();
+        double moveAttack = 4;
         double missMultiplier = 1.3; 
         attackerStats.speedUpTime(1.2, 2);
         statsCalculator.doDamage(attackerStats, victimStats, moveAttack, missMultiplier);
@@ -333,7 +333,7 @@ public class Moves {
     //this attack is a blunt force attack dealing major damage to the enemies
     public void death_strike (Stats attackerStats, Stats victimStats) {
         Printer.printColor("The Rogue Sneaks up on their opponent and strikes them down. ", "white");
-        double moveAttack = 6 * attackerStats.getCurrentAttack();
+        double moveAttack = 6;
         double missMultiplier = 0.3; 
         statsCalculator.doDamage(attackerStats, victimStats, moveAttack, missMultiplier);
     }
@@ -394,13 +394,13 @@ public class Moves {
 
     public void dragon_shatter (Stats attackerStats, Stats victimStats) {
         Printer.printColor("Summoning Dragon to strike!", "white");
-        double moveAttack = 12 * attackerStats.getCurrentAttack();
+        double moveAttack = 10;
         double missMultiplier = 1.4; 
         statsCalculator.doDamage(attackerStats, victimStats, moveAttack, missMultiplier);
     }
     public void simple_strike (Stats attackerStats, Stats victimStats) {
         Printer.printColor("Using the simple mana strike!", "white");
-        double moveAttack = 5 * attackerStats.getCurrentAttack();
+        double moveAttack = 5;
         double missMultiplier = 0.5; 
         statsCalculator.doDamage(attackerStats, victimStats, moveAttack, missMultiplier);
     }
@@ -461,13 +461,13 @@ public class Moves {
     }
     public void holy_flash_of_radiant_light (Stats attackerStats, Stats victimStats) {
         Printer.printColor("Unleashing God's light on the enemy!", "yellow");
-        double moveAttack = 8 * attackerStats.getCurrentAttack();
+        double moveAttack = 5;
         double missMultiplier = 1.3; 
         statsCalculator.doDamage(attackerStats, victimStats, moveAttack, missMultiplier);
     }
     public void divine_smite (Stats attackerStats, Stats victimStats) {
         Printer.printColor("Thunder Release!!!", "white");
-        double moveAttack = 14.5 * attackerStats.getCurrentAttack();
+        double moveAttack = 9;
         double missMultiplier = 1.8; 
         statsCalculator.doDamage(attackerStats, victimStats, moveAttack, missMultiplier);
     }

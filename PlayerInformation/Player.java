@@ -12,7 +12,7 @@ public class Player {
         private int chosenAttacksCost[];
         private String playerName, chosenClass;
         private Bank bankAccount; 
-        private int playerLevel;
+        private int playerLevel = 1, maxTownLevel;
         private TownMaker townMaker;
         private PlayerCreation creator;
 
@@ -51,6 +51,9 @@ public class Player {
         public void addEquippedArmourToInventory(String headPiece, String chestPiece, String legPiece, String boots) {
                 playerInventory.playerInventoryAddEquippedArmour(headPiece, chestPiece, legPiece, boots);
         }
+
+        //returns info about the townmaker
+        public TownMaker getTownMaker(){return townMaker;}
 
         //returns information about the player.
         public Stats getPlayerStats() {return playerStats;}
@@ -131,5 +134,7 @@ public class Player {
                         "-----------------------------------------------------------"+
                         "\u001B[31m");
         }
+
+
 
 }

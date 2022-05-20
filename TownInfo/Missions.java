@@ -134,6 +134,7 @@ public class Missions {
 
         Printer.printColor("\nTeleporting back to town!\n", color);
         Printer.quickBreak(1000);
+        
         town.characterEnteringTown();
 
     }

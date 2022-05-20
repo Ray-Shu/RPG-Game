@@ -46,7 +46,7 @@ public class TownMaker{
      * Constructs all of the buildings within the town of slums
      */
     public void makeTowns(){
-        slums = new Town("the slums", 1, player, "grey");
+        slums = new Town("The Slums", 1, player, "grey");
         slums.addBuilding(player, playerStats, playerAccount, notStoreItems, notStorePrices, slumBankName, thingsToDoInSlumBank, greeting4SlumBank, farewell4SlumBank, error4SlumBank, colorOfSlumBank);
         slums.addBuilding(player, playerStats, playerAccount, notStoreItems, notStorePrices, "Hospital",thingsToDoAtHospital, "Welcome to the Hospital! We are ready to heal you!", "Thank you for coming", "Sorry could you repeat that?", "white");
         Guild slumsAdventurersGuild = new Guild(player);

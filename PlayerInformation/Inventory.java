@@ -21,30 +21,29 @@ public class Inventory {
     int storageUsed; 
     int maxStorage = 5; 
 
+    private Armours armours; 
+
     Scanner in = new Scanner(System.in);
 
     ArrayList<String> playerInventory = new ArrayList<String>(maxStorage); 
     ArrayList<String> categorizedInventory = new ArrayList<String>();
 
     String[] inventoryChoice = {"1", "2", "3", "4", "e"}; 
-
-
     String[] healingPots = {"Strong Healing Potion", "Healing Potion", "Weak Healing Potion"}; 
 
-    public Inventory() { 
-        //Armours armour = new Armours();
-    }   
-
-    public void createInventory(Stats playerStats){
-        this.playerStats = playerStats; 
+    public Inventory(Stats playerStats) {
+        this.playerStats = playerStats;
 
         categorizedInventory.add("Healing Potions");
         categorizedInventory.add("Mana Elixirs");
         categorizedInventory.add("Revivals");
         categorizedInventory.add("Misc Potions");
-
         // TODO: add more necessities
-    }
+    }   
+
+    // public void createInventory(Stats playerStats, String chosenClass){
+
+    // }
 
     public void addInventory(ArrayList<String> itemsToAdd) {
         playerInventory.addAll(itemsToAdd);
@@ -65,15 +64,14 @@ public class Inventory {
         }
     }
     
-    /**
-     * 
-     * @param newItems - the new items the player collected, and wants added 
-     */
+    //displays the armour; referenced from 'armours' class
     public void playerInventoryAddEquippedArmour(String headPiece, String chestPiece, String legPiece, String boots) {
         this.headPiece = headPiece; 
         this.chestPiece = chestPiece; 
         this.legPiece = legPiece; 
         this.boots = boots;
+
+
     }
 
     //Displays the inventory

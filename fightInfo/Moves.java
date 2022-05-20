@@ -309,16 +309,13 @@ public class Moves {
             secret_mushroom_strike(attackerStats, victimStats);
             return;
         case 4:
-            
             attackMPcost = 5;
             if(attackMPcost > attackerStats.getCurrentMP()){tooTired(); break;}
             attackerStats.setCurrentMP(attackerStats.getCurrentMP() - attackMPcost);
             forbidden_smoke(attackerStats, victimStats);
             if(!attackerStats.canSpeedUp()){Printer.printColor("Speed buff maxed out!", "yellow");}
             if(!attackerStats.canDodgeUp()){Printer.printColor("Dodge buff maxed out!", "yellow");}
-            // return;
-                player.showInventory();
-                return;
+            return;
         default: 
             Printer.print("Please enter a valid number: ");
             break;
@@ -391,10 +388,7 @@ public class Moves {
             burning_prison(attackerStats, victimStats);
             return;
         default: 
-            Printer.print("Please enter a valid number: ");
-            // break;
-                player.showInventory();
-                return;
+            break;
         }
     }
 

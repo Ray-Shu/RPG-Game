@@ -15,6 +15,7 @@ public class MainStory {
     private String chosenClass;
     private Stats playerStats; 
     private Armours armours; 
+    private Inventory inventory; 
 
     private Bank playerAccount = new Bank(1000);
     private PlayerCreation playerCreator;
@@ -26,10 +27,13 @@ public class MainStory {
 
     private MobSummoner summonMob = new MobSummoner();
 
+    //gets the players name 
     public String getName() {
         playerName = in.nextLine(); 
         return playerName;          
     }
+
+    //instantiates all of the information needed currently for the story 
 
     public void playerInfo() {
         playerCreator.printCrateInfo(); 
@@ -38,19 +42,17 @@ public class MainStory {
         mainPlayer.makeTownMaker(townMaker);
         this.chosenClass = playerCreator.getChosenClass();
         playerStats = mainPlayer.getPlayerStats();
-
-        playerStats.getClassInfo(chosenClass);
-         
-        Armours armours = new Armours(mainPlayer, chosenClass); 
+        Armours armours = new Armours(mainPlayer, chosenClass);
         this.armours = armours; 
-        armours.equipArmour("Battered Spectral");
-
-        playerStats.getClassInfo(chosenClass); 
+        this.armours.equipArmour("Battered Spectral");
+        Inventory inventory = new Inventory(playerStats); 
+        this.inventory = inventory; 
     }
 
     public void startStory() {
         prologue(); 
     }
+
     //*tells the player how they got to this new world. This is pre-character creation. 
     public void prologue() {   
         System.out.println();
@@ -92,10 +94,6 @@ public class MainStory {
         
         //*Account Creation Info
         playerInfo(); 
-
-        //*Used for testing inventory
-        mainPlayer.createInventory();
-        mainPlayer.showInventory();
 
         // Printer.print("\n\"Got your choice? Alright, we'll meet up with you later at the Antarctic Domain. We've still got other people to break out.\" \n\033[3mHowever, just before he leaves, he turns back.\n\033[0m\"Oh right, I forgot to give you this, here.\" \033[3mHe hands you a map and a letter.\033[0m \n\"The letter is a referral so you dont get scammed in shops, there's also a second paper that shows useful locations here. Alright, I think that's everything, good luck!\"\n");
         // Printer.printItalizcizedColor("The group leaves; silence permeates the air and you check what you recieved. \n","white");
@@ -178,25 +176,24 @@ public class MainStory {
     //combat against Greater Will Assassin 
     public void chapter_One_Fight_Scene_One(){ 
     //*GETS ALL OF THE INFO OF MC'S CLASS AND STATS ------------------------------------------------------------
-        // playerStats = mainPlayer.getPlayerStats();
-        // Stats mobStats = summonMob.newGreaterWillAssassin(2);
-        // String mobAttacks[] = summonMob.getGreaterWillAssasinAttacks();
-        // int mobAttacksCost[] = summonMob.getGreaterWillAssasinAttackCosts();
-        // Combat chapter_One_Fight_One = new Combat(mainPlayer, playerStats, mobStats, mobAttacks, mobAttacksCost, summonMob);
-        // chapter_One_Fight_One.fight(true);
+        playerStats = mainPlayer.getPlayerStats();
+        Stats mobStats = summonMob.newGreaterWillAssassin(2);
+        String mobAttacks[] = summonMob.getGreaterWillAssasinAttacks();
+        int mobAttacksCost[] = summonMob.getGreaterWillAssasinAttackCosts();
+        Combat chapter_One_Fight_One = new Combat(mainPlayer, playerStats, mobStats, mobAttacks, mobAttacksCost, summonMob);
+        chapter_One_Fight_One.fight(true);
+    // *END OF FIGHT 
 
-        //*END OF FIGHT 
-
-        //resets the player to the reset point if player dies
-        //continues the storyline if the player defeats the enemy
-        // if(chapter_One_Fight_One.didPlayerDie()) {
-        //     checkPoint.backToCheckpoint();
-        //     Printer.printItalizcizedColor("How did you lose...", "yellow");
-        //     chapter_One_Reset_Point_One();
-        // } else {
-        //     chapter_One_Scene_Two();
-        // }
-        // chapter_One_Scene_Two();
+        // resets the player to the reset point if player dies
+        // continues the storyline if the player defeats the enemy
+        if(chapter_One_Fight_One.didPlayerDie()) {
+            checkPoint.backToCheckpoint();
+            Printer.printItalizcizedColor("How did you lose...", "yellow");
+            chapter_One_Reset_Point_One();
+        } else {
+            chapter_One_Scene_Two();
+        }
+        chapter_One_Scene_Two();
     }
 
     public void chapter_One_Scene_Two(){

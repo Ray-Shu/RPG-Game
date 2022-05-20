@@ -46,7 +46,7 @@ public class Town {
         for (i = 1; i <= allMerchants.size(); i++) {
             Printer.printColor("("+i+") " + allMerchants.get(i-1).shopName, "white");  
         }
-        Printer.printColor("("+i+") " +townName + " Adventurers Guild", "white");  
+        Printer.printColor("("+i+") " + townName + " Adventurers Guild", "white");  
     }
 
     //gets townName

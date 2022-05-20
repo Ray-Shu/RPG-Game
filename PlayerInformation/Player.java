@@ -37,14 +37,17 @@ public class Player {
          * *ALL INVENTORY RELATED STUFF
          * Reference to this when showing or adding to inventory
          */
-        Inventory playerInventory = new Inventory();
+        Inventory playerInventory = new Inventory(playerStats);
 
-        public void createInventory(){playerInventory.createInventory(playerStats);}
+        public void showInventory(){
+                playerInventory.showInventory();
+        }
 
-        public void showInventory(){playerInventory.showInventory();}
+        public void addToInventory(ArrayList<String> itemsToAdd){
+                playerInventory.addInventory(itemsToAdd);
+        }
 
-        public void addToInventory(ArrayList<String> itemsToAdd){playerInventory.addInventory(itemsToAdd);}
-
+        //adds the equipment to inventory from player class
         public void addEquippedArmourToInventory(String headPiece, String chestPiece, String legPiece, String boots) {
                 playerInventory.playerInventoryAddEquippedArmour(headPiece, chestPiece, legPiece, boots);
         }

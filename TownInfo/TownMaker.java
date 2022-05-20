@@ -36,8 +36,15 @@ public class TownMaker{
     private String error4SlumArmoury = "Please repeat that";
     private String colorOfSlumArmoury = "cyan";
 
-
-
+    private String[] slumDungeonMobs = {"Cyber Punk", "Nano Bot Cluster", "Greater Will Assasin", "Warden Of Dirt"};
+    private String[] slumBossDialog = {"Welcome",
+        " Please, allow me to Congratulate you!...", 
+        "A Rat like you managed to crawled all the way over here", 
+        ""
+    
+    
+    };
+    private Dungeon slumDungeon = new Dungeon(slumDungeonMobs, bossDialogLines, goldPerMob, xpPerMob, mobStats, mobAttacks, mobLevels, recommendedLvl, requiredLevel, player, town, color);
 
     private String teleporterName = "Hyper Loop!";
     private Town[] allTowns = {slums};

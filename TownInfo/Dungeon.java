@@ -132,7 +132,7 @@ public class Dungeon {
         player.getBank().deposit(goldPerMob[mobNames.length]);
         
 
-        Combat combat = new Combat(player, player.getPlayerStats(), currentMobStats, currentMobAttacks, currentMobAttackCosts, summoner);
+        combat = new Combat(player, player.getPlayerStats(), currentMobStats, currentMobAttacks, currentMobAttackCosts, summoner);
         combat.fight(false);
 
         if(combat.didPlayerDie() == true){

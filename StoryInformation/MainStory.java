@@ -9,6 +9,20 @@ import PlayerInformation.*;
 import fightInfo.*;
 
 public class MainStory {
+    public final String merchantColor = "green";
+
+    //*SLUMS MERCHANT 
+    String[] slumsItemsForSale = {"Weak Healing Pots", "Weak Mana Pots"};
+    double[] slumsPriceOfItem2 = {150, 150}; 
+    String slumsArmour = "Superior Spectral Armour"; 
+    double slumsPriceOfArmour = 6000; 
+    String slumsShopName = "Common Shack"; 
+    String[] slumsThingsToDo = {"Buy common goods", "Buy armour", "Leave"}; 
+    String slumsGreeting = "Welcome to the Common Shack! What can I do for you?"; 
+    String slumsFarewell = "Thanks for coming!"; 
+    String slumsErrorMessage = "Looks like that isn't in the store, pick something else yeah?"; 
+   
+
     public static Printer print = new Printer();
 
     private String playerName; 
@@ -169,32 +183,34 @@ public class MainStory {
         Printer.printItalizcizedColor("You get ready for combat...", "purple");
         Printer.quickBreak(1000);
 
-        chapter_One_Fight_Scene_One();
+        //chapter_One_Fight_Scene_One();
+
+        chapter_One_Scene_Two();
 
     }
 
     //combat against Greater Will Assassin 
-    public void chapter_One_Fight_Scene_One(){ 
-    //*GETS ALL OF THE INFO OF MC'S CLASS AND STATS ------------------------------------------------------------
-        playerStats = mainPlayer.getPlayerStats();
-        Stats mobStats = summonMob.newGreaterWillAssassin(2);
-        String mobAttacks[] = summonMob.getGreaterWillAssasinAttacks();
-        int mobAttacksCost[] = summonMob.getGreaterWillAssasinAttackCosts();
-        Combat chapter_One_Fight_One = new Combat(mainPlayer, playerStats, mobStats, mobAttacks, mobAttacksCost, summonMob);
-        chapter_One_Fight_One.fight(true);
-    // *END OF FIGHT 
+    // public void chapter_One_Fight_Scene_One(){ 
+    // //*GETS ALL OF THE INFO OF MC'S CLASS AND STATS ------------------------------------------------------------
+    //     playerStats = mainPlayer.getPlayerStats();
+    //     Stats mobStats = summonMob.newGreaterWillAssassin(2);
+    //     String mobAttacks[] = summonMob.getGreaterWillAssasinAttacks();
+    //     int mobAttacksCost[] = summonMob.getGreaterWillAssasinAttackCosts();
+    //     Combat chapter_One_Fight_One = new Combat(mainPlayer, playerStats, mobStats, mobAttacks, mobAttacksCost, summonMob);
+    //     chapter_One_Fight_One.fight(true);
+    // // *END OF FIGHT 
 
-        // resets the player to the reset point if player dies
-        // continues the storyline if the player defeats the enemy
-        if(chapter_One_Fight_One.didPlayerDie()) {
-            checkPoint.backToCheckpoint();
-            Printer.printItalizcizedColor("How did you lose...", "yellow");
-            chapter_One_Reset_Point_One();
-        } else {
-            chapter_One_Scene_Two();
-        }
+    //     // resets the player to the reset point if player dies
+    //     // continues the storyline if the player defeats the enemy
+    //     if(chapter_One_Fight_One.didPlayerDie()) {
+    //         checkPoint.backToCheckpoint();
+    //         Printer.printItalizcizedColor("How did you lose...", "yellow");
+    //         chapter_One_Reset_Point_One();
+    //     } else {
+    //         chapter_One_Scene_Two();
+    //     }
 
-    }
+    // }
 
     public void chapter_One_Scene_Two(){
         // System.out.println("old stats \n");
@@ -218,47 +234,73 @@ public class MainStory {
         // Printer.quickBreak(1000); 
         // Printer.printItalizcizedColor("You look around the dirtied town. \"Guess I'll go check around to gather intel.\"", "white");
         // Printer.quickBreak(1000); 
-        Printer.printItalizcizedColor("You check the map to decide where you go...", "purple");
+        Printer.printItalizcizedColor("You check the map to decide where you go... Though your mind wanders for more combat.", "purple");
         Printer.quickBreak(1000); 
 
         TownMaker townMaker = new TownMaker(mainPlayer);
         mainPlayer.makeTownMaker(townMaker);
         townMaker.makeTowns();
-        mainPlayer.getCurrentTown().characterEnteringTown(true);
+        //mainPlayer.getCurrentTown().characterEnteringTown(true);
         
 
-        Printer.printItalizcizedColor(
-                "As you hand in the completion report to the Guildmaster,\nyou ask him about how to advance the floors. \n",
-                "white");
-        Printer.quickBreak(1000);
-        Printer.printColor(
-                "\"Ya want outta this wretched place heh? I don't blame ya, I'd prolly make a run for it too, if was strong enough to do so...\" \n",
-                "white");
-        Printer.quickBreak(1000);
-        Printer.printColor("\"Strong enough? What does that mean?\" \n", "white");
-        Printer.quickBreak(1000);
-        Printer.print(
-                "\"Well aren'tcha livin' under a rock!\" \033[3mThe man bellows.\033[0m \"You oughta defeat the warden of this floor. Once you prove your \nstrength, your given a medallion that you collect. Don't worry about losing it, theres a curse imbued into it, so it \nwill always teleport to you.\"\n");
-        Printer.quickBreak(1000);
-        Printer.print(
-                "\033[3mHe continues\033[0m, \"There's a floor teleporter in the middle of each floor, the Sensory Mech will scan your medallion \nand will teleport you to the floor you have earned the medallion floor.\" \n");
-        Printer.quickBreak(1000);
-        Printer.printItalizcizedColor(
-                "\"However.\" \033[3mhe warns.\033[0m \"You aren't able to teleport to floors that you haven't earned medallions for. If you're \nwondering about why many people can collect medallions, it's because the wardens of each floor don't actually \ndie. They are mysterious creatures whose souls are chained to their floor, so each time they're defeated, \nthey regenerate themselves.\" \n",
-                "white");
-        Printer.print("\"Where do I go to fight this warden?\"\n");
-        Printer.printColor(
-                "\"I wouldn't be so hasty if I were you, these wardens have been reigning over these lands for centuries, their historical \norigins are unknown! But if you still wish to fight them, the warden occupying The Slums is the \u001B[31mWarden of Dirt\u001B[31m\u001B[37m.\"\u001B[37m\n",
-                "white");
-        Printer.printColor(
-                "\"You can face it by entering the town's dungeon. But the door only unlocks if it deems the participants worthy.\"",
-                "white"); 
+        // Printer.printItalizcizedColor(
+        //         "As you hand in the completion report to the Guildmaster,\nyou ask him about how to advance the floors. \n",
+        //         "white");
+        // Printer.quickBreak(1000);
+        // Printer.printColor(
+        //         "\"Ya want outta this wretched place heh? I don't blame ya, I'd prolly make a run for it too, if was strong enough to do so...\" \n",
+        //         "white");
+        // Printer.quickBreak(1000);
+        // Printer.printColor("\"Strong enough? What does that mean?\" \n", "white");
+        // Printer.quickBreak(1000);
+        // Printer.print(
+        //         "\"Well aren'tcha livin' under a rock!\" \033[3mThe man bellows.\033[0m \"You oughta defeat the warden of this floor. Once you prove your \nstrength, your given a medallion that you collect. Don't worry about losing it, theres a curse imbued into it, so it \nwill always teleport to you.\"\n");
+        // Printer.quickBreak(1000);
+        // Printer.print(
+        //         "\033[3mHe continues\033[0m, \"There's a floor teleporter in the middle of each floor, the Sensory Mech will scan your medallion \nand will teleport you to the floor you have earned the medallion floor.\" \n");
+        // Printer.quickBreak(1000);
+        // Printer.printItalizcizedColor(
+        //         "\"However.\" \033[3mhe warns.\033[0m \"You aren't able to teleport to floors that you haven't earned medallions for. If you're \nwondering about why many people can collect medallions, it's because the wardens of each floor don't actually \ndie. They are mysterious creatures whose souls are chained to their floor, so each time they're defeated, \nthey regenerate themselves.\" \n",
+        //         "white");
+        // Printer.print("\"Where do I go to fight this warden?\"\n");
+        // Printer.printColor(
+        //         "\"I wouldn't be so hasty if I were you, these wardens have been reigning over these lands for centuries, their historical \norigins are unknown! But if you still wish to fight them, the warden occupying The Slums is the \u001B[31mWarden of Dirt\u001B[31m\u001B[37m.\"\u001B[37m\n",
+        //         "white");
+        // Printer.printColor(
+        //         "\"You can face it by entering the town's dungeon. But the door only unlocks if it deems the participants worthy.\"",
+        //         "white"); 
 
 
         Printer.printItalizcizedColor("You walk out of the guild, deep in thought. \"So the door must deem me worthy, huh. I guess the only thing I can do is find ways to get stronger.\" \n", "white");
-        Printer.printItalizcizedColor("With that thought in mind, you make your way \nto the merchants shop.", "white");
-
+        Printer.printItalizcizedColor("With that thought in mind, you make your way \nto the merchants shop. \n", "white");    
         
+        Printer.printItalizcizedColor(
+                "A faint, dying bell chimes as you open the door \nto what you presume is the merchants shop. \nAfter all, the neon sign outside shows no life, \nand its words are barely readable.\n",
+                "white");
+        Printer.quickBreak(1000);
+        Printer.print(
+                "\033[3mA kind voice greets you.\033[0m \"Welcome to the humble shack that is the Common Shack! What goods \nare you looking for today?\n");
+        Printer.quickBreak(1000);
+        Printer.printItalizcizedColor("You look around unimpressed, seeing nothing \nbut a barebones \"shack\". \n",
+                "white");
+        Printer.quickBreak(1000);
+        Printer.print("Uh... What exactly can you even offer?\n");
+        Printer.quickBreak(1000);
+        Printer.print(
+                "The man behind the counter laughs. \"Well! All my valuables are kept in a storage, to prevent any theivery you see. I \nshow my offers to my customers through hologram.\"\n");
+        Printer.quickBreak(1000);
+        Printer.printItalizcizedColor(
+                "He grabs a tablet out from behind the \ncounter, and a blue projection appears.\n",
+                "white");
+        
+        Merchant slumsMerchant = new Merchant(mainPlayer, mainPlayer.getCurrentTown(), slumsItemsForSale,
+                slumsPriceOfItem2, slumsArmour, slumsPriceOfArmour, slumsShopName, slumsThingsToDo, slumsGreeting, slumsFarewell, slumsErrorMessage,
+                merchantColor);
+        //TODO: add ability to equip armour and store items 
+        slumsMerchant.shop(false); 
+
+
+
 
 
 
@@ -267,4 +309,6 @@ public class MainStory {
     }   
 
 }
+
+
 

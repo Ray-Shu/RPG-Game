@@ -8,7 +8,8 @@ import Tools.*;
 public class Merchant {
     public double[] priceOfItem;
     public String[] itemsForSale, thingsToDo;
-    public String shopName, greeting, farewell, errorMessage, color;
+    public String shopName, armour, greeting, farewell, errorMessage, color;
+    public double priceOfArmour; 
     private Town town;
     public Bank playerAccount;
     private Scanner scan = new Scanner(System.in);
@@ -27,12 +28,14 @@ public class Merchant {
      * @param errorMessage this is what they say to you if you say the wrong thing. 
      * @param color this is the color of the text in the store. 
      */
-    Merchant(Player player,  Town town, String[] itemsForSale, double[] priceOfItem2, String shopName, String[] thingsToDo, String greeting, String farewell, String errorMessage, String color) {
+    public Merchant(Player player,  Town town, String[] itemsForSale, double[] priceOfItem2, String armour, double priceOfArmour, String shopName, String[] thingsToDo, String greeting, String farewell, String errorMessage, String color) {
         
         this.player = player;
         this.playerStats = player.getPlayerStats();
         this.itemsForSale = itemsForSale;
         this.priceOfItem = priceOfItem2;
+        this.armour = armour; 
+        this.priceOfArmour = priceOfArmour; 
         this.shopName = shopName;
         this.greeting = greeting;
         this.farewell = farewell;
@@ -58,7 +61,7 @@ public class Merchant {
 
         //based on the possible things they can do in that store and the things listed here, we run commands. 
         // ? better than having a million classes cus reusability?
-        switch (responseBack) {
+        switch (responseBack.toLowerCase()) {
             // * All things
             case "leave":
                 town.characterEnteringTown(true);
@@ -67,10 +70,11 @@ public class Merchant {
             // * SHOP THINGS
 
             // This will list out the items we will sell and ask us to buy one or get out. 
-            case "buy":
+            case "buy common goods":
                     System.out.println("Items for sale: ");
                     for (int i = 0; i < itemsForSale.length; i++) {
-                        System.out.println(itemsForSale[i]+ " for " + priceOfItem[i] + " grams of gold");
+                        Printer.print(itemsForSale[i]+  " for " + priceOfItem[i] + " Fusion Coins");
+                        System.out.println();
                     }
 
                     String whatTheyWant = ErrorChecker.compareArrayOfStrings(itemsForSale, errorMessage, color);
@@ -81,7 +85,8 @@ public class Merchant {
 
                             if(playerAccount.doesPlayerHaveEnoughMoney(priceOfItem[i])){
                                 playerAccount.withdraw(priceOfItem[i]);
-                                //inventory.addItem(itemsForSale[i]);
+                                //adds the item to inventory 
+                                //player.addItemToInventory(itemsForSale[i]);
                                 Printer.printColor("Thank you for your money! Your remaining balance is " + playerAccount.balance, color);
                             }
                             
@@ -89,6 +94,17 @@ public class Merchant {
                     }
                 shop(false);
                 break;
+
+            // Buys armour and automatically equips the armour 
+            case "buy armour": 
+                Printer.print(armour); 
+                if (playerAccount.doesPlayerHaveEnoughMoney(priceOfArmour)){
+                    playerAccount.withdraw(priceOfArmour); 
+                    //equips armour  
+                    Printer.printColor("Thank you for your money! Your remaining balance is " + playerAccount.balance, color);
+                } else {
+                    Printer.printColor("You don't have enough money to purchase this armour set.", color); 
+                }
 
             // This will allow us to sell some of the items in our inventory. 
             case "Check Out Armour":

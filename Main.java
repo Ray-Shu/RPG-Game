@@ -12,14 +12,7 @@ public class Main {
     
     static MobSummoner mobSummoner = new MobSummoner();
     public static void main(String[] args) {
-
-        // // *Town Testing
-        // Player player = new Player("bruhmoment");
-        // Bank playerAccount = new Bank(1000);
-        // TownMaker townMaker = new TownMaker(playerAccount,player, player.forceCombat());
-        // townMaker.makeSlums();
-        // townMaker.runSlums();
-            
+           
         // *InventoryTesting
         //inventoryTest();
 
@@ -44,20 +37,20 @@ public class Main {
             
 
                     
-        //*Story Line (currently working on chapter One)
+        //*Story Line (currently working on chapter One) 
         // MainStory story = new MainStory();
         // story.startStory(); 
         // storyTesting();
                     
         // //* Town Tests
-        Bank bank = new Bank(1000);
-        PlayerCreation lord = new PlayerCreation(bank, "Jeff");
-        Player player = lord.testPlayer();
-        TownMaker townMaker = new TownMaker(player);
-        player.makeTownMaker(townMaker);
-        player.checkXP(900);
-        townMaker.makeTowns();
-        townMaker.runSlums();
+        // Bank bank = new Bank(1000);
+        // PlayerCreation lord = new PlayerCreation(bank, "Jeff");
+        // Player player = lord.testPlayer();
+        // TownMaker townMaker = new TownMaker(player);
+        // player.makeTownMaker(townMaker);
+        // player.checkXP(900);
+        // townMaker.makeTowns();
+        // townMaker.runSlums();
              
             
         /**
@@ -82,9 +75,6 @@ public class Main {
 
 
     public static void storyTesting(){ 
-        Printer.printItalizcizedColor(
-                "You walk out of the guild, deep in thought. \"So the door must deem me worthy, huh. I guess the only thing I can do is find ways to get stronger.\" \n",
-                "white");
-        Printer.printItalizcizedColor("With that thought in mind, you make your way to the merchants shop.", "white");
+        
     }
 }

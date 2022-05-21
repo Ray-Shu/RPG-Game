@@ -227,20 +227,41 @@ public class MainStory {
         mainPlayer.getCurrentTown().characterEnteringTown(true);
         
 
-        Printer.printItalizcizedColor("As you hand in the completion report to the Guildmaster,\nyou ask him about how to advance the floors. \n", "white");
+        Printer.printItalizcizedColor(
+                "As you hand in the completion report to the Guildmaster,\nyou ask him about how to advance the floors. \n",
+                "white");
         Printer.quickBreak(1000);
-        Printer.printColor("\"Ya want outta this wretched place heh? I don't blame ya, I'd prolly make a run for it too, if was strong enough to do so...\" \n", "white");
-        Printer.quickBreak(1000); 
+        Printer.printColor(
+                "\"Ya want outta this wretched place heh? I don't blame ya, I'd prolly make a run for it too, if was strong enough to do so...\" \n",
+                "white");
+        Printer.quickBreak(1000);
         Printer.printColor("\"Strong enough? What does that mean?\" \n", "white");
-        Printer.quickBreak(1000); 
-        Printer.print("\"Well aren'tcha livin' under a rock!\" \033[3mThe man bellows.\033[0m \"You oughta defeat the warden of this floor. Once you prove your \nstrength, your given a medallion that you collect. Don't worry about losing it, theres a curse imbued into it, so it \nwill always teleport to you.\"\n");
-        Printer.quickBreak(1000); 
-        Printer.print("\033[3mHe continues\033[0m, \"There's a floor teleporter in the middle of each floor, the Sensory Mech will scan your medallion \nand will teleport you to the floor you have earned the medallion floor.\" \n" );
-        Printer.quickBreak(1000); 
-        Printer.printItalizcizedColor("\"However.\" \033[3mhe warns.\033[0m \"You aren't able to teleport to floors that you haven't earned medallions for. If you're \nwondering about why many people can collect medallions, it's because the wardens of each floor don't actually \ndie. They are mysterious creatures whose souls are chained to their floor, so each time they're defeated, they regenerate themselves.\" \n", "white");
-        Printer.print("\"Where do I go to fight this warden?\"");
-        Printer.printColor("I wouldn't be so hasty if I were you, these wardens have been reigning over these lands for centuries, their historical \norigins are unknown! But if you still wish to fight them, the warden occupying The Slums is the \u001B[31mWarden of Dirt\u001B[31m.\n", "white");
-        Printer.printColor("\"You can face it by entering the town's dungeon. But the door only unlocks if it deems the participants worthy.\"", "white");
+        Printer.quickBreak(1000);
+        Printer.print(
+                "\"Well aren'tcha livin' under a rock!\" \033[3mThe man bellows.\033[0m \"You oughta defeat the warden of this floor. Once you prove your \nstrength, your given a medallion that you collect. Don't worry about losing it, theres a curse imbued into it, so it \nwill always teleport to you.\"\n");
+        Printer.quickBreak(1000);
+        Printer.print(
+                "\033[3mHe continues\033[0m, \"There's a floor teleporter in the middle of each floor, the Sensory Mech will scan your medallion \nand will teleport you to the floor you have earned the medallion floor.\" \n");
+        Printer.quickBreak(1000);
+        Printer.printItalizcizedColor(
+                "\"However.\" \033[3mhe warns.\033[0m \"You aren't able to teleport to floors that you haven't earned medallions for. If you're \nwondering about why many people can collect medallions, it's because the wardens of each floor don't actually \ndie. They are mysterious creatures whose souls are chained to their floor, so each time they're defeated, \nthey regenerate themselves.\" \n",
+                "white");
+        Printer.print("\"Where do I go to fight this warden?\"\n");
+        Printer.printColor(
+                "\"I wouldn't be so hasty if I were you, these wardens have been reigning over these lands for centuries, their historical \norigins are unknown! But if you still wish to fight them, the warden occupying The Slums is the \u001B[31mWarden of Dirt\u001B[31m\u001B[37m.\"\u001B[37m\n",
+                "white");
+        Printer.printColor(
+                "\"You can face it by entering the town's dungeon. But the door only unlocks if it deems the participants worthy.\"",
+                "white"); 
+
+
+        Printer.printItalizcizedColor("You walk out of the guild, deep in thought. \"So the door must deem me worthy, huh. I guess the only thing I can do is find ways to get stronger.\" \n", "white");
+        Printer.printItalizcizedColor("With that thought in mind, you make your way \nto the merchants shop.", "white");
+
+        
+
+
+
 
 
     }   

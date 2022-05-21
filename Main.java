@@ -1,6 +1,7 @@
 import fightInfo.*;
 import PlayerInformation.*;
 import StoryInformation.*;
+import Tools.Printer;
 
 import java.util.ArrayList;
 
@@ -46,17 +47,19 @@ public class Main {
         //*Story Line (currently working on chapter One)
         // MainStory story = new MainStory();
         // story.startStory(); 
+        storyTesting();
                     
-        // //* Town Tests
-        Bank bank = new Bank(1000);
-        PlayerCreation lord = new PlayerCreation(bank, "Jeff");
-        Player player = lord.testPlayer();
-        TownMaker townMaker = new TownMaker(player);
-        player.makeTownMaker(townMaker);
+        //* Town Tests
+        // Bank bank = new Bank(1000);
+        // PlayerCreation lord = new PlayerCreation(bank, "Jeff");
+        // Player player = lord.testPlayer();
+        // TownMaker townMaker = new TownMaker(player);
+        // player.makeTownMaker(townMaker);
 
-        townMaker.makeTowns();
-        townMaker.runSlums();
-             
+        // townMaker.makeTowns();
+        // townMaker.runSlums();
+       
+        
             
         /**
          * SOME BUGS THAT I'VE FOUND WHILE TESTING SOME STUFF
@@ -78,22 +81,11 @@ public class Main {
 //         townMaker.goToCurrentTown();
 //     }
 
-    public static void inventoryTest(){
-        ArrayList<String> itemsToAdd = new ArrayList<String>(); 
-            
-            //itemsToAdd.add("Rogue helm"); 
-            itemsToAdd.add("Mage hood");
-            itemsToAdd.add("mana potion");
-            itemsToAdd.add("health potion");
-            itemsToAdd.add("Superior Spectral Helm");
-            itemsToAdd.add("Speed potion");
-            itemsToAdd.add("cyborg weapon");
-            itemsToAdd.add("xenon blaster");
 
-            // Player player = new Player("test"); 
-            // Stats playerStats = player.getPlayerStats(); 
-            //inventory.addInventory(itemsToAdd);
-            // inventory.playerInventoryAddEquippedArmour("Battered Spectral Helm", "Battered Spectral Chestplate", "Battered Spectral Leggings", null);
-            // inventory.showInventory();
+    public static void storyTesting(){ 
+        Printer.printItalizcizedColor(
+                "You walk out of the guild, deep in thought. \"So the door must deem me worthy, huh. I guess the only thing I can do is find ways to get stronger.\" \n",
+                "white");
+        Printer.printItalizcizedColor("With that thought in mind, you make your way to the merchants shop.", "white");
     }
 }

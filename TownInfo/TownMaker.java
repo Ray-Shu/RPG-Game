@@ -38,7 +38,7 @@ public class TownMaker{
     private String colorOfSlumArmoury = "cyan";
 
     //* This is all very temporary, and just for dungeon testing. 
-    private String[] slumDungeonMobs = {"Cyber Punk", "Nano Bot Cluster", "Greater Will Assasin", "Warden Of Dirt"};
+    private String[] slumDungeonMobs = {"Cyber Punk", "Nano Bot Cluster", "Greater Will Assassin", "Warden Of Dirt"};
     private String[] slumBossDialog = {"VERY IMPRESSIVE VERY IMPRESSIVE!!! BEEP",
         "CHALLENGER HAS MANAGED TO MAKE IT ALL THE WAY TO FIGHT ME!!! BEEP", 
         "TOO BAD CHALLENGER WILL NOT BEAT ME!!!"};
@@ -49,8 +49,7 @@ public class TownMaker{
     private int slumDungeonRequiredLevel = (6);
     private Town slumsTown = getCurrentTown();
     
-    private Dungeon slumDungeon = new Dungeon(slumDungeonMobs, slumBossDialog, slumDungeonGoldPerMob, slumDungeonXPperMob, slumDungeonMobLevels, slumDungeonRecommendedLevel, slumDungeonRequiredLevel, player, slumsTown, "purple");
-
+    private Dungeon slumDungeon;
     private String teleporterName = "Teleportation Circle";
     private Town[] allTowns = {slums};
     
@@ -65,6 +64,7 @@ public class TownMaker{
         playerAccount = player.getBank();
         this.player = player;
         playerStats = player.getPlayerStats();
+        slumDungeon = new Dungeon(slumDungeonMobs, slumBossDialog, slumDungeonGoldPerMob, slumDungeonXPperMob, slumDungeonMobLevels, slumDungeonRecommendedLevel, slumDungeonRequiredLevel, player, slumsTown, "purple");
     }
 
     /**
@@ -96,8 +96,6 @@ public class TownMaker{
             case 1:
                 return slums;
             case 2: 
-
-                
 
             default: 
                 return slums;

@@ -310,7 +310,7 @@ public class Combat extends Moves{
             nanoBotClusterAttacks(mobStats, playerStats, index);
         }
         if (mobAttacks == mobSummoner.getWardenOfDirtAttacks()){
-            //todo: Warden of dirt attacks
+            wardenOfDirtMoves(mobStats, playerStats, index);
         }
     }
 

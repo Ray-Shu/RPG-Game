@@ -315,30 +315,13 @@ public class Stats {
 
         //Adds xp to the user
         public void addXP(int xpGained) {
-                xp =+ xpGained;
+                xp += xpGained;
         }
 
         //increases the stats of the user by a certain percentage for a level up. 
         public void statsUp(double statPercentageIncreasePerLevel) {
                 XP_TO_LVL_UP *= 1.2;
                 //increases the cur
-                currentHP *= statPercentageIncreasePerLevel; 
-                currentMP *= statPercentageIncreasePerLevel; 
-                currentSpd *= statPercentageIncreasePerLevel; 
-                currentAtk *= statPercentageIncreasePerLevel; 
-                currentPhysDmg *= statPercentageIncreasePerLevel; 
-                currentMagicDmg *= statPercentageIncreasePerLevel; 
-                currentDef *= statPercentageIncreasePerLevel; 
-                currentEnd *= statPercentageIncreasePerLevel; 
-                currentStam *= statPercentageIncreasePerLevel; 
-                currentPhysRes *= statPercentageIncreasePerLevel; 
-                currentMagicRes *= statPercentageIncreasePerLevel; 
-                currentDodge *= statPercentageIncreasePerLevel; 
-                currentVit *= statPercentageIncreasePerLevel; 
-                currentCritRate *= statPercentageIncreasePerLevel; 
-                currentCritDmg *= statPercentageIncreasePerLevel; 
-                currentLuck *= statPercentageIncreasePerLevel;
-
                 maxHP *= statPercentageIncreasePerLevel; 
                 maxMP *= statPercentageIncreasePerLevel; 
                 maxSpd *= statPercentageIncreasePerLevel; 
@@ -355,6 +338,8 @@ public class Stats {
                 maxCritRate *= statPercentageIncreasePerLevel; 
                 maxCritDmg *= statPercentageIncreasePerLevel; 
                 maxLuck *= statPercentageIncreasePerLevel;
+
+                currentToMax();
         }
 
         //heals the person/mob

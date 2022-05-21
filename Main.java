@@ -49,17 +49,16 @@ public class Main {
         // story.startStory(); 
         storyTesting();
                     
-        //* Town Tests
-        // Bank bank = new Bank(1000);
-        // PlayerCreation lord = new PlayerCreation(bank, "Jeff");
-        // Player player = lord.testPlayer();
-        // TownMaker townMaker = new TownMaker(player);
-        // player.makeTownMaker(townMaker);
-
-        // townMaker.makeTowns();
-        // townMaker.runSlums();
-       
-        
+        // //* Town Tests
+        Bank bank = new Bank(1000);
+        PlayerCreation lord = new PlayerCreation(bank, "Jeff");
+        Player player = lord.testPlayer();
+        TownMaker townMaker = new TownMaker(player);
+        player.makeTownMaker(townMaker);
+        player.checkXP(900);
+        townMaker.makeTowns();
+        townMaker.runSlums();
+             
             
         /**
          * SOME BUGS THAT I'VE FOUND WHILE TESTING SOME STUFF

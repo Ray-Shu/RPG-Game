@@ -53,7 +53,7 @@ public class Main {
         Player player = lord.testPlayer();
         TownMaker townMaker = new TownMaker(player);
         player.makeTownMaker(townMaker);
-
+        player.checkXP(900);
         townMaker.makeTowns();
         townMaker.runSlums();
              

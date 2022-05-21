@@ -12,7 +12,8 @@ public class Player {
         private int chosenAttacksCost[];
         private String playerName, chosenClass;
         private Bank bankAccount; 
-        private int playerLevel = 1, maxTownLevel;
+        private int playerLevel = 1;
+        private int maxTownLevel;
         private TownMaker townMaker;
         private PlayerCreation creator;
 
@@ -106,7 +107,7 @@ public class Player {
                 playerStats.addXP(howMuchXPGained);
 
                 //if the xp is greater than the required xp to level up, we will level up and check if we can level up again. 
-                if(playerStats.getXP() / playerStats.getXP_TO_LVL_UP() >= 1){
+                if(playerStats.getXP() >= playerStats.getXP_TO_LVL_UP()){
                         playerStats.addXP(-playerStats.getXP_TO_LVL_UP());
                         levelUp();
                         checkXP(0);

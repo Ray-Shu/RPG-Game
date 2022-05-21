@@ -6,6 +6,9 @@ import TownInfo.*;
 import fightInfo.*;
 
 public class Dungeon {
+    //BUGS: FIX TOWN ERROR
+
+
 
     private String[] yesOrNo = {"yes","no"};
     private int recommendedLevel, requiredLevel;
@@ -56,12 +59,11 @@ public class Dungeon {
     public void characterEnteringDungeon(boolean returnToStory){
 
         this.returnToStory = returnToStory;
-        Printer.printColor("------------------------------------------------","white");
+        System.out.println("\n-----------------------------------------------------------");
 
         //checks if they are the required lvl. If not, back to town it is. 
         if(player.getLevel() < requiredLevel){
-            Printer.printColor("Sorry! You do not meet the required level! Please leave the dungeon",color);
-            Printer.quickBreak(1000);
+            
             town.characterEnteringTown(returnToStory);
             return;
         }
@@ -96,7 +98,7 @@ public class Dungeon {
     public void runDungeon(){
 
         //welcomes them to the dungeon
-        Printer.printColor("\n-----------------------------------------------------", "blue");
+        System.out.println("\n-----------------------------------------------------------");
         Printer.printColor("Welcome to the dungeon!!!", color);
         
         //For each mob in the battle, we will have to fight it with our current Stats. Goal is to defeat all enemies, then we get our reward. 
@@ -131,24 +133,11 @@ public class Dungeon {
         }
 
         //we summon a mob and fight it. 
-        summonMob(mobNames[mobNames.length], mobNames.length);   
+        summonMob(mobNames[mobNames.length-1], mobNames.length-1);   
         Combat combat = new Combat(player, player.getPlayerStats(), currentMobStats, currentMobAttacks, currentMobAttackCosts, summoner);
         combat.fight(false);
 
         //if the mission failed, we die and end it. 
-        if(combat.didPlayerDie() == true){
-            missionFailed();
-            return;
-        } 
-
-        //adds bank and xp rewards
-        player.checkXP(xpPerMob[mobNames.length]);
-        player.getBank().deposit(goldPerMob[mobNames.length]);
-
-        //summons the fight
-        combat = new Combat(player, player.getPlayerStats(), currentMobStats, currentMobAttacks, currentMobAttackCosts, summoner);
-        combat.fight(false);
-
         if(combat.didPlayerDie() == true){
             missionFailed();
             return;
@@ -221,4 +210,17 @@ public class Dungeon {
         return hasDungeonBeenDefeated;
     }
 
+    /**
+     * Checks if the player is a high enough level to enter the dungeon. 
+     * @return
+     */
+    public boolean isLocked(){
+        if(player.getLevel() >= requiredLevel){return false;}
+        return true;
+    }
+
+    //gives back the required level for the dungeon. 
+    public int getRequiredLevel() {
+        return requiredLevel;
+    }
 }

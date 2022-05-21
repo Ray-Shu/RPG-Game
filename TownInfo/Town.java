@@ -47,6 +47,14 @@ public class Town {
             Printer.printColor("("+i+") " + allMerchants.get(i-1).shopName, "white");  
         }
         Printer.printColor("("+i+") " + townName + " Adventurers Guild", "white");  
+        
+        i++;
+        if(dungeon.isLocked()){
+            Printer.printColor("("+i+") [Locked]"+ townName + " Dungeon", "grey");
+        }
+        else{
+            Printer.printColor("("+i+") "+ townName + " Dungeon", "white");
+        }
     }
 
     //gets townName
@@ -79,8 +87,7 @@ public class Town {
 
         // welcomes the character to town
         System.out.println("-----------------------------------------------------------");
-        Printer.printColor("Welcome to " + townName + ", traveler on floor " + floorLvl + "!\n"
-            + "Here is a map with all you can do here! \n", color);
+        Printer.printColor("Here is a map of " + townName +" with all you can do here! \n", color);
         
         showBuildings();
         Printer.printColor("\n" + "Where would you like to visit?", color);
@@ -95,7 +102,7 @@ public class Town {
                 scan.next();
             }
             chosenInt = scan.nextInt();
-            if(chosenInt > 0 && chosenInt < (allMerchants.size()+2)){
+            if(chosenInt > 0 && chosenInt <= (allMerchants.size()+2)){
                 hasPlayerChosen = true;
             }
             else{
@@ -109,8 +116,15 @@ public class Town {
         if(chosenInt <= allMerchants.size()){
             allMerchants.get((chosenInt-1)).shop(true);
         }
+
+        //checks if they want to run the guild
         else if(chosenInt == allMerchants.size() + 1 ){
         guild.runGuild(returnToStory);
+        }
+        else if(dungeon.isLocked()){
+            Printer.printColor("Sorry! You do not meet the required level for this dungeon!\nPlease come back once you reach level " + dungeon.getRequiredLevel(),"white");
+            Printer.quickBreak(1000);
+            characterEnteringTown(returnToStory);
         }
         else{
             dungeon.characterEnteringDungeon(returnToStory);

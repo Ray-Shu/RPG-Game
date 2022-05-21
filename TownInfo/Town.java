@@ -111,11 +111,10 @@ public class Town {
         }
         else if(chosenInt == allMerchants.size() + 1 ){
         guild.runGuild(returnToStory);
-
         }
-        // if(whereMerchantWantsToGO.equalsIgnoreCase("dungeon")){
-        //     dungeon.characterEnteringDungeon();
-        // }
+        else{
+            dungeon.characterEnteringDungeon(returnToStory);
+        }
     }
 
     /**

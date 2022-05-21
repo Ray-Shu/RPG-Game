@@ -11,8 +11,7 @@ public class Dungeon {
     private int recommendedLevel, requiredLevel;
     private Player player;
     private Town town;
-    private Stats[] mobStats;
-    private String[] mobAttacks, mobNames, bossDialogLines;
+    private String[] mobNames, bossDialogLines;
 	private int[] mobLevels;
 	private int[] goldPerMob, xpPerMob;
 	private String color;
@@ -23,6 +22,7 @@ public class Dungeon {
     private String[] currentMobAttacks;
     private Stats currentMobStats;
 	private boolean hasDungeonBeenDefeated = false;
+    private boolean returnToStory;
     /**
      * Creates a dungeon for the character to enter to try to get to the next floor. 
      * @param bossDialogLines   - the lines that the boss says. 
@@ -36,7 +36,7 @@ public class Dungeon {
      * @param player            - the player entering the dungeon
      * @param town              - the town from which the player is entering the dungeon. 
      */
-    Dungeon( String[]mobNames, String[] bossDialogLines, int[] goldPerMob, int[] xpPerMob, Stats[] mobStats, String[] mobAttacks, int[] mobLevels, int recommendedLvl, int requiredLevel, Player player, Town town, String color){
+    Dungeon( String[]mobNames, String[] bossDialogLines, int[] goldPerMob, int[] xpPerMob, int[] mobLevels, int recommendedLvl, int requiredLevel, Player player, Town town, String color){
         
         this.bossDialogLines = bossDialogLines;
         this.goldPerMob = goldPerMob;
@@ -46,8 +46,6 @@ public class Dungeon {
         this.requiredLevel = requiredLevel;
         this.player = player;
         this.town = town;
-        this.mobStats = mobStats;
-        this.mobAttacks = mobAttacks;
         this.mobLevels = mobLevels;
         this.color = color;
     }
@@ -55,14 +53,16 @@ public class Dungeon {
     /**
      * the character has entered the dungeon... We need to check if they are leveled up enough for this current dungeon before running it. 
      */
-    public void characterEnteringDungeon(){
+    public void characterEnteringDungeon(boolean returnToStory){
+
+        this.returnToStory = returnToStory;
         Printer.printColor("------------------------------------------------","white");
 
         //checks if they are the required lvl. If not, back to town it is. 
         if(player.getLevel() < requiredLevel){
             Printer.printColor("Sorry! You do not meet the required level! Please leave the dungeon",color);
             Printer.quickBreak(1000);
-            town.characterEnteringTown(true);
+            town.characterEnteringTown(returnToStory);
             return;
         }
 
@@ -82,11 +82,17 @@ public class Dungeon {
         else{
             Printer.printColor("Alright if your not going in dont hang around.", "color");
             Printer.quickBreak(1000);
-            town.characterEnteringTown(true);
+            town.characterEnteringTown(returnToStory);
         }
     }
 
 
+    /**
+     * This method runs our dungeon. Our dungeons are structured as followed:
+     * We do some battles with regular mobs
+     * then we have a boss fight
+     * then dungeon over if we win all the battles. 
+     */
     public void runDungeon(){
 
         //welcomes them to the dungeon
@@ -109,6 +115,8 @@ public class Dungeon {
                 missionFailed();
                 return;
             } 
+
+            //says that we defeated the mob!
             Printer.printColor((i+1) + "/" + mobNames.length + " mob's defeated!\n", "green");
             player.checkXP(xpPerMob[i]);
             player.getBank().deposit(goldPerMob[i]);
@@ -116,22 +124,28 @@ public class Dungeon {
             Printer.quickBreak(2000);
         }
 
+        //print our boss dialog lines with some time in between sayings
         for (String line : bossDialogLines) {
             Printer.printColor(line + "\n", color);
+            Printer.quickBreak(500);
         }
 
+        //we summon a mob and fight it. 
         summonMob(mobNames[mobNames.length], mobNames.length);   
         Combat combat = new Combat(player, player.getPlayerStats(), currentMobStats, currentMobAttacks, currentMobAttackCosts, summoner);
         combat.fight(false);
+
+        //if the mission failed, we die and end it. 
         if(combat.didPlayerDie() == true){
             missionFailed();
             return;
         } 
 
+        //adds bank and xp rewards
         player.checkXP(xpPerMob[mobNames.length]);
         player.getBank().deposit(goldPerMob[mobNames.length]);
-        
 
+        //summons the fight
         combat = new Combat(player, player.getPlayerStats(), currentMobStats, currentMobAttacks, currentMobAttackCosts, summoner);
         combat.fight(false);
 
@@ -141,8 +155,7 @@ public class Dungeon {
         } 
 
         victory();
-
-
+        return;
     }
 
 
@@ -178,26 +191,32 @@ public class Dungeon {
     * Send player back to hospital if the mission has not been complete. 
     */
     public void missionFailed(){
+
         Printer.printColor("Teleporting back to town for recovery...","cyan");
         Printer.quickBreak(2000);
         town.playerNeedsHospital();
-        return;
+        
     }
 
+    /**
+     * This method runs after the player has defeated the final dungeon boss. It unlocks the next floor for them, and enables them
+     * teleporter at the first floor. 
+     */
     void victory(){
         Printer.printColor("Congratulations! You have beat the dungeon!!!", "green");
         Printer.printColor("Distribution your rewards!", "green");
         player.checkXP(xpPerMob[mobNames.length]);
         player.getBank().deposit(goldPerMob[mobNames.length]);
-        
+        Printer.quickBreak(1500);
+
         hasDungeonBeenDefeated = true;
         Printer.printColor("You can now go to the next town!", color);
         player.getTownMaker().increaseMaxTownLevel();
         player.getTownMaker().increaseCurrentTownLevel();
-        player.getCurrentTown().characterEnteringTown(true);
         return;
     }   
 
+    //Returns a boolean of whether the dungeon has been defeated or not. 
     public boolean hasDungeonBeenDefeated(){
         return hasDungeonBeenDefeated;
     }

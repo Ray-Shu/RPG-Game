@@ -1,6 +1,7 @@
 package TownInfo;
 
 import PlayerInformation.*;
+import fightInfo.MobSummoner;
 
 
 /**
@@ -36,17 +37,21 @@ public class TownMaker{
     private String error4SlumArmoury = "Please repeat that";
     private String colorOfSlumArmoury = "cyan";
 
+    //* This is all very temporary, and just for dungeon testing. 
     private String[] slumDungeonMobs = {"Cyber Punk", "Nano Bot Cluster", "Greater Will Assasin", "Warden Of Dirt"};
-    private String[] slumBossDialog = {"Welcome",
-        " Please, allow me to Congratulate you!...", 
-        "A Rat like you managed to crawled all the way over here", 
-        ""
+    private String[] slumBossDialog = {"VERY IMPRESSIVE VERY IMPRESSIVE!!! BEEP",
+        "CHALLENGER HAS MANAGED TO MAKE IT ALL THE WAY TO FIGHT ME!!! BEEP", 
+        "TOO BAD CHALLENGER WILL NOT BEAT ME!!!"};
+    private int[] slumDungeonGoldPerMob = {200,300,400,1200};
+    private int[] slumDungeonXPperMob = {100,200,300,450};
+    private int[] slumDungeonMobLevels = {10,10,11,12};
+    private int slumDungeonRecommendedLevel = (10);
+    private int slumDungeonRequiredLevel = (6);
+    private Town slumsTown = getCurrentTown();
     
-    
-    };
-    private Dungeon slumDungeon = new Dungeon(slumDungeonMobs, bossDialogLines, goldPerMob, xpPerMob, mobStats, mobAttacks, mobLevels, recommendedLvl, requiredLevel, player, town, color);
+    private Dungeon slumDungeon = new Dungeon(slumDungeonMobs, slumBossDialog, slumDungeonGoldPerMob, slumDungeonXPperMob, slumDungeonMobLevels, slumDungeonRecommendedLevel, slumDungeonRequiredLevel, player, slumsTown, "purple");
 
-    private String teleporterName = "Hyper Loop!";
+    private String teleporterName = "Teleportation Circle";
     private Town[] allTowns = {slums};
     
 
@@ -71,7 +76,7 @@ public class TownMaker{
         slums.addBuilding(player, playerStats, playerAccount, notStoreItems, notStorePrices, "Hospital",thingsToDoAtHospital, "Welcome to the Hospital! We are ready to heal you!", "Thank you for coming", "Sorry could you repeat that?", "white");
         Guild slumsAdventurersGuild = new Guild(player);
         slums.addGuild(slumsAdventurersGuild);
-        // slums.addDungeon(new Dungeon(bossDialogLines, goldPerMob, xpPerMob, mobStats, mobAttacks, mobLevels, recommendedLvl, requiredLevel, player, town));
+        slums.addDungeon(slumDungeon);
 
         antarcticDomain = new Town("The Antarctic Domain", 2, player,"blue");
         // antarcticDomain.addBuilding(player, playerStats, playerAccount, itemsForSale, priceOfItem, shopName, thingsToDo, greeting, farewell, errorMessage, color);

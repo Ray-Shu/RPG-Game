@@ -297,21 +297,31 @@ public class Combat extends Moves{
             return;
         }
     
-        //gets a random attack from that
-        //TODO: Fix this method so that it will not be based on index, but rather the string
+        //gets a random attack from the list of attacks that we are able to do. 
         int index = random.nextInt(movesWeCanDo.size());
+
+        //Determines the mob, and then uses their attacks
         if (mobAttacks == mobSummoner.getCyberPunkAttacks()) {
             cyberPunkAttack(mobStats, playerStats, index);
         }
+        
+        //Determines the mob, and then uses their attacks
         if (mobAttacks == mobSummoner.getGreaterWillAssasinAttacks()) {
             greaterWillAssassinAttack(mobStats, playerStats, index);
         }
+        
+        //Determines the mob, and then uses their attacks
         if (mobAttacks == mobSummoner.getNanoBotAttacks()){
             nanoBotClusterAttacks(mobStats, playerStats, index);
         }
+
+        //Determines the mob, and then uses their attacks
         if (mobAttacks == mobSummoner.getWardenOfDirtAttacks()){
             wardenOfDirtMoves(mobStats, playerStats, index);
         }
+        
+        
+
     }
 
     public void isAnyoneDisabled(){

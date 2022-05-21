@@ -194,12 +194,12 @@ public class Dungeon {
     void victory(){
         Printer.printColor("Congratulations! You have beat the dungeon!!!", "green");
         Printer.printColor("Distribution your rewards!", "green");
-        player.checkXP(xpPerMob[mobNames.length]);
-        player.getBank().deposit(goldPerMob[mobNames.length]);
+        player.checkXP(xpPerMob[mobNames.length-1]);
+        player.getBank().deposit(goldPerMob[mobNames.length-1]);
         Printer.quickBreak(1500);
 
         hasDungeonBeenDefeated = true;
-        Printer.printColor("You can now go to the next town!", color);
+        Printer.printColor("You have gained the next Medallion, enabling you to go to the next town!", color);
         player.getTownMaker().increaseMaxTownLevel();
         player.getTownMaker().increaseCurrentTownLevel();
         return;

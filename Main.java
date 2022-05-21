@@ -47,7 +47,7 @@ public class Main {
         //*Story Line (currently working on chapter One)
         // MainStory story = new MainStory();
         // story.startStory(); 
-        storyTesting();
+        // storyTesting();
                     
         // //* Town Tests
         Bank bank = new Bank(1000);

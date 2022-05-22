@@ -40,22 +40,26 @@ public class TownMaker{
     //* This is all very temporary, and just for dungeon testing. 
     private String[] slumBossDialog = {"VERY IMPRESSIVE VERY IMPRESSIVE!!! BEEP",
     "CHALLENGER HAS MANAGED TO MAKE IT ALL THE WAY TO FIGHT ME!!! BEEP", 
-    "TOO BAD CHALLENGER WILL NOT BEAT ME!!!"};
-    private int[] slumDungeonGoldPerMob = {200,300,400,1200};
-    private int[] slumDungeonXPperMob = {100,200,300,450};
-    private String[] slumDungeonMobsFloor1 = {"Cyber Punk", "Nano Bot Cluster", "Greater Will Assassin"};
-    private int[] slumDungeonFloor1MobLevels = {10,10,11};
+    "TOO BAD CHALLENGER WILL NOT BEAT ME!!! BEEEEEEP!!!"};
+    private int[] slumDungeonGoldPerFloor = {200,300,400,1200};
+    private int[] slumDungeonXPperFloor = {100,200,300,450};
+
+
+    private String[] slumDungeonMobsFloor1 = {"Cyber Punk", "Cyber Punk", "Nano Bot Cluster"};
+    private int[] slumDungeonFloor1MobLevels = {10,10,10};
     private String[] slumDungeonMobsFloor2 = {"Cyber Punk", "Nano Bot Cluster", "Greater Will Assassin"};
-    private int[] slumDungeonFloor2MobLevels = {10,10,11};
-    private String[] slumDungeonMobsFloor3 = {"Cyber Punk", "Nano Bot Cluster", "Greater Will Assassin"};
-    private int[] slumDungeonFloor3MobLevels = {10,10,11};
+    private int[] slumDungeonFloor2MobLevels = {10,10,10};
+    private String[] slumDungeonMobsFloor3 = {"Nano Bot Cluster", "Nano Bot Cluster", "Greater Will Assassin"};
+    private int[] slumDungeonFloor3MobLevels = {10,10,10};
+    private String slumBossName = "Warden of Dirt";
+    private int slumBossLevel = 10;
+
     private int slumDungeonRecommendedLevel = (10);
     private int slumDungeonRequiredLevel = (6);
-    private Town slumsTown = getCurrentTown();
     
     private Dungeon slumDungeon;
     private String teleporterName = "Teleportation Circle";
-    private Town[] allTowns = {slums};
+    private Town[] allTowns = {slums, antarcticDomain};
     
 
 
@@ -68,9 +72,8 @@ public class TownMaker{
         playerAccount = player.getBank();
         this.player = player;
         playerStats = player.getPlayerStats();
-        //slumDungeon = new Dungeon(slumDungeonMobs, slumBossDialog, slumDungeonGoldPerMob, slumDungeonXPperMob, slumDungeonMobLevels, slumDungeonRecommendedLevel, slumDungeonRequiredLevel, player, slumsTown, "purple");
     }
-
+    
     /**
      * Constructs all of the buildings within the town of slums
      */
@@ -78,6 +81,7 @@ public class TownMaker{
         slums = new Town("The Slums", 1, player, "grey");
         slums.addBuilding(player, playerStats, playerAccount, notStoreItems, notStorePrices, slumBankName, thingsToDoInSlumBank, greeting4SlumBank, farewell4SlumBank, error4SlumBank, colorOfSlumBank);
         slums.addBuilding(player, playerStats, playerAccount, notStoreItems, notStorePrices, "Hospital",thingsToDoAtHospital, "Welcome to the Hospital! We are ready to heal you!", "Thank you for coming", "Sorry could you repeat that?", "white");
+        slumDungeon = new Dungeon(slumDungeonMobsFloor1, slumDungeonFloor1MobLevels, slumDungeonFloor2MobLevels, slumDungeonMobsFloor2, slumDungeonFloor3MobLevels, slumDungeonMobsFloor3, slumBossName, slumBossLevel, slumBossDialog, slumDungeonGoldPerFloor, slumDungeonXPperFloor, slumDungeonRecommendedLevel, slumDungeonRequiredLevel, player, slums, "purple");
         Guild slumsAdventurersGuild = new Guild(player);
         slums.addGuild(slumsAdventurersGuild);
         slums.addDungeon(slumDungeon);
@@ -93,14 +97,13 @@ public class TownMaker{
     }
 
     /**
-     * TODO: make multiple towns, and then when we call this method, it will move us to that town. 
      */
     public Town getCurrentTown(){
         switch (currentTownLevel){
             case 1:
                 return slums;
             case 2: 
-
+                return antarcticDomain;
             default: 
                 return slums;
         }

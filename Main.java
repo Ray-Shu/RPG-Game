@@ -39,20 +39,20 @@ public class Main {
                     
         // *Story Line (currently working on chapter One) 
         // storyTesting();
-        MainStory story = new MainStory();
-        story.startStory(); 
-       
+        // MainStory story = new MainStory();
+        // story.startStory(); 
+    
                     
         // //* Town Tests
-        // Bank bank = new Bank(1000);
-        // PlayerCreation lord = new PlayerCreation(bank, "Jeff");
-        // Player player = lord.testPlayer();
-        // TownMaker townMaker = new TownMaker(player);
-        // player.makeTownMaker(townMaker);
-        // player.checkXP(900);
-        // townMaker.makeTowns();
-        // townMaker.runSlums();
-             
+        Bank bank = new Bank(1000);
+        PlayerCreation lord = new PlayerCreation(bank, "Jeff");
+        Player player = lord.testPlayer();
+        TownMaker townMaker = new TownMaker(player);
+        player.makeTownMaker(townMaker);
+        player.checkXP(1900);
+        townMaker.makeTowns();
+        townMaker.runSlums();
+            
             
         /**
          * SOME BUGS THAT I'VE FOUND WHILE TESTING SOME STUFF

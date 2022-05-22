@@ -45,6 +45,7 @@ public class Merchant {
         this.errorMessage = errorMessage;
         this.color = color;
         this.playerAccount = mainPlayer.getBank();
+        this.town = town;
 
     }
 

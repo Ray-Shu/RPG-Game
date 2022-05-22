@@ -73,6 +73,7 @@ public class Main {
         //!UNCOMMENT IN PLAYERCREATION TO FIX
 
         //TODO will fix "PlayerInformation.Stats.getCurrentHP()" because"this.playerStats" is null error later (healing pot doesnt work)
+        //TODO leveling up overrides the added stats on the armour | need to change how armour affects stats
     }
 
 //     public void goToCurrentTown(){

@@ -342,6 +342,7 @@ public class Stats {
                 maxLuck *= statPercentageIncreasePerLevel;
 
                 currentToMax();
+                updateStats();
         }
 
         //heals the person/mob

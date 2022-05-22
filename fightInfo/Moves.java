@@ -720,8 +720,8 @@ public class Moves {
         if (index == 0) {
             // Body Slam
             attackMpCost = 11;
-            Printer.printColor("The Warden Hurls a random object at you!", "white");
-            double moveAttack = 8.3 * attackerStats.getCurrentAttack();
+            Printer.printColor("The Yeti uses body slam, dealing major damage!", "white");
+            double moveAttack = 7.2 * attackerStats.getCurrentAttack();
             double missMultiplier = 2;
             attackerStats.setCurrentMP(attackerStats.getCurrentMP() - attackMpCost);
             statsCalculator.mobDoDamage(attackerStats, victimStats, moveAttack, missMultiplier);
@@ -729,8 +729,8 @@ public class Moves {
         if (index == 1) {
             // Cataclysmic Claws
             attackMpCost = 22;
-            Printer.printColor("The Warden of Dirt uses Soil of Pestilence! You are plagued by a disease, dealing major damage!", "white");
-            double moveAttack = 19 * attackerStats.getCurrentAttack();
+            Printer.printColor("The Yeti swipes at you with their cataclysmic claws!", "white");
+            double moveAttack = 16 * attackerStats.getCurrentAttack();
             double missMultiplier = 0.2;
             attackerStats.setCurrentMP(attackerStats.getCurrentMP() - attackMpCost);
             statsCalculator.mobDoDamage(attackerStats, victimStats, moveAttack, missMultiplier);
@@ -738,48 +738,57 @@ public class Moves {
         if (index == 2) {
             // Snowball Strike
             attackMpCost = 7;
-            Printer.printColor("The Warden uses Rooted, greatly enhancing their defensive capabilities.", "white");
-            attackerStats.defUpTime(3, 4);        attackerStats.applyDefenceUp(4);
+            Printer.printColor("The Yeti tosses a snowball at you!", "white");
+            double moveAttack = 4.8 * attackerStats.getCurrentAttack();
+            double missMultiplier = 1.4;
+            attackerStats.setCurrentMP(attackerStats.getCurrentMP() - attackMpCost);
+            statsCalculator.mobDoDamage(attackerStats, victimStats, moveAttack, missMultiplier);
         }
         if (index == 3) {
             // Blizzard
             attackMpCost = 8;
-            Printer.printColor("The Warden of Dirt uses souls of reveangance greatly improve their attack strength!", "white");
-            attackerStats.atkUpTime(2,4);
+            Printer.printColor("The yeti summons a blizzard, increasing their speed and dodge capabilities", "white");
+            attackerStats.dodgeUpTime(2,4);
+            attackerStats.speedUpTime(2,4);
         }
     }
-    public void quantomSensoryDroidAttacks(Stats attackerStats, Stats victimStats, int index) {
+
+    public void quantumSensoryDroidAttacks(Stats attackerStats, Stats victimStats, int index) {
         int attackMpCost;
 
         if (index == 0) {
             // Gravitational Slam!
             attackMpCost = 9;
-            Printer.printColor("The Warden Hurls a random object at you!", "white");
-            double moveAttack = 8.3 * attackerStats.getCurrentAttack();
-            double missMultiplier = 2;
+            Printer.printColor("Quantum Sensory Droid uses gravitational slam, hurling you to the ground!", "white");
+            double moveAttack = 5.3 * attackerStats.getCurrentAttack();
+            double missMultiplier = 0.8;
             attackerStats.setCurrentMP(attackerStats.getCurrentMP() - attackMpCost);
             statsCalculator.mobDoDamage(attackerStats, victimStats, moveAttack, missMultiplier);
         }
+
         if (index == 1) {
             // Atomic Annihilation!
             attackMpCost = 15;
-            Printer.printColor("The Warden of Dirt uses Soil of Pestilence! You are plagued by a disease, dealing major damage!", "white");
-            double moveAttack = 19 * attackerStats.getCurrentAttack();
+            Printer.printColor("The Quantum Sensory Droid attempts to break their enemy down to atoms!", "white");
+            double moveAttack = 12 * attackerStats.getCurrentAttack();
             double missMultiplier = 0.2;
             attackerStats.setCurrentMP(attackerStats.getCurrentMP() - attackMpCost);
             statsCalculator.mobDoDamage(attackerStats, victimStats, moveAttack, missMultiplier);
         }
+
         if (index == 2) {
             // Power-down !
             attackMpCost = 0;
-            Printer.printColor("The Warden uses Rooted, greatly enhancing their defensive capabilities.", "white");
-            attackerStats.defUpTime(3, 4);        attackerStats.applyDefenceUp(4);
+            Printer.printColor("Quantum Sensory Droid powers down to heal and regenerate MP.", "white");
+            attackerStats.combatHeal(attackerStats.getMaxHP() / 20, attackerStats);
+            attackerStats.combatRest(attackerStats.getMaxMP() / 20, attackerStats);
         }
+
         if (index == 3) {
             // Astrogate Evasion!
             attackMpCost = 5;
-            Printer.printColor("The Warden of Dirt uses souls of reveangance greatly improve their attack strength!", "white");
-            attackerStats.atkUpTime(2,4);
+            Printer.printColor("The Quantum Sensory Droid greatly increases speed!", "white");
+            attackerStats.speedUpTime(2,4);
         }
     }
 }

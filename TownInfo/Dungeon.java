@@ -248,7 +248,7 @@ public class Dungeon {
         if(mobName.equalsIgnoreCase("Cyber Punk")){
             currentMobStats = summoner.newCyberPunk(mobLevel);
         }
-
+        
         //if Greater will assasin, we will summon a new assasin and get the stats for it.
         else if(mobName.equalsIgnoreCase("Greater Will Assassin")){
             currentMobStats = summoner.newGreaterWillAssassin(mobLevel);
@@ -261,7 +261,23 @@ public class Dungeon {
         else if(mobName.equalsIgnoreCase("Warden of Dirt")){ 
             currentMobStats = summoner.newWardenDirtStats(mobLevel);
         }
+        
+        if(mobName.equalsIgnoreCase("Greater Will Archer")){
+            currentMobStats = summoner.newGreaterWillArcher(mobLevel);
+        }
 
+        else if(mobName.equalsIgnoreCase("Greater Will Swordsman")){
+            currentMobStats = summoner.newGreaterWillSwordsman(mobLevel);
+        }
+
+        else if(mobName.equalsIgnoreCase("Yeti")){
+            currentMobStats = summoner.newYeti(mobLevel);
+        }
+
+        else if(mobName.equalsIgnoreCase("Quantum Sensory Droid")){ 
+            currentMobStats = summoner.newQuantumSensoryDroid(mobLevel);
+        }
+        
         else{
             System.out.println("Incorrect spelling of opponent name");
             return;
@@ -300,9 +316,8 @@ public class Dungeon {
         Printer.printColor("You have gained the next Medallion, enabling you to go to the next town!", color);
         player.getTownMaker().increaseMaxTownLevel();
         player.getTownMaker().increaseCurrentTownLevel();
-        return;
     }   
-
+        
     //Returns a boolean of whether the dungeon has been defeated or not. 
     public boolean hasDungeonBeenDefeated(){return hasDungeonBeenDefeated;}
 

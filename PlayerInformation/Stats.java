@@ -349,14 +349,21 @@ public class Stats {
         //DIFFERENT THAN FULL HEALING FROM DEATH --> we can implement a new method for that
       
         public void combatHeal(double howMuchHeal, Stats attackerStats) {
-                Printer.printColor("Healed: " + df.format(howMuchHeal) + " HP.","yellow");
-                if(attackerStats.currentHP + howMuchHeal > attackerStats.maxHP){
-                        attackerStats.currentHP = attackerStats.maxHP;
+                if(attackerStats.getCurrentHP() + howMuchHeal > attackerStats.getMaxHP()){
+                        attackerStats.setCurrentHP(attackerStats.getMaxHP());
                         return;
                 }
 
-                attackerStats.currentHP += howMuchHeal;
-                
+                attackerStats.setCurrentHP(attackerStats.getCurrentHP() + howMuchHeal);
+        }
+
+        
+        public void combatRest(double howMuchRest, Stats attackerStats) {
+                if(attackerStats.getCurrentMP() + howMuchRest > attackerStats.getMaxMP()){
+                        attackerStats.setCurrentMP(attackerStats.getMaxMP());
+                        return;
+                }                
+                attackerStats.setCurrentMP(attackerStats.getCurrentMP() + howMuchRest);
         }
 
         //heals player back to full health

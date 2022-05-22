@@ -215,11 +215,11 @@ public class MobSummoner {
         double lvlMultiplier = Math.pow(1.1, lvl) - 0.1;
         
         return new Stats(
-                yetiStats[0] * lvlMultiplier, yetiStats[1] * lvlMultiplier, yetiStats[2] * lvlMultiplier,
-                yetiStats[3] * lvlMultiplier, yetiStats[4] * lvlMultiplier, yetiStats[5] * lvlMultiplier,
-                yetiStats[6] * lvlMultiplier, yetiStats[7] * lvlMultiplier, yetiStats[8] * lvlMultiplier,
-                yetiStats[9] * lvlMultiplier, yetiStats[10] * lvlMultiplier, yetiStats[11] * lvlMultiplier,
-                yetiStats[12] * lvlMultiplier, yetiStats[13] * lvlMultiplier, yetiStats[14] * lvlMultiplier, yetiStats[15] * lvlMultiplier);
+                quantumSensoryDroidStats[0] * lvlMultiplier, quantumSensoryDroidStats[1] * lvlMultiplier, quantumSensoryDroidStats[2] * lvlMultiplier,
+                quantumSensoryDroidStats[3] * lvlMultiplier, quantumSensoryDroidStats[4] * lvlMultiplier, quantumSensoryDroidStats[5] * lvlMultiplier,
+                quantumSensoryDroidStats[6] * lvlMultiplier, quantumSensoryDroidStats[7] * lvlMultiplier, quantumSensoryDroidStats[8] * lvlMultiplier,
+                quantumSensoryDroidStats[9] * lvlMultiplier, quantumSensoryDroidStats[10] * lvlMultiplier, quantumSensoryDroidStats[11] * lvlMultiplier,
+                quantumSensoryDroidStats[12] * lvlMultiplier, quantumSensoryDroidStats[13] * lvlMultiplier, quantumSensoryDroidStats[14] * lvlMultiplier, quantumSensoryDroidStats[15] * lvlMultiplier);
     }
 
     

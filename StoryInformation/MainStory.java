@@ -305,17 +305,12 @@ public class MainStory {
         Merchant slumsMerchant = new Merchant(mainPlayer, mainPlayer.getCurrentTown(), slumsItemsForSale,
                 slumsPriceOfItem2, slumsShopName, slumsThingsToDo, slumsGreeting, slumsFarewell, slumsErrorMessage,
                 merchantColor);
+        townMaker.addBuildingToTown(townMaker.getCurrentTown(), slumsMerchant);
         slumsMerchant.addArmour(slumsArmour, slumsArmourPrice);
         //TODO: add ability to equip armour and store items 
         slumsMerchant.shop(false); 
         
         mainPlayer.showInventory();
-
-
-
-
-
-
 
     }   
 

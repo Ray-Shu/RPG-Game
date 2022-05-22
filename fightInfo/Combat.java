@@ -321,6 +321,26 @@ public class Combat extends Moves{
             wardenOfDirtMoves(mobStats, playerStats, index);
         }
         
+        //Determines the mob, and then uses their attacks
+        if (mobAttacks == mobSummoner.getGreaterWillArcherAttacks()) {
+            greaterWillArcherMoves(mobStats, playerStats, index);
+        }
+        
+        //Determines the mob, and then uses their attacks
+        if (mobAttacks == mobSummoner.getGreaterWillSwordsmanAttacks()) {
+            greaterWillSwordsmanMoves(mobStats, playerStats, index);
+        }
+        
+        //Determines the mob, and then uses their attacks
+        if (mobAttacks == mobSummoner.getYetiAttacks()){
+            yetiMoves(mobStats, playerStats, index);
+        }
+
+        //Determines the mob, and then uses their attacks
+        if (mobAttacks == mobSummoner.getQuantumSensoryDroidAttacks()){
+            quantumSensoryDroidAttacks(mobStats, playerStats, index);
+        }
+        
         
 
     }

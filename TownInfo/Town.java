@@ -20,6 +20,7 @@ public class Town {
     private Player player;
     private Dungeon dungeon;
     private Scanner scan = new Scanner(System.in);
+    private Teleporter teleporter;
 
     /**
      * This is the creation of the town. It sets up all the merchants, links up banking, and gets all the
@@ -44,7 +45,7 @@ public class Town {
     public void showBuildings(){
         int i = 1;
         for (i = 1; i <= allMerchants.size(); i++) {
-            Printer.printColor("("+i+") " + allMerchants.get(i-1).shopName, "white");  
+            Printer.printColor("("+i+") " + allMerchants.get(i-1).getShopName(), "white");  
         }
         Printer.printColor("("+i+") " + townName + " Adventurers Guild", "white");  
         
@@ -67,6 +68,11 @@ public class Town {
         namesOfThingsInTown.add(shopName);
     }
 
+    public void addMerchant(Merchant merchant){
+        allMerchants.add(merchant);
+        namesOfThingsInTown.add(merchant.getShopName());
+    }
+
     //adds a guild to the town. 
     public void addGuild(Guild guild){
         this.guild = guild;
@@ -78,6 +84,10 @@ public class Town {
     }
     public void addDungeon(Dungeon dungeon){
         this.dungeon = dungeon;
+        namesOfThingsInTown.add("dungeon");
+    }
+    public void addTeleporter(Teleporter teleporter){
+        this.teleporter = teleporter;
         namesOfThingsInTown.add("dungeon");
     }
 
@@ -140,7 +150,7 @@ public class Town {
 
         allMerchants.forEach((e) -> {
 
-            if(e.shopName.equalsIgnoreCase("Hospital")){
+            if(e.getShopName().equalsIgnoreCase("Hospital")){
                 e.playerDiedWakeup();
                 return;
             }

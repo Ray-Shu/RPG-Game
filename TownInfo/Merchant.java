@@ -10,15 +10,15 @@ import PlayerInformation.*;
 import Tools.*;
 
 public class Merchant {
-    public double[] priceOfItem, armourPrice;
-    public String[] itemsForSale, thingsToDo, armour;
-    public String shopName, greeting, farewell, errorMessage, color;
+    private double[] priceOfItem, armourPrice;
+    private String[] itemsForSale, thingsToDo, armour;
+    private String shopName, greeting, farewell, errorMessage, color;
    
-    public Town town;
-    public Bank playerAccount;
-    public Scanner scan = new Scanner(System.in);
-	public Stats playerStats;
-	public Player mainPlayer;
+    private Town town;
+    private Bank playerAccount;
+    private Scanner scan = new Scanner(System.in);
+	private Stats playerStats;
+	private Player mainPlayer;
 
     /**
      * This gets all the data we will need for the merchant, including what they might sell, what they say, and what they do. 

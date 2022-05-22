@@ -38,13 +38,17 @@ public class TownMaker{
     private String colorOfSlumArmoury = "cyan";
 
     //* This is all very temporary, and just for dungeon testing. 
-    private String[] slumDungeonMobs = {"Cyber Punk", "Nano Bot Cluster", "Greater Will Assassin", "Warden Of Dirt"};
     private String[] slumBossDialog = {"VERY IMPRESSIVE VERY IMPRESSIVE!!! BEEP",
-        "CHALLENGER HAS MANAGED TO MAKE IT ALL THE WAY TO FIGHT ME!!! BEEP", 
-        "TOO BAD CHALLENGER WILL NOT BEAT ME!!!"};
+    "CHALLENGER HAS MANAGED TO MAKE IT ALL THE WAY TO FIGHT ME!!! BEEP", 
+    "TOO BAD CHALLENGER WILL NOT BEAT ME!!!"};
     private int[] slumDungeonGoldPerMob = {200,300,400,1200};
     private int[] slumDungeonXPperMob = {100,200,300,450};
-    private int[] slumDungeonMobLevels = {10,10,11,12};
+    private String[] slumDungeonMobsFloor1 = {"Cyber Punk", "Nano Bot Cluster", "Greater Will Assassin"};
+    private int[] slumDungeonFloor1MobLevels = {10,10,11};
+    private String[] slumDungeonMobsFloor2 = {"Cyber Punk", "Nano Bot Cluster", "Greater Will Assassin"};
+    private int[] slumDungeonFloor2MobLevels = {10,10,11};
+    private String[] slumDungeonMobsFloor3 = {"Cyber Punk", "Nano Bot Cluster", "Greater Will Assassin"};
+    private int[] slumDungeonFloor3MobLevels = {10,10,11};
     private int slumDungeonRecommendedLevel = (10);
     private int slumDungeonRequiredLevel = (6);
     private Town slumsTown = getCurrentTown();
@@ -64,7 +68,7 @@ public class TownMaker{
         playerAccount = player.getBank();
         this.player = player;
         playerStats = player.getPlayerStats();
-        slumDungeon = new Dungeon(slumDungeonMobs, slumBossDialog, slumDungeonGoldPerMob, slumDungeonXPperMob, slumDungeonMobLevels, slumDungeonRecommendedLevel, slumDungeonRequiredLevel, player, slumsTown, "purple");
+        //slumDungeon = new Dungeon(slumDungeonMobs, slumBossDialog, slumDungeonGoldPerMob, slumDungeonXPperMob, slumDungeonMobLevels, slumDungeonRecommendedLevel, slumDungeonRequiredLevel, player, slumsTown, "purple");
     }
 
     /**

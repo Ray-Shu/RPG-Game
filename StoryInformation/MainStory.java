@@ -15,9 +15,9 @@ public class MainStory {
     String[] slumsItemsForSale = {"Weak Healing Pots", "Weak Mana Pots"};
     double[] slumsPriceOfItem2 = {150, 150}; 
     String slumsArmour = "Superior Spectral Armour"; 
-    double slumsPriceOfArmour = 6000; 
+    double slumsArmourPrice = 5500; 
     String slumsShopName = "Common Shack"; 
-    String[] slumsThingsToDo = {"Buy common goods", "Buy armour", "Leave"}; 
+    String[] slumsThingsToDo = {"Show common goods", "Show armour", "Leave"}; 
     String slumsGreeting = "Welcome to the Common Shack! What can I do for you?"; 
     String slumsFarewell = "Thanks for coming!"; 
     String slumsErrorMessage = "Looks like that isn't in the store, pick something else yeah?"; 
@@ -234,13 +234,13 @@ public class MainStory {
         // Printer.quickBreak(1000); 
         // Printer.printItalizcizedColor("You look around the dirtied town. \"Guess I'll go check around to gather intel.\"", "white");
         // Printer.quickBreak(1000); 
-        Printer.printItalizcizedColor("You check the map to decide where you go... Though your mind wanders for more combat.", "purple");
+        Printer.printItalizcizedColor("You check the map to decide where you go. Though your heart still yearns for the thrill of battle...", "purple");
         Printer.quickBreak(1000); 
 
         TownMaker townMaker = new TownMaker(mainPlayer);
         mainPlayer.makeTownMaker(townMaker);
         townMaker.makeTowns();
-        //mainPlayer.getCurrentTown().characterEnteringTown(true);
+        // mainPlayer.getCurrentTown().characterEnteringTown(true);
         
 
         // Printer.printItalizcizedColor(
@@ -271,34 +271,36 @@ public class MainStory {
         //         "white"); 
 
 
-        Printer.printItalizcizedColor("You walk out of the guild, deep in thought. \"So the door must deem me worthy, huh. I guess the only thing I can do is find ways to get stronger.\" \n", "white");
-        Printer.printItalizcizedColor("With that thought in mind, you make your way \nto the merchants shop. \n", "white");    
+        // Printer.printItalizcizedColor("You walk out of the guild, deep in thought. \"So the dungeon must deem me worthy, huh. I guess the only thing I can do is find ways to get stronger.\" \n", "white");
+        // Printer.printItalizcizedColor("With that thought in mind, you make your way \nto the merchants shop. \n", "white");    
         
-        Printer.printItalizcizedColor(
-                "A faint, dying bell chimes as you open the door \nto what you presume is the merchants shop. \nAfter all, the neon sign outside shows no life, \nand its words are barely readable.\n",
-                "white");
-        Printer.quickBreak(1000);
-        Printer.print(
-                "\033[3mA kind voice greets you.\033[0m \"Welcome to the humble shack that is the Common Shack! What goods \nare you looking for today?\n");
-        Printer.quickBreak(1000);
-        Printer.printItalizcizedColor("You look around unimpressed, seeing nothing \nbut a barebones \"shack\". \n",
-                "white");
-        Printer.quickBreak(1000);
-        Printer.print("Uh... What exactly can you even offer?\n");
-        Printer.quickBreak(1000);
-        Printer.print(
-                "The man behind the counter laughs. \"Well! All my valuables are kept in a storage, to prevent any theivery you see. I \nshow my offers to my customers through hologram.\"\n");
-        Printer.quickBreak(1000);
-        Printer.printItalizcizedColor(
-                "He grabs a tablet out from behind the \ncounter, and a blue projection appears.\n",
-                "white");
+        // Printer.printItalizcizedColor(
+        //         "A faint, dying bell chimes as you open the door \nto what you presume is the merchants shop. \nAfter all, the neon sign outside shows no life, \nand its words are barely readable.\n",
+        //         "white");
+        // Printer.quickBreak(1000);
+        // Printer.print(
+        //         "\033[3mA kind voice greets you.\033[0m \"Welcome to the humble shack that is the Common Shack! What goods are you looking for today?\n");
+        // Printer.quickBreak(1000);
+        // Printer.printItalizcizedColor("You look around unimpressed, seeing nothing \nbut a barebones \"shack\". \n",
+        //         "white");
+        // Printer.quickBreak(1000);
+        // Printer.print("\"Uh... What exactly can you even offer?\"\n");
+        // Printer.quickBreak(1000);
+        // Printer.print(
+        //         "The man behind the counter laughs. \"Well! All my valuables are kept in a storage, to prevent any theivery you see. I \nshow my offers to my customers through hologram.\"\n");
+        // Printer.quickBreak(1000);
+        // Printer.printItalizcizedColor(
+        //         "He grabs a tablet out from behind the \ncounter, and a blue projection appears.\n",
+        //         "white");
         
         Merchant slumsMerchant = new Merchant(mainPlayer, mainPlayer.getCurrentTown(), slumsItemsForSale,
-                slumsPriceOfItem2, slumsArmour, slumsPriceOfArmour, slumsShopName, slumsThingsToDo, slumsGreeting, slumsFarewell, slumsErrorMessage,
+                slumsPriceOfItem2, slumsShopName, slumsThingsToDo, slumsGreeting, slumsFarewell, slumsErrorMessage,
                 merchantColor);
+        slumsMerchant.addArmour(slumsArmour, slumsArmourPrice);
         //TODO: add ability to equip armour and store items 
         slumsMerchant.shop(false); 
-
+        
+        mainPlayer.showInventory();
 
 
 

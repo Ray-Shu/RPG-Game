@@ -37,10 +37,11 @@ public class Main {
             
 
                     
-        //*Story Line (currently working on chapter One) 
-        // MainStory story = new MainStory();
-        // story.startStory(); 
+        // *Story Line (currently working on chapter One) 
         // storyTesting();
+        MainStory story = new MainStory();
+        story.startStory(); 
+       
                     
         // //* Town Tests
         // Bank bank = new Bank(1000);
@@ -67,6 +68,9 @@ public class Main {
 
         //!MAKING THE ATTACK STAT RLY HIGH SO I CAN DO TESTS QUICKER 
         //!IF YOU WANT TO CHANGE IT TO NORMAL, REMOVE THE *(90) MULTIPLIER IN STATS CALCULATOR
+
+        //!TEMPORARY CHANGE TO PRINTING OUT CLASSES TO TEST FASTER
+        //!UNCOMMENT IN PLAYERCREATION TO FIX
     }
 
 //     public void goToCurrentTown(){

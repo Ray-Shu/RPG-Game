@@ -44,7 +44,6 @@ public class Armours {
 
     //battered spectral armour
     private String batteredSpectral = "Battered Spectral";
-    private String getBatteredSpectral(){return batteredSpectral;}
     private double[] batteredSpectralHeavyStats = { 15, 10, 0.05, 1.5, 3, 3, 4, 2, 2, 1, 1, 2, 1, 2, 3, 1 };
     private double[] batteredSpectralLightStats = { 10, 10, 0.07, 2, 2, 2, 1.5, 2, 2, 1, 1, 2, 2, 2, 3.5, 2 };
     private double[] batteredSpectralMageStats = { 12, 12, 0.04, 2.5, 1, 3, 1, 2, 2, 1, 2.5, 1, 2, 3, 2.5, 1.5 };

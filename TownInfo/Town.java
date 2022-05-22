@@ -62,13 +62,9 @@ public class Town {
 
     //adds a new building to the town. 
     public void addBuilding(Player player, Stats playerStats, Bank playerAccount, String[] itemsForSale, double[] priceOfItem, String shopName, String[] thingsToDo, String greeting, String farewell, String errorMessage, String color){
-        namesOfThingsInTown.add(shopName);
-    }
-
-    public void addMerchantBuilding(Player player, Stats playerStats, Bank playerAccount, String[] itemsForSale, double[] priceOfItem, String armour, double priceOfArmour, String shopName, String[] thingsToDo, String greeting, String farewell, String errorMessage, String color) {
-        allMerchants.add(new Merchant(player, this, itemsForSale, priceOfItem, armour, priceOfArmour, shopName,
+        allMerchants.add(new Merchant(player, this, itemsForSale, priceOfItem, shopName,
                 thingsToDo, greeting, farewell, errorMessage, color));
-
+        namesOfThingsInTown.add(shopName);
     }
 
     //adds a guild to the town. 

@@ -111,38 +111,75 @@ public class Dungeon {
     public void runDungeon(){
         Scanner scan = new Scanner(System.in);
         //welcomes them to the dungeon
+
         System.out.println("\n-----------------------------------------------------------");
         Printer.printColor("Welcome to the dungeon!!!", color);
-        
+        Printer.printColor("Battle your way through three rooms of enemies and defeat the boss to earn the next town medallion!", color);
+        Printer.printColor("Good luck!", color);
+        System.out.println("\n-----------------------------------------------------------\n");
+        Printer.quickBreak(1800);
+
         //For each mob in the battle, we will have to fight it with our current Stats. Goal is to defeat all enemies, then we get our reward. 
         runRoom(mobNamesFromRoom1, mobLevelsFromRoom1, 1);
 
         //Checks if the player died in the previous room
         if(!hasPlayerDied){
-            Printer.printColor("Congratulation for beating the first room! You have been fully healed and recovered all mp!" + 
+            Printer.printColor("Congratulation for beating the first room!\nYou have been fully healed and recovered all mp!\n" + 
                     "Hear are your rewards: " + xpPerRoom[0] + "XP and " + goldPerRoom[0] + " fusion coins! They are now being distributed.", color);
             
             //gives the player rewards.
             player.checkXP(xpPerRoom[0]);
             player.getBank().deposit(goldPerRoom[0]);
-
+            player.getPlayerStats().hospitalHeal();
+            player.getPlayerStats().rest();
             Printer.quickBreak(2000);
-            System.out.print("Enter any character: ");
+            System.out.print("Enter any character to continue: ");
             scan.next();
             
             runRoom(mobNamesFromRoom2, mobLevelsFromRoom2, 2);
         }
         else{
+            scan.close();
             return;
         }
         
         //Checks if the player died in the previous room
         if(!hasPlayerDied){
-        runRoom(mobNamesFromRoom3, mobLevelsFromRoom3, 3);
+            Printer.printColor("Congratulation for beating the second room!\n You have been fully healed and recovered all mp!\n" + 
+            "Hear are your rewards: " + xpPerRoom[1] + "XP and " + goldPerRoom[1] + " fusion coins! They are now being distributed.", color);
+    
+            //gives the player rewards.
+            player.checkXP(xpPerRoom[1]);
+            player.getBank().deposit(goldPerRoom[1]);
+            player.getPlayerStats().hospitalHeal();
+            player.getPlayerStats().rest();
+            Printer.quickBreak(2000);
+            System.out.print("Enter any character to continue: ");
+            scan.next();
+
+            runRoom(mobNamesFromRoom3, mobLevelsFromRoom3, 3);
         }
         else{
+            scan.close();
             return;
         }
+  
+        if(hasPlayerDied){
+            scan.close();
+            return;
+        }
+
+        Printer.printColor("Congratulation for beating the third room!\n You have been fully healed and recovered all mp!\n" + 
+        "Hear are your rewards: " + xpPerRoom[2] + "XP and " + goldPerRoom[2] + " fusion coins! They are now being distributed.", color);
+
+        //gives the player rewards.
+        player.checkXP(xpPerRoom[2]);
+        player.getBank().deposit(goldPerRoom[2]);
+        player.getPlayerStats().hospitalHeal();
+        player.getPlayerStats().rest();
+        Printer.quickBreak(2000);
+        System.out.print("Enter any character to continue: ");
+        scan.next();
 
         //* Beginning of the boss fight: 
         //print our boss dialog lines with some time in between sayings
@@ -159,6 +196,7 @@ public class Dungeon {
         //if the mission failed, we die and end it. 
         if(combat.didPlayerDie() == true){
             missionFailed();
+            scan.close();
             return;
         } 
 
@@ -173,15 +211,15 @@ public class Dungeon {
      * @param cashReward - The cash reward from the room
      */
     public void runRoom(String[]mobNames, int[] mobLevels, int roomNumber){
-        Printer.printColor("Welcome to the "+ (roomNumber + 1) + " room. Good luck! ", color);
+        Printer.printColor("Entering the "+ (roomNumber) + " room! ", color);
         Printer.quickBreak(1000);
 
-        for (int i = 0; i < mobNames.length - 1; i++) {
+        for (int i = 0; i < mobNames.length; i++) {
 
-            Printer.printColor("Watch out! A level "+ mobNames[i] + " "+ mobNames[i] + " has appeared!!! \n", color);
+            Printer.printColor("Watch out! A level "+ mobLevels[i] + " "+ mobNames[i] + " has appeared!!! \n", color);
 
             //makes creates a new mob with the given level, with stats based on the level of that mob. 
-            summonMob(mobNames[i], i);          
+            summonMob(mobNames[i], mobLevels[i]);          
 
             Combat combat = new Combat(player, player.getPlayerStats(), currentMobStats, currentMobAttacks, currentMobAttackCosts, summoner);
             combat.fight(false);

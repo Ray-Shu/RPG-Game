@@ -665,15 +665,16 @@ public class Moves {
             }
             if (index == 2) {
                 //cloaked
-                attackMpCost = 10;
-                Printer.printColor("The Warden uses Rooted, greatly enhancing their defensive capabilities.", "white");
-                attackerStats.defUpTime(3, 4);        attackerStats.applyDefenceUp(4);
+                attackMpCost = 5;
+                Printer.printColor("The archer puts on their cloak to increase evasion and speed", "white");
+                attackerStats.dodgeUpTime(3, 3);        
+                attackerStats.speedUpTime(2,3);
             }
             if (index == 3) {
                 //aim-bot
-                attackMpCost = 20;
-                Printer.printColor("The Warden of Dirt uses souls of reveangance greatly improve their attack strength!", "white");
-                attackerStats.atkUpTime(2,4);
+                attackMpCost = 5;
+                Printer.printColor("Archer temporarily enables aim bot to greatly increase accuracy!", "white");
+                victimStats.dodgeUpTime(0.1, 3);
             }
     }
     public void greaterWillSwordsmanMoves(Stats attackerStats, Stats victimStats, int index) {
@@ -681,33 +682,36 @@ public class Moves {
 
         if (index == 0) {
             //Quick Slash
-            attackMpCost = 40;
-            Printer.printColor("The Warden Hurls a random object at you!", "white");
-            double moveAttack = 8.3 * attackerStats.getCurrentAttack();
-            double missMultiplier = 2;
+            attackMpCost = 6;
+            Printer.printColor("Swordsman Quickly slashes the enemies!", "white");
+            double moveAttack = 2.8 * attackerStats.getCurrentAttack();
+            double missMultiplier = 1.5;
             attackerStats.setCurrentMP(attackerStats.getCurrentMP() - attackMpCost);
             statsCalculator.mobDoDamage(attackerStats, victimStats, moveAttack, missMultiplier);
         }
         if (index == 1) {
             // Devastating Swing
-            attackMpCost = 20;
-            Printer.printColor("The Warden of Dirt uses Soil of Pestilence! You are plagued by a disease, dealing major damage!", "white");
-            double moveAttack = 19 * attackerStats.getCurrentAttack();
-            double missMultiplier = 0.2;
+            attackMpCost = 15;
+            Printer.printColor("The Swordsman Heavily Swings their sword!", "white");
+            double moveAttack = 10.3 * attackerStats.getCurrentAttack();
+            double missMultiplier = 2.3;
             attackerStats.setCurrentMP(attackerStats.getCurrentMP() - attackMpCost);
             statsCalculator.mobDoDamage(attackerStats, victimStats, moveAttack, missMultiplier);
         }
         if (index == 2) {
             // Ultimate Rage
             attackMpCost = 10;
-            Printer.printColor("The Warden uses Rooted, greatly enhancing their defensive capabilities.", "white");
-            attackerStats.defUpTime(3, 4);        attackerStats.applyDefenceUp(4);
+            Printer.printColor("The swordsman becomes enraged, increasing their attack ability!" ,"white");
+            attackerStats.atkUpTime(2, 3);
         }
         if (index == 3) {
             // Light-speed Crash!
-            attackMpCost = 20;
-            Printer.printColor("The Warden of Dirt uses souls of reveangance greatly improve their attack strength!", "white");
-            attackerStats.atkUpTime(2,4);
+            attackMpCost = 15;
+            Printer.printColor("The Swordsman hurls themselves towards you at the speed of light!", "white");
+            double moveAttack = 7.2 * attackerStats.getCurrentAttack();
+            double missMultiplier = 4;
+            attackerStats.setCurrentMP(attackerStats.getCurrentMP() - attackMpCost);
+            statsCalculator.mobDoDamage(attackerStats, victimStats, moveAttack, missMultiplier);
         }
     }
     public void yetiMoves(Stats attackerStats, Stats victimStats, int index) {
@@ -715,7 +719,7 @@ public class Moves {
 
         if (index == 0) {
             // Body Slam
-            attackMpCost = 40;
+            attackMpCost = 11;
             Printer.printColor("The Warden Hurls a random object at you!", "white");
             double moveAttack = 8.3 * attackerStats.getCurrentAttack();
             double missMultiplier = 2;
@@ -724,7 +728,7 @@ public class Moves {
         }
         if (index == 1) {
             // Cataclysmic Claws
-            attackMpCost = 20;
+            attackMpCost = 22;
             Printer.printColor("The Warden of Dirt uses Soil of Pestilence! You are plagued by a disease, dealing major damage!", "white");
             double moveAttack = 19 * attackerStats.getCurrentAttack();
             double missMultiplier = 0.2;
@@ -733,13 +737,13 @@ public class Moves {
         }
         if (index == 2) {
             // Snowball Strike
-            attackMpCost = 10;
+            attackMpCost = 7;
             Printer.printColor("The Warden uses Rooted, greatly enhancing their defensive capabilities.", "white");
             attackerStats.defUpTime(3, 4);        attackerStats.applyDefenceUp(4);
         }
         if (index == 3) {
             // Blizzard
-            attackMpCost = 20;
+            attackMpCost = 8;
             Printer.printColor("The Warden of Dirt uses souls of reveangance greatly improve their attack strength!", "white");
             attackerStats.atkUpTime(2,4);
         }
@@ -749,7 +753,7 @@ public class Moves {
 
         if (index == 0) {
             // Gravitational Slam!
-            attackMpCost = 40;
+            attackMpCost = 9;
             Printer.printColor("The Warden Hurls a random object at you!", "white");
             double moveAttack = 8.3 * attackerStats.getCurrentAttack();
             double missMultiplier = 2;
@@ -758,7 +762,7 @@ public class Moves {
         }
         if (index == 1) {
             // Atomic Annihilation!
-            attackMpCost = 20;
+            attackMpCost = 15;
             Printer.printColor("The Warden of Dirt uses Soil of Pestilence! You are plagued by a disease, dealing major damage!", "white");
             double moveAttack = 19 * attackerStats.getCurrentAttack();
             double missMultiplier = 0.2;
@@ -767,13 +771,13 @@ public class Moves {
         }
         if (index == 2) {
             // Power-down !
-            attackMpCost = 10;
+            attackMpCost = 0;
             Printer.printColor("The Warden uses Rooted, greatly enhancing their defensive capabilities.", "white");
             attackerStats.defUpTime(3, 4);        attackerStats.applyDefenceUp(4);
         }
         if (index == 3) {
             // Astrogate Evasion!
-            attackMpCost = 20;
+            attackMpCost = 5;
             Printer.printColor("The Warden of Dirt uses souls of reveangance greatly improve their attack strength!", "white");
             attackerStats.atkUpTime(2,4);
         }

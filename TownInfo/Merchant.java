@@ -45,6 +45,7 @@ public class Merchant {
         this.errorMessage = errorMessage;
         this.color = color;
         this.playerAccount = mainPlayer.getBank();
+        this.town = town;
 
     }
 
@@ -92,7 +93,7 @@ public class Merchant {
                 //     Printer.printColor("You don't have enough money to purchase this armour set.", color); 
                 // }
 
-            // This will allow us to sell some of the items in our inventory. 
+            // This will allow us to buy some armor
             case "Check Out Armour":
                 System.out.println("Items for sale: ");
                 for (int i = 0; i < itemsForSale.length; i++) {

@@ -86,6 +86,8 @@ public class Player {
         //increases the level of the player, tells them they leveled up, and how much they increased by. 
         public void levelUp(){
                 playerLevel++;
+                playerStats.hospitalHeal();
+                playerStats.rest();
                 System.out.println("\u001B[33m-----------------------------------------------------------\u001B[33m");
                 System.out.println("\u001B[32m" + 
                                  "██      ███████ ██    ██ ███████ ██          ██    ██ ██████  ██ \n"

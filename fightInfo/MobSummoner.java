@@ -59,7 +59,17 @@ public class MobSummoner {
     //returns the warden of dirt's attacks
     public String[] getWardenOfDirtAttacks(){return WARDEN_OF_DIRT_ATTACKS;}
 
-    // public String[] get
+    //returns the greater will archer's attacks
+    public String[] getGreaterWillArcherAttacks(){return GREATER_WILL_ARCHER_ATTACKS;}
+    
+    //returns the greater will swordsman's attacks
+    public String[] getGreaterWillSwordsmanAttacks(){return GREATER_WILL_SWORDSMAN_ATTACKS;}
+    
+    //returns the yeti's attacks
+    public String[] getYetiAttacks(){return YETIS_ATTACKS;}
+    
+    //returns the quantum sensory droid's attacks
+    public String[] getQuantumSensoryDroidAttacks(){return QUANTUM_SENSORY_DROID_ATTACKS;}
 
     //* Returns Array's of attack costs. 
 
@@ -74,7 +84,18 @@ public class MobSummoner {
 
     //returns the warden of dirt's attack costs
     public int[] getWardenOfDirtAttackCosts(){return WARDEN_DIRT_ATTACK_COSTS;}
+    
+    //returns the greater will archer's attack costs
+    public int[] getGreaterWillArcherAttackCosts(){return GREATER_WILL_ARCHER_ATTACK_COSTS;}
 
+    //returns the greater will swordsman attacks costs
+    public int[] getGreaterWillSwordsmanAttackCosts(){return GREATER_WILL_SWORDSMAN_ATTACK_COSTS;}
+
+    //returns the yeti's attack costs
+    public int[] getYetiAttackCosts(){return YETIS_ATTACK_COSTS;}
+
+    //returns the quantum sensory droid attack costs
+    public int[] getQuantumSensoryDroidAttackCosts(){return QUANTUM_SENSORY_DROID_ATTACK_COSTS;}
     // ?ion drill: fire radioactive ions towards you
     
     /**
@@ -140,6 +161,65 @@ public class MobSummoner {
                 nanoBotStats[6] * lvlMultiplier, nanoBotStats[7] * lvlMultiplier, nanoBotStats[8] * lvlMultiplier,
                 nanoBotStats[9] * lvlMultiplier, nanoBotStats[10] * lvlMultiplier, nanoBotStats[11] * lvlMultiplier,
                 nanoBotStats[12] * lvlMultiplier, nanoBotStats[13] * lvlMultiplier, nanoBotStats[14] * lvlMultiplier, nanoBotStats[15] * lvlMultiplier);
+    }
+
+    public Stats newGreaterWillArcher(int lvl) {
+        mobName = "Greater Will Archer"; 
+        chosenMobAttacks = GREATER_WILL_ARCHER_ATTACKS; 
+        chosenAttackCosts = GREATER_WILL_ARCHER_ATTACK_COSTS;
+
+        double lvlMultiplier = Math.pow(1.1, lvl) - 0.1;
+        
+        return new Stats(
+                greaterWillArcherStats[0] * lvlMultiplier, greaterWillArcherStats[1] * lvlMultiplier, greaterWillArcherStats[2] * lvlMultiplier,
+                greaterWillArcherStats[3] * lvlMultiplier, greaterWillArcherStats[4] * lvlMultiplier, greaterWillArcherStats[5] * lvlMultiplier,
+                greaterWillArcherStats[6] * lvlMultiplier, greaterWillArcherStats[7] * lvlMultiplier, greaterWillArcherStats[8] * lvlMultiplier,
+                greaterWillArcherStats[9] * lvlMultiplier, greaterWillArcherStats[10] * lvlMultiplier, greaterWillArcherStats[11] * lvlMultiplier,
+                greaterWillArcherStats[12] * lvlMultiplier, greaterWillArcherStats[13] * lvlMultiplier, greaterWillArcherStats[14] * lvlMultiplier, greaterWillArcherStats[15] * lvlMultiplier);
+    }
+
+    public Stats newGreaterWillSwordsman(int lvl) {
+        mobName = "Greater Will Swordsman"; 
+        chosenMobAttacks = GREATER_WILL_SWORDSMAN_ATTACKS; 
+        chosenAttackCosts = GREATER_WILL_SWORDSMAN_ATTACK_COSTS;
+
+        double lvlMultiplier = Math.pow(1.1, lvl) - 0.1;
+        
+        return new Stats(
+                greaterWillSwordsmanStats[0] * lvlMultiplier, greaterWillSwordsmanStats[1] * lvlMultiplier, greaterWillSwordsmanStats[2] * lvlMultiplier,
+                greaterWillSwordsmanStats[3] * lvlMultiplier, greaterWillSwordsmanStats[4] * lvlMultiplier, greaterWillSwordsmanStats[5] * lvlMultiplier,
+                greaterWillSwordsmanStats[6] * lvlMultiplier, greaterWillSwordsmanStats[7] * lvlMultiplier, greaterWillSwordsmanStats[8] * lvlMultiplier,
+                greaterWillSwordsmanStats[9] * lvlMultiplier, greaterWillSwordsmanStats[10] * lvlMultiplier, greaterWillSwordsmanStats[11] * lvlMultiplier,
+                greaterWillSwordsmanStats[12] * lvlMultiplier, greaterWillSwordsmanStats[13] * lvlMultiplier, greaterWillSwordsmanStats[14] * lvlMultiplier, greaterWillSwordsmanStats[15] * lvlMultiplier);
+    }
+
+    public Stats newYeti(int lvl) {
+        mobName = "Yeti"; 
+        chosenMobAttacks = YETIS_ATTACKS; 
+        chosenAttackCosts = YETIS_ATTACK_COSTS;
+
+        double lvlMultiplier = Math.pow(1.1, lvl) - 0.1;
+        
+        return new Stats(
+                yetiStats[0] * lvlMultiplier, yetiStats[1] * lvlMultiplier, yetiStats[2] * lvlMultiplier,
+                yetiStats[3] * lvlMultiplier, yetiStats[4] * lvlMultiplier, yetiStats[5] * lvlMultiplier,
+                yetiStats[6] * lvlMultiplier, yetiStats[7] * lvlMultiplier, yetiStats[8] * lvlMultiplier,
+                yetiStats[9] * lvlMultiplier, yetiStats[10] * lvlMultiplier, yetiStats[11] * lvlMultiplier,
+                yetiStats[12] * lvlMultiplier, yetiStats[13] * lvlMultiplier, yetiStats[14] * lvlMultiplier, yetiStats[15] * lvlMultiplier);
+    }
+    public Stats newQuantumSensoryDroid(int lvl) {
+        mobName = "Quantum Sensory Droid"; 
+        chosenMobAttacks = QUANTUM_SENSORY_DROID_ATTACKS; 
+        chosenAttackCosts = QUANTUM_SENSORY_DROID_ATTACK_COSTS;
+
+        double lvlMultiplier = Math.pow(1.1, lvl) - 0.1;
+        
+        return new Stats(
+                yetiStats[0] * lvlMultiplier, yetiStats[1] * lvlMultiplier, yetiStats[2] * lvlMultiplier,
+                yetiStats[3] * lvlMultiplier, yetiStats[4] * lvlMultiplier, yetiStats[5] * lvlMultiplier,
+                yetiStats[6] * lvlMultiplier, yetiStats[7] * lvlMultiplier, yetiStats[8] * lvlMultiplier,
+                yetiStats[9] * lvlMultiplier, yetiStats[10] * lvlMultiplier, yetiStats[11] * lvlMultiplier,
+                yetiStats[12] * lvlMultiplier, yetiStats[13] * lvlMultiplier, yetiStats[14] * lvlMultiplier, yetiStats[15] * lvlMultiplier);
     }
 
     

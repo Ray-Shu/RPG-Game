@@ -39,7 +39,9 @@ public class Player {
          * Reference to this when showing or adding to inventory
          */
         Inventory playerInventory = new Inventory(playerStats);
-
+                
+        public Inventory getInventory() {return playerInventory;}
+        
         public void showInventory(){
                 playerInventory.showInventory();
         }
@@ -52,6 +54,7 @@ public class Player {
         public void addEquippedArmourToInventory(String headPiece, String chestPiece, String legPiece, String boots) {
                 playerInventory.playerInventoryAddEquippedArmour(headPiece, chestPiece, legPiece, boots);
         }
+
 
         //returns info about the townmaker
         public TownMaker getTownMaker(){return townMaker;}

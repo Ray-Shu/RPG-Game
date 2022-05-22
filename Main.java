@@ -71,6 +71,8 @@ public class Main {
 
         //!TEMPORARY CHANGE TO PRINTING OUT CLASSES TO TEST FASTER
         //!UNCOMMENT IN PLAYERCREATION TO FIX
+
+        //TODO will fix "PlayerInformation.Stats.getCurrentHP()" because"this.playerStats" is null error later (healing pot doesnt work)
     }
 
 //     public void goToCurrentTown(){

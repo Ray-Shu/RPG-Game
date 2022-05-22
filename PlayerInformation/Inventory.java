@@ -30,8 +30,6 @@ public class Inventory {
     int howManyManaPots = 0;
     int howManyWeakManaPots = 0;
 
-    private Armours armours; 
-
     Scanner in = new Scanner(System.in);
 
     ArrayList<String> playerInventory = new ArrayList<String>(maxStorage); 
@@ -46,8 +44,17 @@ public class Inventory {
         categorizedInventory.add("Healing Potions");
         categorizedInventory.add("Mana Elixirs");
         categorizedInventory.add("Revivals");
-        categorizedInventory.add("Misc Potions");
-        // TODO: add more necessities
+        categorizedInventory.add("Misc Potions"); //? Not sure if i can implement this with the given time
+
+        //adding two weak healing and mana pots
+
+        ArrayList<String> itemsToAdd = new ArrayList<String>();       
+        itemsToAdd.add("Weak Healing Pots");
+        itemsToAdd.add("Weak Healing Pots");
+        itemsToAdd.add("Weak Mana Pots"); 
+        itemsToAdd.add("Weak Mana Pots");
+        addInventory(itemsToAdd); 
+                    
     }   
 
     public void addInventory(ArrayList<String> itemsToAdd) {
@@ -94,7 +101,7 @@ public class Inventory {
 
         //*Displays armours 
         String armour[] = {headPiece, chestPiece, legPiece, boots}; 
-        Printer.printColor("\nArmour\n-------------------------------------------------------------\n", "yellow");
+        Printer.printColor("\nArmour\n-----------------------------------------\n", "yellow");
         for (String armourPiece : armour) {
             if(armourPiece == null) {
                 Printer.print("Empty");
@@ -104,7 +111,7 @@ public class Inventory {
                 System.out.println();
             }
         }
-        Printer.printColor("-------------------------------------------------------------","yellow");
+        Printer.printColor("-----------------------------------------","yellow");
 
         System.out.println();  
 
@@ -206,10 +213,59 @@ public class Inventory {
 
     //a list of mana potions
     public void manaElixirList() {
-        System.out.println("show mana");
-        //restores 100% of mana
-        //restores 50% of mana
-        //restores 25% of mana 
+        // Prints out the amount of each type of healing pot
+        Printer.printColor("Which mana pot would you like to consume?", "white");
+        Printer.printColor("[1]     " + "[" + howManyGreaterManaPots + "] Greater Mana pots", "white");
+        Printer.printColor("[2]     " + "[" + howManyManaPots + "] Mana pots", "white");
+        Printer.printColor("[3]     " + "[" + howManyWeakManaPots + "] Weak Mana pots", "white");
+
+        Printer.printColor("\n[B] Go back", "yellow");
+
+        String[] chooseOption = { "1", "2", "3", "b" };
+
+        String option = ErrorChecker.compareArrayOfStrings(chooseOption, "Choose a proper input", "white");
+
+        switch (option.toLowerCase()) {
+            // restores 70%, 40%, 20% mana respectively
+            case "1":
+                if (howManyGreaterManaPots > 0) {
+                    playerStats.setCurrentMP(playerStats.getCurrentMP() + (playerStats.getMaxMP() * 0.7));
+                    howManyGreaterManaPots--;
+                    Printer.printColor("You have restored " + playerStats.getCurrentMP() + " MP!", "yellow");
+                    showInventory();
+                } else {
+                    Printer.printColor("You don't have any Greater Mana Pots.", "red");
+                    showInventory();
+                }
+                break;
+
+            case "2":
+                if (howManyManaPots > 0) {
+                    playerStats.setCurrentMP(playerStats.getCurrentMP() + (playerStats.getMaxMP() * 0.4));
+                    howManyManaPots--;
+                    Printer.printColor("You have restored " + playerStats.getCurrentMP() + " MP!", "yellow");
+                    showInventory();
+                } else {
+                    Printer.printColor("You don't have any Greater Mana Pots.", "red");
+                    showInventory();
+                }
+                break;
+
+            case "3":
+                if (howManyWeakManaPots > 0) {
+                    playerStats.setCurrentMP(playerStats.getCurrentMP() + (playerStats.getMaxMP() * 0.2));
+                    howManyWeakManaPots--;
+                    Printer.printColor("You have restored " + playerStats.getCurrentMP() + " MP!", "yellow");
+                    showInventory();
+                } else {
+                    Printer.printColor("You don't have any Greater Mana Pots.", "red");
+                    showInventory();
+                }
+                break;
+
+            case "b":
+                showInventory();
+        }
     }
 
     //a list of revivals 

@@ -10,15 +10,15 @@ import PlayerInformation.*;
 import Tools.*;
 
 public class Merchant {
-    public double[] priceOfItem;
-    public String[] itemsForSale, thingsToDo;
-    public String shopName, armour, greeting, farewell, errorMessage, color;
-    public double armourPrice; 
-    private Town town;
+    public double[] priceOfItem, armourPrice;
+    public String[] itemsForSale, thingsToDo, armour;
+    public String shopName, greeting, farewell, errorMessage, color;
+   
+    public Town town;
     public Bank playerAccount;
-    private Scanner scan = new Scanner(System.in);
-	private Stats playerStats;
-	private Player mainPlayer;
+    public Scanner scan = new Scanner(System.in);
+	public Stats playerStats;
+	public Player mainPlayer;
 
     /**
      * This gets all the data we will need for the merchant, including what they might sell, what they say, and what they do. 
@@ -48,7 +48,7 @@ public class Merchant {
 
     }
 
-    public void addArmour(String armour, double armourPrice) {
+    public void addArmour(String[] armour, double[] armourPrice) {
         this.armour = armour; 
         this.armourPrice = armourPrice; 
     }
@@ -63,7 +63,7 @@ public class Merchant {
         Printer.printColor(greeting, color);
         }
         
-        Printer.printColor("What would you like to do: "+ Arrays.toString(thingsToDo), color);
+        Printer.printColor("What would you like to do: "+ Arrays.toString(thingsToDo) + "       |       Your balance: " + playerAccount.getBalance(), color);
         String responseBack = ErrorChecker.compareArrayOfStrings(thingsToDo, errorMessage, "red").toLowerCase();
 
         //based on the possible things they can do in that store and the things listed here, we run commands. 
@@ -78,41 +78,17 @@ public class Merchant {
 
             // This will list out the items we will sell and ask us to buy one or get out. 
             case "show common goods":
-                    showCommonGoods();
+                showCommonGoods();
                 break;
 
             // Buys armour and automatically equips the armour 
-            case "buy armour": 
-                // Printer.print(armour); 
-                // if (playerAccount.doesPlayerHaveEnoughMoney(priceOfArmour)){
-                //     playerAccount.withdraw(priceOfArmour); 
-                //     //equips armour  
-                //     Printer.printColor("Thank you for your money! Your remaining balance is " + playerAccount.balance, color);
-                // } else {
-                //     Printer.printColor("You don't have enough money to purchase this armour set.", color); 
-                // }
+            case "show armour": 
+                buyArmour(); 
+                break;
 
             // This will allow us to sell some of the items in our inventory. 
-            case "Check Out Armour":
-                System.out.println("Items for sale: ");
-                for (int i = 0; i < itemsForSale.length; i++) {
-                    System.out.println(itemsForSale[i]+ " for " + priceOfItem[i] + " grams of gold");
-                }
-
-                String answer = ErrorChecker.compareArrayOfStrings(itemsForSale, errorMessage, color);
-
-                for (int i = 0; i < itemsForSale.length; i++) {
-
-                    if(itemsForSale[i].equals(answer)){
-
-                        if(playerAccount.doesPlayerHaveEnoughMoney(priceOfItem[i])){
-                            playerAccount.withdraw(priceOfItem[i]);
-                            //inventory.addItem(itemsForSale[i]);
-                            Printer.printColor("Thank you for your money! Your remaining balance is " + playerAccount.balance, color);
-                        }
-                        
-                    }
-                }
+            case "sell":
+                
                 shop(false);
                 break;
 
@@ -166,6 +142,7 @@ public class Merchant {
     //returns the shopname
     public String getShopName() {return shopName;}
 
+
     //displays the goods of the specific floors merchant 
     private void showCommonGoods() {
         int[] intOptions = IntStream.rangeClosed(1, itemsForSale.length).toArray();
@@ -179,7 +156,7 @@ public class Merchant {
         String[] option = Stream.concat(Arrays.stream(convertToStringOptions), Arrays.stream(exit))
                 .toArray(String[]::new);
 
-        System.out.println("Items for sale: ");
+        Printer.printColor("Items for Sale: ", color);
         System.out.println();
 
         for (int i = 0; i < itemsForSale.length; i++) {
@@ -208,32 +185,41 @@ public class Merchant {
 
     }
 
-            //     System.out.println("Items for sale: ");for(
+    private void buyArmour(){
+        int[] intOptions = IntStream.rangeClosed(1, armour.length).toArray();
 
-            //     int i = 0;i<itemsForSale.length;i++)
-            //     {
-            //         Printer.print(itemsForSale[i] + " for " + priceOfItem[i] + " Fusion Coins");
-            //         System.out.println();
-            //     }
+        String[] convertToStringOptions = Arrays.stream(intOptions)
+                .mapToObj(String::valueOf)
+                .toArray(String[]::new);
 
-            //     String whatTheyWant = ErrorChecker.compareArrayOfStrings(itemsForSale, errorMessage, color);
+        String[] exit = { "[e] Exit" };
 
-            //     for(
-            //     int i = 0;i<itemsForSale.length;i++)
-            //     {
+        String[] option = Stream.concat(Arrays.stream(convertToStringOptions), Arrays.stream(exit))
+                .toArray(String[]::new);
 
-            //                         if(itemsForSale[i].equals(whatTheyWant)){
+        Printer.printColor("Items for Sale: ", color);
+        
+        for (int i = 0; i < armour.length; i++) {
+                Printer.printColor("[" + (i + 1) + "] " + armour[i] + " for " + armourPrice[i] + " Fusion Coins", color);
+        }
+        Printer.printColor("[e] Exit", color);
 
-            //                             if(playerAccount.doesPlayerHaveEnoughMoney(priceOfItem[i])){
-            //                                 playerAccount.withdraw(priceOfItem[i]);
-            //                                 //adds the item to inventory 
-            //                                 //player.addItemToInventory(itemsForSale[i]);
-            //                                 Printer.printColor("Thank you for your money! Your remaining balance is " + playerAccount.balance, color);
-            //                             }
-                                        
-            //                         }
-            //                     }
+        String choose = ErrorChecker.compareArrayOfStrings(option, errorMessage, color);
 
-            //     shop(false);
+        for (int i = 0; i < armour.length; i++) {
+            if (choose.toLowerCase().equals(option[i])) {
+                if (playerAccount.doesPlayerHaveEnoughMoney(armourPrice[i])) {
+                    playerAccount.withdraw(armourPrice[i]);
+                    Armours equipArmour = new Armours(mainPlayer); 
+                    equipArmour.equipArmour(armour[i]);
+                    Printer.printColor("You have obtained: " + Arrays.toString(armour) + ". Equipping now...", "purple");
+                    Printer.printColor(
+                            "Thank you for your purchase! Your remaining balance is " + playerAccount.balance, color);
+                } else {
+                    Printer.printColor("Sorry, it looks like you don't have enough money.", color);
+                }
+            }
+        }
+        shop(false); 
+    }
 }
-

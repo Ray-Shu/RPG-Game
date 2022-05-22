@@ -14,8 +14,8 @@ public class MainStory {
     //*SLUMS MERCHANT 
     String[] slumsItemsForSale = {"Weak Healing Pots", "Weak Mana Pots"};
     double[] slumsPriceOfItem2 = {150, 150}; 
-    String slumsArmour = "Superior Spectral Armour"; 
-    double slumsArmourPrice = 5500; 
+    String[] slumsArmour = {"Superior Spectral Armour"};
+    double[] slumsArmourPrice = {5500}; 
     String slumsShopName = "Common Shack"; 
     String[] slumsThingsToDo = {"Show common goods", "Show armour", "Leave"}; 
     String slumsGreeting = "Welcome to the Common Shack! What can I do for you?"; 
@@ -50,17 +50,26 @@ public class MainStory {
     //instantiates all of the information needed currently for the story 
 
     public void playerInfo() {
+        //class choice
         playerCreator.printCrateInfo(); 
+
+        //creates the object player
         mainPlayer = playerCreator.getPlayer();
-        townMaker = new TownMaker(mainPlayer);
-        mainPlayer.makeTownMaker(townMaker);
         this.chosenClass = playerCreator.getChosenClass();
         playerStats = mainPlayer.getPlayerStats();
-        Armours armours = new Armours(mainPlayer, chosenClass);
+
+        //instantiates some town info
+        townMaker = new TownMaker(mainPlayer);
+        mainPlayer.makeTownMaker(townMaker);
+        this.playerAccount = mainPlayer.getBank();
+        
+        //creates the players inventory 
+        this.inventory = mainPlayer.getInventory();
+
+        //equips the basic armour for your chosen class
+        Armours armours = new Armours(mainPlayer);
         this.armours = armours; 
-        this.armours.equipArmour("Battered Spectral");
-        Inventory inventory = new Inventory(playerStats); 
-        this.inventory = inventory; 
+        this.armours.equipArmour("Battered Spectral Armour");
     }
 
     public void startStory() {
@@ -183,41 +192,40 @@ public class MainStory {
         Printer.printItalizcizedColor("You get ready for combat...", "purple");
         Printer.quickBreak(1000);
 
-        //chapter_One_Fight_Scene_One();
+        chapter_One_Fight_Scene_One();
 
-        chapter_One_Scene_Two();
+        //chapter_One_Scene_Two();
 
     }
 
-    //combat against Greater Will Assassin 
-    // public void chapter_One_Fight_Scene_One(){ 
-    // //*GETS ALL OF THE INFO OF MC'S CLASS AND STATS ------------------------------------------------------------
-    //     playerStats = mainPlayer.getPlayerStats();
-    //     Stats mobStats = summonMob.newGreaterWillAssassin(2);
-    //     String mobAttacks[] = summonMob.getGreaterWillAssasinAttacks();
-    //     int mobAttacksCost[] = summonMob.getGreaterWillAssasinAttackCosts();
-    //     Combat chapter_One_Fight_One = new Combat(mainPlayer, playerStats, mobStats, mobAttacks, mobAttacksCost, summonMob);
-    //     chapter_One_Fight_One.fight(true);
-    // // *END OF FIGHT 
+    public void chapter_One_Fight_Scene_One(){ 
+    //*GETS ALL OF THE INFO OF MC'S CLASS AND STATS ------------------------------------------------------------
+        playerStats = mainPlayer.getPlayerStats();
+        Stats mobStats = summonMob.newGreaterWillAssassin(2);
+        String mobAttacks[] = summonMob.getGreaterWillAssasinAttacks();
+        int mobAttacksCost[] = summonMob.getGreaterWillAssasinAttackCosts();
+        Combat chapter_One_Fight_One = new Combat(mainPlayer, playerStats, mobStats, mobAttacks, mobAttacksCost, summonMob);
+        chapter_One_Fight_One.fight(true);
+    // *END OF FIGHT 
 
-    //     // resets the player to the reset point if player dies
-    //     // continues the storyline if the player defeats the enemy
-    //     if(chapter_One_Fight_One.didPlayerDie()) {
-    //         checkPoint.backToCheckpoint();
-    //         Printer.printItalizcizedColor("How did you lose...", "yellow");
-    //         chapter_One_Reset_Point_One();
-    //     } else {
-    //         chapter_One_Scene_Two();
-    //     }
+        // resets the player to the reset point if player dies
+        // continues the storyline if the player defeats the enemy
+        if(chapter_One_Fight_One.didPlayerDie()) {
+            checkPoint.backToCheckpoint();
+            Printer.printItalizcizedColor("How did you lose...", "yellow");
+            chapter_One_Reset_Point_One();
+        } else {
+            chapter_One_Scene_Two();
+        }
 
-    // }
+    }
 
     public void chapter_One_Scene_Two(){
-        // System.out.println("old stats \n");
-        // playerStats.getClassInfo(chosenClass);
+        System.out.println("old stats \n");
+        playerStats.getClassInfo(chosenClass);
         mainPlayer.levelUp();
-        // System.out.println("new stats \n");
-        // playerStats.getClassInfo(chosenClass);
+        System.out.println("new stats \n");
+        playerStats.getClassInfo(chosenClass);
 
         // System.out.println();
         // Printer.printItalizcizedColor("The assassin falls to the ground, defeated.\nYou stalk towards him as he lays there, face\nin the muddied dirt\n", "white");
@@ -293,6 +301,7 @@ public class MainStory {
         //         "He grabs a tablet out from behind the \ncounter, and a blue projection appears.\n",
         //         "white");
         
+        playerAccount.deposit(10000);
         Merchant slumsMerchant = new Merchant(mainPlayer, mainPlayer.getCurrentTown(), slumsItemsForSale,
                 slumsPriceOfItem2, slumsShopName, slumsThingsToDo, slumsGreeting, slumsFarewell, slumsErrorMessage,
                 merchantColor);

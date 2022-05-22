@@ -180,6 +180,8 @@ public class Stats {
 
         //returns max HP
         public double getMaxHP(){return maxHP;}
+        
+        public double getMaxMP(){return maxMP;}
 
         //currentHP, currentMP, currentSpd, currentAtk, currentPhysDmg, currentMagicDmg, currentDef, currentEnd, currentStam,
                 //currentPhysRes, currentMagicRes, currentDodge, currentVit, currentCritRate, currentCritDmg, currentLuck;
@@ -467,6 +469,8 @@ public class Stats {
                 this.howLongDodgeUp += howLongDodgeUp;
                 applyDodgeUp(multiplier);
         }
+
+        
 
         
 }

@@ -49,6 +49,7 @@ public class Combat extends Moves{
 
         playerTurnRate = playerStats.getCurrentSpeed();   
         mobTurnRate = mobStats.getCurrentSpeed();
+        
     }
 
     /**

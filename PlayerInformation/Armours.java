@@ -55,11 +55,10 @@ public class Armours {
     private double[] superiorSpectralLightStats = { 13, 15, 0.08, 2.1, 2.5, 2.5, 2, 2.5, 3, 2, 1.5, 3, 2.5, 3, 4.5, 2.5 };
     private double[] superiorSpectralMageStats = { 18, 20, 0.04, 2, 1, 4.5, 1.5, 2, 2, 2, 3, 1.5, 4, 3.5, 4, 2 };
 
-    //TODO: implement a "check what you're wearing thing to implement additional armour stats"
 
-    public Armours(Player mainPlayer, String chosenClass) {
+    public Armours(Player mainPlayer) {
         this.mainPlayer = mainPlayer; 
-        this.chosenClass = chosenClass; 
+        this.chosenClass = mainPlayer.getPlayerClass(); 
         this.playerStats = mainPlayer.getPlayerStats();
 
         statsBeforeArmour = playerStats.getCurrentStats(); 
@@ -68,10 +67,10 @@ public class Armours {
     public void equipArmour(String armour) { 
         
         switch (armour.toLowerCase()) {
-            case "battered spectral": 
+            case "battered spectral armour": 
                 equipBatteredSpectral(); 
                 break;
-            case "superior spectral": 
+            case "superior spectral armour": 
                 equipSuperiorSpectral(); 
                 break;
         }

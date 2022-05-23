@@ -29,7 +29,7 @@ public class Guild {
 
     private String slum2MissionName = "Save Child from Kidnapper";
     private String[] slum2MissionOpponents = {"nano bot cluster", "nano bot cluster", "greater will assassin"};
-    private int[] slum2MissionOpponentLevels = {2, 2, 4};
+    private int[] slum2MissionOpponentLevels = {4, 4, 4};
     private String slum2MissionProblem = "A group of Robots and an Assasin have kidnapped the daughter of Techno-King Bill Musk! \n" + 
             "We need a strike team to infiltrate their hideout and get her back safely. ";
     private String slum2MissionGreeting = "You break into the compound covertly through the sewers\n"
@@ -42,12 +42,12 @@ public class Guild {
     
     private String slum3MissionName = "Save Farmer from Destructive Nano Bots";
     private String[] slum3MissionOpponents = {"nano bot cluster", "nano bot cluster","nano bot cluster","nano bot cluster" };
-    private int[] slum3MissionOpponentLevels = {5, 5, 5,5};
+    private int[] slum3MissionOpponentLevels = {7, 7, 7,9};
     private String slum3MissionProblem = "A local Corn Farmer accidentally openned a barrel contained with hunter nano-bots!\n" + 
             "Defeat all the nano-bots to win!";
     private String slum3MissionGreeting = "HELP!!! THOSE NANO BOTS ARE DESTROYING MY CROPS!!!";
     private String slum3MissionThankYou = "Yay! My crops are saved!!!";
-    private int slum3MissionXPReward = 350;
+    private int slum3MissionXPReward = 450;
     private String[] slum3MissionItems = new String[5];
     private String slum3MissionColor = "yellow";
     private int slum3MissionRecommendedLevel = 5;
@@ -61,6 +61,8 @@ public class Guild {
     Guild(Player player){
         town = player.getCurrentTown();
         townName = town.getTownName();
+
+        //todo: Make missions for other towns. 
         //checks which town we are in, and then creates missions based on that town. 
         switch (town.getTownName().toLowerCase()) {
 
@@ -82,7 +84,31 @@ public class Guild {
                 namesOfAllMissions.add(slum2MissionName);
 
                 break;
-    
+            
+            case "The Antarctic Domain":
+                color = "blue";
+
+
+                break;
+
+            case "The Factory Realm":
+                color = "green";
+
+
+                break;
+
+            case "The Land Of Silver":
+                color = "yellow";
+
+
+                break;
+
+            case "The Golden Reign":
+                color = "purple";
+
+
+                break;
+
             //runs if we mispelt the name of the town
             default:
                 System.out.println("Error: Incorrect town name");
@@ -125,6 +151,10 @@ public class Guild {
                 allMissions.remove(n);
                 n--;
             }
+        }
+
+        if(allMissions.isEmpty()){
+            Printer.printColor("There are no more missions to complete!", "white");
         }
 
         for (i = 0; i < allMissions.size();i++ ){

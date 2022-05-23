@@ -12,7 +12,7 @@ public class TownMaker{
     private Bank playerAccount;
     private String notStoreItems[] = new String[2];
     private double notStorePrices[] = new double[2];
-    private Town slums, antarcticDomain;
+    private Town slums, antarcticDomain, theFactoryRealm, landOfSilver, goldenReign;
     private int currentTownLevel = 1;
     private int maxTownLevel = 1;
 
@@ -40,12 +40,11 @@ public class TownMaker{
 
     private int slumDungeonRecommendedLevel = (10);
     private int slumDungeonRequiredLevel = (6);
-    
     private Dungeon slumDungeon;
-    private String teleporterName = "Teleportation Circle";
-    private Town[] allTowns = {slums, antarcticDomain};
     
-
+    private Town[] allTowns = new Town[5];
+    
+    private Teleporter tp;
 
     /**
      * Constructs the townmaker by giving the player's account, stats, and their identity. 
@@ -62,15 +61,42 @@ public class TownMaker{
      * Constructs all of the buildings within the town of slums
      */
     public void makeTowns(){
+        tp = new Teleporter(player);
+
+        //Creates the slums
         slums = new Town("The Slums", 1, player, "grey");
         slums.addBuilding(player, playerStats, playerAccount, notStoreItems, notStorePrices, "Hospital",thingsToDoAtHospital, "Welcome to the Hospital! We are ready to heal you!", "Thank you for coming", "Sorry could you repeat that?", "white");
         slumDungeon = new Dungeon(slumDungeonMobsFloor1, slumDungeonFloor1MobLevels, slumDungeonFloor2MobLevels, slumDungeonMobsFloor2, slumDungeonFloor3MobLevels, slumDungeonMobsFloor3, slumBossName, slumBossLevel, slumBossDialog, slumDungeonGoldPerFloor, slumDungeonXPperFloor, slumDungeonRecommendedLevel, slumDungeonRequiredLevel, player, slums, "purple");
         Guild slumsAdventurersGuild = new Guild(player);
         slums.addGuild(slumsAdventurersGuild);
         slums.addDungeon(slumDungeon);
-
+        slums.addTeleporter(tp);
+        allTowns[0] = slums;
+        
         antarcticDomain = new Town("The Antarctic Domain", 2, player,"blue");
-        // antarcticDomain.addBuilding(player, playerStats, playerAccount, itemsForSale, priceOfItem, shopName, thingsToDo, greeting, farewell, errorMessage, color);
+        antarcticDomain.addBuilding(player, playerStats, playerAccount, notStoreItems, notStorePrices, "Hospital",thingsToDoAtHospital, "Welcome to the Hospital! We are ready to heal you!", "Thank you for coming", "Sorry could you repeat that?", "white");
+        Guild antarcticAdventurersGuild = new Guild(player);
+        antarcticDomain.addTeleporter(tp);
+        allTowns[1] = antarcticDomain;
+        
+        theFactoryRealm = new Town("The Factory Realm", 3, player,"cyan");
+        theFactoryRealm.addBuilding(player, playerStats, playerAccount, notStoreItems, notStorePrices, "Hospital",thingsToDoAtHospital, "Welcome to the Hospital! We are ready to heal you!", "Thank you for coming", "Sorry could you repeat that?", "white");
+        Guild factoryAdventurersGuild = new Guild(player);
+        theFactoryRealm.addTeleporter(tp);
+        allTowns[2] = theFactoryRealm;
+        
+        landOfSilver = new Town("The Land Of Silver", 4, player,"cyan");
+        landOfSilver.addBuilding(player, playerStats, playerAccount, notStoreItems, notStorePrices, "Hospital",thingsToDoAtHospital, "Welcome to the Hospital! We are ready to heal you!", "Thank you for coming", "Sorry could you repeat that?", "white");
+        Guild silverAdventurersGuild = new Guild(player);
+        landOfSilver.addTeleporter(tp);
+        allTowns[3] = landOfSilver;
+        
+        goldenReign = new Town("The Golden Reign", 5, player,"yellow");
+        goldenReign.addBuilding(player, playerStats, playerAccount, notStoreItems, notStorePrices, "Hospital",thingsToDoAtHospital, "Welcome to the Hospital! We are ready to heal you!", "Thank you for coming", "Sorry could you repeat that?", "white");
+        Guild goldenReignGuild = new Guild(player);
+        goldenReign.addTeleporter(tp);
+        allTowns[4] = goldenReign;
+       
     }
 
     //runs the slums. 
@@ -106,6 +132,8 @@ public class TownMaker{
 
     public int getMaxTownLevel(){return maxTownLevel;}
 
+    public void setCurrentTownLevel(int townLevel){currentTownLevel = townLevel;}
+
     /**
      * Adds a building to the town
      * @param town      - the town that the building is going to be added to
@@ -113,5 +141,9 @@ public class TownMaker{
      */
     public void addBuildingToTown(Town town, Merchant merchant){
         town.addMerchant(merchant);
+    }
+
+    public Town[] getAllTowns() {
+        return allTowns;
     }
 }

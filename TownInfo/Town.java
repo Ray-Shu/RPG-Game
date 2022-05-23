@@ -10,7 +10,6 @@ public class Town {
     //* Variables that we will need during this code 
 
     //this array list will be filled with the names of all the shops in the town. 
-    private ArrayList<String> namesOfThingsInTown = new ArrayList<String>();
     private ArrayList<Merchant> allMerchants = new ArrayList<Merchant>();
     private String townName;
     private int floorLvl;
@@ -48,7 +47,9 @@ public class Town {
             Printer.printColor("("+i+") " + allMerchants.get(i-1).getShopName(), "white");  
         }
         Printer.printColor("("+i+") " + townName + " Adventurers Guild", "white");  
-        
+        i++;
+        Printer.printColor("("+i+") Teleporter", "white");
+
         i++;
         if(dungeon.isLocked()){
             Printer.printColor("("+i+") [Locked]"+ townName + " Dungeon", "grey");
@@ -65,18 +66,15 @@ public class Town {
     public void addBuilding(Player player, Stats playerStats, Bank playerAccount, String[] itemsForSale, double[] priceOfItem, String shopName, String[] thingsToDo, String greeting, String farewell, String errorMessage, String color){
         allMerchants.add(new Merchant(player, this, itemsForSale, priceOfItem, shopName,
                 thingsToDo, greeting, farewell, errorMessage, color));
-        namesOfThingsInTown.add(shopName);
     }
 
     public void addMerchant(Merchant merchant){
         allMerchants.add(merchant);
-        namesOfThingsInTown.add(merchant.getShopName());
     }
 
     //adds a guild to the town. 
     public void addGuild(Guild guild){
         this.guild = guild;
-        namesOfThingsInTown.add(townName + " Adventurers Guild");
     }
     
     public Guild getGuild(){
@@ -84,11 +82,9 @@ public class Town {
     }
     public void addDungeon(Dungeon dungeon){
         this.dungeon = dungeon;
-        namesOfThingsInTown.add("dungeon");
     }
     public void addTeleporter(Teleporter teleporter){
         this.teleporter = teleporter;
-        namesOfThingsInTown.add("dungeon");
     }
 
     /**
@@ -113,7 +109,7 @@ public class Town {
                 scan.next();
             }
             chosenInt = scan.nextInt();
-            if(chosenInt > 0 && chosenInt <= (allMerchants.size()+2)){
+            if(chosenInt > 0 && chosenInt <= (allMerchants.size()+3)){
                 hasPlayerChosen = true;
             }
             else{
@@ -130,13 +126,21 @@ public class Town {
 
         //checks if they want to run the guild
         else if(chosenInt == allMerchants.size() + 1 ){
-        guild.runGuild(returnToStory);
+            guild.runGuild(returnToStory);
         }
+
+        //checks if they want the teleporter
+        else if(chosenInt == allMerchants.size()+2){
+            teleporter.runTeleporter(returnToStory);
+        }
+
+        //checks if the dungeon is locked
         else if(dungeon.isLocked()){
             Printer.printColor("Sorry! You do not meet the required level for this dungeon!\nPlease come back once you reach level " + dungeon.getRequiredLevel(),"white");
             Printer.quickBreak(1000);
             characterEnteringTown(returnToStory);
         }
+
         else{
             dungeon.characterEnteringDungeon(returnToStory);
         }

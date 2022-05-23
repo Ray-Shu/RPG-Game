@@ -295,7 +295,7 @@ public class MainStory {
         // Printer.print("\"Uh... What exactly can you even offer?\"\n");
         // Printer.quickBreak(1000);
         // Printer.print(
-        //         "The man behind the counter laughs. \"Well! All my valuables are kept in a storage, to prevent any theivery you see. I \nshow my offers to my customers through hologram.\"\n");
+        //         "The man behind the counter laughs. \"Well! All my valuables are kept in a storage, to prevent any thievery you see. I \nshow my offers to my customers through hologram.\"\n");
         // Printer.quickBreak(1000);
         // Printer.printItalizcizedColor(
         //         "He grabs a tablet out from behind the \ncounter, and a blue projection appears.\n",

@@ -313,16 +313,13 @@ public class MainStory {
         Printer.printItalizcizedColor("Your mind, once again, gravitates towards the thrill of battle... \n", "purple");
 
         while(mainPlayer.getLevel() < 6) {
-            if (mainPlayer.getLevel() >= 6) {
-                chapter_One_Dungeon_Fight();
-            } else {
-                mainPlayer.getCurrentTown().characterEnteringTown(true);
-                Printer.printItalizcizedColor(
-                        "There isn't much to do in such a destitute floor besides occupying your mind with the sounds of clashing metal.\n",
-                        "purple");
-            }
             
-        }
+            mainPlayer.getCurrentTown().characterEnteringTown(true);
+            Printer.printItalizcizedColor(
+                "There isn't much to do in such a destitute floor besides occupying your mind with the sounds of clashing metal.\n",
+                "purple");
+            }
+        chapter_One_Dungeon_Fight();
 
     }   
 

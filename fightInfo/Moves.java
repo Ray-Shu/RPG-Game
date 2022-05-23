@@ -771,9 +771,8 @@ public class Moves {
      */
     public void wardenOfDirtMoves(Stats attackerStats, Stats victimStats, int attackMpCost, int index) {
 
-        //This Strange Hurl is a strong atack
+        //This Strange Hurl is a strong attack
         if (index == 0) {
-            // Synethic Infection
             Printer.printColor("The Warden Hurls a random object at you!", "white");
             double moveAttack = 8.3 * attackerStats.getCurrentAttack();
             double missMultiplier = 2;
@@ -781,9 +780,8 @@ public class Moves {
             statsCalculator.mobDoDamage(attackerStats, victimStats, moveAttack, missMultiplier);
         }
 
-
+        //soil of pestilence does a medium amount of damage
         if (index == 1) {
-            // Integrated Combustion
             Printer.printColor("The Warden of Dirt uses Soil of Pestilence! You are plagued by a disease, dealing major damage!", "white");
             double moveAttack = 19 * attackerStats.getCurrentAttack();
             double missMultiplier = 0.2;
@@ -791,16 +789,15 @@ public class Moves {
             statsCalculator.mobDoDamage(attackerStats, victimStats, moveAttack, missMultiplier);
         }
 
-
+        //rooted increases defensive stats
         if (index == 2) {
-            // Coordinated Ion Drill 
             Printer.printColor("The Warden uses Rooted, greatly enhancing their defensive capabilities.", "white");
-            attackerStats.defUpTime(3, 4);        attackerStats.applyDefenceUp(4);
+            attackerStats.defUpTime(3, 4);      
+            attackerStats.applyDefenceUp(4);
         }
 
-
+        //souls of revengance greatly increases attack strength.         
         if (index == 3) {
-            // Neon-Laser Cascade
             Printer.printColor("The Warden of Dirt uses souls of reveangance greatly improve their attack strength!", "white");
             attackerStats.atkUpTime(2,4);
         }
@@ -823,8 +820,9 @@ public class Moves {
             attackerStats.setCurrentMP(attackerStats.getCurrentMP() - attackMpCost);
             statsCalculator.mobDoDamage(attackerStats, victimStats, moveAttack, missMultiplier);
         }
+
+        //shock-dart deals medium damage, and slows down enemy
         if (index == 1) {
-            // Shock-dart
             Printer.printColor("The Archer fires off a shock-dart, dealing major damage and reducing your speed!", "white");
             double moveAttack = 3.4 * attackerStats.getCurrentAttack();
             double missMultiplier = 2;
@@ -832,14 +830,16 @@ public class Moves {
             attackerStats.speedUpTime(0.75, 2);
             statsCalculator.mobDoDamage(attackerStats, victimStats, moveAttack, missMultiplier);
         }
+
+        //cloaked: Increases evasion and speed
         if (index == 2) {
-            //cloaked
             Printer.printColor("The archer puts on their cloak to increase evasion and speed", "white");
             attackerStats.dodgeUpTime(3, 3);        
             attackerStats.speedUpTime(2,3);
         }
+
+        //aimbot: greatly increases accuracy
         if (index == 3) {
-            //aim-bot
             Printer.printColor("Archer temporarily enables aim bot to greatly increase accuracy!", "white");
             victimStats.dodgeUpTime(0.1, 3);
         }
@@ -854,6 +854,7 @@ public class Moves {
      */
     public void greaterWillSwordsmanMoves(Stats attackerStats, Stats victimStats, int attackMpCost, int index) {
 
+        //a light attack: quick slash
         if (index == 0) {
             //Quick Slash
             Printer.printColor("Swordsman Quickly slashes the enemies!", "white");
@@ -862,21 +863,24 @@ public class Moves {
             attackerStats.setCurrentMP(attackerStats.getCurrentMP() - attackMpCost);
             statsCalculator.mobDoDamage(attackerStats, victimStats, moveAttack, missMultiplier);
         }
+
+        //a devastatingly strong swing
         if (index == 1) {
-            // Devastating Swing
             Printer.printColor("The Swordsman Heavily Swings their sword!", "white");
             double moveAttack = 10.3 * attackerStats.getCurrentAttack();
             double missMultiplier = 2.3;
             attackerStats.setCurrentMP(attackerStats.getCurrentMP() - attackMpCost);
             statsCalculator.mobDoDamage(attackerStats, victimStats, moveAttack, missMultiplier);
         }
+
+        //ultimate rage makes the swordsman angry and more powerful
         if (index == 2) {
-            // Ultimate Rage
             Printer.printColor("The swordsman becomes enraged, increasing their attack ability!" ,"white");
             attackerStats.atkUpTime(2, 3);
         }
+
+        //lightspeed crash hurls the swordsman at you at a very high speed. 
         if (index == 3) {
-            // Light-speed Crash!
             Printer.printColor("The Swordsman hurls themselves towards you at the speed of light!", "white");
             double moveAttack = 7.2 * attackerStats.getCurrentAttack();
             double missMultiplier = 4;
@@ -894,30 +898,34 @@ public class Moves {
      */
     public void yetiMoves(Stats attackerStats, Stats victimStats, int attackMpCost, int index) {
 
+        //Yeti slams into you
         if (index == 0) {
-            // Body Slam
             Printer.printColor("The Yeti uses body slam, dealing major damage!", "white");
             double moveAttack = 7.2 * attackerStats.getCurrentAttack();
             double missMultiplier = 2;
             attackerStats.setCurrentMP(attackerStats.getCurrentMP() - attackMpCost);
             statsCalculator.mobDoDamage(attackerStats, victimStats, moveAttack, missMultiplier);
         }
+
+        //Yeti slaps claws into you
         if (index == 1) {
-            // Cataclysmic Claws
             Printer.printColor("The Yeti swipes at you with their cataclysmic claws!", "white");
             double moveAttack = 16 * attackerStats.getCurrentAttack();
             double missMultiplier = 0.2;
             attackerStats.setCurrentMP(attackerStats.getCurrentMP() - attackMpCost);
             statsCalculator.mobDoDamage(attackerStats, victimStats, moveAttack, missMultiplier);
         }
+
+        //Yeti strikes you with a snowball
         if (index == 2) {
-            // Snowball Strike
             Printer.printColor("The Yeti tosses a snowball at you!", "white");
             double moveAttack = 4.8 * attackerStats.getCurrentAttack();
             double missMultiplier = 1.4;
             attackerStats.setCurrentMP(attackerStats.getCurrentMP() - attackMpCost);
             statsCalculator.mobDoDamage(attackerStats, victimStats, moveAttack, missMultiplier);
         }
+
+        //a blizard speeds up the yeti, and makes them dodge more. 
         if (index == 3) {
             // Blizzard
             Printer.printColor("The yeti summons a blizzard, increasing their speed and dodge capabilities", "white");
@@ -934,18 +942,17 @@ public class Moves {
      * @param index             - The index of the attack.
      */
     public void quantumSensoryDroidAttacks(Stats attackerStats, Stats victimStats, int attackMpCost, int index) {
-
+        //slams enemies to the ground: Gravitational slam
         if (index == 0) {
-            // Gravitational Slam!
             Printer.printColor("Quantum Sensory Droid uses gravitational slam, hurling you to the ground!", "white");
             double moveAttack = 5.3 * attackerStats.getCurrentAttack();
             double missMultiplier = 0.8;
             attackerStats.setCurrentMP(attackerStats.getCurrentMP() - attackMpCost);
             statsCalculator.mobDoDamage(attackerStats, victimStats, moveAttack, missMultiplier);
         }
-
+        
+        //atomic annihilation: Rips enemies to atoms
         if (index == 1) {
-            // Atomic Annihilation!
             Printer.printColor("The Quantum Sensory Droid attempts to break their enemy down to atoms!", "white");
             double moveAttack = 12 * attackerStats.getCurrentAttack();
             double missMultiplier = 0.2;
@@ -953,15 +960,15 @@ public class Moves {
             statsCalculator.mobDoDamage(attackerStats, victimStats, moveAttack, missMultiplier);
         }
 
+        //droid rests, 
         if (index == 2) {
-            // Power-down !
             Printer.printColor("Quantum Sensory Droid powers down to heal and regenerate MP.", "white");
-            attackerStats.combatHeal(attackerStats.getMaxHP() / 20, attackerStats);
-            attackerStats.combatRest(attackerStats.getMaxMP() / 20, attackerStats);
+            attackerStats.combatHeal(attackerStats.getMaxHP() /5, attackerStats);
+            attackerStats.combatRest(attackerStats.getMaxMP() /5, attackerStats);
         }
 
+        //droid starts avoiding using astrogates
         if (index == 3) {
-            // Astrogate Evasion!
             Printer.printColor("The Quantum Sensory Droid greatly increases speed!", "white");
             attackerStats.speedUpTime(2,4);
         }
@@ -976,9 +983,8 @@ public class Moves {
      * @param index             - The index of the attack.
      */
     public void wardenOfFrostAttacks(Stats attackerStats, Stats victimStats, int attackMpCost, int index) {
-    
+        //Torrent of frost summons frost and throws it at the enemy
         if (index == 0) {
-            // Torrent of Frost
             Printer.printColor("The Warden of Frost fires a Torrent of Frost at the enemy!", "white");
             double moveAttack = 10 * attackerStats.getCurrentAttack();
             double missMultiplier = 0.8;
@@ -986,21 +992,22 @@ public class Moves {
             statsCalculator.mobDoDamage(attackerStats, victimStats, moveAttack, missMultiplier);
         }
     
+        //icicly eruption does icicles
         if (index == 1) {
-            // Icicle Eruption
             Printer.printColor("The Warden of Frost summons Icicles from the ground, dealing medium damage!", "white");
             double moveAttack = 12 * attackerStats.getCurrentAttack();
             double missMultiplier = 0.2;
             attackerStats.setCurrentMP(attackerStats.getCurrentMP() - attackMpCost);
             statsCalculator.mobDoDamage(attackerStats, victimStats, moveAttack, missMultiplier);
         }
-    
+        
+        //cataclysmic blizard increases their dodge abilities
         if (index == 2) {
-            // Cataclysmic Blizzard
             Printer.printColor("The Warden of Frost summons a blizzard, greatly increasing their evasion", "white");
             attackerStats.dodgeUpTime(10, 3);
         }
     
+        //relentless hailstorm does lots of damage. 
         if (index == 3) {
             // Relentless Hailstorm
             Printer.printColor("The Warden of Frost unleashes a relentless barrage of hail, dealing major damage!", "white");

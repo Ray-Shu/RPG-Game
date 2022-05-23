@@ -36,9 +36,9 @@ public class TownMaker{
     private String[] slumDungeonMobsFloor3 = {"Nano Bot Cluster", "Nano Bot Cluster", "Greater Will Assassin"};
     private int[] slumDungeonFloor3MobLevels = {10,10,10};
     private String slumBossName = "Warden of Dirt";
-    private int slumBossLevel = 10;
+    private int slumBossLevel = 9;
 
-    private int slumDungeonRecommendedLevel = (10);
+    private int slumDungeonRecommendedLevel = (8);
     private int slumDungeonRequiredLevel = (6);
     private Dungeon slumDungeon;
     

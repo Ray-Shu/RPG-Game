@@ -82,7 +82,7 @@ public class Dungeon {
         System.out.println("\n-----------------------------------------------------------");
 
         if(hasDungeonBeenDefeated){
-            Printer.printColor("Sorry! You have already defeated this dungeon", "color");
+            Printer.printColor("You have already defeated this dungeon.", color);
             Printer.quickBreak(1000);
             town.characterEnteringTown(returnToStory);
             return;
@@ -90,21 +90,21 @@ public class Dungeon {
         
         //checks if they are the recommended level. If they are not, we will print out a message warning them. 
         if(player.getLevel() < recommendedLvl){
-            Printer.printColor("This dungeon might be too hard for you...", "red");
+            Printer.printColor("This dungeon might be too hard for you... (Recommended level: 8)", "red");
         }
 
 
-        Printer.printColor("Would you like to enter this dungeon? (yes or no)", "color");
+        Printer.printColor("Would you like to enter this dungeon? (yes or no)", color);
         
         //gets their decission
-        String answer = ErrorChecker.compareArrayOfStrings(yesOrNo, "Its yes or no...", "color");
+        String answer = ErrorChecker.compareArrayOfStrings(yesOrNo, "Its yes or no...", color);
 
         //if they want into the dungeon, we run the dungeon. If not, we wait a second then leave. 
         if(answer.equalsIgnoreCase("yes")){
             runDungeon();
         }
         else{
-            Printer.printColor("Alright if your not going in dont hang around.", "color");
+            Printer.printColor("Alright if your not going in, dont hang around.", color);
             Printer.quickBreak(1000);
             town.characterEnteringTown(returnToStory);
         }
@@ -123,7 +123,7 @@ public class Dungeon {
 
         System.out.println("\n-----------------------------------------------------------");
         Printer.printColor("Welcome to the dungeon!!!", color);
-        Printer.printColor("Battle your way through three rooms of enemies and defeat the boss to earn the next town medallion!", color);
+        Printer.printColor("Battle your way through three rooms of enemies and defeat the boss to be rewarded with the medallion!", color);
         Printer.printColor("Good luck!", color);
         System.out.println("\n-----------------------------------------------------------\n");
         Printer.quickBreak(1800);
@@ -133,17 +133,18 @@ public class Dungeon {
 
         //Checks if the player died in the previous room
         if(!hasPlayerDied){
-            Printer.printColor("Congratulation for beating the first room!\nYou have been fully healed and recovered all mp!\n" + 
-                    "Hear are your rewards: " + xpPerRoom[0] + "XP and " + goldPerRoom[0] + " fusion coins! They are now being distributed.", color);
+            Printer.printColor("Congratulation for beating the first room!\nYou have been fully healed and recovered all MP!\n" + 
+                    "Here are your rewards: " + xpPerRoom[0] + "XP and " + goldPerRoom[0] + " fusion coins! They are now being distributed.", color);
             
             //gives the player rewards.
             player.checkXP(xpPerRoom[0]);
             player.getBank().deposit(goldPerRoom[0]);
             player.getPlayerStats().hospitalHeal();
             player.getPlayerStats().rest();
-            Printer.quickBreak(2000);
+            Printer.quickBreak(1000);
             System.out.print("Enter any character to continue: ");
             scan.next();
+            System.out.println();
             
             runRoom(mobNamesFromRoom2, mobLevelsFromRoom2, 2);
         }
@@ -154,17 +155,18 @@ public class Dungeon {
         
         //Checks if the player died in the previous room
         if(!hasPlayerDied){
-            Printer.printColor("Congratulation for beating the second room!\n You have been fully healed and recovered all mp!\n" + 
-            "Hear are your rewards: " + xpPerRoom[1] + "XP and " + goldPerRoom[1] + " fusion coins! They are now being distributed.", color);
+            Printer.printColor("Congratulation for beating the second room!\nYou have been fully healed and recovered all mp!\n" + 
+            "Here are your rewards: " + xpPerRoom[1] + "XP and " + goldPerRoom[1] + " fusion coins! They are now being distributed.", color);
     
             //gives the player rewards.
             player.checkXP(xpPerRoom[1]);
             player.getBank().deposit(goldPerRoom[1]);
             player.getPlayerStats().hospitalHeal();
             player.getPlayerStats().rest();
-            Printer.quickBreak(2000);
+            Printer.quickBreak(1000);
             System.out.print("Enter any character to continue: ");
             scan.next();
+            System.out.println();
 
             runRoom(mobNamesFromRoom3, mobLevelsFromRoom3, 3);
         }
@@ -178,8 +180,8 @@ public class Dungeon {
             return;
         }
 
-        Printer.printColor("Congratulation for beating the third room!\n You have been fully healed and recovered all mp!\n" + 
-        "Hear are your rewards: " + xpPerRoom[2] + "XP and " + goldPerRoom[2] + " fusion coins! They are now being distributed.", color);
+        Printer.printColor("Congratulation for beating the third room!\nYou have been fully healed and recovered all mp!\n" + 
+        "Here are your rewards: " + xpPerRoom[2] + "XP and " + goldPerRoom[2] + " fusion coins! They are now being distributed.", color);
 
         //gives the player rewards.
         player.checkXP(xpPerRoom[2]);
@@ -187,8 +189,9 @@ public class Dungeon {
         player.getPlayerStats().hospitalHeal();
         player.getPlayerStats().rest();
         Printer.quickBreak(2000);
-        System.out.print("Enter any character to continue: ");
+        System.out.print("\u001B[0mEnter any character to continue: ");
         scan.next();
+        System.out.println();
 
         //* Beginning of the boss fight: 
         //print our boss dialog lines with some time in between sayings
@@ -220,7 +223,7 @@ public class Dungeon {
      * @param cashReward - The cash reward from the room
      */
     public void runRoom(String[]mobNames, int[] mobLevels, int roomNumber){
-        Printer.printColor("Entering the "+ (roomNumber) + " room! ", color);
+        Printer.printColor("Entering room "+ (roomNumber) + ".", color);
         Printer.quickBreak(1000);
 
         for (int i = 0; i < mobNames.length; i++) {
@@ -241,7 +244,7 @@ public class Dungeon {
 
             //says that we defeated the mob!
             Printer.printColor((i+1) + "/" + mobNames.length + " mob's defeated!\n", "green");
-            Printer.quickBreak(2000);
+            Printer.quickBreak(1000);
         }
     }
 
@@ -271,7 +274,7 @@ public class Dungeon {
             currentMobStats = summoner.newWardenDirtStats(mobLevel);
         }
         
-        if(mobName.equalsIgnoreCase("Greater Will Archer")){
+        else if(mobName.equalsIgnoreCase("Greater Will Archer")){
             currentMobStats = summoner.newGreaterWillArcher(mobLevel);
         }
 
@@ -315,8 +318,8 @@ public class Dungeon {
      */
 
     void victory(){
-        Printer.printColor("Congratulations! You have beat the dungeon!!!", "green");
-        Printer.printColor("Distribution your rewards!", "green");
+        Printer.printColor("Congratulations! You have beaten the dungeon!!!", "green");
+        Printer.printColor("Distributing your rewards!", "green");
         player.checkXP(xpPerRoom[mobNamesFromRoom2.length-1]);
         player.getBank().deposit(goldPerRoom[mobNamesFromRoom2.length-1]);
         Printer.quickBreak(1500);

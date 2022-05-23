@@ -76,6 +76,9 @@ public class Merchant {
         switch (responseBack.toLowerCase()) {
             // * All things
             case "leave":
+                if(returnToStory){
+                    return;
+                }
                 town.characterEnteringTown(true);
                 break;
 
@@ -142,11 +145,11 @@ public class Merchant {
         Printer.printItalizcizedColor("Don't strain yourself! You're very lucky that our healer got to you when she did.\n You need to rest\n", "cyan");
         playerStats.rest();
         playerStats.hospitalHeal();
+        mainPlayer.updateArmour();
 
         Printer.printColor("You go to sleep, and wake up three days later feeling refreshed...", "cyan");
         Printer.quickBreak(1000);
-        shop(false, false);
-
+        shop(false, true);
     }   
 
     //displays the goods of the specific floors merchant 
@@ -157,7 +160,7 @@ public class Merchant {
                 .mapToObj(String::valueOf)
                 .toArray(String[]::new);
 
-        String[] exit = {"[e] Exit"}; 
+        String[] exit = {"e"}; 
 
         String[] option = Stream.concat(Arrays.stream(convertToStringOptions), Arrays.stream(exit))
                 .toArray(String[]::new);
@@ -206,7 +209,7 @@ public class Merchant {
                 .mapToObj(String::valueOf)
                 .toArray(String[]::new);
 
-        String[] exit = { "[e] Exit" };
+        String[] exit = { "e" };
 
         String[] option = Stream.concat(Arrays.stream(convertToStringOptions), Arrays.stream(exit))
                 .toArray(String[]::new);

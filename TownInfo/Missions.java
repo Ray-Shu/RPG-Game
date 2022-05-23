@@ -63,7 +63,7 @@ public class Missions {
     //prints out the information about the mission, including the missions name, rewards, and problem. 
     public void printMissionInfo(){
         Printer.printItalizcizedColor( problem  , "grey");
-        Printer.printColor("Rewards: " + XP_Reward + "XP" + " and "+cashReward + " fusion coins!", "green");
+        Printer.printColor("Rewards: " + XP_Reward + "XP" + " and "+ cashReward + " fusion coins!", "green");
         Printer.printColor("This mission is recommended for level " + recommendedLevel+ " players\n", color);
         // Printer.printItalizcizedColor( problem + "\nRewards: " + XP_Reward + "XP & " + itemRewards.toString(),"grey");
     }

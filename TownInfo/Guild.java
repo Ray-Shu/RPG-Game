@@ -109,7 +109,7 @@ public class Guild {
                 allMissions.add(slumMission2);
                 namesOfAllMissions.add(slum1MissionName);
 
-                Missions slumMission3 = new Missions(2001, this, slum3MissionName, slum3MissionOpponents, slum3MissionOpponentLevels, player,  slum3MissionProblem, slum3MissionGreeting, slum3MissionThankYou, slum3MissionColor, slum3MissionXPReward, slum3MissionItems, slum3MissionRecommendedLevel);
+                Missions slumMission3 = new Missions(2500, this, slum3MissionName, slum3MissionOpponents, slum3MissionOpponentLevels, player,  slum3MissionProblem, slum3MissionGreeting, slum3MissionThankYou, slum3MissionColor, slum3MissionXPReward, slum3MissionItems, slum3MissionRecommendedLevel);
                 allMissions.add(slumMission3);
                 namesOfAllMissions.add(slum2MissionName);
                 
@@ -206,6 +206,6 @@ public class Guild {
                     + allMissions.get(i).getMissionName() + ": ", color);
                 allMissions.get(i).printMissionInfo();
         }
-        Printer.printColor("(" + (i+1) + " ) Leave", color);
+        Printer.printColor("(" + (i+1) + ") Leave", color);
     }
 }

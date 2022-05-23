@@ -1,5 +1,6 @@
 package PlayerInformation;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Scanner;
@@ -8,6 +9,8 @@ import Tools.ErrorChecker;
 import Tools.Printer;
 
 public class Inventory {
+
+    private DecimalFormat df = new DecimalFormat("###.00");
 
     Player mainPlayer;
     Stats playerStats; 
@@ -118,16 +121,16 @@ public class Inventory {
 
        
 
-        Printer.printColor("\nItems\n------------------------------------------------------------------------------\n","yellow");
+        System.out.println("\nItems\n------------------------------------------------------------------------------\n");
         for (int i = 0; i < categorizedInventory.size(); i++) {
             if (i != 0 && i < categorizedInventory.size()) { 
                 System.out.print(" | ");
             }
-            System.out.print("[" + (i+1) + "] " + categorizedInventory.get(i));
+            Printer.printColor("[" + (i+1) + "] " + categorizedInventory.get(i),"yellow");
 
 
         }
-        Printer.printColor("\n\n------------------------------------------------------------------------------","yellow");
+        System.out.println("\n\n------------------------------------------------------------------------------");
         Printer.printColor("\n\n[E] Exit Inventory\n","yellow");
 
         String inventoryOptions = ErrorChecker.compareArrayOfStrings(inventoryChoice, "Choose a proper input.", "white");
@@ -179,7 +182,7 @@ public class Inventory {
                     if (playerStats.getCurrentHP() > playerStats.getMaxHP()) {
                         playerStats.setCurrentHP(playerStats.getMaxHP());
                     }
-                    Printer.printColor("You have healed to " + playerStats.getCurrentHP() + " HP!", "yellow");
+                    Printer.printColor("You have healed to " + df.format(playerStats.getCurrentHP()) + " HP!", "yellow");
                     showInventory();
                 } else {
                     Printer.printColor("You don't have any Greater Healing Pots.", "red");
@@ -195,7 +198,7 @@ public class Inventory {
                     if (playerStats.getCurrentHP() > playerStats.getMaxHP()) {
                         playerStats.setCurrentHP(playerStats.getMaxHP());
                     }
-                    Printer.printColor("You have healed to " + playerStats.getCurrentHP() + " HP!", "yellow");
+                    Printer.printColor("You have healed to " + df.format(playerStats.getCurrentHP()) + " HP!", "yellow");
                     showInventory();
                 } else {
                     Printer.printColor("You don't have any Healing Pots.", "red");
@@ -211,7 +214,7 @@ public class Inventory {
                     if (playerStats.getCurrentHP() > playerStats.getMaxHP()) {
                         playerStats.setCurrentHP(playerStats.getMaxHP());
                     }
-                    Printer.printColor("You have healed to " + playerStats.getCurrentHP() + " HP!", "yellow");
+                    Printer.printColor("You have healed to " + df.format(playerStats.getCurrentHP()) + " HP!", "yellow");
                     showInventory();
                 } else {
                     Printer.printColor("You don't have any Weak Healing Pots.", "red");
@@ -247,7 +250,7 @@ public class Inventory {
                     if (playerStats.getCurrentMP() > playerStats.getMaxMP()) {
                         playerStats.setCurrentMP(playerStats.getMaxMP());
                     }
-                    Printer.printColor("You have restored " + playerStats.getCurrentMP() + " MP!", "yellow");
+                    Printer.printColor("You have restored " + df.format(playerStats.getCurrentMP()) + " MP!", "yellow");
                     showInventory();
                 } else {
                     Printer.printColor("You don't have any Greater Mana Pots.", "red");
@@ -262,7 +265,7 @@ public class Inventory {
                     if (playerStats.getCurrentMP() > playerStats.getMaxMP()) {
                         playerStats.setCurrentMP(playerStats.getMaxMP());
                     }
-                    Printer.printColor("You have restored " + playerStats.getCurrentMP() + " MP!", "yellow");
+                    Printer.printColor("You have restored " + df.format(playerStats.getCurrentMP()) + " MP!", "yellow");
                     showInventory();
                 } else {
                     Printer.printColor("You don't have any Greater Mana Pots.", "red");
@@ -277,7 +280,7 @@ public class Inventory {
                     if (playerStats.getCurrentMP() > playerStats.getMaxMP()) {
                         playerStats.setCurrentMP(playerStats.getMaxMP());
                     }
-                    Printer.printColor("You have restored " + playerStats.getCurrentMP() + " MP!", "yellow");
+                    Printer.printColor("You have restored " + df.format(playerStats.getCurrentMP()) + " MP!", "yellow");
                     showInventory();
                 } else {
                     Printer.printColor("You don't have any Greater Mana Pots.", "red");

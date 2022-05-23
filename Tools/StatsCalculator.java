@@ -52,7 +52,7 @@ public class StatsCalculator {
     public void doDamage(Stats attackerStats, Stats victimStats, double moveAttack, double missMultiplier) { 
 
         //These are the stats that we will need for calculating the correct damage
-        double atk = moveAttack * attackerStats.getCurrentAttack();
+        double atk = moveAttack * 90 * attackerStats.getCurrentAttack();
         double magicDmg = attackerStats.getCurrentMagicDmg(); 
         double physDmg = attackerStats.getCurrentPhysDmg(); 
         double cr = attackerStats.getCurrentCritRate(); 

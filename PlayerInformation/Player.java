@@ -60,6 +60,8 @@ public class Player {
 
         //returns info about players armour
         public Armours getArmour(){return armour;} 
+        
+        public void updateArmour() {armour.updateArmour();}
 
         //returns info about the townmaker
         public TownMaker getTownMaker(){return townMaker;}

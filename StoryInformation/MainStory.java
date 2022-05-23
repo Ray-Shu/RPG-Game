@@ -21,6 +21,8 @@ public class MainStory {
     String slumsGreeting = "Welcome to the Common Shack! What can I do for you?"; 
     String slumsFarewell = "Thanks for coming!"; 
     String slumsErrorMessage = "Looks like that isn't in the store, pick something else yeah?"; 
+    Merchant slumsMerchant;
+    
    
 
     public static Printer print = new Printer();
@@ -245,7 +247,7 @@ public class MainStory {
         TownMaker townMaker = new TownMaker(mainPlayer);
         mainPlayer.makeTownMaker(townMaker);
         townMaker.makeTowns();
-        mainPlayer.getCurrentTown().characterEnteringTown(true);
+        //mainPlayer.getCurrentTown().characterEnteringTown(true);
         
 
         // Printer.printItalizcizedColor(
@@ -305,33 +307,66 @@ public class MainStory {
                 merchantColor);
         townMaker.addBuildingToTown(townMaker.getCurrentTown(), slumsMerchant);
         slumsMerchant.addArmour(slumsArmour, slumsArmourPrice);
-        //TODO: add ability to equip armour and store items 
-        slumsMerchant.shop(false, true); 
+        //slumsMerchant.shop(false, true); 
+        this.slumsMerchant = slumsMerchant; 
+
         
-        Printer.printItalizcizedColor("\"Looks like I've got to complete more missions to earn myself some more money. Then I'll be able to purchase that Superior Spectral Gear.\" \n", "white");
-        Printer.quickBreak(1000); 
-        Printer.printItalizcizedColor("Your mind, once again, gravitates towards the thrill of battle... \n", "purple");
+        chapter_One_Scene_Three();
+    }  
+    
+    public void chapter_One_Scene_Three() {
+        // Printer.printItalizcizedColor(
+        //         "\"Looks like I've got to complete more missions to earn myself some more money. Then I'll be able to purchase that Superior Spectral Gear.\" \n",
+        //         "white");
+        // Printer.quickBreak(1000);
+        // Printer.printItalizcizedColor("Your mind, once again, gravitates towards the thrill of battle... \n", "purple");
 
-        while(mainPlayer.getLevel() < 6) {
+        // do {
+        //     mainPlayer.getCurrentTown().characterEnteringTown(true);
+        //     if(mainPlayer.getLevel() < 8) {
+        //         Printer.printItalizcizedColor(
+        //                 "There isn't much to do in such a destitute floor besides occupying your mind with the sounds of clashing metal.\n",
+        //                 "purple");
+        //     }
             
-            mainPlayer.getCurrentTown().characterEnteringTown(true);
-            Printer.printItalizcizedColor(
-                "There isn't much to do in such a destitute floor besides occupying your mind with the sounds of clashing metal.\n",
-                "purple");
-            }
-        chapter_One_Dungeon_Fight();
+        // } while (mainPlayer.getLevel() < 8);
 
-    }   
+        chapter_One_Buying_Armour(); 
+        
+    }
+
+    public void chapter_One_Buying_Armour() {
+        // Printer.printItalizcizedColor("Before you make your way to the dungeon's \ndoor, you decide to pay heed to the \nmerchant once more, looking to purchase \nthe \u001B[31mSuperior Spectral Armour\u001B[31m\u001B[0m.\n", "white");
+        // slumsMerchant.shop(false, true);
+        // System.out.println();
+        // Printer.printItalizcizedColor("You walk out of the merchants shop donning\nsomewhat lustrous armour, confidence \nplastered through your face as you trudge \nthrough the dirtied streets, one last time. \n", "white");
+        // Printer.quickBreak(1000);
+        chapter_One_Dungeon_Fight();
+    }
 
     public void chapter_One_Dungeon_Fight() {
-        Printer.printItalizcizedColor("\"Alright, time to see if this dungeon deems me worthy.\"", "white");
-        Printer.quickBreak(1000);
-        Printer.printItalizcizedColor("You make your way to the dungeon, \ntaking in the height of the seemingly \nunrealistic gargantuan door. As you get\ncloser, you feel a strange, indescribable \nsensation pulse through your soul which \nyour mind registers as: \u001B[31mWorthy.\u001B[31m ", "white");
-        Printer.quickBreak(1000);
-        Printer.printItalizcizedColor("You gaze into the open door, seing nothing \nbut pitch black. Your heart shakes ever so \nslightly, but you steel your resolve and walk \ninto the dungeon with the conviction of \nkilling the new king. ", "white");
-        Printer.quickBreak(1000);
-
+        
+        // Printer.printItalizcizedColor("\"Alright, time to see if this dungeon deems me worthy.\"\n", "white");
+        // Printer.quickBreak(1000);
+        // Printer.printItalizcizedColor("You make your way to the dungeon, \ntaking in the height of the seemingly \nunrealistic gargantuan door. As you get\ncloser, you feel a strange, indescribable \nsensation pulse through your soul which \nyour mind registers as: \u001B[31mWorthy.\u001B[31m \n", "white");
+        // Printer.quickBreak(1000);
+        // Printer.printItalizcizedColor("You gaze into the open door, seing nothing \nbut pitch black. Your heart shakes ever so \nslightly, but you steel your resolve and walk \ninto the dungeon with the conviction of \nkilling the new king.", "white");
+        // Printer.quickBreak(1000);
+        mainPlayer.levelUp();
+        mainPlayer.levelUp();
+        mainPlayer.levelUp();
+        mainPlayer.levelUp();
+        mainPlayer.levelUp();
+        mainPlayer.levelUp();
+        mainPlayer.levelUp();
+        mainPlayer.levelUp();
         mainPlayer.getCurrentTown().enterDungeon(true);
+        chapter_Two_Scene_One();
+
+    }
+
+    public void chapter_Two_Scene_One(){ 
+        Printer.print("ANTARCTIC DOMAN HELL YEA");
     }
 }
 

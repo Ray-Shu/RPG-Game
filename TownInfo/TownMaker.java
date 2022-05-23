@@ -21,7 +21,7 @@ public class TownMaker{
 	private Stats playerStats;
 	private Player player;
 
-
+    //slum dungeon stuff
     private String[] slumBossDialog = {"VERY IMPRESSIVE VERY IMPRESSIVE!!! BEEP",
     "CHALLENGER HAS MANAGED TO MAKE IT ALL THE WAY TO FIGHT ME!!! BEEP", 
     "TOO BAD CHALLENGER WILL NOT BEAT ME!!! BEEEEEEP!!!"};
@@ -41,6 +41,25 @@ public class TownMaker{
     private int slumDungeonRecommendedLevel = (10);
     private int slumDungeonRequiredLevel = (6);
     private Dungeon slumDungeon;
+    
+    //antarctic dungeon stuff
+    private String[] antarcticBossDialog = {"PREPARE YOUR SELF CHALLENGER!",
+    "I WILL DESTROY YOU WITH THE AMAZINGLY POWERFUL FROST!", };
+    private int[] antarcticDungeonGoldPerFloor = {1000,1500,2000,5000};
+    private int[] antarcticDungeonXPperFloor = {400,500,600,1500};
+
+    private String[] antarcticDungeonMobsFloor1 = {"Greater Will Swordsman", "Greater Will Swordsman", "Greater Will Swordsman"};
+    private int[] antarcticDungeonFloor1MobLevels = {17,17,17};
+    private String[] antarcticDungeonMobsFloor2 = {"Yeti", "Yeti", "Yeti"};
+    private int[] antarcticDungeonFloor2MobLevels = {18,18,18};
+    private String[] antarcticDungeonMobsFloor3 = {"Yeti", "Greater Will Swordsman", "Greater Will Archer"};
+    private int[] antarcticDungeonFloor3MobLevels = {19,19,19};
+    private String antarcticBossName = "Warden of Frost";
+    private int antarcticBossLevel = 20;
+
+    private int antarcticDungeonRecommendedLevel = (20);
+    private int antarcticDungeonRequiredLevel = (15);
+    private Dungeon antarcticDungeon;
     
     private Town[] allTowns = new Town[5];
     
@@ -76,7 +95,9 @@ public class TownMaker{
         antarcticDomain = new Town("The Antarctic Domain", 2, player,"blue");
         antarcticDomain.addBuilding(player, playerStats, playerAccount, notStoreItems, notStorePrices, "Hospital",thingsToDoAtHospital, "Welcome to the Hospital! We are ready to heal you!", "Thank you for coming", "Sorry could you repeat that?", "white");
         Guild antarcticAdventurersGuild = new Guild(player);
-        antarcticDomain.addDungeon(slumDungeon);
+        antarcticDungeon = new Dungeon(antarcticDungeonMobsFloor1, antarcticDungeonFloor1MobLevels, antarcticDungeonFloor2MobLevels, antarcticDungeonMobsFloor2, antarcticDungeonFloor3MobLevels, antarcticDungeonMobsFloor3, antarcticBossName, antarcticBossLevel, antarcticBossDialog, antarcticDungeonGoldPerFloor, antarcticDungeonXPperFloor, antarcticDungeonRecommendedLevel, antarcticDungeonRequiredLevel, player, antarcticDomain, "purple");
+
+        antarcticDomain.addDungeon(antarcticDungeon);
         antarcticDomain.addTeleporter(tp);
         allTowns[1] = antarcticDomain;
         

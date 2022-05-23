@@ -799,8 +799,8 @@ public class Moves {
         if (index == 0) {
             // Torrent of Frost
             attackMpCost = 10;
-            Printer.printColor("Quantum Sensory Droid uses gravitational slam, hurling you to the ground!", "white");
-            double moveAttack = 5.3 * attackerStats.getCurrentAttack();
+            Printer.printColor("The Warden of Frost fires a Torrent of Frost at the enemy!", "white");
+            double moveAttack = 10 * attackerStats.getCurrentAttack();
             double missMultiplier = 0.8;
             attackerStats.setCurrentMP(attackerStats.getCurrentMP() - attackMpCost);
             statsCalculator.mobDoDamage(attackerStats, victimStats, moveAttack, missMultiplier);
@@ -819,16 +819,18 @@ public class Moves {
         if (index == 2) {
             // Cataclysmic Blizzard
             attackMpCost = 9;
-            Printer.printColor("Quantum Sensory Droid powers down to heal and regenerate MP.", "white");
-            attackerStats.combatHeal(attackerStats.getMaxHP() / 20, attackerStats);
-            attackerStats.combatRest(attackerStats.getMaxMP() / 20, attackerStats);
+            Printer.printColor("The Warden of Frost summons a blizzard, greatly increasing their evasion", "white");
+            attackerStats.dodgeUpTime(10, 3);
         }
     
         if (index == 3) {
             // Relentless Hailstorm
             attackMpCost = 25;
-            Printer.printColor("The Quantum Sensory Droid greatly increases speed!", "white");
-            attackerStats.speedUpTime(2,4);
+            Printer.printColor("The Warden of Frost unleashes a relentless barrage of hail, dealing major damage!", "white");
+            double moveAttack = 32 * attackerStats.getCurrentAttack();
+            double missMultiplier = 0.2;
+            attackerStats.setCurrentMP(attackerStats.getCurrentMP() - attackMpCost);
+            statsCalculator.mobDoDamage(attackerStats, victimStats, moveAttack, missMultiplier);
         }
     }
 

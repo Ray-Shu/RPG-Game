@@ -94,6 +94,16 @@ public class Missions {
             else if(mobNames[i].equalsIgnoreCase("Nano Bot Cluster")){
                 currentMobStats = mobSummoner.newNanoBotCluster(mobLevels[i]);
             }
+            else if(mobNames[i].equalsIgnoreCase("Greater Will Swordsman")){
+                currentMobStats = mobSummoner.newGreaterWillSwordsman(mobLevels[i]);
+            }
+            else if(mobNames[i].equalsIgnoreCase("Greater Will Archer")){
+                currentMobStats = mobSummoner.newGreaterWillArcher(mobLevels[i]);
+            }
+            else if(mobNames[i].equalsIgnoreCase("Yeti")){
+                currentMobStats = mobSummoner.newYeti(mobLevels[i]);
+            }
+            
             else{
                 System.out.println("Incorrect spelling of opponent name");
                 return;

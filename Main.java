@@ -52,7 +52,7 @@ public class Main {
         // player.checkXP(10000);
         // townMaker.makeTowns();
         // townMaker.increaseMaxTownLevel();
-        // townMaker.runSlums();
+        // townMaker.getCurrentTown().characterEnteringTown(false);
             
             
         /**

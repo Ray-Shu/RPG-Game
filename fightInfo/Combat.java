@@ -341,6 +341,9 @@ public class Combat extends Moves{
             quantumSensoryDroidAttacks(mobStats, playerStats, index);
         }
         
+        if (mobAttacks == mobSummoner.getWardenOfFrostAttacks()){
+            wardenOfFrostAttacks(mobStats, playerStats, index);
+        }
         
 
     }

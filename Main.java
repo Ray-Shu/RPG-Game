@@ -39,8 +39,8 @@ public class Main {
                     
         // *Story Line (currently working on chapter One) 
         // storyTesting();
-        MainStory story = new MainStory();
-        story.startStory(); 
+        // MainStory story = new MainStory();
+        // story.startStory(); 
     
                     
         //* Town Tests

@@ -2,7 +2,7 @@ package StoryInformation;
 
 import java.util.Scanner;
 
-import PlayerAssistants.*;
+
 import Tools.*;
 import TownInfo.*;
 import PlayerInformation.*;

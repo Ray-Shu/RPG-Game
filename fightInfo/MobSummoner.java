@@ -1,14 +1,15 @@
 package fightInfo;
 
 import PlayerInformation.*;
+
+/**
+ * Summons a mob, based on their level, and the type of mob they chose. They all have different attacks
+ */
 public class MobSummoner {
 
     private String mobName;
     private String chosenMobAttacks[];
     private int[] chosenAttackCosts;
-
-    //*Used cuz i dont wanna keep checking back and forth if im inputting the right stats, will delete once done
-    //maxHP, maxMP, maxSpd, maxAtk, maxPhysDmg, maxMagicDmg, maxDef, maxEnd, maxStam, maxPhysRes, maxMagicRes, maxDodge, maxVit, maxCritRate,maxCritDmg,maxLuck;
 
     private final String CYBER_PUNK_ATTACKS[] = {"Right Hook!", "Bionic Crunch", "Weak Kick", "Drunken Fist!" };
     private final int CP_MP_COSTS[] = {5,8,3,10};
@@ -79,7 +80,7 @@ public class MobSummoner {
 
     //* Returns Array's of attack costs. 
 
-    //returns the greater will assasin's attack costs
+    //returns the greater will assassin's attack costs
     public int[] getGreaterWillAssasinAttackCosts(){return GREATER_WILL_ASSASSIN_COSTS;}
 
     //returns the cyber punk's attack costs
@@ -107,15 +108,16 @@ public class MobSummoner {
     public int[] getWardenOfFrostAttackCosts(){return WARDEN_OF_FROST_ATTACK_COSTS;}
     
     /**
-     * Creates a new cyberpunk with a given level
+     * Creates a new mob with a given level
      * @param lvl is the level of the mob
-     * @return the stats of cyberpunk
+     * @return the stats of mob
      */
     public Stats newCyberPunk(int lvl){
         
         mobName = "Cyberpunk";
         chosenMobAttacks = CYBER_PUNK_ATTACKS;
         chosenAttackCosts = CP_MP_COSTS;
+        
         //Calculates the mob's stats based on their level
         double lvlMultiplier = Math.pow(1.1, lvl) - 0.1;
 
@@ -126,11 +128,17 @@ public class MobSummoner {
 
     }
 
+    /**
+     * Creates a new mob with a given level
+     * @param lvl is the level of the mob
+     * @return the stats of mob
+     */
     public Stats newGreaterWillAssassin(int lvl){
         mobName = "Greater Will Assassin"; 
         chosenMobAttacks = GREATER_WILL_ASSASSIN_ATTACKS; 
         chosenAttackCosts = GREATER_WILL_ASSASSIN_COSTS;
 
+        //Calculates the mob's stats based on their level
         double lvlMultiplier = Math.pow(1.1, lvl) - 0.1;
         return new Stats( greaterWillAssassinStats[0] * lvlMultiplier, greaterWillAssassinStats[1] * lvlMultiplier, greaterWillAssassinStats[2] * lvlMultiplier, 
                 greaterWillAssassinStats[3] * lvlMultiplier, greaterWillAssassinStats[4] * lvlMultiplier, greaterWillAssassinStats[5] * lvlMultiplier,
@@ -141,11 +149,17 @@ public class MobSummoner {
 
     }
 
+    /**
+     * Creates a new mob with a given level
+     * @param lvl is the level of the mob
+     * @return the stats of mob
+     */
     public Stats newWardenDirtStats(int lvl){
         mobName = "Warden of Dirt"; 
         chosenMobAttacks = WARDEN_OF_DIRT_ATTACKS; 
         chosenAttackCosts = WARDEN_DIRT_ATTACK_COSTS;
 
+        //Calculates the mob's stats based on their level
         double lvlMultiplier = Math.pow(1.1, lvl) - 0.1;
 
         return new Stats( wardenDirtStats[0] * lvlMultiplier, wardenDirtStats[1] * lvlMultiplier, wardenDirtStats[2] * lvlMultiplier, 
@@ -156,11 +170,17 @@ public class MobSummoner {
 
     }
 
+    /**
+     * Creates a new mob with a given level
+     * @param lvl is the level of the mob
+     * @return the stats of mob
+     */
     public Stats newNanoBotCluster(int lvl) {
         mobName = "Nano-Bot Cluster"; 
         chosenMobAttacks = NANO_BOT_ATTACKS; 
         chosenAttackCosts = NANO_BOT_COST;
 
+        //Calculates the mob's stats based on their level
         double lvlMultiplier = Math.pow(1.1, lvl) - 0.1;
         
         return new Stats(
@@ -171,11 +191,17 @@ public class MobSummoner {
                 nanoBotStats[12] * lvlMultiplier, nanoBotStats[13] * lvlMultiplier, nanoBotStats[14] * lvlMultiplier, nanoBotStats[15] * lvlMultiplier);
     }
 
+    /**
+     * Creates a new mob with a given level
+     * @param lvl is the level of the mob
+     * @return the stats of mob
+     */
     public Stats newGreaterWillArcher(int lvl) {
         mobName = "Greater Will Archer"; 
         chosenMobAttacks = GREATER_WILL_ARCHER_ATTACKS; 
         chosenAttackCosts = GREATER_WILL_ARCHER_ATTACK_COSTS;
 
+        //Calculates the mob's stats based on their level
         double lvlMultiplier = Math.pow(1.1, lvl) - 0.1;
         
         return new Stats(
@@ -186,11 +212,17 @@ public class MobSummoner {
                 greaterWillArcherStats[12] * lvlMultiplier, greaterWillArcherStats[13] * lvlMultiplier, greaterWillArcherStats[14] * lvlMultiplier, greaterWillArcherStats[15] * lvlMultiplier);
     }
 
+    /**
+     * Creates a new mob with a given level
+     * @param lvl is the level of the mob
+     * @return the stats of mob
+     */
     public Stats newGreaterWillSwordsman(int lvl) {
         mobName = "Greater Will Swordsman"; 
         chosenMobAttacks = GREATER_WILL_SWORDSMAN_ATTACKS; 
         chosenAttackCosts = GREATER_WILL_SWORDSMAN_ATTACK_COSTS;
 
+        //Calculates the mob's stats based on their level
         double lvlMultiplier = Math.pow(1.1, lvl) - 0.1;
         
         return new Stats(
@@ -201,11 +233,17 @@ public class MobSummoner {
                 greaterWillSwordsmanStats[12] * lvlMultiplier, greaterWillSwordsmanStats[13] * lvlMultiplier, greaterWillSwordsmanStats[14] * lvlMultiplier, greaterWillSwordsmanStats[15] * lvlMultiplier);
     }
 
+    /**
+     * Creates a new mob with a given level
+     * @param lvl is the level of the mob
+     * @return the stats of mob
+     */
     public Stats newYeti(int lvl) {
         mobName = "Yeti"; 
         chosenMobAttacks = YETIS_ATTACKS; 
         chosenAttackCosts = YETIS_ATTACK_COSTS;
 
+        //Calculates the mob's stats based on their level
         double lvlMultiplier = Math.pow(1.1, lvl) - 0.1;
         
         return new Stats(
@@ -215,11 +253,18 @@ public class MobSummoner {
                 yetiStats[9] * lvlMultiplier, yetiStats[10] * lvlMultiplier, yetiStats[11] * lvlMultiplier,
                 yetiStats[12] * lvlMultiplier, yetiStats[13] * lvlMultiplier, yetiStats[14] * lvlMultiplier, yetiStats[15] * lvlMultiplier);
     }
+
+    /**
+     * Creates a new mob with a given level
+     * @param lvl is the level of the mob
+     * @return the stats of mob
+     */
     public Stats newQuantumSensoryDroid(int lvl) {
         mobName = "Quantum Sensory Droid"; 
         chosenMobAttacks = QUANTUM_SENSORY_DROID_ATTACKS; 
         chosenAttackCosts = QUANTUM_SENSORY_DROID_ATTACK_COSTS;
 
+        //Calculates the mob's stats based on their level
         double lvlMultiplier = Math.pow(1.1, lvl) - 0.1;
         
         return new Stats(
@@ -230,11 +275,17 @@ public class MobSummoner {
                 quantumSensoryDroidStats[12] * lvlMultiplier, quantumSensoryDroidStats[13] * lvlMultiplier, quantumSensoryDroidStats[14] * lvlMultiplier, quantumSensoryDroidStats[15] * lvlMultiplier);
     }
 
+    /**
+     * Creates a new mob with a given level
+     * @param lvl is the level of the mob
+     * @return the stats of mob
+     */
     public Stats newWardenOfFrost(int lvl) {
         mobName = "Warden Of Frost"; 
         chosenMobAttacks = WARDEN_OF_FROST_ATTACKS; 
         chosenAttackCosts = WARDEN_OF_FROST_ATTACK_COSTS;
 
+        //Calculates the mob's stats based on their level
         double lvlMultiplier = Math.pow(1.1, lvl) - 0.1;
         
         return new Stats(

@@ -1,4 +1,5 @@
-package PlayerAssistants;
+package StoryInformation;
+
 
 import PlayerInformation.*;
 
@@ -8,15 +9,18 @@ public class Checkpoints {
         double[] saveStats;
         boolean hasCheckPointBeenUsed = false; 
 
-        public Checkpoints() {
-
-        }
-
+        /**
+         * Saves the stats of the player
+         * @param playerStats = the stats of the player
+         */
         public void createCheckpoint(Stats playerStats){
                 saveStats = playerStats.getCurrentStats();
                 this.playerStats = playerStats;
         }
 
+        /**
+         * Sends the player back to the checkpoint
+         */
         public void backToCheckpoint(){
                 playerStats.setCurrentHP(saveStats[0]);
                 playerStats.setCurrentMP(saveStats[1]);
@@ -37,7 +41,11 @@ public class Checkpoints {
                 hasCheckPointBeenUsed = true;
         }
 
-        boolean hasCheckPointBeenUsed(){
+        /**
+         * Returns a boolean over whether or not the checkpoint has been used
+         * @return hasCheckPointBeenUsed
+         */
+        public boolean hasCheckPointBeenUsed(){
                 return hasCheckPointBeenUsed;
         }
 }

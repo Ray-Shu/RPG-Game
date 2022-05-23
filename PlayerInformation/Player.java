@@ -6,6 +6,7 @@ import Tools.*;
 import TownInfo.*;
 
 public class Player {
+        private Armours armour;
         private String playerClass; 
         private Stats playerStats;
         private String chosenAttacks[];
@@ -16,6 +17,7 @@ public class Player {
         private int maxTownLevel;
         private TownMaker townMaker;
         private PlayerCreation creator;
+        private Inventory playerInventory; 
 
         public Player(Stats stats, Bank bankAccount, String name, String[] chosenAttacks, int[] chosenAttacksCost, String nameOfClass, PlayerCreation creator) {
 
@@ -27,6 +29,8 @@ public class Player {
                 playerLevel = 1;
                 this.creator = creator;
                 playerStats = stats;
+                this.armour = new Armours(this);
+                this.playerInventory = new Inventory(stats);
         }
 
         public void makeTownMaker(TownMaker townMaker){
@@ -38,7 +42,6 @@ public class Player {
          * *ALL INVENTORY RELATED STUFF
          * Reference to this when showing or adding to inventory
          */
-        Inventory playerInventory = new Inventory(playerStats);
                 
         public Inventory getInventory() {return playerInventory;}
         
@@ -55,6 +58,8 @@ public class Player {
                 playerInventory.playerInventoryAddEquippedArmour(headPiece, chestPiece, legPiece, boots);
         }
 
+        //returns info about players armour
+        public Armours getArmour(){return armour;} 
 
         //returns info about the townmaker
         public TownMaker getTownMaker(){return townMaker;}
@@ -102,6 +107,7 @@ public class Player {
                 //todo: Make this print out stat increases
                 System.out.println("\u001B[33m-----------------------------------------------------------\u001B[33m");
                 playerStats.statsUp(1.1);
+                armour.updateArmour();
         }
 
         /**

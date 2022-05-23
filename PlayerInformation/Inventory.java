@@ -174,6 +174,11 @@ public class Inventory {
                 if(howManyGreaterHealingPots > 0) {
                     playerStats.setCurrentHP(playerStats.getCurrentHP() + (playerStats.getMaxHP() * 0.7));
                     howManyGreaterHealingPots--; 
+
+                    // checks if hp is overcapped
+                    if (playerStats.getCurrentHP() > playerStats.getMaxHP()) {
+                        playerStats.setCurrentHP(playerStats.getMaxHP());
+                    }
                     Printer.printColor("You have healed to " + playerStats.getCurrentHP() + " HP!", "yellow");
                     showInventory();
                 } else {
@@ -186,6 +191,10 @@ public class Inventory {
                 if (howManyHealingPots > 0) {
                     playerStats.setCurrentHP(playerStats.getCurrentHP() + (playerStats.getMaxHP() * 0.4));
                     howManyHealingPots--;
+                    // checks if hp is overcapped
+                    if (playerStats.getCurrentHP() > playerStats.getMaxHP()) {
+                        playerStats.setCurrentHP(playerStats.getMaxHP());
+                    }
                     Printer.printColor("You have healed to " + playerStats.getCurrentHP() + " HP!", "yellow");
                     showInventory();
                 } else {
@@ -198,6 +207,10 @@ public class Inventory {
                 if (howManyWeakHealingPots > 0) {
                     playerStats.setCurrentHP(playerStats.getCurrentHP() + (playerStats.getMaxHP() * 0.20));
                     howManyWeakHealingPots--;
+                    // checks if hp is overcapped
+                    if (playerStats.getCurrentHP() > playerStats.getMaxHP()) {
+                        playerStats.setCurrentHP(playerStats.getMaxHP());
+                    }
                     Printer.printColor("You have healed to " + playerStats.getCurrentHP() + " HP!", "yellow");
                     showInventory();
                 } else {

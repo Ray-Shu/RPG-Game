@@ -221,7 +221,36 @@ public class Armours {
         playerStats.setCurrentCritDmg(statsAfterArmour[14]);
         playerStats.setCurrentLuck(statsAfterArmour[15]);
     }
+    
+    //updates armour after level up
+    public void updateArmour() {
+        statsBeforeArmour = playerStats.getCurrentStats(); 
+        
+        statsAfterArmour = Arrays.copyOf(statsBeforeArmour, statsBeforeArmour.length); 
 
+        for (int i = 0; i < statsAfterArmour.length; i++) { 
+            statsAfterArmour[i] += equipmentStats[i]; 
+        }
+          //maxHP, maxMP, maxSpd, maxAtk, maxPhysDmg, maxMagicDmg, maxDef, maxEnd, maxStam, 
+        //maxPhysRes, maxMagicRes, maxDodge, maxVit, maxCritRate,maxCritDmg,maxLuck;
+        playerStats.setCurrentHP(statsAfterArmour[0]);
+        playerStats.setCurrentMP(statsAfterArmour[1]);
+        playerStats.setCurrentSpd(statsAfterArmour[2]);
+        playerStats.setCurrentAtk(statsAfterArmour[3]); 
+        playerStats.setCurrentPhysDmg(statsAfterArmour[4]);
+        playerStats.setCurrentMagicDmg(statsAfterArmour[5]);
+        playerStats.setCurrentDef(statsAfterArmour[6]); 
+        playerStats.setCurrentEnd(statsAfterArmour[7]); 
+        playerStats.setCurrentStam(statsAfterArmour[8]); 
+        playerStats.setCurrentPhysRes(statsAfterArmour[9]); 
+        playerStats.setCurrentMagicRes(statsAfterArmour[10]);
+        playerStats.setCurrentDodge(statsAfterArmour[11]);
+        playerStats.setCurrentVit(statsAfterArmour[12]); 
+        playerStats.setCurrentCritRate(statsAfterArmour[13]);
+        playerStats.setCurrentCritDmg(statsAfterArmour[14]);
+        playerStats.setCurrentLuck(statsAfterArmour[15]);
+
+    }
 }
   
 

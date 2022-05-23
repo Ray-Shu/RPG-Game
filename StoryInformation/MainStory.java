@@ -67,8 +67,7 @@ public class MainStory {
         this.inventory = mainPlayer.getInventory();
 
         //equips the basic armour for your chosen class
-        Armours armours = new Armours(mainPlayer);
-        this.armours = armours; 
+        this.armours = mainPlayer.getArmour(); 
         this.armours.equipArmour("Battered Spectral Armour");
     }
 
@@ -199,6 +198,8 @@ public class MainStory {
     }
 
     public void chapter_One_Fight_Scene_One(){ 
+        playerStats.getClassInfo(chosenClass);
+        mainPlayer.showInventory();
     //*GETS ALL OF THE INFO OF MC'S CLASS AND STATS ------------------------------------------------------------
         playerStats = mainPlayer.getPlayerStats();
         Stats mobStats = summonMob.newGreaterWillAssassin(2);

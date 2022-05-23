@@ -262,7 +262,7 @@ public void chooseHacker(String chosenClass){
 }
 
 public void chooseTerminator(String chosenClass){
-        playerStats = new Stats(300.0, 90.0, 0.8, 4.5, 8.0, 0.0, 7.0, 10.0, 200.0, 9.0, 3.0, 1.0, 1.0, 1.0, 1.0, 1.0);
+        playerStats = new Stats(2000.0, 1.0, 0.8, 4.5, 8.0, 0.0, 7.0, 10.0, 200.0, 9.0, 3.0, 1.0, 1.0, 1.0, 1.0, 1.0);
 
         Printer.printColor("Terminator, a good choice.", "red");
         chosenAttacks = TERMINATOR_ATTACKS;

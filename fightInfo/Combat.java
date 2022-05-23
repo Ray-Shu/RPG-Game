@@ -81,7 +81,18 @@ public class Combat extends Moves{
                 listAttacks();
                 
                 //makes them enter in another number if the option does not correspond to an attack or the inventory. 
-                int option = ErrorChecker.intWithMinAndMax(1, 5, "Choose an attack", "white");
+                int option;
+                do  {
+                    option = ErrorChecker.intWithMinAndMax(1, 5, "Choose an attack", "white");
+                    
+                    if(option != 5){
+                        if(playerAttackCosts[option-1] > player.getPlayerStats().getCurrentMP()){
+                            Printer.printColor("\nToo tired! Not enough MP to use that attack", "red");
+                        }
+                    }
+                    if(option == 5){break;}
+                } while(playerAttackCosts[option-1] > player.getPlayerStats().getCurrentMP());
+
                 if(option != 5){
                     playerMove(option); 
                 } else {
@@ -246,29 +257,29 @@ public class Combat extends Moves{
      * This method checks which class the player chose by comparing their attacks to the array of cyborg attacks, before 
      * running those attacks.  
      */
-    public void playerMove(int option) {
+    void playerMove(int option) {
         
         //This checks which class the player is, and then runs their respected moves based on that. 
         if (playerAttacks == creator.getCyborgAttacks()){
-            cyborgAttack(playerStats, mobStats, player, option);
+            cyborgAttack(playerStats, mobStats,  mobAttackCosts[option-1], option);
         }
         else if (playerAttacks == creator.getHackerAttacks()){
-            hackAttack(playerStats, mobStats, player, option);
+            hackAttack(playerStats, mobStats,  mobAttackCosts[option-1], option);
         }
         else if (playerAttacks == creator.getTerminatorAttacks()){
-            terminatorAttack(playerStats, mobStats, player, option);
+            terminatorAttack(playerStats, mobStats,  mobAttackCosts[option-1], option);
         }
         else if (playerAttacks == creator.getSwordsmanAttacks()){
-            swordsmanAttack(playerStats, mobStats, player, option);
+            swordsmanAttack(playerStats, mobStats,  mobAttackCosts[option-1], option);
         }
         else if (playerAttacks == creator.getRogueAttacks()){
-            rogueAttack(playerStats, mobStats, player, option);
+            rogueAttack(playerStats, mobStats,  mobAttackCosts[option-1], option);
         }
         else if (playerAttacks == creator.getMysticAttacks()){
-            mysticAttack(playerStats, mobStats, player, option);
+            mysticAttack(playerStats, mobStats,  mobAttackCosts[option-1], option);
         }
         else {
-            reverendAttack(playerStats, mobStats, player, option);
+            reverendAttack(playerStats, mobStats,  mobAttackCosts[option-1], option);
         }        
     }
     
@@ -282,7 +293,12 @@ public class Combat extends Moves{
 
         double mp = mobStats.getCurrentMP();
         ArrayList<Integer> movesWeCanDo = new ArrayList<Integer>();
-
+        
+        if (movesWeCanDo.isEmpty()) {
+            System.out.println("The enemy has run out of battery!");
+            mobStats.setCurrentHP(0.0);
+            return;
+        }
         //fills an arrayList with all the moves that we could possibly afford with our current mp
         for (int i = 0; i < mobAttackCosts.length; i++) {
             //puts the index of the mob attack cost into the array, so we can reference the size of the array later.
@@ -292,57 +308,52 @@ public class Combat extends Moves{
         }
 
         //If the mob lacks the necessary MP to do an attack, they will die. 
-        if (movesWeCanDo.isEmpty()) {
-            System.out.println("The enemy has run out of battery!");
-            mobStats.setCurrentHP(0.0);
-            return;
-        }
     
         //gets a random attack from the list of attacks that we are able to do. 
         int index = random.nextInt(movesWeCanDo.size());
 
         //Determines the mob, and then uses their attacks
         if (mobAttacks == mobSummoner.getCyberPunkAttacks()) {
-            cyberPunkAttack(mobStats, playerStats, index);
+            cyberPunkAttack(mobStats, playerStats, mobAttackCosts[index], index);
         }
         
         //Determines the mob, and then uses their attacks
         if (mobAttacks == mobSummoner.getGreaterWillAssasinAttacks()) {
-            greaterWillAssassinAttack(mobStats, playerStats, index);
+            greaterWillAssassinAttack(mobStats, playerStats, mobAttackCosts[index], index);
         }
         
         //Determines the mob, and then uses their attacks
         if (mobAttacks == mobSummoner.getNanoBotAttacks()){
-            nanoBotClusterAttacks(mobStats, playerStats, index);
+            nanoBotClusterAttacks(mobStats, playerStats, mobAttackCosts[index], index);
         }
 
         //Determines the mob, and then uses their attacks
         if (mobAttacks == mobSummoner.getWardenOfDirtAttacks()){
-            wardenOfDirtMoves(mobStats, playerStats, index);
+            wardenOfDirtMoves(mobStats, playerStats, mobAttackCosts[index], index);
         }
         
         //Determines the mob, and then uses their attacks
         if (mobAttacks == mobSummoner.getGreaterWillArcherAttacks()) {
-            greaterWillArcherMoves(mobStats, playerStats, index);
+            greaterWillArcherMoves(mobStats, playerStats, mobAttackCosts[index], index);
         }
         
         //Determines the mob, and then uses their attacks
         if (mobAttacks == mobSummoner.getGreaterWillSwordsmanAttacks()) {
-            greaterWillSwordsmanMoves(mobStats, playerStats, index);
+            greaterWillSwordsmanMoves(mobStats, playerStats, mobAttackCosts[index], index);
         }
         
         //Determines the mob, and then uses their attacks
         if (mobAttacks == mobSummoner.getYetiAttacks()){
-            yetiMoves(mobStats, playerStats, index);
+            yetiMoves(mobStats, playerStats, mobAttackCosts[index], index);
         }
 
         //Determines the mob, and then uses their attacks
         if (mobAttacks == mobSummoner.getQuantumSensoryDroidAttacks()){
-            quantumSensoryDroidAttacks(mobStats, playerStats, index);
+            quantumSensoryDroidAttacks(mobStats, playerStats, mobAttackCosts[index], index);
         }
         
         if (mobAttacks == mobSummoner.getWardenOfFrostAttacks()){
-            wardenOfFrostAttacks(mobStats, playerStats, index);
+            wardenOfFrostAttacks(mobStats, playerStats, mobAttackCosts[index], index);
         }
         
 

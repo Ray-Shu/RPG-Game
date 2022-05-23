@@ -12,37 +12,40 @@ public class MobSummoner {
 
     private final String CYBER_PUNK_ATTACKS[] = {"Right Hook!", "Bionic Crunch", "Weak Kick", "Drunken Fist!" };
     private final int CP_MP_COSTS[] = {5,8,3,10};
-    private double[] cyberPunkValues = {100.0, 50.0, 0.5, 2.0, 4.0, 1.0, 10.0, 5.0, 40.0, 8.0, 7.0, 1.0, 1.0, 1.0, 1.0, 1.0};
+    private double[] cyberPunkValues = {100.0, 50.0, 0.5, 4, 4.0, 1.0, 10.0, 5.0, 40.0, 8.0, 7.0, 1.0, 1.0, 1.0, 1.0, 1.0};
     
     private final String GREATER_WILL_ASSASSIN_ATTACKS[] = {"Chromium Daggers!", "Nano-electric Volley!", "Frenzied Kicks!", "Cruel Assassin's Flowing Fist!"};
     private final int GREATER_WILL_ASSASSIN_COSTS[] = {10, 15, 6, 8};
-    private double[] greaterWillAssassinStats = {110, 60, 1.3, 2.5, 3.0, 4.0, 7, 4.0, 140.0, 6.0, 6.0, 4.0, 2.0, 3.0, 9.0, 1.0};
+    private double[] greaterWillAssassinStats = {110, 60, 1.3, 2.9, 6.0, 4.0, 7, 4.0, 140.0, 6.0, 6.0, 4.0, 2.0, 3.0, 9.0, 1.0};
     
     private final String NANO_BOT_ATTACKS[] = {"Synthetic Infection!", "Integrated Combustion!", "Coordinated Ion Drill!", "Neon-Laser Cascade!"}; 
     private final int NANO_BOT_COST[] = {5, 10, 7, 8}; 
-    private double[] nanoBotStats = {150, 60, 0.9, 3.0, 5.0, 1.0, 5, 2.0, 130, 3, 3, 2.0, 1.0, 4.5, 4.0, 1.0}; 
+    private double[] nanoBotStats = {150, 60, 0.9, 5.0, 5.0, 1.0, 5, 2.0, 130, 3, 3, 2.0, 1.0, 4.5, 4.0, 1.0}; 
     
     private final String[] WARDEN_OF_DIRT_ATTACKS = {"Strange Hurl", "Soil of Pestilence", "Rooted", "Souls of Reveangance"};
     private final int[] WARDEN_DIRT_ATTACK_COSTS = {40,20,10,30};
-    private double[] wardenDirtStats = {320, 90, 0.7, 5, 5.0, 5 , 10, 4.0, 240, 6, 6, 2.0, 2.0, 4.5, 4.0, 3.0}; 
+    private double[] wardenDirtStats = {320, 90, 0.7, 8, 5.0, 5 , 10, 4.0, 240, 6, 6, 2.0, 2.0, 4.5, 4.0, 3.0}; 
     
     private final String[] GREATER_WILL_ARCHER_ATTACKS = {"Sharpshooter", "Shock-dart","Cloaked", "Aim Bot"};
     private final int[] GREATER_WILL_ARCHER_ATTACK_COSTS = {7,15,5,5};
-    private double[] greaterWillArcherStats = {100.0, 65.0, 1.3, 2.5, 5, 1.0, 3, 5, 40.0, 3.0, 3.0, 1.0, 1.0, 1.0, 1.0, 1.0};
+    private double[] greaterWillArcherStats = {100.0, 65.0, 1.3, 5, 5, 1.0, 3, 5, 40.0, 3.0, 3.0, 1.0, 1.0, 1.0, 1.0, 1.0};
     
     private final String[] GREATER_WILL_SWORDSMAN_ATTACKS = {"Quick Slash","Devastating Swing","Ultimate Rage","Light-speed Crash"};
     private final int[] GREATER_WILL_SWORDSMAN_ATTACK_COSTS = {6,15,10,15};
-    private double[] greaterWillSwordsmanStats = {125.0, 85.0, 0.9, 3.2, 4, 2.0, 5, 9, 80.0, 8.0, 5.0, 1.0, 1.0, 1.3, 1.3, 1.0};
+    private double[] greaterWillSwordsmanStats = {125.0, 85.0, 0.9, 5.2, 4, 2.0, 5, 9, 80.0, 8.0, 5.0, 1.0, 1.0, 1.3, 1.3, 1.0};
     
     //Stats stat = new Stats(hp, mp, spd, atk, pd, md, def, end, stam, physRes, magicRes, dodge, vit, cr, cd, luck);
     private final String[] YETIS_ATTACKS = {"Body Slam","Cataclysmic Claws","Snowball Strike","Blizzard"};
     private final int[] YETIS_ATTACK_COSTS = {11,22,7,8};
-    private double[] yetiStats = {230.0, 100.0, 0.9, 4, 5, 4.0, 3, 5, 100.0, 8.0, 8.0, 0.8, 1.0, 1.4, 1.4, 1.0};
+    private double[] yetiStats = {230.0, 100.0, 0.9, 6, 5, 4.0, 3, 5, 100.0, 8.0, 8.0, 0.8, 1.0, 1.4, 1.4, 1.0};
     
     private final String[] QUANTUM_SENSORY_DROID_ATTACKS = {"Gravitational Slam!", "Atomic Annihilation!", "Power-down", "Astrogate Evasion!"};
     private final int[] QUANTUM_SENSORY_DROID_ATTACK_COSTS = {9, 15, 0, 5};
-    private double[] quantumSensoryDroidStats = {80.0, 90.0, 2.3, 2.5, 3, 5, 4, 5, 10.0, 30.0, 3.0, 1.0, 1.0, 2.0, 2.0, 1.0};   
+    private double[] quantumSensoryDroidStats = {80.0, 90.0, 2.3, 10, 3, 5, 4, 5, 10.0, 30.0, 3.0, 1.0, 1.0, 2.0, 2.0, 1.0};   
     
+    private final String[] WARDEN_OF_FROST_ATTACKS = {"Torrent of Frost", "Icicle Eruption", "Cataclysmic Blizzard", "Relentless Hailstorm"};
+    private final int[] WARDEN_OF_FROST_ATTACK_COSTS = {10, 15, 9, 25};
+    private double[] wardenOfFrostStats = {400, 100, 1.2, 10, 5.0, 5 , 10, 4.0, 240, 6, 6, 2.0, 2.0, 4.5, 4.0, 3.0}; 
     
     //Stats stat = new Stats(hp, mp, spd, atk, pd, md, def, end, stam, physRes, magicRes, dodge, vit, cr, cd, luck);
 
@@ -71,6 +74,9 @@ public class MobSummoner {
     //returns the quantum sensory droid's attacks
     public String[] getQuantumSensoryDroidAttacks(){return QUANTUM_SENSORY_DROID_ATTACKS;}
 
+    //returns the warden of frost's attacks
+    public String[] getWardenOfFrostAttacks(){return WARDEN_OF_FROST_ATTACKS;}
+
     //* Returns Array's of attack costs. 
 
     //returns the greater will assasin's attack costs
@@ -96,7 +102,9 @@ public class MobSummoner {
 
     //returns the quantum sensory droid attack costs
     public int[] getQuantumSensoryDroidAttackCosts(){return QUANTUM_SENSORY_DROID_ATTACK_COSTS;}
-    // ?ion drill: fire radioactive ions towards you
+
+    //returns the Warden Of Frost's attack costs
+    public int[] getWardenOfFrostAttackCosts(){return WARDEN_OF_FROST_ATTACK_COSTS;}
     
     /**
      * Creates a new cyberpunk with a given level
@@ -222,7 +230,20 @@ public class MobSummoner {
                 quantumSensoryDroidStats[12] * lvlMultiplier, quantumSensoryDroidStats[13] * lvlMultiplier, quantumSensoryDroidStats[14] * lvlMultiplier, quantumSensoryDroidStats[15] * lvlMultiplier);
     }
 
-    
+    public Stats newWardenOfFrost(int lvl) {
+        mobName = "Warden Of Frost"; 
+        chosenMobAttacks = WARDEN_OF_FROST_ATTACKS; 
+        chosenAttackCosts = WARDEN_OF_FROST_ATTACK_COSTS;
+
+        double lvlMultiplier = Math.pow(1.1, lvl) - 0.1;
+        
+        return new Stats(
+                wardenOfFrostStats[0] * lvlMultiplier, wardenOfFrostStats[1] * lvlMultiplier, wardenOfFrostStats[2] * lvlMultiplier,
+                wardenOfFrostStats[3] * lvlMultiplier, wardenOfFrostStats[4] * lvlMultiplier, wardenOfFrostStats[5] * lvlMultiplier,
+                wardenOfFrostStats[6] * lvlMultiplier, wardenOfFrostStats[7] * lvlMultiplier, wardenOfFrostStats[8] * lvlMultiplier,
+                wardenOfFrostStats[9] * lvlMultiplier, wardenOfFrostStats[10] * lvlMultiplier, wardenOfFrostStats[11] * lvlMultiplier,
+                wardenOfFrostStats[12] * lvlMultiplier, wardenOfFrostStats[13] * lvlMultiplier, wardenOfFrostStats[14] * lvlMultiplier, wardenOfFrostStats[15] * lvlMultiplier);
+    }
 
     //@returns mob name
     public String getMobName(){

@@ -55,14 +55,33 @@ public class Guild {
     
     private String antarcticMissionName1 = "Stop Yeti Attack!";
     private String[] antarcticMissionOpponents1 = {"yeti", "yeti","yeti" };
-    private int[] antarcticMissionOpponentLevels1 = {11, 11, 11, 13};
+    private int[] antarcticMissionOpponentLevels1 = {11, 11, 11};
     private String antarcticMissionProblem1 = "A group of Yeti's have attacked an innocent group of campers! Help the campers by defeating the Yeti's";
     private String antarcticMissionGreeting1 = "AAAaaaaaaaaaaaaaaaaaaaaaHHHHHHHHHHH HELP US BEFORE WE ARE TURNED INTO YETI SNACKS!";
     private String antarcticMissionThankYou1 = "Thank you so much!";
     private int antarcticMissionXPReward1 = 650;
-    private String antarcticMissionColor1 = "yellow";
+    private String antarcticMissionColor1 = "cyan";
     private int antarcticMissionRecommendedLevel1 = 11;
-
+    
+    private String antarcticMissionName2 = "Help break prisoner our of the jail!";
+    private String[] antarcticMissionOpponents2 = {"Greater Will Swordsman", "Greater Will Swordsman","Greater Will Archer" };
+    private int[] antarcticMissionOpponentLevels2 = {14, 14, 14};
+    private String antarcticMissionProblem2 = "We need a brave and skilled soldier to break into the ice jail and free a prisoner.";
+    private String antarcticMissionGreeting2 = "You go for the head on approach: choosing to defeat all enemies in the jail by entering through the front door!";
+    private String antarcticMissionThankYou2 = "Are you here to save me !?!?!?!?!";
+    private int antarcticMissionXPReward2 = 850;
+    private String antarcticMissionColor2 = "green";
+    private int antarcticMissionRecommendedLevel2 = 14;
+    
+    private String antarcticMissionName3 = "Assassinate the president of the yeti's!";
+    private String[] antarcticMissionOpponents3 = {"Yeti" };
+    private int[] antarcticMissionOpponentLevels3 = {35};
+    private String antarcticMissionProblem3 = "We need someone to stop the villainous Yeti president from forcing the yeti's to do terrible things";
+    private String antarcticMissionGreeting3 = "You sneak around, finding the Yeti. As you attempt to strike, the yeti notices you!";
+    private String antarcticMissionThankYou3 = "*clunk*";
+    private int antarcticMissionXPReward3 = 1000;
+    private String antarcticMissionColor3 = "green";
+    private int antarcticMissionRecommendedLevel3 = 16;
 
     /**
      * Creates the guild and gives missions based on the town that we are in. 
@@ -96,14 +115,21 @@ public class Guild {
                 
                 break;
                 
-                case "The Antarctic Domain":
+            case "The Antarctic Domain":
                 color = "blue";
                 
-                Missions antarcticMission1 = new Missions(2000, this, antarcticMissionName1, antarcticMissionOpponents1, antarcticMissionOpponentLevels1, player,  antarcticMissionProblem1, antarcticMissionProblem1, antarcticMissionThankYou1, antarcticMissionColor1, antarcticMissionXPReward1, slum3MissionItems, antarcticMissionRecommendedLevel1);
+                //shows missions
+                Missions antarcticMission1 = new Missions(2000, this, antarcticMissionName1, antarcticMissionOpponents1, antarcticMissionOpponentLevels1, player,  antarcticMissionGreeting1, antarcticMissionProblem1, antarcticMissionThankYou1, antarcticMissionColor1, antarcticMissionXPReward1, slum3MissionItems, antarcticMissionRecommendedLevel1);
                 allMissions.add(antarcticMission1);
                 namesOfAllMissions.add(antarcticMissionName1);
-
                 
+                Missions antarcticMission2 = new Missions(3000, this, antarcticMissionName2, antarcticMissionOpponents2, antarcticMissionOpponentLevels2, player,  antarcticMissionGreeting2, antarcticMissionProblem2, antarcticMissionThankYou2, antarcticMissionColor2, antarcticMissionXPReward2, slum3MissionItems, antarcticMissionRecommendedLevel2);
+                allMissions.add(antarcticMission2);
+                namesOfAllMissions.add(antarcticMissionName2);
+                
+                Missions antarcticMission3 = new Missions(4000, this, antarcticMissionName3, antarcticMissionOpponents3, antarcticMissionOpponentLevels3, player,  antarcticMissionGreeting3, antarcticMissionProblem3, antarcticMissionThankYou3, antarcticMissionColor3, antarcticMissionXPReward3, slum3MissionItems, antarcticMissionRecommendedLevel3);
+                allMissions.add(antarcticMission3);
+                namesOfAllMissions.add(antarcticMissionName3);
 
                 break;
 

@@ -76,6 +76,7 @@ public class TownMaker{
         antarcticDomain = new Town("The Antarctic Domain", 2, player,"blue");
         antarcticDomain.addBuilding(player, playerStats, playerAccount, notStoreItems, notStorePrices, "Hospital",thingsToDoAtHospital, "Welcome to the Hospital! We are ready to heal you!", "Thank you for coming", "Sorry could you repeat that?", "white");
         Guild antarcticAdventurersGuild = new Guild(player);
+        antarcticDomain.addDungeon(slumDungeon);
         antarcticDomain.addTeleporter(tp);
         allTowns[1] = antarcticDomain;
         

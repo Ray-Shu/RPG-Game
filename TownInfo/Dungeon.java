@@ -81,15 +81,24 @@ public class Dungeon {
         this.returnToStory = returnToStory;
         System.out.println("\n-----------------------------------------------------------");
 
+        if(hasDungeonBeenDefeated){
+            Printer.printColor("Sorry! You have already defeated this dungeon", "color");
+            Printer.quickBreak(1000);
+            town.characterEnteringTown(returnToStory);
+            return;
+        }
+        
         //checks if they are the recommended level. If they are not, we will print out a message warning them. 
         if(player.getLevel() < recommendedLvl){
             Printer.printColor("This dungeon might be too hard for you...", "red");
         }
-        Printer.printColor("Would you like to enter this dungeon? (yes or no)", "color");
 
+
+        Printer.printColor("Would you like to enter this dungeon? (yes or no)", "color");
+        
         //gets their decission
         String answer = ErrorChecker.compareArrayOfStrings(yesOrNo, "Its yes or no...", "color");
-        
+
         //if they want into the dungeon, we run the dungeon. If not, we wait a second then leave. 
         if(answer.equalsIgnoreCase("yes")){
             runDungeon();

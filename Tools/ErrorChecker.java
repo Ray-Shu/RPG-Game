@@ -77,13 +77,13 @@ public class ErrorChecker {
         while (true) {
             //makes sure its an int
             while (!scan.hasNextInt()) {
-                Printer.printColor("Error: Please enter an number greater than " + min + " and less than " + max + ": ", color);
+                Printer.printColor("Error: Please enter an number greater than or equal to " + min + " and less than or equal to " + max + ": ", color);
                 scan.next();
             }
             int value = scan.nextInt();
             //makes sure its in range. Loops if it is not
             if(value < min || value > max){
-                Printer.printColor("Error: Please enter an number greater than " + min + " and less than " + max + ": ", color);
+                Printer.printColor("Error: Please enter an number greater than or equal to " + min + " and less than or equal to " + max + ": ", color);
             }
             else{
                 return value;

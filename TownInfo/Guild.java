@@ -32,8 +32,8 @@ public class Guild {
     private int[] slum2MissionOpponentLevels = {4, 4, 4};
     private String slum2MissionProblem = "A group of Robots and an Assasin have kidnapped the daughter of Techno-King Bill Musk! \n" + 
             "We need a strike team to infiltrate their hideout and get her back safely. ";
-    private String slum2MissionGreeting = "You break into the compound covertly through the sewers\n"
-            + "Once iyou arive in the basement, you realise that you are going to have to fight your way out.";
+    private String slum2MissionGreeting = "You break into the compound covertly through the sewers.\n"
+            + "Once you arive in the basement, you realise that you are going to have to fight your way out.";
     private String slum2MissionThankYou = "Thank you so much for your help!";
     private int slum2MissionXPReward = 450;
     private String[] slum2MissionItems = new String[5];

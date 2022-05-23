@@ -39,8 +39,8 @@ public class Main {
                     
         // *Story Line (currently working on chapter One) 
         // storyTesting();
-        // MainStory story = new MainStory();
-        // story.startStory(); 
+        MainStory story = new MainStory();
+        story.startStory(); 
     
                     
         //* Town Tests
@@ -72,6 +72,8 @@ public class Main {
 
         //!TEMPORARY CHANGE TO PRINTING OUT CLASSES TO TEST FASTER
         //!UNCOMMENT IN PLAYERCREATION TO FIX
+
+        //TODO: will fix bug where you cant exit merchant tmrw
 
     }
 

@@ -244,6 +244,9 @@ public class Inventory {
                 if (howManyGreaterManaPots > 0) {
                     playerStats.setCurrentMP(playerStats.getCurrentMP() + (playerStats.getMaxMP() * 0.7));
                     howManyGreaterManaPots--;
+                    if (playerStats.getCurrentMP() > playerStats.getMaxMP()) {
+                        playerStats.setCurrentMP(playerStats.getMaxMP());
+                    }
                     Printer.printColor("You have restored " + playerStats.getCurrentMP() + " MP!", "yellow");
                     showInventory();
                 } else {
@@ -256,6 +259,9 @@ public class Inventory {
                 if (howManyManaPots > 0) {
                     playerStats.setCurrentMP(playerStats.getCurrentMP() + (playerStats.getMaxMP() * 0.4));
                     howManyManaPots--;
+                    if (playerStats.getCurrentMP() > playerStats.getMaxMP()) {
+                        playerStats.setCurrentMP(playerStats.getMaxMP());
+                    }
                     Printer.printColor("You have restored " + playerStats.getCurrentMP() + " MP!", "yellow");
                     showInventory();
                 } else {
@@ -268,6 +274,9 @@ public class Inventory {
                 if (howManyWeakManaPots > 0) {
                     playerStats.setCurrentMP(playerStats.getCurrentMP() + (playerStats.getMaxMP() * 0.2));
                     howManyWeakManaPots--;
+                    if (playerStats.getCurrentMP() > playerStats.getMaxMP()) {
+                        playerStats.setCurrentMP(playerStats.getMaxMP());
+                    }
                     Printer.printColor("You have restored " + playerStats.getCurrentMP() + " MP!", "yellow");
                     showInventory();
                 } else {

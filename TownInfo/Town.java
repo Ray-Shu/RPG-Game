@@ -109,7 +109,7 @@ public class Town {
                 scan.next();
             }
             chosenInt = scan.nextInt();
-            if(chosenInt > 0 && chosenInt <= (allMerchants.size()+3)){
+            if(chosenInt > 0 && chosenInt <= (allMerchants.size()+3) || chosenInt == 6){
                 hasPlayerChosen = true;
             }
             else{
@@ -121,7 +121,7 @@ public class Town {
         //once we have a value, we let them shop at one of the places they asked for. 
         //this checks which name of the shop they entered, then sends them in. 
         if(chosenInt <= allMerchants.size()){
-            allMerchants.get((chosenInt-1)).shop(true);
+            allMerchants.get((chosenInt-1)).shop(true, false);
         }
 
         //checks if they want to run the guild
@@ -132,18 +132,21 @@ public class Town {
         //checks if they want the teleporter
         else if(chosenInt == allMerchants.size()+2){
             teleporter.runTeleporter(returnToStory);
-        }
-
-        //checks if the dungeon is locked
+        } 
+        //checks if the dungeon is locked 
         else if(dungeon.isLocked()){
             Printer.printColor("Sorry! You do not meet the required level for this dungeon!\nPlease come back once you reach level " + dungeon.getRequiredLevel(),"white");
             Printer.quickBreak(1000);
             characterEnteringTown(returnToStory);
-        }
+        } 
 
         else{
             dungeon.characterEnteringDungeon(returnToStory);
         }
+    }
+
+    public void enterDungeon(boolean returnToStory) {
+        dungeon.characterEnteringDungeon(returnToStory);
     }
 
     /**

@@ -79,7 +79,7 @@ public class MainStory {
     public void prologue() {   
         System.out.println();
 
-        // Printer.print("\"Oi! Quit makin so much noise in there!\"\n" ); 
+        // Printer.printColor("\"Oi! Quit makin so much noise in there!\"\n", "white"); 
         // Printer.quickBreak(1500);
         // Printer.printItalizcizedColor("You continue you're hammering; it's intentional. The guard stomps to the door.\n","white");
         // Printer.quickBreak(1500);
@@ -95,7 +95,7 @@ public class MainStory {
         // Printer.quickBreak(1500); 
         // Printer.printItalizcizedColor("Their confusion isn't without reason, \nas the prison where you reside in is notorious for it's ruthless security: \nDonning a nigh-to-zero breakout success rate.\n", "white");
         // Printer.quickBreak(1500); 
-        // Printer.printItalizcizedColor("However, the mysterious people breaking you out of this corrupted hell-hole are \nequally, if not more, ruthless. Experts in their respective fields and \nunparalleled communication, paired with amazing teamwork shatters the prison's \nrecord. You and this unknown lot quickly escape before reinforcements are called.\n", "white");
+        // Printer.printItalizcizedColor("However, the mysterious people breaking you out of this corrupted penitentiary are \nequally, if not more, ruthless. Experts in their respective fields and \nunparalleled communication, paired with amazing teamwork shatters the prison's \nrecord. You and this unknown lot quickly escape before reinforcements are called.\n", "white");
         // Printer.quickBreak(1500); 
         // Printer.printItalizcizedColor("Four individuals lead you to a shelter; it's barren, save for a dim fire \nand some metal crates tossed to the side. The floor is slightly damp \nfrom yesterdays torrent and the neon lights just outside are flickering, \nas if their vitality is being drained away.\n", "white");
         // Printer.quickBreak(1500); 
@@ -106,13 +106,13 @@ public class MainStory {
         // Printer.quickBreak(1000); 
         // Printer.print("\"Well, nice to meet ya and glad that you held your promise. I trust you know what your purpose is, then?\"\n");
         // Printer.quickBreak(1500); 
-        // Printer.printItalizcizedColor("I nod, and the man returns a toothy grin. He makes a motion with his hand and the \ngroup grabs the crates and drops them under your feet, in an arc around you.\n", "white");
+        // Printer.printItalizcizedColor("You nod, and the man returns a toothy grin. He makes a motion with his hand and the \ngroup grabs the crates and drops them under your feet, in an arc around you.\n", "white");
         // Printer.quickBreak(1500);
-        // Printer.print("\"We can only spare you one crate of equipment, the rest is for the other members in the Insurgence. Since it's you though, you can choose which crate you want.\" \n");
+        // Printer.print("\"We can only spare you one crate of equipment, the rest is for the other members in the Insurgence. Since it's you though, you can choose whichever crate you want.\" \n");
         // Printer.quickBreak(1500); 
         // Printer.printItalizcizedColor("The crates around you luminate in a cyan blue, each projecting \ntheir own hologram of information pertaining to their class.\n", "white");
-        Printer.printColor("Choose the crate you desire.", "purple");
-        //Printer.quickBreak(5000); 
+        // Printer.printColor("Choose the crate you desire.", "purple");
+        // Printer.quickBreak(3000); 
         
         //*Account Creation Info
         playerInfo(); 
@@ -122,7 +122,7 @@ public class MainStory {
         // Printer.printItalizcizedColor("\"A map and a letter huh.\" You walk out of the shelter, an aura emitting scorn. \nYour countenance reeks with vengeance, and a deep-rooted hatred to those \ncurrently in power. When you were unjustly thrown in prison, you swore to get your revenge. \nNow, it is time to exact it.  \n", "white");
         // Printer.printItalizcizedColor("You've unlocked the map for: The Slums", "purple");
 
-        System.out.println();
+        // System.out.println();
         chapter_One_Scene_One();
     }
 
@@ -136,7 +136,7 @@ public class MainStory {
         // //*Flashback to persecution
         // Printer.printColor("You flashback to the past, moments prior to your imprisonment.\n", "red");
         // Printer.quickBreak(1000); 
-        // Printer.printItalizcizedColor("Situated in the middle of the largest room of the castle, you \nforcibly kneel before a vibrant golden throne. Two guards are \nbehind you, swords at your throat. You have whip marks across \nyour face.\n", "red");
+        // Printer.printItalizcizedColor("Situated in the middle of the largest room of the castle, you \nforcibly kneel before a vibrant golden throne. Two guards are \nbehind you, swords at your throat. Whip marks adorn \nyour already marred face.\n", "red");
         // Printer.quickBreak(1000);
         // Printer.printItalizcizedColor("The rasp voice of the new king calls down to you, mockingly.\n\"Why have you failed in completing the executions that were required of you?\" \n", "red");
         // Printer.quickBreak(1000);
@@ -166,19 +166,19 @@ public class MainStory {
         // Printer.quickBreak(1000); 
         // Printer.printItalizcizedColor("Hilarity overwhelms you; this guy's a weakling! The \nknife scratches your throat as you snort at his empty \nthreat. \n", "white");
         // Printer.quickBreak(1000);
-        // Printer.printItalizcizedColor("Before he can say another word, you elbow his stomach, \nand you snatch the knife right as his grip loosens. \nAs he's stumbling, you kick his legs and he falls on \nthe ground. \n", "white");
+        // Printer.printItalizcizedColor("Before he can say another word, you elbow his stomach, \nand you snatch the knife right as his grip loosens. \nAs he's stumbling, you sidesweep his legs and he falls on \nthe ground. \n", "white");
         // Printer.quickBreak(1000); 
         // Printer.printItalizcizedColor("As you're about to concuss him with your feet, he \nactivates some sort of mechanism to teleport a safe \ndistance from you. \n", "white");
         // Printer.quickBreak(1000); 
         // Printer.printItalizcizedColor("Fortunately, you've already equipped all of the gear \ngiven to you beforehand, knowing that The Slums is \nhome to the depraved and malicious: doing anything \nto survive and thrive in a resource-less floor. \n", "white");
         // Printer.quickBreak(1000);
-        // Printer.printItalizcizedColor("You see the man more clearly now. He has a slim, yet\n muscular body, donning obsidian-black armour and a \ndark blue hood. He reaches into his pocket, and \ngrabs an unknown technological cube. \n", "white");
+        // Printer.printItalizcizedColor("You see the man more clearly now. He has a slim, yet\nmuscular body, donning obsidian-black armour and a \ndark blue hood. He reaches into his pocket, and \ngrabs an unknown technological cube. \n", "white");
         // Printer.quickBreak(1000); 
         // Printer.printItalizcizedColor("The cube luminates, and surrounds the both of you \nin a circular dome. \n", "white");
         // Printer.quickBreak(1000); 
-        // Printer.printItalizcizedColor("\"Don't try to escape; the walls are made with electric-infused chromium - it'll just liquify your body and I won't be able \nto frame your head.\"", "white");
+        // Printer.printItalizcizedColor("\"Don't try to escape; the walls are made with electric-infused chromium - it'll just liquify your body and I won't be able \nto frame your head.\"\n", "white");
         // Printer.quickBreak(1000); 
-        // Printer.printItalizcizedColor("\"I'm already being targetted? How? Did they put a tracker on me? Oh well, lets get this over with. I'll have to be more \ncareful in the future.\" \n", "white");
+        // Printer.printItalizcizedColor("You ignore him. \"I'm already being targetted? How? Did they put a tracker on me? Oh well, lets get this over with. I'll have to be more \ncareful in the future.\" \n", "white");
         // Printer.quickBreak(1000); 
 
         chapter_One_Reset_Point_One();
@@ -191,43 +191,39 @@ public class MainStory {
         Printer.printItalizcizedColor("You get ready for combat...", "purple");
         Printer.quickBreak(1000);
 
-        chapter_One_Fight_Scene_One();
+        //chapter_One_Fight_Scene_One();
 
-        //chapter_One_Scene_Two();
-
-    }
-
-    public void chapter_One_Fight_Scene_One(){ 
-        playerStats.getClassInfo(chosenClass);
-        mainPlayer.showInventory();
-    //*GETS ALL OF THE INFO OF MC'S CLASS AND STATS ------------------------------------------------------------
-        playerStats = mainPlayer.getPlayerStats();
-        Stats mobStats = summonMob.newGreaterWillAssassin(2);
-        String mobAttacks[] = summonMob.getGreaterWillAssasinAttacks();
-        int mobAttacksCost[] = summonMob.getGreaterWillAssasinAttackCosts();
-        Combat chapter_One_Fight_One = new Combat(mainPlayer, playerStats, mobStats, mobAttacks, mobAttacksCost, summonMob);
-        chapter_One_Fight_One.fight(true);
-    // *END OF FIGHT 
-
-        // resets the player to the reset point if player dies
-        // continues the storyline if the player defeats the enemy
-        if(chapter_One_Fight_One.didPlayerDie()) {
-            checkPoint.backToCheckpoint();
-            Printer.printItalizcizedColor("How did you lose...", "yellow");
-            chapter_One_Reset_Point_One();
-        } else {
-            chapter_One_Scene_Two();
-        }
+        chapter_One_Scene_Two();
 
     }
+
+    // public void chapter_One_Fight_Scene_One(){ 
+        
+    // //*GETS ALL OF THE INFO OF MC'S CLASS AND STATS ------------------------------------------------------------
+    //     playerStats = mainPlayer.getPlayerStats();
+    //     Stats mobStats = summonMob.newGreaterWillAssassin(2);
+    //     String mobAttacks[] = summonMob.getGreaterWillAssasinAttacks();
+    //     int mobAttacksCost[] = summonMob.getGreaterWillAssasinAttackCosts();
+    //     Combat chapter_One_Fight_One = new Combat(mainPlayer, playerStats, mobStats, mobAttacks, mobAttacksCost, summonMob);
+    //     chapter_One_Fight_One.fight(true);
+    // // *END OF FIGHT 
+
+    //     // resets the player to the reset point if player dies
+    //     // continues the storyline if the player defeats the enemy
+    //     if(chapter_One_Fight_One.didPlayerDie()) {
+    //         checkPoint.backToCheckpoint();
+    //         Printer.printItalizcizedColor("How did you lose...", "yellow");
+    //         chapter_One_Reset_Point_One();
+    //     } else {
+    //         chapter_One_Scene_Two();
+    //     }
+
+    // }
 
     public void chapter_One_Scene_Two(){
-        System.out.println("old stats \n");
-        playerStats.getClassInfo(chosenClass);
+        
         mainPlayer.levelUp();
-        System.out.println("new stats \n");
-        playerStats.getClassInfo(chosenClass);
-
+        
         // System.out.println();
         // Printer.printItalizcizedColor("The assassin falls to the ground, defeated.\nYou stalk towards him as he lays there, face\nin the muddied dirt\n", "white");
         // Printer.quickBreak(1000);
@@ -241,15 +237,15 @@ public class MainStory {
         // Printer.quickBreak(1000); 
         // Printer.printItalizcizedColor("You stab him, quieting his annoying laughter. \n", "white");
         // Printer.quickBreak(1000); 
-        // Printer.printItalizcizedColor("You look around the dirtied town. \"Guess I'll go check around to gather intel.\"", "white");
+        // Printer.printItalizcizedColor("You look around the dirtied town. \"Guess I'll go check around to gather intel.\"\n", "white");
         // Printer.quickBreak(1000); 
-        Printer.printItalizcizedColor("You check the map to decide where you go. Though your heart still yearns for the thrill of battle...", "purple");
-        Printer.quickBreak(1000); 
+        // Printer.printItalizcizedColor("You check the map to decide where you go. Though your heart still yearns for the thrill of battle...\n", "purple");
+        // Printer.quickBreak(1000); 
 
         TownMaker townMaker = new TownMaker(mainPlayer);
         mainPlayer.makeTownMaker(townMaker);
         townMaker.makeTowns();
-        // mainPlayer.getCurrentTown().characterEnteringTown(true);
+        mainPlayer.getCurrentTown().characterEnteringTown(true);
         
 
         // Printer.printItalizcizedColor(
@@ -273,10 +269,10 @@ public class MainStory {
         //         "white");
         // Printer.print("\"Where do I go to fight this warden?\"\n");
         // Printer.printColor(
-        //         "\"I wouldn't be so hasty if I were you, these wardens have been reigning over these lands for centuries, their historical \norigins are unknown! But if you still wish to fight them, the warden occupying The Slums is the \u001B[31mWarden of Dirt\u001B[31m\u001B[37m.\"\u001B[37m\n",
+        //         "\"I wouldn't be so hasty if I were you, these wardens have been reigning over these lands for centuries, even their \nhistorical origins are unknown! But if you still wish to fight them, the warden occupying The Slums is the \u001B[31mWarden of Dirt\u001B[31m\u001B[37m.\"\u001B[37m\n",
         //         "white");
         // Printer.printColor(
-        //         "\"You can face it by entering the town's dungeon. But the door only unlocks if it deems the participants worthy.\"",
+        //         "\"You can face it by entering the town's dungeon. But the door only unlocks if it deems the participants worthy.\"\n",
         //         "white"); 
 
 
@@ -284,7 +280,7 @@ public class MainStory {
         // Printer.printItalizcizedColor("With that thought in mind, you make your way \nto the merchants shop. \n", "white");    
         
         // Printer.printItalizcizedColor(
-        //         "A faint, dying bell chimes as you open the door \nto what you presume is the merchants shop. \nAfter all, the neon sign outside shows no life, \nand its words are barely readable.\n",
+        //         "A faint, dying bell chimes as you open the door \nto what you presume is said shop. \nAfter all, the neon sign outside shows no life, \nand its words are barely readable.\n",
         //         "white");
         // Printer.quickBreak(1000);
         // Printer.print(
@@ -301,20 +297,45 @@ public class MainStory {
         // Printer.printItalizcizedColor(
         //         "He grabs a tablet out from behind the \ncounter, and a blue projection appears.\n",
         //         "white");
+        // Printer.quickBreak(1000);
+        // Printer.printItalizcizedColor("Your eyes wander towards the armoury.\n", "purple");
         
-        playerAccount.deposit(10000);
         Merchant slumsMerchant = new Merchant(mainPlayer, mainPlayer.getCurrentTown(), slumsItemsForSale,
                 slumsPriceOfItem2, slumsShopName, slumsThingsToDo, slumsGreeting, slumsFarewell, slumsErrorMessage,
                 merchantColor);
         townMaker.addBuildingToTown(townMaker.getCurrentTown(), slumsMerchant);
         slumsMerchant.addArmour(slumsArmour, slumsArmourPrice);
         //TODO: add ability to equip armour and store items 
-        slumsMerchant.shop(false); 
+        slumsMerchant.shop(false, true); 
         
-        mainPlayer.showInventory();
+        Printer.printItalizcizedColor("\"Looks like I've got to complete more missions to earn myself some more money. Then I'll be able to purchase that Superior Spectral Gear.\" \n", "white");
+        Printer.quickBreak(1000); 
+        Printer.printItalizcizedColor("Your mind, once again, gravitates towards the thrill of battle... \n", "purple");
+
+        while(mainPlayer.getLevel() < 6) {
+            if (mainPlayer.getLevel() >= 6) {
+                chapter_One_Dungeon_Fight();
+            } else {
+                mainPlayer.getCurrentTown().characterEnteringTown(true);
+                Printer.printItalizcizedColor(
+                        "There isn't much to do in such a destitute floor besides occupying your mind with the sounds of clashing metal.\n",
+                        "purple");
+            }
+            
+        }
 
     }   
 
+    public void chapter_One_Dungeon_Fight() {
+        Printer.printItalizcizedColor("\"Alright, time to see if this dungeon deems me worthy.\"", "white");
+        Printer.quickBreak(1000);
+        Printer.printItalizcizedColor("You make your way to the dungeon, \ntaking in the height of the seemingly \nunrealistic gargantuan door. As you get\ncloser, you feel a strange, indescribable \nsensation pulse through your soul which \nyour mind registers as: \u001B[31mWorthy.\u001B[31m ", "white");
+        Printer.quickBreak(1000);
+        Printer.printItalizcizedColor("You gaze into the open door, seing nothing \nbut pitch black. Your heart shakes ever so \nslightly, but you steel your resolve and walk \ninto the dungeon with the conviction of \nkilling the new king. ", "white");
+        Printer.quickBreak(1000);
+
+        mainPlayer.getCurrentTown().enterDungeon(true);
+    }
 }
 
 

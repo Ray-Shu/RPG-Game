@@ -17,7 +17,7 @@ public class TownMaker{
     private int maxTownLevel = 1;
 
     
-    private String[] thingsToDoAtHospital = {"Get healed", "leave"};
+    private String[] thingsToDoAtHospital = {"Get healing", "leave"};
 	private Stats playerStats;
 	private Player player;
 

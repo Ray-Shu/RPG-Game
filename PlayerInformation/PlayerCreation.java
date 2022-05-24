@@ -4,83 +4,69 @@ import TownInfo.TownMaker;
 
 
 public class  PlayerCreation {
+    private final String CLASSES[] = { "cyborg", "hacker", "terminator", "laser swordsman", "rogue", "mystic", "reverend" };
+    public final String CYBORG_ATTACKS[] = {"Laser Barrage", "Charged Shot", "Cyber Shield", "Overload\t"};
+    public final int CYBORG_ATTACK_COSTS[] = {0,15,5,20};
+
+    private final String HACKER_ATTACKS[] = {"Virus Attack", "Stolen Missile", "Watchful Vulture", "In The System"};
+    private final int HACKER_ATTACK_COSTS[] = {0,20,5,10};
+
+    private final String TERMINATOR_ATTACKS[] = {"Machine Gun Fury\t\t\t", "First Impact Fists\t\t\t", "Deceiving Blast of Cybernetic Proportions", "Hunker Down\t\t\t\t"};
+    private final int TERMINATOR_ATTACK_COSTS[] = {0,5,10,10};
+
+    private final String SWORDSMAN_ATTACKS[] = {"Swift Thrust of the Sword", "Fatal Eruption Of Bullets", "Lightning Clone Strike", "Meditation\t\t"};
+    private final int SWORDSMAN_ATTACK_COSTS[] = {0,13,25,0};
+    
+    private final String ROGUE_ATTACKS[] = {"Quick Blast\t\t", "Death Strike\t", "Secret Mushroom Strike", "Forbidden Smoke\t"};
+    private final int ROGUE_ATTACK_COSTS[] = {0,12,10,5};
+    
+    private final String MYSTIC_ATTACKS[] = {"Dragon Shatter", "Simple Strike", "Frost Eruption" , "Burning Prison"};
+    private final int MYSTIC_ATTACK_COSTS[] = {20,0,10,5};
+    
+    public final String REVEREND_ATTACKS[] = {"Holy Flash of Radiant Light\t", "Divine Smite\t\t", "Holy Healing\t\t", "Prayer\t\t\t"};
+    public final int REVEREND_ATTACK_COSTS[] = {0,20,10,10};
+    
+    public final String CHOOSE_CRATE_AND_CRATE_INFO[] = {"1", "2", "3", "4", "5", "6", "7", "M1", "M2", "M3", "M4", "M5", "M6", "M7"};
+
+
+    public Bank bankAccount;
     private String playerClass; 
     private Stats playerStats;
     private String chosenAttacks[];
     private int chosenAttacksCost[];
     private String playerName;
     private String chosenClass; 
-
-    private final String CLASSES[] = { "cyborg", "hacker", "terminator", "laser swordsman", "rogue", "mystic", "reverend" };
-
-    public final String CYBORG_ATTACKS[] = {"Laser Barrage", "Charged Shot", "Cyber Shield", "Overload\t"};
-    public final int CYBORG_ATTACK_COSTS[] = {0,15,5,20};
-    public final String CYBORG_ATTACK_INFO[] = {"Laser Barrage unleashes a flury of low damage laser shots on the opponents", 
-            "The Charged Shot unleashes a powerful blast capable dealing major damage", 
-            "The Cyber Shield increases defense for the next 3 turns", 
-            "Overload greatly increases attack for the next 3 turns"};
-
-    private final String HACKER_ATTACKS[] = {"Virus Attack", "Stolen Missile", "Watchful Vulture", "In The System"};
-    private final int HACKER_ATTACK_COSTS[] = {0,20,5,10};
-    private final String HACKER_ATTACKS_INFO[] = {"The hacker uses a virus to destroy enemy systems, dealing strong damage!",
-            "With the Stolen Missile ability, the hacker seizes a missile from the government and tries to use it to destroy their enemies",
-            "The hacker's Watchful Vulture ability uses realtime satellite imagery to locate enemies and ensure hits for the next 3 turns",
-            "The hacker gets \"In The System\" with their final ability to disable their enemy robots for 2 turns"};
-
-    private final String TERMINATOR_ATTACKS[] = {"Machine Gun Fury\t\t\t", "First Impact Fists\t\t\t", "Deceiving Blast of Cybernetic Proportions", "Hunker Down\t\t\t\t"};
-    private final int TERMINATOR_ATTACK_COSTS[] = {0,5,10,10};
-    private final String TERMINATOR_ATTACKS_INFO[] = {"The Terminator unleashes their Machine gun to deal major damage to opponents",
-            "The Terminator gets a heavily impactful strike on their enemy. ",
-            "The Terminators special move surprises enemies and blinding them for 2 turns. ",
-            "The Hunker Down ability increases ATK, but removes chance of dodging an attack. "};
-
-    private final String SWORDSMAN_ATTACKS[] = {"Swift Thrust of the Sword", "Fatal Eruption Of Bullets", "Lightning Clone Strike", "Meditation\t\t"};
-    private final int SWORDSMAN_ATTACK_COSTS[] = {0,13,25,0};
-    private final String SWORDSMAN_ATTACKS_INFO[] = {"The Swordsman outpaces their enemy to deal a powerful blow. ",
-            "The Swordsman uses a gun to eliminate their enemies. ",
-            "The Swordsman's moves at supersonic speeds to summon clones which all attack the enemy. ",
-            "The Swordsman Sleeps"};
-    
-    private final String ROGUE_ATTACKS[] = {"Quick Blast\t\t", "Death Strike\t", "Secret Mushroom Strike", "Forbidden Smoke\t"};
-    private final int ROGUE_ATTACK_COSTS[] = {0,12,10,5};
-    private final String ROGUE_ATTACKS_INFO[] = {"The agile Rogue quickly blasts the enemy with explosives before they get to react. ",
-            "The Rogue Sneaks up on their opponent and strikes them down. ",
-            "The Rogue poisons their opponent",
-            "The Rogue uses smoke to deceive their enemy. "};
-    
-    private final String MYSTIC_ATTACKS[] = {"Dragon Shatter", "Simple Strike", "Frost Eruption" , "Burning Prison"};
-    private final int MYSTIC_ATTACK_COSTS[] = {20,0,10,5};
-    private final String MYSTIC_ATTACKS_INFO[] = {"Summons a dragon who strikes their opponent, dealing major damage. ",
-            "The attack uses a small blast of mana to damage their opponent. ",
-            "Frost Eruption slows the enemies and does a little damage. ",
-            "The Mystic traps their enemy in a burning prison!"}; 
-
-    public final String REVEREND_ATTACKS[] = {"Holy Flash of Radiant Light\t", "Divine Smite\t\t", "Holy Healing\t\t", "Prayer\t\t\t"};
-    public final int REVEREND_ATTACK_COSTS[] = {0,20,10,10};
-    public final String REVEREND_ATTACKS_INFO[] = {"The Reverend manipulates the divine light to blind the enemy and deal major damage!",
-            "The divine smite summons lightning to stun enemies and deal major damage. ",
-            "Holy healing heals the player",
-            "The prayer increases attack and speed. "};
-    
-    public final String CHOOSE_CRATE_AND_CRATE_INFO[] = {"1", "2", "3", "4", "5", "6", "7", "M1", "M2", "M3", "M4", "M5", "M6", "M7"};
-    public Bank bankAccount;
     public TownMaker townMaker;
 
+    /**
+     * Creates the player creator which will create a character
+     * @param bankAccount       - The bank account
+     * @param name              - The player name
+     */
     public PlayerCreation(Bank bankAccount, String name){
-
         playerName = name;
         this.bankAccount = bankAccount;
     }
+
+    /**
+     * Creates a test player, and returns it
+     */
     public Player testPlayer(){
         playerStats = new Stats(150, 250, 1.25, 3.0, 0.0, 6.0, 4.0, 6.0, 200.0, 1.0, 6.0, 0.0, 5.0, 0.0, 0.0, 1.0);
         return new Player(playerStats, bankAccount, playerName,REVEREND_ATTACKS,REVEREND_ATTACK_COSTS,"reverend",this);
     }
 
+    /**
+     * Makes a new player. This is supposed to be used after we have chosen a character. 
+     * @return
+     */
     public Player getPlayer(){
         return new Player(playerStats, bankAccount, playerName, chosenAttacks, chosenAttacksCost, chosenClass,this); 
     }
 
-
+    /**
+     * Prints out the information about the crate
+     */
     public void printCrateInfo() {
         System.out.println(
                 "1 - cyborg\n" + 
@@ -169,6 +155,7 @@ public class  PlayerCreation {
         //scan.nextLine();
         String chooseCrateOrCrateInfo = ErrorChecker.compareArrayOfStrings(CHOOSE_CRATE_AND_CRATE_INFO, "It's not that hard to choose a proper option, is it?", "red");
 
+        //based on their answer, we choose a class, or give more information about that class. 
         switch(chooseCrateOrCrateInfo) {
                 case "1": 
                         chooseCyborg("cyborg");
@@ -239,9 +226,12 @@ public class  PlayerCreation {
                         classInfo.reverendInfo();
                 break; 
         }
-         
 } //end of printCrateInfo method 
 
+/**
+ * Makes the player into a cyborg
+ * @param chosenClass   - The chosen class
+ */
 public void chooseCyborg(String chosenClass){
         playerStats = new Stats(200.0, 100.0, 1.00, 5.0, 7.0, 4.0, 5.0, 8.0, 100.0, 6.0,
                                         3.0, 1.0, 1.0, 1.0, 1.0, 1.0);
@@ -252,6 +242,10 @@ public void chooseCyborg(String chosenClass){
         
 }
 
+/**
+ * Makes the player into a hacker
+ * @param chosenClass   - The chosen class
+ */
 public void chooseHacker(String chosenClass){
         playerStats = new Stats(300.0, 80.0, 0.75, 3.0, 8.0, 1.0, 7.0, 10.0, 150.0, 8.0,
                                         1.0, 1.0, 1.0, 1.0, 1.0, 1.0);
@@ -261,6 +255,10 @@ public void chooseHacker(String chosenClass){
         this.chosenClass = chosenClass; 
 }
 
+/**
+ * Makes the player into a terminator
+ * @param chosenClass   - The chosen class
+ */
 public void chooseTerminator(String chosenClass){
         playerStats = new Stats(200.0, 90.0, 0.8, 4.5, 8.0, 0.0, 7.0, 10.0, 200.0, 9.0, 3.0, 1.0, 1.0, 1.0, 1.0, 1.0);
 
@@ -270,6 +268,10 @@ public void chooseTerminator(String chosenClass){
         this.chosenClass = chosenClass; 
 }
 
+/**
+ * Makes the player into a lazer swordsman
+ * @param chosenClass   - The chosen class
+ */
 public void chooseLazerSwordsman(String chosenClass){
         playerStats = new Stats(200.0, 130.0, 1.25, 5.4, 4.0, 4.0, 5.0, 7.0, 100.0, 4.0, 4.0, 1.0, 1.0, 1.0, 1.0, 1.0);
 
@@ -279,6 +281,10 @@ public void chooseLazerSwordsman(String chosenClass){
         this.chosenClass = chosenClass; 
 }
 
+/**
+ * Makes the player into a rogue
+ * @param chosenClass   - The chosen class
+ */
 public void chooseRogue(String chosenClass){
         playerStats = new Stats(125.0, 150.0, 2.0, 5.5, 10.0, 6.0, 2.0, 3.0, 130.0, 3.0, 3.0, 5.0, 1.0, 1.0, 1.0, 1.0);
 
@@ -289,6 +295,10 @@ public void chooseRogue(String chosenClass){
         
 }
 
+/**
+ * Makes the player into a mystic
+ * @param chosenClass   - The chosen class
+ */
 public void chooseMystic(String chosenClass){
         playerStats = new Stats(175.0, 200.0, 1.0, 5.0, 1.0, 10.0, 4.0, 5.0, 150.0, 3.0, 5.0, 1.0, 1.0, 1.0, 1.0, 1.0);
 
@@ -298,6 +308,10 @@ public void chooseMystic(String chosenClass){
         this.chosenClass = chosenClass; 
 }
 
+/**
+ * Makes the player into a reverend
+ * @param chosenClass   - The chosen class
+ */
 public void chooseReverend(String chosenClass){
         playerStats = new Stats(150, 250, 1.25, 3.0, 0.0, 6.0, 4.0, 6.0, 200.0, 1.0, 6.0, 0.0, 5.0, 0.0, 0.0, 1.0);
 
@@ -308,15 +322,31 @@ public void chooseReverend(String chosenClass){
         
 }
 
+//returns information about the chosenClass
 public String getChosenClass(){return chosenClass;}
-public String getPlayerName() {return playerName;}        
-public String[] getCyborgAttacks(){return CYBORG_ATTACKS;}
-public String[] getHackerAttacks(){return HACKER_ATTACKS;}
-public String[] getTerminatorAttacks(){return TERMINATOR_ATTACKS;}
-public String[] getReverendAttacks(){return REVEREND_ATTACKS;}
-public String[] getMysticAttacks(){return MYSTIC_ATTACKS;}
-public String[] getRogueAttacks(){return ROGUE_ATTACKS;}
-public String[] getSwordsmanAttacks(){return SWORDSMAN_ATTACKS;}
 
+//returns information about the name
+public String getPlayerName() {return playerName;}
+
+//returns information about the attacks        
+public String[] getCyborgAttacks(){return CYBORG_ATTACKS;}
+
+//returns information about the attacks
+public String[] getHackerAttacks(){return HACKER_ATTACKS;}
+
+//returns information about the attacks
+public String[] getTerminatorAttacks(){return TERMINATOR_ATTACKS;}
+
+//returns information about the attacks
+public String[] getReverendAttacks(){return REVEREND_ATTACKS;}
+
+//returns information about the attacks
+public String[] getMysticAttacks(){return MYSTIC_ATTACKS;}
+
+//returns information about the attacks
+public String[] getRogueAttacks(){return ROGUE_ATTACKS;}
+
+//returns information about the attacks
+public String[] getSwordsmanAttacks(){return SWORDSMAN_ATTACKS;}
 
 }

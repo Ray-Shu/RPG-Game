@@ -257,7 +257,7 @@ public class MainStory {
         // Printer.printItalizcizedColor("You check the map to decide where you go. Though your heart still yearns for the thrill of battle...\n", "purple");
         // Printer.quickBreak(1000); 
 
-        TownMaker townMaker = new TownMaker(mainPlayer);
+        townMaker = new TownMaker(mainPlayer);
         mainPlayer.makeTownMaker(townMaker);
         townMaker.makeTowns();
         //mainPlayer.getCurrentTown().characterEnteringTown(true);
@@ -374,8 +374,8 @@ public class MainStory {
         mainPlayer.levelUp();
         mainPlayer.levelUp();
         mainPlayer.getCurrentTown().enterDungeon(true);
-        mainPlayer.levelUp();
-        mainPlayer.levelUp();
+        townMaker.increaseCurrentTownLevel();
+
         chapter_Two_Scene_One();
 
     }
@@ -453,10 +453,18 @@ public class MainStory {
         //         "Now that you think back to The Slums, \nyou find yourself grateful for the \nconstant upkeep and maintenance in \nthis floor: the roads aren't deformed,\nand the majority of the buildings \nlook some-what polished.\n",
         //         "white");
         // Printer.quickBreak(1000);
+<<<<<<< HEAD
         Printer.printItalizcizedColor(
                 "You open the door to the \"Administrations Building of the Antarctic Domain\", \nmaking sardonic remarks of the absurdly \nlong name, and quickly take the map. ",
                 "white");
         
+=======
+        // Printer.printItalizcizedColor(
+        //         "You open the door to the \"Administrations Building of the Antarctic Domain\", \nmaking sardonic remarks of the absurdly \nlong name, and quickly take the map. ",
+        //         "white");
+
+
+>>>>>>> 6b3337f004605e15b5edb2e309c3e4959113d337
         Merchant antarcticMerchant = new Merchant(mainPlayer, mainPlayer.getCurrentTown(), antarcticItemsForSale,
                 antarcticPriceOfItem2, antarcticShopName, antarcticThingsToDo, antarcticGreeting, antarcticFarewell, antarcticErrorMessage,
                 merchantColor);

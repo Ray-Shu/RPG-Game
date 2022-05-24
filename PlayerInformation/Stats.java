@@ -269,18 +269,28 @@ public class Stats {
                 this.displayStats = displayStats;
         }
 
+        /**
+         * Updates our current stats
+         */
         private void updateStats() {
                 double currentStats[] = {currentHP, currentMP, currentSpd, currentAtk, currentPhysDmg, currentMagicDmg, currentDef, currentEnd, currentStam, 
                         currentPhysRes, currentMagicRes, currentDodge, currentVit, currentCritRate, currentCritDmg, currentLuck};
                 this.currentStats = Arrays.copyOf(currentStats, currentStats.length); 
         }
 
+        /**
+         * Returns an array of current stats
+         * @return all current stats in an array
+         */
         public double[] getCurrentStats(){
                 double currentStats[] = {currentHP, currentMP, currentSpd, currentAtk, currentPhysDmg, currentMagicDmg, currentDef, currentEnd, currentStam, 
                       currentPhysRes, currentMagicRes, currentDodge, currentVit, currentCritRate, currentCritDmg, currentLuck};
                 return currentStats;
         }
 
+        /**
+         * Sets current stats to max
+         */
         public void currentToMax(){
                 currentHP = maxHP; 
                 currentMP = maxMP; 
@@ -358,7 +368,11 @@ public class Stats {
                 attackerStats.setCurrentHP(attackerStats.getCurrentHP() + howMuchHeal);
         }
 
-        
+        /**
+         * Rests the player's mp by a certain amount. Cannot go over their maxMP
+         * @param howMuchRest           - How much MP they will get
+         * @param attackerStats         - The player's stats
+         */
         public void combatRest(double howMuchRest, Stats attackerStats) {
                 if(attackerStats.getCurrentMP() + howMuchRest > attackerStats.getMaxMP()){
                         attackerStats.setCurrentMP(attackerStats.getMaxMP());
@@ -372,7 +386,7 @@ public class Stats {
                 currentHP = maxHP;
         }
 
-        //Recovers mp
+        //Recovers mp to max
         public void rest() {
                 currentMP = maxMP;
         }
@@ -423,6 +437,7 @@ public class Stats {
                 }
         }
 
+        //increases attack for a certain amount of time
         public void atkUpTime(double multiplier, int howLongAtkUp){
                 this.howLongAtkUp += howLongAtkUp;
                 applyAttackUp(multiplier);
@@ -448,6 +463,7 @@ public class Stats {
                 }
         }
 
+        //increases defence for a certain amount of time
         public void defUpTime(double multiplier, int howLongDefUp){
                 this.howLongDefUp += howLongDefUp;
                 applyDefenceUp(multiplier);
@@ -473,12 +489,9 @@ public class Stats {
                 }
         }
 
+        //increases dodge for a certain amount of time
         public void dodgeUpTime(double multiplier, int howLongDodgeUp){
                 this.howLongDodgeUp += howLongDodgeUp;
                 applyDodgeUp(multiplier);
         }
-
-        
-
-        
 }

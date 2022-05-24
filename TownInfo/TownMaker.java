@@ -116,16 +116,16 @@ public class TownMaker{
     private int[] antarcticDungeonXPperFloor = {400,500,600,1500};
 
     private String[] antarcticDungeonMobsFloor1 = {"Greater Will Swordsman", "Greater Will Swordsman", "Greater Will Swordsman"};
-    private int[] antarcticDungeonFloor1MobLevels = {13,13,13};
+    private int[] antarcticDungeonFloor1MobLevels = {15,15,15};
     private String[] antarcticDungeonMobsFloor2 = {"Yeti", "Yeti", "Yeti"};
-    private int[] antarcticDungeonFloor2MobLevels = {14,14,14};
+    private int[] antarcticDungeonFloor2MobLevels = {16,16,16};
     private String[] antarcticDungeonMobsFloor3 = {"Yeti", "Greater Will Swordsman", "Greater Will Archer"};
-    private int[] antarcticDungeonFloor3MobLevels = {15,15,15};
+    private int[] antarcticDungeonFloor3MobLevels = {17,17,17};
     private String antarcticBossName = "Warden of Frost";
-    private int antarcticBossLevel = 15;
+    private int antarcticBossLevel = 19;
 
-    private int antarcticDungeonRecommendedLevel = (15);
-    private int antarcticDungeonRequiredLevel = (13);
+    private int antarcticDungeonRecommendedLevel = (16);
+    private int antarcticDungeonRequiredLevel = (14);
     private Dungeon antarcticDungeon;
     
     private Town[] allTowns = new Town[5];

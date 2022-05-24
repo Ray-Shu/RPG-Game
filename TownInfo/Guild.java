@@ -88,34 +88,32 @@ public class Guild {
      * @param town is the town which the guild is currently in
      * @param player is the player who has missions.
      */
-    Guild(Player player){
+    Guild(Player player, Town town, TownMaker maker){
         town = player.getCurrentTown();
         townName = town.getTownName();
-
+        Town[] allTowns = maker.getAllTowns();
         //todo: Make missions for other towns. 
         //checks which town we are in, and then creates missions based on that town. 
-        switch (town.getTownName().toLowerCase()) {
+        
+        //if the town is slums, we create all the slum missions and so on for every town. 
+        if(town == allTowns[0]){
+            //color of slum Guild text is red. 
+            color = "red";
+            //Creates slum missions. 
+            Missions slumMission1 = new Missions(1000, this, slum1MissionName, slum1MissionOpponents, slum1MissionOpponentLevels, player, slum1MissionProblem, slum1MissionGreeting, slum1MissionThankYou, slum1MissionColor, slum1MissionXPReward, slum1MissionItems, slum1MissionRecommendedLevel);
+            allMissions.add(slumMission1);
+            namesOfAllMissions.add(slum1MissionName);
 
-            //if the town is slums, we create all the slum missions and so on for every town. 
-            case "the slums":
-                //color of slum Guild text is red. 
-                color = "red";
-                //Creates slum missions. 
-                Missions slumMission1 = new Missions(1000, this, slum1MissionName, slum1MissionOpponents, slum1MissionOpponentLevels, player, slum1MissionProblem, slum1MissionGreeting, slum1MissionThankYou, slum1MissionColor, slum1MissionXPReward, slum1MissionItems, slum1MissionRecommendedLevel);
-                allMissions.add(slumMission1);
-                namesOfAllMissions.add(slum1MissionName);
+            Missions slumMission2 = new Missions(1750, this, slum2MissionName, slum2MissionOpponents, slum2MissionOpponentLevels, player,  slum2MissionProblem, slum2MissionGreeting, slum2MissionThankYou, slum2MissionColor, slum2MissionXPReward, slum2MissionItems, slum2MissionRecommendedLevel);
+            allMissions.add(slumMission2);
+            namesOfAllMissions.add(slum1MissionName);
 
-                Missions slumMission2 = new Missions(1750, this, slum2MissionName, slum2MissionOpponents, slum2MissionOpponentLevels, player,  slum2MissionProblem, slum2MissionGreeting, slum2MissionThankYou, slum2MissionColor, slum2MissionXPReward, slum2MissionItems, slum2MissionRecommendedLevel);
-                allMissions.add(slumMission2);
-                namesOfAllMissions.add(slum1MissionName);
-
-                Missions slumMission3 = new Missions(2500, this, slum3MissionName, slum3MissionOpponents, slum3MissionOpponentLevels, player,  slum3MissionProblem, slum3MissionGreeting, slum3MissionThankYou, slum3MissionColor, slum3MissionXPReward, slum3MissionItems, slum3MissionRecommendedLevel);
-                allMissions.add(slumMission3);
-                namesOfAllMissions.add(slum2MissionName);
-                
-                break;
-                
-            case "The Antarctic Domain":
+            Missions slumMission3 = new Missions(2500, this, slum3MissionName, slum3MissionOpponents, slum3MissionOpponentLevels, player,  slum3MissionProblem, slum3MissionGreeting, slum3MissionThankYou, slum3MissionColor, slum3MissionXPReward, slum3MissionItems, slum3MissionRecommendedLevel);
+            allMissions.add(slumMission3);
+            namesOfAllMissions.add(slum2MissionName);
+        }
+        
+        else if((town == allTowns[1]) ){
                 color = "blue";
                 
                 //shows missions
@@ -130,31 +128,18 @@ public class Guild {
                 Missions antarcticMission3 = new Missions(4000, this, antarcticMissionName3, antarcticMissionOpponents3, antarcticMissionOpponentLevels3, player,  antarcticMissionGreeting3, antarcticMissionProblem3, antarcticMissionThankYou3, antarcticMissionColor3, antarcticMissionXPReward3, slum3MissionItems, antarcticMissionRecommendedLevel3);
                 allMissions.add(antarcticMission3);
                 namesOfAllMissions.add(antarcticMissionName3);
+        }
 
-                break;
+        else if((town == allTowns[2]) ){
+            color = "green";
+            
+        }
+        else if(town == allTowns[3]){
+            color = "green";
 
-            case "The Factory Realm":
-                color = "green";
-
-
-                break;
-
-            case "The Land Of Silver":
-                color = "yellow";
-
-
-                break;
-
-            case "The Golden Reign":
-                color = "purple";
-
-
-                break;
-
-            //runs if we mispelt the name of the town
-            default:
-                System.out.println("Error: Incorrect town name");
-                break;
+        }
+        else if((town == allTowns[4]) ){
+            color = "green";
         }
     }
 

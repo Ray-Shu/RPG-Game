@@ -318,7 +318,7 @@ public class Stats {
                                                 + ":",
                                 "white");
                 System.out.println();
-
+                updateStats();
                 for (int i = 0; i < displayStats.length; i++) {
                         double replaceToStats = currentStats[i]; 
                         Printer.print(displayStats[i] + ": " + df.format(replaceToStats)); 

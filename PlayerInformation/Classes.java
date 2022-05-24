@@ -9,12 +9,18 @@ public class Classes {
     private final String CHOICE[] = {"choose", "back"};
     private PlayerCreation creator; 
     
+    /**
+     * Gets the needed information about the creator
+     * @param creator   - The player creator
+     */
     Classes(PlayerCreation creator){
         this.creator = creator;
     }
 
+    /**
+     * Prints out special information about the certain class
+     */
     public void cyborgInfo(){
-
         // Cyborg
         System.out.println();
         Printer.printColor("Cyborg:", "blue");
@@ -46,7 +52,7 @@ public class Classes {
 
     } 
     
-
+    //todo:comment
     public void hackerInfo() {
 
         // Hacker
@@ -76,7 +82,7 @@ public class Classes {
         
     }
 
-
+    //todo:comment
     public void terminatorInfo() {
         System.out.println();
         Printer.printColor("Terminator: ", "red");
@@ -104,7 +110,7 @@ public class Classes {
         }
     }
 
-
+    //todo:comment
     public void lazerSwordsmanInfo() {
         // Lazer Swordsman
         System.out.println();
@@ -132,6 +138,7 @@ public class Classes {
         }
     }
 
+    //todo:comment
     public void rogueInfo(){
         System.out.println();
         Printer.printColor("Rogue: ", "yellow");
@@ -161,6 +168,7 @@ public class Classes {
         }
     }
 
+    //todo:comment
     public void mysticInfo() {
         System.out.println();
                 Printer.printColor("Mystic ", "purple");
@@ -191,6 +199,7 @@ public class Classes {
         }   
     }
 
+    //todo:comment
     public void reverendInfo() {
         System.out.println();
         Printer.printColor("Reverend", "white");

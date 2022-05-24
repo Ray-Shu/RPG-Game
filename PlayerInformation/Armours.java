@@ -103,6 +103,7 @@ public class Armours {
         }
     }
 
+    //returns equipmentStats
     public double[] getEquipment() {
         return equipmentStats;
     }
@@ -224,10 +225,12 @@ public class Armours {
         } 
     }
 
+    //todo:comment
     private void equipBatteredChromium() {
         String bc = batteredChromium; 
     }
 
+    //todo:comment
     private void equipSuperiorChromium() {
         String sc = superiorChromium; 
     }   

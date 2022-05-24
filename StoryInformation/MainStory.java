@@ -22,6 +22,19 @@ public class MainStory {
     String slumsFarewell = "Thanks for coming!"; 
     String slumsErrorMessage = "Looks like that isn't in the store, pick something else yeah?"; 
     Merchant slumsMerchant;
+
+    //*ANTARCTIC DOMAIN MERCHANT
+    String[] antarcticItemsForSale = {"Healing Pots", "Mana Pots"}; 
+    double[] antarcticPriceOfItem2 = {300, 300}; 
+    String[] antarcticArmour = {"Battered Chromium Armour", "Superior Chromium Armour"};
+    double[] antarcticArmourPrice = {6000, 9000}; 
+    String antarcticShopName = "Frozen Anvil"; 
+    String[] antarcticThingsToDo = { "Show common goods", "Show armour", "Leave" };
+    String antarcticGreeting = "Ugh... Another customer? What do you want?"; 
+    String antarcticFarewell = "Thanks for your money."; 
+    String antarcticErrorMessage = "Are you blind, that ain't in the store."; 
+    Merchant antarcticMerchant; 
+
     
    
 
@@ -366,7 +379,55 @@ public class MainStory {
     }
 
     public void chapter_Two_Scene_One(){ 
-        Printer.print("ANTARCTIC DOMAN HELL YEA");
+        Printer.printItalizcizedColor("\"Wow.\" You say, in a tone of derisive self-mockery. \"It took all of that to kill the warden of the lowest floor...\"\n", "white");
+        Printer.quickBreak(1000); 
+        Printer.printItalizcizedColor("You lean over to catch your breath, beads \nof sweat rolling off of your dirtied body.\n", "white");
+        Printer.quickBreak(1000); 
+        Printer.printItalizcizedColor("With the medallion safely secured, you get \nteleported to the next floor: \u001B[35mThe Antarctic Domain\u001B[35m\u001B[0m.\n", "white"); 
+        Printer.quickBreak(1000); 
+        Printer.printItalizcizedColor("The bright glow dissipates as you are \nsafely teleported. You look around and \ntake in the change of scenery. \n", "white" );
+        Printer.quickBreak(1000); 
+        Printer.printItalizcizedColor("To your surprise, there's no snow to be \nseen in the town. Not a single drop. \n", "white");
+        Printer.quickBreak(1000);
+        Printer.printItalizcizedColor("However, as you look up, you see that \nsnow quickly accumulates to form a roof \non top of an invisible dome that you \nassume is encompassing the entire town,\nresponsible for your initial confusion\n- only to be melted away in an instant.\n", "white");
+        Printer.quickBreak(1000);
+        Printer.print("\"Hey!\" \033[3mA familiar gruff voice wakes you up from your awe-induced stupor.\033[0m \"Took you damn long enough.\"\n");
+        Printer.quickBreak(1000);
+        Printer.printItalizcizedColor("You make a face of exasperation and a \nhint of amusement; surprised by how \nquickly the man was able to find you \nagain.\n", "white");
+        Printer.quickBreak(1000);
+        Printer.print("\"Me and my team mostly finished our work here, we're just relaxin' a bit before heading out again. Although there's no surprise \nthat you were victorious against the Warden of Dirt, congratulations regardless. Here.\" \n");
+        Printer.quickBreak(1000);
+        Printer.printItalizcizedColor("The man opens his palm: 2000 fusion coins.\n" , "white");
+        Printer.quickBreak(1000);
+        Printer.printItalizcizedColor("You quickly pocket the money while he gives an amused look. You ignore it and ask, \"I'm assuming there's nobody here that would pique my interest?\" \n" , "white");
+        Printer.quickBreak(1000);
+        Printer.print("\"Nah.\" \033[3mAHe replies.\033[0m\"This floor's only a ladder to our true goal: the assassination of the new king.\"\n");
+        Printer.quickBreak(1000);
+        Printer.printItalizcizedColor("You scowl. Another neccessary yet\nwasteful endeavour that you must\ntrudge through.\n", "white");
+        Printer.quickBreak(1000);
+        Printer.printItalizcizedColor("Before you head off to the \nadventurer's guild, the man calls \nout to you.\n", "white");
+        Printer.quickBreak(1000);
+        Printer.print("\"You can get a map from the admin building! See ya and don't die!\"\n");
+        Printer.quickBreak(1000);
+       
+        chapter_Two_Scene_Two();
+    }
+
+    public void chapter_Two_Scene_Two() {
+        Printer.printItalizcizedColor(
+                "Heeding his advice, you walk towards \na modern, sleek building, designed \npurely with the intention to look \n\"fashionable\".\n",
+                "white");
+        Printer.quickBreak(1000);
+        Printer.printItalizcizedColor(
+                "Constructed primarily with some sort \nof technological glass, and an ironic \nsnowy white metal, many curved shapes\nportrude out of the building to \nseemingly give it \"depth\".\n",
+                "white");
+        Printer.quickBreak(1000);
+        Printer.printItalizcizedColor("Now that you think back to The Slums, \nyou find yourself grateful for the \nconstant upkeep and maintenance in \nthis floor: the roads aren't deformed,\nand the majority of the buildings \nlook some-what polished.\n", "white");
+        Printer.quickBreak(1000); 
+        Printer.printItalizcizedColor("You open the door to the \"Administrations Building of the Antarctic Domain\", \nmaking sardonic remarks of absurdly \nlong name, and quickly take the map. ", "white");
+
+        mainPlayer.getCurrentTown().characterEnteringTown(true);
+
     }
 }
 

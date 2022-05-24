@@ -55,6 +55,17 @@ public class Armours {
     private double[] superiorSpectralLightStats = { 13, 15, 0.08, 2.1, 2.5, 2.5, 2, 2.5, 3, 2, 1.5, 3, 2.5, 3, 4.5, 2.5 };
     private double[] superiorSpectralMageStats = { 18, 20, 0.04, 2, 1, 4.5, 1.5, 2, 2, 2, 3, 1.5, 4, 3.5, 4, 2 };
 
+    //battered chromium armour 
+    private String batteredChromium = "Battered Chromium"; 
+    private double[] batteredChromiumHeavyStats = { 30, 20, 0.08, 4, 5, 4, 6, 3, 4, 4, 2.5, 3, 3, 4, 5, 2};
+    private double[] batteredChromiumLightStats = {19, 20, 0.1, 2.6, 3, 3, 2.8, 3, 4, 3, 2, 4, 3.4, 4, 5, 3}; 
+    private double[] batteredChromiumMageStats = {25, 30, 0.05, 3, 2, 6.5, 2, 3, 3, 3, 4, 2, 5, 5, 5, 3}; 
+
+    //superior chromium armour 
+    private String superiorChromium = "Superior Chromium"; 
+    private double[] superiorChromiumHeavyStats = { 40, 25, 0.09, 6, 5.5, 5, 7, 4, 5, 5, 3, 4, 4, 5, 6, 3}; 
+    private double[] superiorChromiumLightStats = { 26, 25, 0.11, 3.5, 4, 4, 3.5, 4, 5, 4, 2.5, 5, 4, 5, 6, 4};
+    private double[] superiorChromiumMageStats = {}; 
 
     public Armours(Player mainPlayer) {
         this.mainPlayer = mainPlayer; 
@@ -72,6 +83,12 @@ public class Armours {
                 break;
             case "superior spectral armour": 
                 equipSuperiorSpectral(); 
+                break;
+            case "battered chromium armour": 
+                equipBatteredChromium(); 
+                break; 
+            case "superior chromium armour": 
+                equipSuperiorChromium(); 
                 break;
         }
     }
@@ -191,6 +208,14 @@ public class Armours {
                 break;
         } 
     }
+
+    private void equipBatteredChromium() {
+        String bc = batteredChromium; 
+    }
+
+    private void equipSuperiorChromium() {
+        String sc = superiorChromium; 
+    }   
 
 
     //adds the stats of the equipped armour to player stats 

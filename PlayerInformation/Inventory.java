@@ -46,12 +46,11 @@ public class Inventory {
 
         categorizedInventory.add("Healing Potions");
         categorizedInventory.add("Mana Elixirs");
-        categorizedInventory.add("Revivals");
-        categorizedInventory.add("Misc Potions"); //? Not sure if i can implement this with the given time
 
-        //adding two weak healing and mana pots
-
+        //adding starting heal and mana pots
         ArrayList<String> itemsToAdd = new ArrayList<String>();       
+        itemsToAdd.add("Weak Healing Pots");
+        itemsToAdd.add("Weak Healing Pots");
         itemsToAdd.add("Weak Healing Pots");
         itemsToAdd.add("Weak Healing Pots");
         itemsToAdd.add("Weak Mana Pots"); 

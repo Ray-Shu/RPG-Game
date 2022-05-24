@@ -24,7 +24,7 @@ public class MobSummoner {
     
     private final String[] WARDEN_OF_DIRT_ATTACKS = {"Strange Hurl", "Soil of Pestilence", "Rooted", "Souls of Reveangance"};
     private final int[] WARDEN_DIRT_ATTACK_COSTS = {40,20,10,30};
-    private double[] wardenDirtStats = {320, 90, 0.7, 8, 5.0, 5 , 10, 4.0, 240, 6, 6, 2.0, 2.0, 4.5, 4.0, 3.0}; 
+    private double[] wardenDirtStats = {320, 90, 0.7, 2.1, 5.0, 5 , 10, 4.0, 240, 6, 6, 2.0, 2.0, 4.5, 4.0, 3.0}; 
     
     private final String[] GREATER_WILL_ARCHER_ATTACKS = {"Sharpshooter", "Shock-dart","Cloaked", "Aim Bot"};
     private final int[] GREATER_WILL_ARCHER_ATTACK_COSTS = {7,15,5,5};

@@ -82,9 +82,9 @@ public class Missions {
         
         //For each mob in the battle, we will have to fight it with our current Stats. Goal is to defeat all enemies, then we get our reward. 
         for (int i = 0; i < mobNames.length; i++) {
-
+            
             Printer.printColor("Watch out! A level "+ mobLevels[i] + " "+ mobNames[i] + " has appeared!!! \n", color);
-            //makes the stats of the current mob equal to the stats of the 
+            //makes a mob, with stats of a certain level
             if(mobNames[i].equalsIgnoreCase("Cyber Punk")){
                 currentMobStats = mobSummoner.newCyberPunk(mobLevels[i]);
             }
@@ -126,6 +126,9 @@ public class Missions {
         missionSuccessful();
     }
 
+    /**
+     * @return's a boolean of whether or not the mission is complete
+     */
     public boolean isMissionComplete(){return isMissionComplete;}
 
 /**

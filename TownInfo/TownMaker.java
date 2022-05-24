@@ -148,6 +148,7 @@ public class TownMaker{
     public void makeTowns(){
         tp = new Teleporter(player);
 
+        //create all the towns
         slums = new Town("The Slums", 1, player, "grey");
         antarcticDomain = new Town("The Antarctic Domain", 2, player,"blue");
         goldenReign = new Town("The Golden Reign", 5, player,"yellow");
@@ -175,7 +176,7 @@ public class TownMaker{
         Missions slumMission3 = new Missions(2500, slumsAdventurersGuild, slum3MissionName, slum3MissionOpponents, slum3MissionOpponentLevels, player,  slum3MissionProblem, slum3MissionGreeting, slum3MissionThankYou, slum3MissionColor, slum3MissionXPReward, slum3MissionItems, slum3MissionRecommendedLevel);
         slumsAdventurersGuild.addMission(slumMission3);
 
-
+        //creates antarctic domain
         antarcticDomain.addBuilding(player, playerStats, playerAccount, notStoreItems, notStorePrices, "Hospital",thingsToDoAtHospital, "Welcome to the Hospital! We are ready to heal you!", "Thank you for coming", "Sorry could you repeat that?", "white");        
         antarcticDungeon = new Dungeon(antarcticDungeonMobsFloor1, antarcticDungeonFloor1MobLevels, antarcticDungeonFloor2MobLevels, antarcticDungeonMobsFloor2, antarcticDungeonFloor3MobLevels, antarcticDungeonMobsFloor3, antarcticBossName, antarcticBossLevel, antarcticBossDialog, antarcticDungeonGoldPerFloor, antarcticDungeonXPperFloor, antarcticDungeonRecommendedLevel, antarcticDungeonRequiredLevel, player, antarcticDomain, "purple");
         Guild antarcticAdventurersGuild = new Guild(player, antarcticDomain, "cyan");
@@ -183,7 +184,7 @@ public class TownMaker{
         antarcticDomain.addDungeon(antarcticDungeon);
         antarcticDomain.addTeleporter(tp);
 
-        //shows missions
+        //creates antarctic missions
         Missions antarcticMission1 = new Missions(2000, slumsAdventurersGuild, antarcticMissionName1, antarcticMissionOpponents1, antarcticMissionOpponentLevels1, player,  antarcticMissionProblem1, antarcticMissionGreeting1, antarcticMissionThankYou1, antarcticMissionColor1, antarcticMissionXPReward1, slum3MissionItems, antarcticMissionRecommendedLevel1);
         antarcticAdventurersGuild.addMission(antarcticMission1);
         
@@ -193,6 +194,7 @@ public class TownMaker{
         Missions antarcticMission3 = new Missions(4000, slumsAdventurersGuild, antarcticMissionName3, antarcticMissionOpponents3, antarcticMissionOpponentLevels3, player,  antarcticMissionProblem3, antarcticMissionGreeting3, antarcticMissionThankYou3, antarcticMissionColor3, antarcticMissionXPReward3, slum3MissionItems, antarcticMissionRecommendedLevel3);
         antarcticAdventurersGuild.addMission(antarcticMission3);
         
+        //?Other realms for the next version!!!
         theFactoryRealm.addBuilding(player, playerStats, playerAccount, notStoreItems, notStorePrices, "Hospital",thingsToDoAtHospital, "Welcome to the Hospital! We are ready to heal you!", "Thank you for coming", "Sorry could you repeat that?", "white");
         Guild factoryAdventurersGuild = new Guild(player, theFactoryRealm, "cyan");
         theFactoryRealm.addTeleporter(tp);

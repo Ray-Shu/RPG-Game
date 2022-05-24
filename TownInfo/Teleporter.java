@@ -32,6 +32,8 @@ public class Teleporter {
         
         int chosenTownLevel = ErrorChecker.intWithMinAndMax(0, maxTownLevel, "\nWhere would you like to go?", "cyan");
 
+
+        //based on their choice, we run something. 
         switch (chosenTownLevel) {
             case 0:
                 townMaker.getCurrentTown().characterEnteringTown(returnToStory);

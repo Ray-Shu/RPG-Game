@@ -14,8 +14,6 @@ public class Guild {
     private ArrayList<Missions> allMissions = new ArrayList<Missions>();
 	private Town town;
 
-
-    
     /**
      * Creates the guild and gives missions based on the town that we are in. 
      * @param town is the town which the guild is currently in
@@ -65,10 +63,12 @@ public class Guild {
             }
         }
 
+        //if there are no missions, we say there are none
         if(allMissions.isEmpty()){
             Printer.printColor("There are no more missions to complete!", "white");
         }
 
+        //if there are missinos, we print them out
         for (i = 0; i < allMissions.size();i++ ){
             
             //prints the index of the mission.
@@ -79,6 +79,7 @@ public class Guild {
         Printer.printColor("(" + (i+1) + ") Leave", color);
     }
 
+    //adds a mission to the guild
     public void addMission(Missions slumMission1) {
         allMissions.add(slumMission1);
     }

@@ -474,6 +474,17 @@ public class MainStory {
 
         antarcticMerchant.shop(false, true);
         playerStats.getClassInfo(chosenClass);
+
+        do {
+        mainPlayer.getCurrentTown().characterEnteringTown(true);
+        if(mainPlayer.getLevel() < 8) {
+        Printer.printItalizcizedColor(
+        "Nothing occupies your minds besides the malevolent laughter \nechoing through your skull, your burning hatred only growing brighter.\n",
+        "purple");
+        }
+
+        } while (mainPlayer.getLevel() < 18);
+
     }
 }
 

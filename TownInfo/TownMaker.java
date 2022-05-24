@@ -79,7 +79,7 @@ public class TownMaker{
     
     private String antarcticMissionName3 = "Assassinate the president of the yeti's!";
     private String[] antarcticMissionOpponents3 = {"Yeti" };
-    private int[] antarcticMissionOpponentLevels3 = {25};
+    private int[] antarcticMissionOpponentLevels3 = {19};
     private String antarcticMissionProblem3 = "We need someone to stop the villainous Yeti president from forcing the yeti's to do terrible things";
     private String antarcticMissionGreeting3 = "You sneak around, finding the Yeti. As you attempt to strike, the yeti notices you!";
     private String antarcticMissionThankYou3 = "*clunk*";
@@ -115,16 +115,16 @@ public class TownMaker{
     private int[] antarcticDungeonXPperFloor = {400,500,600,1500};
 
     private String[] antarcticDungeonMobsFloor1 = {"Greater Will Swordsman", "Greater Will Swordsman", "Greater Will Swordsman"};
-    private int[] antarcticDungeonFloor1MobLevels = {17,17,17};
+    private int[] antarcticDungeonFloor1MobLevels = {13,13,13};
     private String[] antarcticDungeonMobsFloor2 = {"Yeti", "Yeti", "Yeti"};
-    private int[] antarcticDungeonFloor2MobLevels = {18,18,18};
+    private int[] antarcticDungeonFloor2MobLevels = {14,14,14};
     private String[] antarcticDungeonMobsFloor3 = {"Yeti", "Greater Will Swordsman", "Greater Will Archer"};
-    private int[] antarcticDungeonFloor3MobLevels = {19,19,19};
+    private int[] antarcticDungeonFloor3MobLevels = {15,15,15};
     private String antarcticBossName = "Warden of Frost";
-    private int antarcticBossLevel = 20;
+    private int antarcticBossLevel = 15;
 
-    private int antarcticDungeonRecommendedLevel = (20);
-    private int antarcticDungeonRequiredLevel = (15);
+    private int antarcticDungeonRecommendedLevel = (15);
+    private int antarcticDungeonRequiredLevel = (13);
     private Dungeon antarcticDungeon;
     
     private Town[] allTowns = new Town[5];

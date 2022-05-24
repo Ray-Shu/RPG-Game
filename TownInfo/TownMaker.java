@@ -93,10 +93,10 @@ public class TownMaker{
         allTowns[0] = slums;
         
         antarcticDomain = new Town("The Antarctic Domain", 2, player,"blue");
-        antarcticDomain.addBuilding(player, playerStats, playerAccount, notStoreItems, notStorePrices, "Hospital",thingsToDoAtHospital, "Welcome to the Hospital! We are ready to heal you!", "Thank you for coming", "Sorry could you repeat that?", "white");
-        Guild antarcticAdventurersGuild = new Guild(player);
+        antarcticDomain.addBuilding(player, playerStats, playerAccount, notStoreItems, notStorePrices, "Hospital",thingsToDoAtHospital, "Welcome to the Hospital! We are ready to heal you!", "Thank you for coming", "Sorry could you repeat that?", "white");        
         antarcticDungeon = new Dungeon(antarcticDungeonMobsFloor1, antarcticDungeonFloor1MobLevels, antarcticDungeonFloor2MobLevels, antarcticDungeonMobsFloor2, antarcticDungeonFloor3MobLevels, antarcticDungeonMobsFloor3, antarcticBossName, antarcticBossLevel, antarcticBossDialog, antarcticDungeonGoldPerFloor, antarcticDungeonXPperFloor, antarcticDungeonRecommendedLevel, antarcticDungeonRequiredLevel, player, antarcticDomain, "purple");
-
+        Guild antarcticAdventurersGuild = new Guild(player);
+        antarcticDomain.addGuild(antarcticAdventurersGuild);
         antarcticDomain.addDungeon(antarcticDungeon);
         antarcticDomain.addTeleporter(tp);
         allTowns[1] = antarcticDomain;

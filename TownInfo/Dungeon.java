@@ -155,7 +155,7 @@ public class Dungeon {
         
         //Checks if the player died in the previous room
         if(!hasPlayerDied){
-            Printer.printColor("Congratulation for beating the second room!\nYou have been fully healed and recovered all mp!\n" + 
+            Printer.printColor("Congratulation for beating the second room!\nYou have been fully healed and recovered all MP!\n" + 
             "Here are your rewards: " + xpPerRoom[1] + "XP and " + goldPerRoom[1] + " fusion coins! They are now being distributed.", color);
     
             //gives the player rewards.
@@ -180,7 +180,7 @@ public class Dungeon {
             return;
         }
 
-        Printer.printColor("Congratulation for beating the third room!\nYou have been fully healed and recovered all mp!\n" + 
+        Printer.printColor("Congratulation for beating the third room!\nYou have been fully healed and recovered all MP!\n" + 
         "Here are your rewards: " + xpPerRoom[2] + "XP and " + goldPerRoom[2] + " fusion coins! They are now being distributed.", color);
 
         //gives the player rewards.

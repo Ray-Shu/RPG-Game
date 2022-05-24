@@ -29,16 +29,16 @@ public class MobSummoner {
     
     private final String[] GREATER_WILL_ARCHER_ATTACKS = {"Sharpshooter", "Shock-dart","Cloaked", "Aim Bot"};
     private final int[] GREATER_WILL_ARCHER_ATTACK_COSTS = {7,15,5,5};
-    private double[] greaterWillArcherStats = {100.0, 65.0, 1.3, 5, 5, 1.0, 3, 5, 40.0, 3.0, 3.0, 1.0, 1.0, 1.0, 1.0, 1.0};
+    private double[] greaterWillArcherStats = {80.0, 65.0, 1.3, 5, 5, 1.0, 3, 5, 40.0, 3.0, 3.0, 1.0, 1.0, 1.0, 1.0, 1.0};
     
     private final String[] GREATER_WILL_SWORDSMAN_ATTACKS = {"Quick Slash","Devastating Swing","Ultimate Rage","Light-speed Crash"};
     private final int[] GREATER_WILL_SWORDSMAN_ATTACK_COSTS = {6,15,10,15};
-    private double[] greaterWillSwordsmanStats = {125.0, 85.0, 0.9, 5.2, 4, 2.0, 5, 9, 80.0, 8.0, 5.0, 1.0, 1.0, 1.3, 1.3, 1.0};
+    private double[] greaterWillSwordsmanStats = {100.0, 85.0, 0.9, 5.2, 4, 2.0, 5, 9, 80.0, 8.0, 5.0, 1.0, 1.0, 1.3, 1.3, 1.0};
     
     //Stats stat = new Stats(hp, mp, spd, atk, pd, md, def, end, stam, physRes, magicRes, dodge, vit, cr, cd, luck);
     private final String[] YETIS_ATTACKS = {"Body Slam","Cataclysmic Claws","Snowball Strike","Blizzard"};
     private final int[] YETIS_ATTACK_COSTS = {11,22,7,8};
-    private double[] yetiStats = {230.0, 100.0, 0.9, 6, 5, 4.0, 3, 5, 100.0, 8.0, 8.0, 0.8, 1.0, 1.4, 1.4, 1.0};
+    private double[] yetiStats = {140.0, 100.0, 0.9, 5, 5, 4.0, 3, 5, 100.0, 8.0, 8.0, 0.8, 1.0, 1.4, 1.4, 1.0};
     
     private final String[] QUANTUM_SENSORY_DROID_ATTACKS = {"Gravitational Slam!", "Atomic Annihilation!", "Power-down", "Astrogate Evasion!"};
     private final int[] QUANTUM_SENSORY_DROID_ATTACK_COSTS = {9, 15, 0, 5};

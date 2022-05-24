@@ -108,7 +108,7 @@ public class Player {
                 Printer.printColor("Congratulations! You have reached level " +playerLevel+"! \nYou're stats have increased, you have been healed and you have rested.", "yellow");
                 //todo: Make this print out stat increases
                 System.out.println("\u001B[33m-----------------------------------------------------------\u001B[33m");
-                playerStats.statsUp(1.1);
+                playerStats.statsUp(1.15);
                 armour.updateArmour();
         }
 

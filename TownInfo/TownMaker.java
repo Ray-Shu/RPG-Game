@@ -79,7 +79,7 @@ public class TownMaker{
     
     private String antarcticMissionName3 = "Assassinate the president of the yeti's!";
     private String[] antarcticMissionOpponents3 = {"Yeti" };
-    private int[] antarcticMissionOpponentLevels3 = {35};
+    private int[] antarcticMissionOpponentLevels3 = {25};
     private String antarcticMissionProblem3 = "We need someone to stop the villainous Yeti president from forcing the yeti's to do terrible things";
     private String antarcticMissionGreeting3 = "You sneak around, finding the Yeti. As you attempt to strike, the yeti notices you!";
     private String antarcticMissionThankYou3 = "*clunk*";

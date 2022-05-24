@@ -257,7 +257,6 @@ public class MainStory {
         // Printer.printItalizcizedColor("You check the map to decide where you go. Though your heart still yearns for the thrill of battle...\n", "purple");
         // Printer.quickBreak(1000); 
 
-        townMaker = new TownMaker(mainPlayer);
         mainPlayer.makeTownMaker(townMaker);
         townMaker.makeTowns();
         //mainPlayer.getCurrentTown().characterEnteringTown(true);
@@ -371,10 +370,11 @@ public class MainStory {
         mainPlayer.levelUp();
         mainPlayer.levelUp();
         mainPlayer.levelUp();
-        mainPlayer.levelUp();
-        mainPlayer.levelUp();
+        
         //mainPlayer.getCurrentTown().enterDungeon(true);
         townMaker.increaseCurrentTownLevel();
+        mainPlayer.levelUp();
+        mainPlayer.levelUp();
 
         chapter_Two_Scene_One();
 
@@ -453,11 +453,10 @@ public class MainStory {
         //         "Now that you think back to The Slums, \nyou find yourself grateful for the \nconstant upkeep and maintenance in \nthis floor: the roads aren't deformed,\nand the majority of the buildings \nlook some-what polished.\n",
         //         "white");
         // Printer.quickBreak(1000);
-        // Printer.printItalizcizedColor(
-        //         "You open the door to the \"Administrations Building of the Antarctic Domain\", \nmaking sardonic remarks of the absurdly \nlong name, and quickly take the map. ",
-        //         "white");
-
-
+        Printer.printItalizcizedColor(
+                "You open the door to the \"Administrations Building of the Antarctic Domain\", \nmaking sardonic remarks of the absurdly \nlong name, and quickly take the map. ",
+                "white");
+        
         Merchant antarcticMerchant = new Merchant(mainPlayer, mainPlayer.getCurrentTown(), antarcticItemsForSale,
                 antarcticPriceOfItem2, antarcticShopName, antarcticThingsToDo, antarcticGreeting, antarcticFarewell, antarcticErrorMessage,
                 merchantColor);
@@ -478,9 +477,9 @@ public class MainStory {
 
         do {
         mainPlayer.getCurrentTown().characterEnteringTown(true);
-        if(mainPlayer.getLevel() < 8) {
+        if(mainPlayer.getLevel() < 18) {
         Printer.printItalizcizedColor(
-        "Nothing occupies your minds besides the malevolent laughter \nechoing through your skull, your burning hatred only growing brighter.\n",
+        "Nothing occupies your minds besides the malevolent laughter echoing through your skull, your burning hatred only growing brighter.\n",
         "purple");
         }
 

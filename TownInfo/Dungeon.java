@@ -290,7 +290,7 @@ public class Dungeon {
         } 
         
         else if(mobName.equalsIgnoreCase("Warden of Frost")){
-            currentMobStats = summoner.newGreaterWillArcher(mobLevel);
+            currentMobStats = summoner.newWardenOfFrost(mobLevel);
         }
         
         else{

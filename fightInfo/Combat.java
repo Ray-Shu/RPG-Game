@@ -80,8 +80,19 @@ public class Combat extends Moves{
                 
                 listAttacks();
                 
-                //makes them enter in another number if the option does not correspond to an attack or the inventory. 
-                int option = ErrorChecker.intWithMinAndMax(1, 5, "Choose an attack", "white");
+                int option;
+                //This makes them enter a new value if they enter an attack that they do not have the MP for
+                do  {
+                    option = ErrorChecker.intWithMinAndMax(1, 5, "Choose an attack", "white");
+                    
+                    if(option == 5){break;}
+
+                    if(playerAttackCosts[option-1] > player.getPlayerStats().getCurrentMP()){
+                        Printer.printColor("\nToo tired! Not enough MP to use that attack", "red");
+                    }
+                } while(playerAttackCosts[option-1] > player.getPlayerStats().getCurrentMP());
+
+                //if they choose an attack they can afford, we will run it
                 if(option != 5){
                     playerMove(option); 
                 } else {
@@ -246,35 +257,34 @@ public class Combat extends Moves{
      * This method checks which class the player chose by comparing their attacks to the array of cyborg attacks, before 
      * running those attacks.  
      */
-    public void playerMove(int option) {
+    void playerMove(int option) {
         
         //This checks which class the player is, and then runs their respected moves based on that. 
         if (playerAttacks == creator.getCyborgAttacks()){
-            cyborgAttack(playerStats, mobStats, player, option);
+            cyborgAttack(playerStats, mobStats,  mobAttackCosts[option-1], option);
         }
         else if (playerAttacks == creator.getHackerAttacks()){
-            hackAttack(playerStats, mobStats, player, option);
+            hackAttack(playerStats, mobStats,  mobAttackCosts[option-1], option);
         }
         else if (playerAttacks == creator.getTerminatorAttacks()){
-            terminatorAttack(playerStats, mobStats, player, option);
+            terminatorAttack(playerStats, mobStats,  mobAttackCosts[option-1], option);
         }
         else if (playerAttacks == creator.getSwordsmanAttacks()){
-            swordsmanAttack(playerStats, mobStats, player, option);
+            swordsmanAttack(playerStats, mobStats,  mobAttackCosts[option-1], option);
         }
         else if (playerAttacks == creator.getRogueAttacks()){
-            rogueAttack(playerStats, mobStats, player, option);
+            rogueAttack(playerStats, mobStats,  mobAttackCosts[option-1], option);
         }
         else if (playerAttacks == creator.getMysticAttacks()){
-            mysticAttack(playerStats, mobStats, player, option);
+            mysticAttack(playerStats, mobStats,  mobAttackCosts[option-1], option);
         }
         else {
-            reverendAttack(playerStats, mobStats, player, option);
+            reverendAttack(playerStats, mobStats,  mobAttackCosts[option-1], option);
         }        
     }
     
     /**
      * Does the mobs move.
-     * 
      * @param playerStats2
      * @param mobStats2
      */
@@ -282,7 +292,12 @@ public class Combat extends Moves{
 
         double mp = mobStats.getCurrentMP();
         ArrayList<Integer> movesWeCanDo = new ArrayList<Integer>();
-
+        
+        if (movesWeCanDo.isEmpty()) {
+            System.out.println("The enemy has run out of battery!");
+            mobStats.setCurrentHP(0.0);
+            return;
+        }
         //fills an arrayList with all the moves that we could possibly afford with our current mp
         for (int i = 0; i < mobAttackCosts.length; i++) {
             //puts the index of the mob attack cost into the array, so we can reference the size of the array later.
@@ -292,62 +307,61 @@ public class Combat extends Moves{
         }
 
         //If the mob lacks the necessary MP to do an attack, they will die. 
-        if (movesWeCanDo.isEmpty()) {
-            System.out.println("The enemy has run out of battery!");
-            mobStats.setCurrentHP(0.0);
-            return;
-        }
     
         //gets a random attack from the list of attacks that we are able to do. 
         int index = random.nextInt(movesWeCanDo.size());
 
         //Determines the mob, and then uses their attacks
         if (mobAttacks == mobSummoner.getCyberPunkAttacks()) {
-            cyberPunkAttack(mobStats, playerStats, index);
+            cyberPunkAttack(mobStats, playerStats, mobAttackCosts[index], index);
         }
         
         //Determines the mob, and then uses their attacks
         if (mobAttacks == mobSummoner.getGreaterWillAssasinAttacks()) {
-            greaterWillAssassinAttack(mobStats, playerStats, index);
+            greaterWillAssassinAttack(mobStats, playerStats, mobAttackCosts[index], index);
         }
         
         //Determines the mob, and then uses their attacks
         if (mobAttacks == mobSummoner.getNanoBotAttacks()){
-            nanoBotClusterAttacks(mobStats, playerStats, index);
+            nanoBotClusterAttacks(mobStats, playerStats, mobAttackCosts[index], index);
         }
 
         //Determines the mob, and then uses their attacks
         if (mobAttacks == mobSummoner.getWardenOfDirtAttacks()){
-            wardenOfDirtMoves(mobStats, playerStats, index);
+            wardenOfDirtMoves(mobStats, playerStats, mobAttackCosts[index], index);
         }
         
         //Determines the mob, and then uses their attacks
         if (mobAttacks == mobSummoner.getGreaterWillArcherAttacks()) {
-            greaterWillArcherMoves(mobStats, playerStats, index);
+            greaterWillArcherMoves(mobStats, playerStats, mobAttackCosts[index], index);
         }
         
         //Determines the mob, and then uses their attacks
         if (mobAttacks == mobSummoner.getGreaterWillSwordsmanAttacks()) {
-            greaterWillSwordsmanMoves(mobStats, playerStats, index);
+            greaterWillSwordsmanMoves(mobStats, playerStats, mobAttackCosts[index], index);
         }
         
         //Determines the mob, and then uses their attacks
         if (mobAttacks == mobSummoner.getYetiAttacks()){
-            yetiMoves(mobStats, playerStats, index);
+            yetiMoves(mobStats, playerStats, mobAttackCosts[index], index);
         }
 
         //Determines the mob, and then uses their attacks
         if (mobAttacks == mobSummoner.getQuantumSensoryDroidAttacks()){
-            quantumSensoryDroidAttacks(mobStats, playerStats, index);
+            quantumSensoryDroidAttacks(mobStats, playerStats, mobAttackCosts[index], index);
         }
         
         if (mobAttacks == mobSummoner.getWardenOfFrostAttacks()){
-            wardenOfFrostAttacks(mobStats, playerStats, index);
+            wardenOfFrostAttacks(mobStats, playerStats, mobAttackCosts[index], index);
         }
         
 
     }
 
+
+    /**
+     * Checks if anyone is disabled, then prints out some information about it. 
+     */
     public void isAnyoneDisabled(){
         //Checks if the enemy is disabled. If they are, we will skip their turn and say they are disabled. 
             if(mobStats.getHowLongDisabled() > 0){
@@ -359,7 +373,7 @@ public class Combat extends Moves{
             }
 
             //Checks if the player is disabled. If they are, we will skip their turn and say they are disabled. 
-            if(playerStats.getHowLongDisabled() > 0){
+            else if(playerStats.getHowLongDisabled() > 0){
                 Printer.printColor("----------------------------------------------------------", "red");
                 Printer.printColor("Player is disabled!!!" ,"red");
                 playerStats.setHowLongDisabled(playerStats.getHowLongDisabled() -1);
@@ -370,7 +384,7 @@ public class Combat extends Moves{
 
     //checks if any of the player's stats are currently boosts
     public void checkPlayerBoosts(){
-        //checks if the player's temp ATK multiplier is active, and then it 
+        //checks if the player's temp ATK multiplier is active, and then it subtracts one from it and sees if it is over.
             if(playerStats.getHowLongAtkUp() > 0){
                 playerStats.setHowLongAtkUp(playerStats.getHowLongAtkUp() - 1);
                 if(playerStats.getHowLongAtkUp() ==0){
@@ -379,7 +393,7 @@ public class Combat extends Moves{
                 }
             }
 
-        //checks if the player's attack speed multiplier is active, and then it 
+        //checks if the player's attack speed multiplier is active, and then it subtracts one from it and sees if it is over.
             if(playerStats.getHowLongSpeedUp() > 0){
                 playerStats.setHowLongSpeedUp(playerStats.getHowLongSpeedUp() - 1);
                 if(playerStats.getHowLongSpeedUp()==0){
@@ -387,7 +401,7 @@ public class Combat extends Moves{
                     playerStats.applyAttackUp(1);
                 }
             }
-        //checks if the player's temp def multiplier is active, and then it 
+        //checks if the player's temp def multiplier is active, and then it subtracts one from it and sees if it is over.
             if(playerStats.getHowLongDefUp()> 0){
                 playerStats.setHowLongDefUp(playerStats.getHowLongDefUp() - 1);
                 if(playerStats.getHowLongDefUp() ==0){
@@ -396,7 +410,7 @@ public class Combat extends Moves{
                 }
             }
 
-        //checks if the player's temp dodge multiplier is active, and then it 
+        //checks if the player's temp dodge multiplier is active, and then it subtracts one from it and sees if it is over.
             if(playerStats.getHowLongDodgeUp() > 0){
                 playerStats.setHowLongDodgeUp(playerStats.getHowLongDodgeUp() - 1);
                 if(playerStats.getHowLongDodgeUp() ==0){
@@ -411,39 +425,40 @@ public class Combat extends Moves{
 
     //checks if any of the mobs's stats are currently boosts
     public void checkMobBoosts(){
-        //checks if the mobs's temp speed multiplier is active, and then it 
-            if(mobStats.getHowLongSpeedUp() > 0){
-                mobStats.setHowLongSpeedUp(mobStats.getHowLongSpeedUp() - 1);
-                if(mobStats.getHowLongSpeedUp() ==0){
-                    Printer.printColor("Mob SPD boost over!", "cyan");
-                    mobStats.applySpeedUp(1);
-                }
+        //checks if the mobs's temp speed multiplier is active, and then it subtracts one from it and sees if it is over.
+        if(mobStats.getHowLongSpeedUp() > 0){
+            mobStats.setHowLongSpeedUp(mobStats.getHowLongSpeedUp() - 1);
+            if(mobStats.getHowLongSpeedUp() ==0){
+                Printer.printColor("Mob SPD boost over!", "cyan");
+                mobStats.applySpeedUp(1);
             }
-            //checks if the mobs's temp atk multiplier is active, and then it 
-            if(mobStats.getHowLongAtkUp()>0){
-                mobStats.setHowLongAtkUp(mobStats.getHowLongAtkUp() - 1);
-                if(mobStats.getHowLongAtkUp() ==0){
-                    Printer.printColor("Mob ATK boost over!", "cyan");
-                    mobStats.applyAttackUp(1);
-                }
-            }
-
-            if(mobStats.getHowLongDefUp() > 0){
-                mobStats.setHowLongDefUp(mobStats.getHowLongDefUp() - 1);
-                if(mobStats.getHowLongDefUp() ==0){
-                    Printer.printColor("Mob DEF boost over!", "cyan");
-                    mobStats.applyDefenceUp(1);
-                }
-            }
-            //checks if the mobs's temp dodge multiplier is active, and then it 
-            if(mobStats.getHowLongDodgeUp() > 0){
-                mobStats.setHowLongDodgeUp(mobStats.getHowLongDodgeUp() -1);
-                if(mobStats.getHowLongDodgeUp() ==0){
-                    Printer.printColor("Mob DODGE boost over!", "cyan");
-                    mobStats.applyDodgeUp(1);
-                }
-            }
-
+        }
         
+        //checks if the mobs's temp atk multiplier is active, and then it subtracts one from it and sees if it is over.
+        if(mobStats.getHowLongAtkUp()>0){
+            mobStats.setHowLongAtkUp(mobStats.getHowLongAtkUp() - 1);
+            if(mobStats.getHowLongAtkUp() ==0){
+                Printer.printColor("Mob ATK boost over!", "cyan");
+                mobStats.applyAttackUp(1);
+            }
+        }
+
+        //checks if the mobs's temp def multiplier is active, and then it subtracts one from it and sees if it is over. 
+        if(mobStats.getHowLongDefUp() > 0){
+            mobStats.setHowLongDefUp(mobStats.getHowLongDefUp() - 1);
+            if(mobStats.getHowLongDefUp() ==0){
+                Printer.printColor("Mob DEF boost over!", "cyan");
+                mobStats.applyDefenceUp(1);
+            }
+        }
+        
+        //checks if the mobs's temp dodge multiplier is active, and then it subtracts one from it and sees if it is over. 
+        if(mobStats.getHowLongDodgeUp() > 0){
+            mobStats.setHowLongDodgeUp(mobStats.getHowLongDodgeUp() -1);
+            if(mobStats.getHowLongDodgeUp() ==0){
+                Printer.printColor("Mob DODGE boost over!", "cyan");
+                mobStats.applyDodgeUp(1);
+            }
+        }
     }
 }

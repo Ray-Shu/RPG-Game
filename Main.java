@@ -5,7 +5,6 @@ import Tools.Printer;
 
 import java.util.ArrayList;
 
-import PlayerAssistants.*;
 import TownInfo.*;
 
 public class Main {

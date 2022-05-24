@@ -67,6 +67,11 @@ public class Armours {
     private double[] superiorChromiumLightStats = { 26, 25, 0.11, 3.5, 4, 4, 3.5, 4, 5, 4, 2.5, 5, 4, 5, 6, 4};
     private double[] superiorChromiumMageStats = {}; 
 
+    /**
+     * Sets up a class to make armours. It gets all the information it will need about the player
+     * for armour stuff
+     * @param mainPlayer
+     */
     public Armours(Player mainPlayer) {
         this.mainPlayer = mainPlayer; 
         this.chosenClass = mainPlayer.getPlayerClass(); 
@@ -75,8 +80,13 @@ public class Armours {
         statsBeforeArmour = playerStats.getCurrentStats(); 
     }
 
+    /**
+     * Equips armour onto the user. 
+     * @param armour
+     */
     public void equipArmour(String armour) { 
         
+        //gets the name of the armour, and equips that armour
         switch (armour.toLowerCase()) {
             case "battered spectral armour": 
                 equipBatteredSpectral(); 
@@ -131,9 +141,11 @@ public class Armours {
     }
 
 
-
+/**
+ * Equips the battered spectral armour
+ */
     private void equipBatteredSpectral() {
-        
+        //Determines the type of armour they will need based on their class, then equips it. 
         String bs = batteredSpectral; 
         switch(chosenClass.toLowerCase()) {
             case "cyborg": 
@@ -167,6 +179,9 @@ public class Armours {
         }
     }
 
+    /**
+     * Equips the superior spectral armour
+     */
     private void equipSuperiorSpectral() {
 
         String ss = superiorSpectral;

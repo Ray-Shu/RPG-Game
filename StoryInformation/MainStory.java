@@ -451,8 +451,6 @@ public class MainStory {
                 "white");
         Printer.printItalizcizedColor("You unlocked the map for: The Antarctic Domain", "purple");
         
-        
-        
         Merchant antarcticMerchant = new Merchant(mainPlayer, mainPlayer.getCurrentTown(), antarcticItemsForSale,
                 antarcticPriceOfItem2, antarcticShopName, antarcticThingsToDo, antarcticGreeting, antarcticFarewell, antarcticErrorMessage,
                 merchantColor);

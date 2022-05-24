@@ -9,6 +9,8 @@ import PlayerInformation.*;
 public class TownMaker{
 
     private Bank playerAccount;
+    private boolean returnToStory;
+
     private String notStoreItems[] = new String[2];
     private double notStorePrices[] = new double[2];
     private Town slums, antarcticDomain, theFactoryRealm, landOfSilver, goldenReign;
@@ -26,7 +28,7 @@ public class TownMaker{
     private String slum1MissionProblem = "Bandits have attacked the hyperloop. Defeat them all to earn a bounty!";
     private String slum1MissionGreeting = "Help us! The bandits are attempting to hijack the train!";
     private String slum1MissionThankYou = "Thank you so much for your help!";
-    private int slum1MissionXPReward = 360;
+    private int slum1MissionXPReward = 400;
     private String[] slum1MissionItems = new String[5];
     private String slum1MissionColor = "blue";
     private int slum1MissionRecommendedLevel = 2;
@@ -39,7 +41,7 @@ public class TownMaker{
     private String slum2MissionGreeting = "You break into the compound covertly through the sewers.\n"
             + "Once you arive in the basement, you realise that you are going to have to fight your way out.";
     private String slum2MissionThankYou = "Thank you so much for your help!";
-    private int slum2MissionXPReward = 450;
+    private int slum2MissionXPReward = 550;
     private String[] slum2MissionItems = new String[5];
     private String slum2MissionColor = "purple";
     private int slum2MissionRecommendedLevel = 5;
@@ -51,11 +53,10 @@ public class TownMaker{
             "Defeat all the nano-bots to win!";
     private String slum3MissionGreeting = "HELP!!! THOSE NANO BOTS ARE DESTROYING MY CROPS!!!";
     private String slum3MissionThankYou = "Yay! My crops are saved!!!";
-    private int slum3MissionXPReward = 550;
+    private int slum3MissionXPReward = 650;
     private String[] slum3MissionItems = new String[5];
     private String slum3MissionColor = "yellow";
     private int slum3MissionRecommendedLevel = 7;
-	private boolean returnToStory;
     
     private String antarcticMissionName1 = "Stop Yeti Attack!";
     private String[] antarcticMissionOpponents1 = {"yeti", "yeti","yeti" };
@@ -63,7 +64,7 @@ public class TownMaker{
     private String antarcticMissionProblem1 = "A group of Yeti's have attacked an innocent group of campers! Help the campers by defeating the Yeti's";
     private String antarcticMissionGreeting1 = "AAAaaaaaaaaaaaaaaaaaaaaaHHHHHHHHHHH HELP US BEFORE WE ARE TURNED INTO YETI SNACKS!";
     private String antarcticMissionThankYou1 = "Thank you so much!";
-    private int antarcticMissionXPReward1 = 650;
+    private int antarcticMissionXPReward1 = 800;
     private String antarcticMissionColor1 = "cyan";
     private int antarcticMissionRecommendedLevel1 = 11;
     
@@ -73,7 +74,7 @@ public class TownMaker{
     private String antarcticMissionProblem2 = "We need a brave and skilled soldier to break into the ice jail and free a prisoner.";
     private String antarcticMissionGreeting2 = "You go for the head on approach: choosing to defeat all enemies in the jail by entering through the front door!";
     private String antarcticMissionThankYou2 = "Are you here to save me !?!?!?!?!";
-    private int antarcticMissionXPReward2 = 850;
+    private int antarcticMissionXPReward2 = 1000;
     private String antarcticMissionColor2 = "green";
     private int antarcticMissionRecommendedLevel2 = 14;
     
@@ -83,7 +84,7 @@ public class TownMaker{
     private String antarcticMissionProblem3 = "We need someone to stop the villainous Yeti president from forcing the yeti's to do terrible things";
     private String antarcticMissionGreeting3 = "You sneak around, finding the Yeti. As you attempt to strike, the yeti notices you!";
     private String antarcticMissionThankYou3 = "*clunk*";
-    private int antarcticMissionXPReward3 = 1000;
+    private int antarcticMissionXPReward3 = 1200;
     private String antarcticMissionColor3 = "green";
     private int antarcticMissionRecommendedLevel3 = 16;
 
@@ -185,13 +186,13 @@ public class TownMaker{
         antarcticDomain.addTeleporter(tp);
 
         //creates antarctic missions
-        Missions antarcticMission1 = new Missions(2000, slumsAdventurersGuild, antarcticMissionName1, antarcticMissionOpponents1, antarcticMissionOpponentLevels1, player,  antarcticMissionProblem1, antarcticMissionGreeting1, antarcticMissionThankYou1, antarcticMissionColor1, antarcticMissionXPReward1, slum3MissionItems, antarcticMissionRecommendedLevel1);
+        Missions antarcticMission1 = new Missions(4500, slumsAdventurersGuild, antarcticMissionName1, antarcticMissionOpponents1, antarcticMissionOpponentLevels1, player,  antarcticMissionProblem1, antarcticMissionGreeting1, antarcticMissionThankYou1, antarcticMissionColor1, antarcticMissionXPReward1, slum3MissionItems, antarcticMissionRecommendedLevel1);
         antarcticAdventurersGuild.addMission(antarcticMission1);
         
-        Missions antarcticMission2 = new Missions(3000, slumsAdventurersGuild, antarcticMissionName2, antarcticMissionOpponents2, antarcticMissionOpponentLevels2, player,  antarcticMissionProblem2, antarcticMissionGreeting2, antarcticMissionThankYou2, antarcticMissionColor2, antarcticMissionXPReward2, slum3MissionItems, antarcticMissionRecommendedLevel2);
+        Missions antarcticMission2 = new Missions(5000, slumsAdventurersGuild, antarcticMissionName2, antarcticMissionOpponents2, antarcticMissionOpponentLevels2, player,  antarcticMissionProblem2, antarcticMissionGreeting2, antarcticMissionThankYou2, antarcticMissionColor2, antarcticMissionXPReward2, slum3MissionItems, antarcticMissionRecommendedLevel2);
         antarcticAdventurersGuild.addMission(antarcticMission2);
         
-        Missions antarcticMission3 = new Missions(4000, slumsAdventurersGuild, antarcticMissionName3, antarcticMissionOpponents3, antarcticMissionOpponentLevels3, player,  antarcticMissionProblem3, antarcticMissionGreeting3, antarcticMissionThankYou3, antarcticMissionColor3, antarcticMissionXPReward3, slum3MissionItems, antarcticMissionRecommendedLevel3);
+        Missions antarcticMission3 = new Missions(6500, slumsAdventurersGuild, antarcticMissionName3, antarcticMissionOpponents3, antarcticMissionOpponentLevels3, player,  antarcticMissionProblem3, antarcticMissionGreeting3, antarcticMissionThankYou3, antarcticMissionColor3, antarcticMissionXPReward3, slum3MissionItems, antarcticMissionRecommendedLevel3);
         antarcticAdventurersGuild.addMission(antarcticMission3);
         
         //?Other realms for the next version!!!

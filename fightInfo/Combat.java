@@ -65,7 +65,7 @@ public class Combat extends Moves{
 
             //checks if it is a tutorial. If it is, we tell the a bit about how to fight. 
             if (isTutorial) {
-                Printer.printColor("\nWelcome to your first fight! Both you and your opponent will have attacks which use MP. \nYour goal is to use those attacks to defeat your enemy before dying or running out of MP! \n", "purple"); 
+                Printer.printColor("\nWelcome to your first fight! Both you and your opponent will have attacks which use MP. \nYour goal is to use those attacks to defeat your enemy before dying or running out of MP! \n Your character speed dictates the amount turns you can have, potentially allowing you to score consecutive hits on an enemy before they have a chance to attack!", "purple"); 
                 isTutorial = false;
             }
 

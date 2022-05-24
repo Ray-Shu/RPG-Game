@@ -293,11 +293,6 @@ public class Combat extends Moves{
         double mp = mobStats.getCurrentMP();
         ArrayList<Integer> movesWeCanDo = new ArrayList<Integer>();
         
-        if (movesWeCanDo.isEmpty()) {
-            System.out.println("The enemy has run out of battery!");
-            mobStats.setCurrentHP(0.0);
-            return;
-        }
         //fills an arrayList with all the moves that we could possibly afford with our current mp
         for (int i = 0; i < mobAttackCosts.length; i++) {
             //puts the index of the mob attack cost into the array, so we can reference the size of the array later.
@@ -305,7 +300,12 @@ public class Combat extends Moves{
                 movesWeCanDo.add(i);
             }
         }
-
+        
+        if (movesWeCanDo.isEmpty()) {
+            System.out.println("The enemy has run out of battery!");
+            mobStats.setCurrentHP(0.0);
+            return;
+        }
         //If the mob lacks the necessary MP to do an attack, they will die. 
     
         //gets a random attack from the list of attacks that we are able to do. 

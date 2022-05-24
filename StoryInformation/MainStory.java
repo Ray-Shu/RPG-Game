@@ -457,6 +457,8 @@ public class MainStory {
                 "You open the door to the \"Administrations Building of the Antarctic Domain\", \nmaking sardonic remarks of the absurdly \nlong name, and quickly take the map. ",
                 "white");
         
+        playerAccount.deposit(50000);
+        
         Merchant antarcticMerchant = new Merchant(mainPlayer, mainPlayer.getCurrentTown(), antarcticItemsForSale,
                 antarcticPriceOfItem2, antarcticShopName, antarcticThingsToDo, antarcticGreeting, antarcticFarewell, antarcticErrorMessage,
                 merchantColor);

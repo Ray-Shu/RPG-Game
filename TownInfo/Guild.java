@@ -88,10 +88,9 @@ public class Guild {
      * @param town is the town which the guild is currently in
      * @param player is the player who has missions.
      */
-    Guild(Player player, Town town, TownMaker maker){
+    Guild(Player player, Town town, Town[] allTowns){
         town = player.getCurrentTown();
         townName = town.getTownName();
-        Town[] allTowns = maker.getAllTowns();
         //todo: Make missions for other towns. 
         //checks which town we are in, and then creates missions based on that town. 
         
@@ -114,7 +113,7 @@ public class Guild {
         }
         
         else if((town == allTowns[1]) ){
-                color = "blue";
+            color = "blue";
                 
                 //shows missions
                 Missions antarcticMission1 = new Missions(2000, this, antarcticMissionName1, antarcticMissionOpponents1, antarcticMissionOpponentLevels1, player,  antarcticMissionGreeting1, antarcticMissionProblem1, antarcticMissionThankYou1, antarcticMissionColor1, antarcticMissionXPReward1, slum3MissionItems, antarcticMissionRecommendedLevel1);

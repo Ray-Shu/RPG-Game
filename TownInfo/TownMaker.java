@@ -81,43 +81,40 @@ public class TownMaker{
     public void makeTowns(){
         tp = new Teleporter(player);
 
-        //Creates the slums
         slums = new Town("The Slums", 1, player, "grey");
+        antarcticDomain = new Town("The Antarctic Domain", 2, player,"blue");
+        goldenReign = new Town("The Golden Reign", 5, player,"yellow");
+        theFactoryRealm = new Town("The Factory Realm", 3, player,"cyan");
+        landOfSilver = new Town("The Land Of Silver", 4, player,"cyan");
+        Town[] allTowns = {slums, antarcticDomain, goldenReign, theFactoryRealm, landOfSilver};
+        this.allTowns = allTowns;
+        
+        //Creates the slums
         slums.addBuilding(player, playerStats, playerAccount, notStoreItems, notStorePrices, "Hospital",thingsToDoAtHospital, "Welcome to the Hospital! We are ready to heal you!", "Thank you for coming", "Sorry could you repeat that?", "white");
         slumDungeon = new Dungeon(slumDungeonMobsFloor1, slumDungeonFloor1MobLevels, slumDungeonFloor2MobLevels, slumDungeonMobsFloor2, slumDungeonFloor3MobLevels, slumDungeonMobsFloor3, slumBossName, slumBossLevel, slumBossDialog, slumDungeonGoldPerFloor, slumDungeonXPperFloor, slumDungeonRecommendedLevel, slumDungeonRequiredLevel, player, slums, "purple");
-        Guild slumsAdventurersGuild = new Guild(player, slums, this);
+        Guild slumsAdventurersGuild = new Guild(player, slums, allTowns);
         slums.addGuild(slumsAdventurersGuild);
         slums.addDungeon(slumDungeon);
         slums.addTeleporter(tp);
-        allTowns[0] = slums;
         
-        antarcticDomain = new Town("The Antarctic Domain", 2, player,"blue");
         antarcticDomain.addBuilding(player, playerStats, playerAccount, notStoreItems, notStorePrices, "Hospital",thingsToDoAtHospital, "Welcome to the Hospital! We are ready to heal you!", "Thank you for coming", "Sorry could you repeat that?", "white");        
         antarcticDungeon = new Dungeon(antarcticDungeonMobsFloor1, antarcticDungeonFloor1MobLevels, antarcticDungeonFloor2MobLevels, antarcticDungeonMobsFloor2, antarcticDungeonFloor3MobLevels, antarcticDungeonMobsFloor3, antarcticBossName, antarcticBossLevel, antarcticBossDialog, antarcticDungeonGoldPerFloor, antarcticDungeonXPperFloor, antarcticDungeonRecommendedLevel, antarcticDungeonRequiredLevel, player, antarcticDomain, "purple");
-        Guild antarcticAdventurersGuild = new Guild(player, antarcticDomain, this);
+        Guild antarcticAdventurersGuild = new Guild(player, antarcticDomain, allTowns);
         antarcticDomain.addGuild(antarcticAdventurersGuild);
         antarcticDomain.addDungeon(antarcticDungeon);
         antarcticDomain.addTeleporter(tp);
-        allTowns[1] = antarcticDomain;
         
-        theFactoryRealm = new Town("The Factory Realm", 3, player,"cyan");
         theFactoryRealm.addBuilding(player, playerStats, playerAccount, notStoreItems, notStorePrices, "Hospital",thingsToDoAtHospital, "Welcome to the Hospital! We are ready to heal you!", "Thank you for coming", "Sorry could you repeat that?", "white");
-        Guild factoryAdventurersGuild = new Guild(player, theFactoryRealm, this);
+        Guild factoryAdventurersGuild = new Guild(player, theFactoryRealm, allTowns);
         theFactoryRealm.addTeleporter(tp);
-        allTowns[2] = theFactoryRealm;
         
-        landOfSilver = new Town("The Land Of Silver", 4, player,"cyan");
         landOfSilver.addBuilding(player, playerStats, playerAccount, notStoreItems, notStorePrices, "Hospital",thingsToDoAtHospital, "Welcome to the Hospital! We are ready to heal you!", "Thank you for coming", "Sorry could you repeat that?", "white");
-        Guild silverAdventurersGuild = new Guild(player, landOfSilver, this);
+        Guild silverAdventurersGuild = new Guild(player, landOfSilver, allTowns);
         landOfSilver.addTeleporter(tp);
-        allTowns[3] = landOfSilver;
         
-        goldenReign = new Town("The Golden Reign", 5, player,"yellow");
         goldenReign.addBuilding(player, playerStats, playerAccount, notStoreItems, notStorePrices, "Hospital",thingsToDoAtHospital, "Welcome to the Hospital! We are ready to heal you!", "Thank you for coming", "Sorry could you repeat that?", "white");
-        Guild goldenReignGuild = new Guild(player, goldenReign, this);
+        Guild goldenReignGuild = new Guild(player, goldenReign, allTowns);
         goldenReign.addTeleporter(tp);
-        allTowns[4] = goldenReign;
-       
     }
 
     /**

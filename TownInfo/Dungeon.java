@@ -331,7 +331,7 @@ public class Dungeon {
 
         hasDungeonBeenDefeated = true;
         Printer.printColor("You have gained the next Medallion, enabling you to go to the next town!", color);
-        player.getTownMaker().increaseCurrentTownLevel();
+        player.getTownMaker().increaseMaxTownLevel();
         if(!returnToStory){
             player.getCurrentTown().characterEnteringTown(returnToStory);
         }

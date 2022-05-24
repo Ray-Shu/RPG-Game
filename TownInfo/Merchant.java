@@ -231,7 +231,7 @@ public class Merchant {
                     playerAccount.withdraw(armourPrice[i]);
                     Armours equipArmour = new Armours(mainPlayer); 
                     equipArmour.equipArmour(armour[i]);
-                    Printer.printColor("You have obtained: " + Arrays.toString(armour) + ". Equipping now...", "purple");
+                    Printer.printColor("You have obtained: " + armour[i] + ". Equipping now...", "purple");
                     Printer.printColor(
                             "Thank you for your purchase! Your remaining balance is " + playerAccount.balance, color);
                 } else {

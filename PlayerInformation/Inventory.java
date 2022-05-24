@@ -137,7 +137,7 @@ public class Inventory {
             if (i != 0 && i < categorizedInventory.size()) { 
                 System.out.print(" | ");
             }
-            System.out.println("[" + (i+1) + "] " + categorizedInventory.get(i));
+            System.out.print("[" + (i+1) + "] " + categorizedInventory.get(i));
         }
         System.out.println("\n\n--------------------------------------------------------------");
         Printer.printColor("\n\n[E] Exit Inventory\n","yellow");

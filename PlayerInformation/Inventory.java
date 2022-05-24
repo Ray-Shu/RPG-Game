@@ -52,12 +52,15 @@ public class Inventory {
         categorizedInventory.add("Mana Elixirs");
 
         //adding starting heal and mana pots
-        ArrayList<String> itemsToAdd = new ArrayList<String>();       
+        ArrayList<String> itemsToAdd = new ArrayList<String>();      
+        itemsToAdd.add("Healing Pots"); 
+        itemsToAdd.add("Healing Pots");
         itemsToAdd.add("Weak Healing Pots");
         itemsToAdd.add("Weak Healing Pots");
         itemsToAdd.add("Weak Healing Pots");
         itemsToAdd.add("Weak Healing Pots");
         itemsToAdd.add("Weak Mana Pots"); 
+        itemsToAdd.add("Weak Mana Pots");
         itemsToAdd.add("Weak Mana Pots");
         addInventory(itemsToAdd); 
                     

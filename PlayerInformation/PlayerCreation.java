@@ -68,86 +68,77 @@ public class  PlayerCreation {
      * Prints out the information about the crate
      */
     public void printCrateInfo() {
-        System.out.println(
-                "1 - cyborg\n" + 
-                "2 - hacker\n" + 
-                "3 - terminator\n" + 
-                "4 - lazer swordsman\n" + 
-                "5 - rogue\n" + 
-                "6 - mystic\n" + 
-                "7 - reverend\n"
-        );
-        // //* CRATE ONE INFO - Cyborg
-        // Printer.printColor("[1] Crate One - Cyborg:", "blue"); 
-        // Printer.print("Battered Spectral Helm");
-        // Printer.print("Battered Spectral Chestplate");
-        // Printer.print("Battered Spectral Greaves"); 
-        // Printer.print("Battered Spectral Heelguards");
-        // Printer.print("[M1] - More info");
+        //* CRATE ONE INFO - Cyborg
+        Printer.printColor("[1] Crate One - Cyborg:", "blue"); 
+        Printer.print("Battered Spectral Helm");
+        Printer.print("Battered Spectral Chestplate");
+        Printer.print("Battered Spectral Greaves"); 
+        Printer.print("Battered Spectral Heelguards");
+        Printer.print("[M1] - More info");
 
-        // System.out.println();
+        System.out.println();
 
 
-        // //* CRATE TWO INFO - Hacker
-        // Printer.printColor("[2] Crate Two - Hacker:", "green"); 
-        // Printer.print("Battered Spectral Helm");
-        // Printer.print("Battered Spectral Chestplate");
-        // Printer.print("Battered Spectral Greaves"); 
-        // Printer.print("Battered Spectral Heelguards");
-        // Printer.print("[M2] - More info");
+        //* CRATE TWO INFO - Hacker
+        Printer.printColor("[2] Crate Two - Hacker:", "green"); 
+        Printer.print("Battered Spectral Helm");
+        Printer.print("Battered Spectral Chestplate");
+        Printer.print("Battered Spectral Greaves"); 
+        Printer.print("Battered Spectral Heelguards");
+        Printer.print("[M2] - More info");
 
-        // System.out.println();
+        System.out.println();
 
 
-        // //* CRATE THREE INFO - Terminator
-        // Printer.printColor("[3] Crate Three - Terminator:", "red"); 
-        // Printer.print("Battered Spectral Helm");
-        // Printer.print("Battered Spectral Chestplate");
-        // Printer.print("Battered Spectral Greaves"); 
-        // Printer.print("Battered Spectral Heelguards");
-        // Printer.print("[M3] - More info");
+        //* CRATE THREE INFO - Terminator
+        Printer.printColor("[3] Crate Three - Terminator:", "red"); 
+        Printer.print("Battered Spectral Helm");
+        Printer.print("Battered Spectral Chestplate");
+        Printer.print("Battered Spectral Greaves"); 
+        Printer.print("Battered Spectral Heelguards");
+        Printer.print("[M3] - More info");
 
-        // System.out.println();
+        System.out.println();
 
-        // //* CRATE FOUR INFO - Lazer Swordsman
-        // Printer.printColor("[4] Crate Four - Lazer Swordsman:", "cyan"); 
-        // Printer.print("Battered Spectral Visor");
-        // Printer.print("Battered Spectral Quasiplate");
-        // Printer.print("Battered Spectral Chaps"); 
-        // Printer.print("Battered Spectral Shoes");
-        // Printer.print("[M4] - More info");
+        //* CRATE FOUR INFO - Lazer Swordsman
+        Printer.printColor("[4] Crate Four - Lazer Swordsman:", "cyan"); 
+        Printer.print("Battered Spectral Visor");
+        Printer.print("Battered Spectral Quasiplate");
+        Printer.print("Battered Spectral Chaps"); 
+        Printer.print("Battered Spectral Shoes");
+        Printer.print("[M4] - More info");
 
-        // System.out.println();
+        System.out.println();
 
-        // //* CRATE FIVE INFO - Rogue
-        // Printer.printColor("[5] Crate Five - Rogue:", "yellow"); 
-        // Printer.print("Battered Spectral Visor");
-        // Printer.print("Battered Spectral Quasiplate");
-        // Printer.print("Battered Spectral Chaps"); 
-        // Printer.print("Battered Spectral Shoes");
-        // Printer.print("[M5] - More info");
+        //* CRATE FIVE INFO - Rogue
+        Printer.printColor("[5] Crate Five - Rogue:", "yellow"); 
+        Printer.print("Battered Spectral Visor");
+        Printer.print("Battered Spectral Quasiplate");
+        Printer.print("Battered Spectral Chaps"); 
+        Printer.print("Battered Spectral Shoes");
+        Printer.print("[M5] - More info");
 
-        // System.out.println();
+        System.out.println();
 
-        // //* CRATE SIX INFO - Mystic
-        // Printer.printColor("[6] Crate Six - Mystic:", "purple"); 
-        // Printer.print("Battered Spectral Hood");
-        // Printer.print("Battered Spectral Robe");
-        // Printer.print("Battered Spectral Leggings"); 
-        // Printer.print("Battered Spectral Boots");
-        // Printer.print("[M6] - More info");
+        //* CRATE SIX INFO - Mystic
+        Printer.printColor("[6] Crate Six - Mystic:", "purple"); 
+        Printer.print("Battered Spectral Hood");
+        Printer.print("Battered Spectral Robe");
+        Printer.print("Battered Spectral Leggings"); 
+        Printer.print("Battered Spectral Boots");
+        Printer.print("[M6] - More info");
  
-        // System.out.println();
+        System.out.println();
  
-        // //* CRATE SEVEN INFO - Reverend
-        // Printer.printColor("[7] Crate Seven - Reverend:", "white"); 
-        // Printer.print("Battered Spectral Hood");
-        // Printer.print("Battered Spectral Robe");
-        // Printer.print("Battered Spectral Leggings"); 
-        // Printer.print("Battered Spectral Boots");
-        // Printer.print("[M7] - More info");
+        //* CRATE SEVEN INFO - Reverend
+        Printer.printColor("[7] Crate Seven - Reverend:", "white"); 
+        Printer.print("Battered Spectral Hood");
+        Printer.print("Battered Spectral Robe");
+        Printer.print("Battered Spectral Leggings"); 
+        Printer.print("Battered Spectral Boots");
+        Printer.print("[M7] - More info");
  
-        // System.out.println();
+        System.out.println();
 
         Printer.printItalizcizedColor("Enter the number of the crate to choose it. Enter [M#] to get more info on the crate\n", "purple");
 

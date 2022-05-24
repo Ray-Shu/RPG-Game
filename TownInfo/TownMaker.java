@@ -131,6 +131,7 @@ public class TownMaker{
     private Town[] allTowns = new Town[5];
     
     private Teleporter tp;
+    private String[] thingsToDoOnPhone = {"check stats", "leave"};
 
     /**
      * Constructs the townmaker by giving the player's account, stats, and their identity. 
@@ -147,8 +148,7 @@ public class TownMaker{
      * Constructs all of the buildings within the town of slums
      */
     public void makeTowns(){
-        tp = new Teleporter(player);
-
+        
         //create all the towns
         slums = new Town("The Slums", 1, player, "grey");
         antarcticDomain = new Town("The Antarctic Domain", 2, player,"blue");
@@ -159,32 +159,33 @@ public class TownMaker{
         this.allTowns = allTowns;
         
         //Creates the slums
+        
+        slums.addBuilding(player, playerStats, playerAccount, notStoreItems, notStorePrices, "Phone",thingsToDoOnPhone, "Hello! I am your phone! Here is what I can do: ", "See you later!", "Sorry could you repeat that?", "white");
         slums.addBuilding(player, playerStats, playerAccount, notStoreItems, notStorePrices, "Hospital",thingsToDoAtHospital, "Welcome to the Hospital! We are ready to heal you!", "Thank you for coming", "Sorry could you repeat that?", "white");
         slumDungeon = new Dungeon(slumDungeonMobsFloor1, slumDungeonFloor1MobLevels, slumDungeonFloor2MobLevels, slumDungeonMobsFloor2, slumDungeonFloor3MobLevels, slumDungeonMobsFloor3, slumBossName, slumBossLevel, slumBossDialog, slumDungeonGoldPerFloor, slumDungeonXPperFloor, slumDungeonRecommendedLevel, slumDungeonRequiredLevel, player, slums, "purple");
         Guild slumsAdventurersGuild = new Guild(player, slums, "grey");
         slums.addGuild(slumsAdventurersGuild);
         slums.addDungeon(slumDungeon);
-        slums.addTeleporter(tp);
         
         //Creates slum missions. 
         Missions slumMission1 = new Missions(1000, slumsAdventurersGuild, slum1MissionName, slum1MissionOpponents, slum1MissionOpponentLevels, player, slum1MissionProblem, slum1MissionGreeting, slum1MissionThankYou, slum1MissionColor, slum1MissionXPReward, slum1MissionItems, slum1MissionRecommendedLevel);
         slumsAdventurersGuild.addMission(slumMission1);
-
+        
         Missions slumMission2 = new Missions(1750, slumsAdventurersGuild, slum2MissionName, slum2MissionOpponents, slum2MissionOpponentLevels, player,  slum2MissionProblem, slum2MissionGreeting, slum2MissionThankYou, slum2MissionColor, slum2MissionXPReward, slum2MissionItems, slum2MissionRecommendedLevel);
         slumsAdventurersGuild.addMission(slumMission2);
-
+        
 
         Missions slumMission3 = new Missions(2500, slumsAdventurersGuild, slum3MissionName, slum3MissionOpponents, slum3MissionOpponentLevels, player,  slum3MissionProblem, slum3MissionGreeting, slum3MissionThankYou, slum3MissionColor, slum3MissionXPReward, slum3MissionItems, slum3MissionRecommendedLevel);
         slumsAdventurersGuild.addMission(slumMission3);
-
+        
         //creates antarctic domain
+        antarcticDomain.addBuilding(player, playerStats, playerAccount, notStoreItems, notStorePrices, "Phone",thingsToDoOnPhone, "Hello! I am your phone! Here is what I can do: ", "See you later!", "Sorry could you repeat that?", "white");
         antarcticDomain.addBuilding(player, playerStats, playerAccount, notStoreItems, notStorePrices, "Hospital",thingsToDoAtHospital, "Welcome to the Hospital! We are ready to heal you!", "Thank you for coming", "Sorry could you repeat that?", "white");        
         antarcticDungeon = new Dungeon(antarcticDungeonMobsFloor1, antarcticDungeonFloor1MobLevels, antarcticDungeonFloor2MobLevels, antarcticDungeonMobsFloor2, antarcticDungeonFloor3MobLevels, antarcticDungeonMobsFloor3, antarcticBossName, antarcticBossLevel, antarcticBossDialog, antarcticDungeonGoldPerFloor, antarcticDungeonXPperFloor, antarcticDungeonRecommendedLevel, antarcticDungeonRequiredLevel, player, antarcticDomain, "purple");
         Guild antarcticAdventurersGuild = new Guild(player, antarcticDomain, "cyan");
         antarcticDomain.addGuild(antarcticAdventurersGuild);
         antarcticDomain.addDungeon(antarcticDungeon);
-        antarcticDomain.addTeleporter(tp);
-
+        
         //creates antarctic missions
         Missions antarcticMission1 = new Missions(4500, slumsAdventurersGuild, antarcticMissionName1, antarcticMissionOpponents1, antarcticMissionOpponentLevels1, player,  antarcticMissionProblem1, antarcticMissionGreeting1, antarcticMissionThankYou1, antarcticMissionColor1, antarcticMissionXPReward1, slum3MissionItems, antarcticMissionRecommendedLevel1);
         antarcticAdventurersGuild.addMission(antarcticMission1);
@@ -198,17 +199,20 @@ public class TownMaker{
         //?Other realms for the next version!!!
         theFactoryRealm.addBuilding(player, playerStats, playerAccount, notStoreItems, notStorePrices, "Hospital",thingsToDoAtHospital, "Welcome to the Hospital! We are ready to heal you!", "Thank you for coming", "Sorry could you repeat that?", "white");
         Guild factoryAdventurersGuild = new Guild(player, theFactoryRealm, "cyan");
-        theFactoryRealm.addTeleporter(tp);
         
         landOfSilver.addBuilding(player, playerStats, playerAccount, notStoreItems, notStorePrices, "Hospital",thingsToDoAtHospital, "Welcome to the Hospital! We are ready to heal you!", "Thank you for coming", "Sorry could you repeat that?", "white");
         Guild silverAdventurersGuild = new Guild(player, landOfSilver, "cyan");
-        landOfSilver.addTeleporter(tp);
         
         goldenReign.addBuilding(player, playerStats, playerAccount, notStoreItems, notStorePrices, "Hospital",thingsToDoAtHospital, "Welcome to the Hospital! We are ready to heal you!", "Thank you for coming", "Sorry could you repeat that?", "white");
         Guild goldenReignGuild = new Guild(player, goldenReign, "cyan");
+        tp = new Teleporter(player);
+        antarcticDomain.addTeleporter(tp);
+        slums.addTeleporter(tp);
         goldenReign.addTeleporter(tp);
+        landOfSilver.addTeleporter(tp);
+        theFactoryRealm.addTeleporter(tp);
     }
-
+    
     /**
      * Gives the current town level. 
      */

@@ -96,10 +96,14 @@ public class Merchant {
 
             // This will allow us to sell some of the items in our inventory. 
             case "sell":
-                
                 shop(false, returnToStory);
                 break;
 
+            case "check stats":
+                playerStats.getClassInfo("Stats");
+                Printer.quickBreak(2500);
+                town.characterEnteringTown(returnToStory);
+                break;
             //Will allow us to be healed. 
             //? Maybe you can buy into health insurance to get reduced healing rates
             case "get healing":

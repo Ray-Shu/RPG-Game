@@ -463,7 +463,7 @@ public class MainStory {
 
         do {
         mainPlayer.getCurrentTown().characterEnteringTown(true);
-        if(mainPlayer.getLevel() < 18) {
+        if(mainPlayer.getLevel() < 13) {
         Printer.printItalizcizedColor(
         "Nothing occupies your minds besides the malevolent laughter echoing through your skull, your burning hatred only growing brighter.\n",
         "purple");

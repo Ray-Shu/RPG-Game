@@ -41,6 +41,10 @@ public class Inventory {
     String[] inventoryChoice = {"1", "2", "3", "4", "e"}; 
     String[] healingPots = {"Strong Healing Potion", "Healing Potion", "Weak Healing Potion"}; 
 
+    /**
+     * Creates an inventory of a player with certain catagories and items
+     * @param playerStats
+     */
     public Inventory(Stats playerStats) {
         this.playerStats = playerStats;
 
@@ -59,11 +63,16 @@ public class Inventory {
                     
     }   
 
+    /**
+     * Adds items to the inventory
+     * @param itemsToAdd        - Adds an item to the inventory
+     */
     public void addInventory(ArrayList<String> itemsToAdd) {
         playerInventory.addAll(itemsToAdd);
 
         String[] items = itemsToAdd.toArray(new String[itemsToAdd.size()]);
 
+        //increases the amount of an item if it is in the arrayList of itemsToAdd
         for(int i = 0; i < items.length; i++){
             if (items[i].equals("Greater Healing Pots")) {
                 howManyGreaterHealingPots++;
@@ -90,15 +99,17 @@ public class Inventory {
     
     //displays the armour; referenced from 'armours' class
     public void playerInventoryAddEquippedArmour(String headPiece, String chestPiece, String legPiece, String boots) {
+
         this.headPiece = headPiece; 
         this.chestPiece = chestPiece; 
         this.legPiece = legPiece; 
         this.boots = boots;
 
-
     }
 
-    //Displays the inventory
+    /**
+     * This displays the inventory
+     */
     public void showInventory() {
 
         //*Displays armours 
@@ -240,6 +251,9 @@ public class Inventory {
 
         String option = ErrorChecker.compareArrayOfStrings(chooseOption, "Choose a proper input", "white");
 
+        /**
+         * Uses the item that they want to use, and checks if they have it. 
+         */
         switch (option.toLowerCase()) {
             // restores 70%, 40%, 20% mana respectively
             case "1":

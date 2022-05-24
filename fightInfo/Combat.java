@@ -2,7 +2,6 @@ package fightInfo;
 
 import java.util.ArrayList;
 import java.util.Random;
-import java.util.Scanner;
 import java.text.DecimalFormat;
 import PlayerInformation.*;
 import Tools.*;
@@ -17,7 +16,6 @@ public class Combat extends Moves{
     private int[] mobAttackCosts, playerAttackCosts;
     private double playerTurnRate, mobTurnRate;
     private Stats  mobStats, playerStats;
-    private Inventory playerInventory;
     private MobSummoner mobSummoner;
     private String[] playerAttacks;
     private PlayerCreation creator; 
@@ -182,7 +180,7 @@ public class Combat extends Moves{
     }
 
     /**
-     * checks if it is the player's turn. Player's turn occurs when their turnrate is greater than or equal to  that of the mob
+     * checks if it is the player's turn. Player's turn occurs when their turn rate is greater than or equal to  that of the mob
      * @return: True if it is the player's turn, false if else. 
      */
     public boolean isPlayerTurn() {

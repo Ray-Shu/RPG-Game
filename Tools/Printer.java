@@ -14,31 +14,17 @@ public class Printer {
     private static final String END_ITALICIZED = "\033[0m";
     
     /**
-     * This method prints out a string one word at a time, in white. 
+     * This method prints out a string one letter at a time. 
      * @param whatToPrint = the thing we print 1 word at a time. 
      */
     public static void print (String whatToPrint){
-        // //splits the words at all the spaces
-        // String words[] = whatToPrint.split(" ");
-
-        // //prints out each word from the array of words
-        // for (String word : words) {
-        //     try {
-        //         Thread.sleep(90);
-        //     } catch (InterruptedException e) {
-        //         e.printStackTrace();
-        //     }
-        //     System.out.print(word+ " ");
-
-        //     //waits a few seconds. In try catch bc VS code told me too. Something about an error
-        // }
-        // System.out.println();
-
+        //breaks message into an array of chars
         char[] message = whatToPrint.toCharArray();
 
+        //prints each letter out into a message
         for (char c : message) {
             System.out.print(c);
-            quickBreak(20);
+            quickBreak(1);
         }
         System.out.println();
     }
@@ -77,47 +63,35 @@ public class Printer {
                 System.out.print(ANSI_WHITE);
                 break;
         }
-        char[] message = whatToPrint.toCharArray();
-        
-        for (char c : message) {
-            System.out.print(c);
-            quickBreak(20);
-        }
-
-        System.out.println(ANSI_RESET);
-        //prints out the color and sets it to white. 
+    char[] message = whatToPrint.toCharArray();
     
+    for (char c : message) {
+        System.out.print(c);
+        quickBreak(1);
+    }
+
+    System.out.println(ANSI_RESET);
+    //prints out the color and sets it to white. 
+
+    }
+
+    /**
+     * Prints out the string italicized. 
+     */
+    public static void printItalizcizedColor (String whatToPrint, String color){
+        printColor(START_ITALICIZED + whatToPrint + END_ITALICIZED , color);
+    }
+
+    /**
+    * input the time in milliseconds 
+    * @param t - time in milliseconds
+    */
+    public static void quickBreak(int t) {
+        try {
+                Thread.sleep(t);
+        } catch (InterruptedException e) {
+                e.printStackTrace();
         }
-
-        /**
-         * Prints out the string italicized. 
-         */
-        public static void printItalizcizedColor (String whatToPrint, String color){
-           printColor(START_ITALICIZED + whatToPrint + END_ITALICIZED , color);
-        }
-
-        /**
-        * input the time in milliseconds 
-        * @param t - time in milliseconds
-        */
-        public static void quickBreak(int t) {
-            try {
-                    Thread.sleep(t);
-            } catch (InterruptedException e) {
-                    e.printStackTrace();
-            }
-        }
-    
-
-    public static String toTitleCase(String givenString) {
-    String[] arr = givenString.split(" ");
-    StringBuffer sb = new StringBuffer();
-
-    for (int i = 0; i < arr.length; i++) {
-        sb.append(Character.toUpperCase(arr[i].charAt(0)))
-            .append(arr[i].substring(1)).append(" ");
-    }          
-        return sb.toString().trim();
     }
 }
 

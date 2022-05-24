@@ -9,7 +9,6 @@ import TownInfo.*;
 import fightInfo.*;
 
 public class Dungeon {
-    //TODO: FIX TOWN ERROR
 
     private String[] yesOrNo = {"yes","no"};
     private int recommendedLvl, requiredLevel, bossLevel;
@@ -74,13 +73,14 @@ public class Dungeon {
 
     /**
      * the character has entered the dungeon... 
-     *  current dungeon before running it. 
+     * current dungeon before running it. 
      */
     public void characterEnteringDungeon(boolean returnToStory){
 
         this.returnToStory = returnToStory;
         System.out.println("\n-----------------------------------------------------------");
 
+        //if they have already defeated the dungeon, we will say that they cannot challenge the dungeon again. 
         if(hasDungeonBeenDefeated){
             Printer.printColor("You have already defeated this dungeon.", color);
             Printer.quickBreak(1000);
@@ -103,6 +103,7 @@ public class Dungeon {
         if(answer.equalsIgnoreCase("yes")){
             runDungeon();
         }
+        //if they choose not to enter the dungeon, we send them back to town
         else{
             Printer.printColor("Alright if your not going in, dont hang around.", color);
             Printer.quickBreak(1000);
@@ -119,8 +120,8 @@ public class Dungeon {
      */
     public void runDungeon(){
         Scanner scan = new Scanner(System.in);
-        //welcomes them to the dungeon
 
+        //welcomes them to the dungeon
         System.out.println("\n-----------------------------------------------------------");
         Printer.printColor("Welcome to the dungeon!!!", color);
         Printer.printColor("Battle your way through three rooms of enemies and defeat the boss to be rewarded with the medallion!", color);
@@ -131,7 +132,7 @@ public class Dungeon {
         //For each mob in the battle, we will have to fight it with our current Stats. Goal is to defeat all enemies, then we get our reward. 
         runRoom(mobNamesFromRoom1, mobLevelsFromRoom1, 1);
 
-        //Checks if the player died in the previous room
+        //Checks if the player died in the previous room. If they didnt, we send them into a room and give them some rewards
         if(!hasPlayerDied){
             Printer.printColor("Congratulation for beating the first room!\nYou have been fully healed and recovered all MP!\n" + 
                     "Here are your rewards: " + xpPerRoom[0] + "XP and " + goldPerRoom[0] + " fusion coins! They are now being distributed.", color);
@@ -148,12 +149,13 @@ public class Dungeon {
             
             runRoom(mobNamesFromRoom2, mobLevelsFromRoom2, 2);
         }
+        //if they died, we do nothing here, as we will have already sent them to the hospital. 
         else{
             scan.close();
             return;
         }
         
-        //Checks if the player died in the previous room
+        //Checks if the player died in the previous room. If they didnt, we send them into a room and give them some rewards
         if(!hasPlayerDied){
             Printer.printColor("Congratulation for beating the second room!\nYou have been fully healed and recovered all MP!\n" + 
             "Here are your rewards: " + xpPerRoom[1] + "XP and " + goldPerRoom[1] + " fusion coins! They are now being distributed.", color);
@@ -170,16 +172,19 @@ public class Dungeon {
 
             runRoom(mobNamesFromRoom3, mobLevelsFromRoom3, 3);
         }
+        //if they died in the second room, we do nothing here, as we will have already sent them to the hospital. 
         else{
             scan.close();
             return;
         }
-  
+        
+        //if they died in the third room, we do nothing here, as we will have already sent them to the hospital. 
         if(hasPlayerDied){
             scan.close();
             return;
         }
 
+        //gives them rewards for beating third room, before the enter the boss fight
         Printer.printColor("Congratulation for beating the third room!\nYou have been fully healed and recovered all MP!\n" + 
         "Here are your rewards: " + xpPerRoom[2] + "XP and " + goldPerRoom[2] + " fusion coins! They are now being distributed.", color);
 
@@ -213,6 +218,7 @@ public class Dungeon {
         } 
 
         victory();
+        scan.close();
     }
 
     /**
@@ -226,6 +232,7 @@ public class Dungeon {
         Printer.printColor("Entering room "+ (roomNumber) + ".", color);
         Printer.quickBreak(1000);
 
+        //you need to fight every mob in the room, or die
         for (int i = 0; i < mobNames.length; i++) {
 
             Printer.printColor("Watch out! A level "+ mobLevels[i] + " "+ mobNames[i] + " has appeared!!! \n", color);
@@ -256,12 +263,11 @@ public class Dungeon {
 
     public void summonMob(String mobName, int mobLevel){
 
-        //if Cyber punk, we will summon a new cyberpunk and get the stats for it.
+        //if Cyber punk, we will summon a mob based on their given name
         if(mobName.equalsIgnoreCase("Cyber Punk")){
             currentMobStats = summoner.newCyberPunk(mobLevel);
         }
-        
-        //if Greater will assasin, we will summon a new assasin and get the stats for it.
+
         else if(mobName.equalsIgnoreCase("Greater Will Assassin")){
             currentMobStats = summoner.newGreaterWillAssassin(mobLevel);
         }
@@ -302,7 +308,6 @@ public class Dungeon {
     /**
     * Send player back to hospital if the mission has not been complete. 
     */
-
     void missionFailed(){
 
         Printer.printColor("Teleporting back to town for recovery...","cyan");
@@ -326,7 +331,6 @@ public class Dungeon {
 
         hasDungeonBeenDefeated = true;
         Printer.printColor("You have gained the next Medallion, enabling you to go to the next town!", color);
-        player.getTownMaker().increaseMaxTownLevel();
         player.getTownMaker().increaseCurrentTownLevel();
         if(!returnToStory){
             player.getCurrentTown().characterEnteringTown(returnToStory);

@@ -52,7 +52,9 @@ public class Classes {
 
     } 
     
-    //todo:comment
+    /**
+     * Prints out special information about the certain class
+     */
     public void hackerInfo() {
 
         // Hacker
@@ -82,7 +84,9 @@ public class Classes {
         
     }
 
-    //todo:comment
+    /**
+     * Prints out special information about the certain class
+     */
     public void terminatorInfo() {
         System.out.println();
         Printer.printColor("Terminator: ", "red");
@@ -110,7 +114,9 @@ public class Classes {
         }
     }
 
-    //todo:comment
+    /**
+     * Prints out special information about the certain class
+     */
     public void lazerSwordsmanInfo() {
         // Lazer Swordsman
         System.out.println();
@@ -138,7 +144,9 @@ public class Classes {
         }
     }
 
-    //todo:comment
+    /**
+     * Prints out special information about the certain class
+     */
     public void rogueInfo(){
         System.out.println();
         Printer.printColor("Rogue: ", "yellow");
@@ -168,7 +176,9 @@ public class Classes {
         }
     }
 
-    //todo:comment
+    /**
+     * Prints out special information about the certain class
+     */
     public void mysticInfo() {
         System.out.println();
                 Printer.printColor("Mystic ", "purple");
@@ -199,7 +209,9 @@ public class Classes {
         }   
     }
 
-    //todo:comment
+    /**
+     * Prints out special information about the certain class
+     */
     public void reverendInfo() {
         System.out.println();
         Printer.printColor("Reverend", "white");

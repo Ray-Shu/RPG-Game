@@ -1,7 +1,6 @@
 package TownInfo;
 
 import PlayerInformation.*;
-import fightInfo.MobSummoner;
 
 
 /**
@@ -24,7 +23,7 @@ public class TownMaker{
     //slum dungeon stuff
     private String[] slumBossDialog = {"VERY IMPRESSIVE VERY IMPRESSIVE!!! BEEP",
     "CHALLENGER HAS MANAGED TO MAKE IT ALL THE WAY TO FIGHT ME!!! BEEP", 
-    "TOO BAD CHALLENGER WILL NOT BEAT ME!!! BEEEEEEP!!!"};
+    "TOO BAD CHALLENGER WILL NOT BEAT ME!!! BEEEEEEP!!!", "I AM THE WARDEN OF DIRT!!!!"};
     private int[] slumDungeonGoldPerFloor = {200,300,400,1200};
     private int[] slumDungeonXPperFloor = {100,200,300,450};
 
@@ -44,7 +43,7 @@ public class TownMaker{
     
     //antarctic dungeon stuff
     private String[] antarcticBossDialog = {"PREPARE YOUR SELF CHALLENGER!",
-    "I WILL DESTROY YOU WITH THE AMAZINGLY POWERFUL FROST!", };
+    "I WILL DESTROY YOU WITH THE AMAZINGLY POWERFUL FROST!","I AM THE ALL POWERFUL WARDEN OF FROST!" };
     private int[] antarcticDungeonGoldPerFloor = {1000,1500,2000,5000};
     private int[] antarcticDungeonXPperFloor = {400,500,600,1500};
 
@@ -121,13 +120,8 @@ public class TownMaker{
        
     }
 
-    //runs the slums. 
-    //This is temporary. 
-    public void runSlums(){
-        slums.characterEnteringTown(true);
-    }
-
     /**
+     * Gives the current town level. 
      */
     public Town getCurrentTown(){
         switch (currentTownLevel){
@@ -147,13 +141,15 @@ public class TownMaker{
     public void increaseMaxTownLevel(){maxTownLevel++;}
 
     //Decreases the current town level
-    public void decreaseCurrentTownLevel(){maxTownLevel++;}
+    public void decreaseCurrentTownLevel(){maxTownLevel--;}
 
     //Increases the current town level
     public void increaseCurrentTownLevel(){currentTownLevel++;}
 
+    //returns the max town level
     public int getMaxTownLevel(){return maxTownLevel;}
 
+    //sets the current town level
     public void setCurrentTownLevel(int townLevel){currentTownLevel = townLevel;}
 
     /**
@@ -165,6 +161,7 @@ public class TownMaker{
         town.addMerchant(merchant);
     }
 
+    //returns an array of all the towns
     public Town[] getAllTowns() {
         return allTowns;
     }

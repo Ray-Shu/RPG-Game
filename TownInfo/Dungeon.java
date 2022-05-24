@@ -319,9 +319,10 @@ public class Dungeon {
 
     void victory(){
         Printer.printColor("Congratulations! You have beaten the dungeon!!!", "green");
-        Printer.printColor("Distributing your rewards!", "green");
-        player.checkXP(xpPerRoom[mobNamesFromRoom2.length-1]);
-        player.getBank().deposit(goldPerRoom[mobNamesFromRoom2.length-1]);
+        Printer.printColor("Distributing your rewards: " + xpPerRoom[xpPerRoom.length-1] + " xp and " + goldPerRoom[xpPerRoom.length-1] + " fusion coins!" , "green");
+        
+        player.checkXP(xpPerRoom[xpPerRoom.length-1]);
+        player.getBank().deposit(goldPerRoom[xpPerRoom.length-1]);
         Printer.quickBreak(1500);
 
         hasDungeonBeenDefeated = true;

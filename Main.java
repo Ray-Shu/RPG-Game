@@ -37,7 +37,7 @@ public class Main {
 
                     
         // *Story Line (currently working on chapter One) 
-        // storyTesting();
+        //storyTesting();
         MainStory story = new MainStory();
         story.startStory(); 
     
@@ -62,8 +62,6 @@ public class Main {
          * unmappable character for encoding windows keeps occuring
          * for now, copy past: javac -encoding UTF-8 PlayerInformation/Player.java
          * until theres a better fix
-         * 
-         * the attack 'overload' for cyborg shows a bugged mp cost
          */
 
         //!MAKING THE ATTACK STAT RLY HIGH SO I CAN DO TESTS QUICKER 

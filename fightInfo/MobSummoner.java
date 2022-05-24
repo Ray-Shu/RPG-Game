@@ -46,7 +46,7 @@ public class MobSummoner {
     
     private final String[] WARDEN_OF_FROST_ATTACKS = {"Torrent of Frost", "Icicle Eruption", "Cataclysmic Blizzard", "Relentless Hailstorm"};
     private final int[] WARDEN_OF_FROST_ATTACK_COSTS = {10, 15, 9, 25};
-    private double[] wardenOfFrostStats = {400, 100, 1.2, 10, 5.0, 5 , 10, 4.0, 240, 6, 6, 2.0, 2.0, 4.5, 4.0, 3.0}; 
+    private double[] wardenOfFrostStats = {400, 100, 1.2, 3.5, 5.0, 5 , 10, 4.0, 240, 6, 6, 2.0, 2.0, 4.5, 4.0, 3.0}; 
     
     //Stats stat = new Stats(hp, mp, spd, atk, pd, md, def, end, stam, physRes, magicRes, dodge, vit, cr, cd, luck);
 

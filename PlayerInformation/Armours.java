@@ -65,7 +65,7 @@ public class Armours {
     private String superiorChromium = "Superior Chromium"; 
     private double[] superiorChromiumHeavyStats = { 40, 25, 0.09, 6, 5.5, 5, 7, 4, 5, 5, 3, 4, 4, 5, 6, 3}; 
     private double[] superiorChromiumLightStats = { 26, 25, 0.11, 3.5, 4, 4, 3.5, 4, 5, 4, 2.5, 5, 4, 5, 6, 4};
-    private double[] superiorChromiumMageStats = {}; 
+    private double[] superiorChromiumMageStats = {35, 40, 0.06, 5, 2.5, 7.5, 3, 4, 4, 4, 5, 3.5, 6, 6, 7, 3}; 
 
     /**
      * Sets up a class to make armours. It gets all the information it will need about the player
@@ -224,15 +224,91 @@ public class Armours {
                 break;
         } 
     }
-
-    //todo:comment
+    /**
+     * Equips the battered chromium armour
+     */
     private void equipBatteredChromium() {
         String bc = batteredChromium; 
+        switch (chosenClass.toLowerCase()) {
+            case "cyborg":
+                mainPlayer.addEquippedArmourToInventory(bc + " " + heavyArmour[0], bc + " " + heavyArmour[1],
+                        bc + " " + heavyArmour[2], bc + " " + heavyArmour[3]);
+                addEquippedStats(batteredChromiumHeavyStats);
+                break;
+            case "hacker":
+                mainPlayer.addEquippedArmourToInventory(bc + " " + heavyArmour[0], bc + " " + heavyArmour[1],
+                        bc + " " + heavyArmour[2], bc + " " + heavyArmour[3]);
+                addEquippedStats(batteredChromiumHeavyStats);
+                break;
+            case "terminator":
+                mainPlayer.addEquippedArmourToInventory(bc + " " + heavyArmour[0], bc + " " + heavyArmour[1],
+                        bc + " " + heavyArmour[2], bc + " " + heavyArmour[3]);
+                addEquippedStats(batteredChromiumHeavyStats);
+                break;
+            case "lazer swordsman":
+                mainPlayer.addEquippedArmourToInventory(bc + " " + lightArmour[0], bc + " " + lightArmour[1],
+                        bc + " " + lightArmour[2], bc + " " + lightArmour[3]);
+                addEquippedStats(batteredChromiumLightStats);
+                break;
+            case "rogue":
+                mainPlayer.addEquippedArmourToInventory(bc + " " + lightArmour[0], bc + " " + lightArmour[1],
+                        bc + " " + lightArmour[2], bc + " " + lightArmour[3]);
+                addEquippedStats(batteredChromiumLightStats);
+                break;
+            case "mystic":
+                mainPlayer.addEquippedArmourToInventory(bc + " " + mageArmour[0], bc + " " + mageArmour[1],
+                        bc + " " + mageArmour[2], bc + " " + mageArmour[3]);
+                addEquippedStats(batteredChromiumMageStats);
+                break;
+            case "reverend":
+                mainPlayer.addEquippedArmourToInventory(bc + " " + mageArmour[0], bc + " " + mageArmour[1],
+                        bc + " " + mageArmour[2], bc + " " + mageArmour[3]);
+                addEquippedStats(batteredChromiumMageStats);
+                break;
+        }
     }
-
-    //todo:comment
+    /**
+     * Equips the superior chromium armour
+     */
     private void equipSuperiorChromium() {
         String sc = superiorChromium; 
+        switch (chosenClass.toLowerCase()) {
+            case "cyborg":
+                mainPlayer.addEquippedArmourToInventory(sc + " " + heavyArmour[0], sc + " " + heavyArmour[1],
+                        sc + " " + heavyArmour[2], sc + " " + heavyArmour[3]);
+                addEquippedStats(superiorChromiumHeavyStats);
+                break;
+            case "hacker":
+                mainPlayer.addEquippedArmourToInventory(sc + " " + heavyArmour[0], sc + " " + heavyArmour[1],
+                        sc + " " + heavyArmour[2], sc + " " + heavyArmour[3]);
+                addEquippedStats(superiorChromiumHeavyStats);
+                break;
+            case "terminator":
+                mainPlayer.addEquippedArmourToInventory(sc + " " + heavyArmour[0], sc + " " + heavyArmour[1],
+                        sc + " " + heavyArmour[2], sc + " " + heavyArmour[3]);
+                addEquippedStats(superiorChromiumHeavyStats);
+                break;
+            case "lazer swordsman":
+                mainPlayer.addEquippedArmourToInventory(sc + " " + lightArmour[0], sc + " " + lightArmour[1],
+                        sc + " " + lightArmour[2], sc + " " + lightArmour[3]);
+                addEquippedStats(superiorChromiumLightStats);
+                break;
+            case "rogue":
+                mainPlayer.addEquippedArmourToInventory(sc + " " + lightArmour[0], sc + " " + lightArmour[1],
+                        sc + " " + lightArmour[2], sc + " " + lightArmour[3]);
+                addEquippedStats(superiorChromiumLightStats);
+                break;
+            case "mystic":
+                mainPlayer.addEquippedArmourToInventory(sc + " " + mageArmour[0], sc + " " + mageArmour[1],
+                        sc + " " + mageArmour[2], sc + " " + mageArmour[3]);
+                addEquippedStats(superiorChromiumMageStats);
+                break;
+            case "reverend":
+                mainPlayer.addEquippedArmourToInventory(sc + " " + mageArmour[0], sc + " " + mageArmour[1],
+                        sc + " " + mageArmour[2], sc + " " + mageArmour[3]);
+                addEquippedStats(superiorChromiumMageStats);
+                break;
+        }
     }   
 
 

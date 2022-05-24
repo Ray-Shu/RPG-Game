@@ -9,37 +9,26 @@ import fightInfo.MobSummoner;
  */
 public class TownMaker{
 
+    private Bank playerAccount;
+    private String notStoreItems[] = new String[2];
+    private double notStorePrices[] = new double[2];
+    private Town slums, antarcticDomain, theFactoryRealm, landOfSilver, goldenReign;
+    private int currentTownLevel = 1;
+    private int maxTownLevel = 1;
+
     
-    //*SLUMS MERCHANT 
-    private String[] slumsItemsForSale = {"Weak Healing Pots", "Weak Mana Pots"};
-    private double[] slumsPriceOfItem2 = {150, 150}; 
-    private String[] slumsArmour = {"Superior Spectral Armour"};
-    private double[] slumsArmourPrice = {5500}; 
-    private String slumsShopName = "Common Shack"; 
-    private String[] slumsThingsToDo = {"Show common goods", "Show armour", "Leave"}; 
-    private String slumsGreeting = "Welcome to the Common Shack! What can I do for you?"; 
-    private String slumsFarewell = "Thanks for coming!"; 
-    private String slumsErrorMessage = "Looks like that isn't in the store, pick something else yeah?"; 
-    private Merchant slumsMerchant;
+    private String[] thingsToDoAtHospital = {"Get healing", "leave"};
+	private Stats playerStats;
+	private Player player;
 
-    //*ANTARCTIC DOMAIN MERCHANT
-    private String[] antarcticItemsForSale = {"Healing Pots", "Mana Pots"}; 
-    private double[] antarcticPriceOfItem2 = {300, 300}; 
-    private String[] antarcticArmour = {"Battered Chromium Armour", "Superior Chromium Armour"};
-    private double[] antarcticArmourPrice = {6000, 9000}; 
-    private String antarcticShopName = "Frozen Anvil"; 
-    private String[] antarcticThingsToDo = { "Show common goods", "Show armour", "Leave" };
-    private String antarcticGreeting = "Ugh... Another customer? What do you want?"; 
-    private String antarcticFarewell = "Thanks for your money."; 
-    private String antarcticErrorMessage = "Are you blind? That ain't in the store."; 
-    private Merchant antarcticMerchant; 
-
-    //* Slum dungeon stuff
+    //slum dungeon stuff
     private String[] slumBossDialog = {"VERY IMPRESSIVE VERY IMPRESSIVE!!! BEEP",
     "CHALLENGER HAS MANAGED TO MAKE IT ALL THE WAY TO FIGHT ME!!! BEEP", 
     "TOO BAD CHALLENGER WILL NOT BEAT ME!!! BEEEEEEP!!!"};
     private int[] slumDungeonGoldPerFloor = {200,300,400,1200};
     private int[] slumDungeonXPperFloor = {100,200,300,450};
+
+
     private String[] slumDungeonMobsFloor1 = {"Cyber Punk", "Cyber Punk", "Nano Bot Cluster"};
     private int[] slumDungeonFloor1MobLevels = {10,10,10};
     private String[] slumDungeonMobsFloor2 = {"Cyber Punk", "Nano Bot Cluster", "Greater Will Assassin"};
@@ -48,15 +37,17 @@ public class TownMaker{
     private int[] slumDungeonFloor3MobLevels = {10,10,10};
     private String slumBossName = "Warden of Dirt";
     private int slumBossLevel = 9;
+
     private int slumDungeonRecommendedLevel = (8);
     private int slumDungeonRequiredLevel = (6);
     private Dungeon slumDungeon;
     
-    //*Antarctic dungeon stuff
+    //antarctic dungeon stuff
     private String[] antarcticBossDialog = {"PREPARE YOUR SELF CHALLENGER!",
     "I WILL DESTROY YOU WITH THE AMAZINGLY POWERFUL FROST!", };
     private int[] antarcticDungeonGoldPerFloor = {1000,1500,2000,5000};
     private int[] antarcticDungeonXPperFloor = {400,500,600,1500};
+
     private String[] antarcticDungeonMobsFloor1 = {"Greater Will Swordsman", "Greater Will Swordsman", "Greater Will Swordsman"};
     private int[] antarcticDungeonFloor1MobLevels = {17,17,17};
     private String[] antarcticDungeonMobsFloor2 = {"Yeti", "Yeti", "Yeti"};
@@ -65,22 +56,11 @@ public class TownMaker{
     private int[] antarcticDungeonFloor3MobLevels = {19,19,19};
     private String antarcticBossName = "Warden of Frost";
     private int antarcticBossLevel = 20;
+
     private int antarcticDungeonRecommendedLevel = (20);
     private int antarcticDungeonRequiredLevel = (15);
     private Dungeon antarcticDungeon;
     
-
-
-    public final String merchantColor = "green";
-    private Bank playerAccount;
-    private String notStoreItems[] = new String[2];
-    private double notStorePrices[] = new double[2];
-    private Town slums, antarcticDomain, theFactoryRealm, landOfSilver, goldenReign;
-    private int currentTownLevel = 1;
-    private int maxTownLevel = 1;
-    private String[] thingsToDoAtHospital = {"Get healing", "leave"};
-	private Stats playerStats;
-	private Player player;
     private Town[] allTowns = new Town[5];
     
     private Teleporter tp;
@@ -95,26 +75,7 @@ public class TownMaker{
         this.player = player;
         playerStats = player.getPlayerStats();
     }
-
-    //Returns the slums armour
-    public String[] getSlumsArmour(){
-        return slumsArmour;
-    }
-
-    //returns slum armour pieces
-    public double[] getSlumsArmourPrices(){
-        return slumsArmourPrice;
-    }
     
-    //Returns the slums armour
-    public String[] getAntarcticArmour(){
-        return slumsArmour;
-    }
-
-    //returns slum armour pieces
-    public double[] getAntarcticArmourPrices(){
-        return slumsArmourPrice;
-    }
     /**
      * Constructs all of the buildings within the town of slums
      */
@@ -123,12 +84,6 @@ public class TownMaker{
 
         //Creates the slums
         slums = new Town("The Slums", 1, player, "grey");
-
-        Merchant slumsMerchant = new Merchant(player, player.getCurrentTown(), slumsItemsForSale,
-                slumsPriceOfItem2, slumsShopName, slumsThingsToDo, slumsGreeting, slumsFarewell, slumsErrorMessage,
-                merchantColor);
-        this.slumsMerchant = slumsMerchant;
-        slums.addMerchant(slumsMerchant);
         slums.addBuilding(player, playerStats, playerAccount, notStoreItems, notStorePrices, "Hospital",thingsToDoAtHospital, "Welcome to the Hospital! We are ready to heal you!", "Thank you for coming", "Sorry could you repeat that?", "white");
         slumDungeon = new Dungeon(slumDungeonMobsFloor1, slumDungeonFloor1MobLevels, slumDungeonFloor2MobLevels, slumDungeonMobsFloor2, slumDungeonFloor3MobLevels, slumDungeonMobsFloor3, slumBossName, slumBossLevel, slumBossDialog, slumDungeonGoldPerFloor, slumDungeonXPperFloor, slumDungeonRecommendedLevel, slumDungeonRequiredLevel, player, slums, "purple");
         Guild slumsAdventurersGuild = new Guild(player);
@@ -138,10 +93,6 @@ public class TownMaker{
         allTowns[0] = slums;
         
         antarcticDomain = new Town("The Antarctic Domain", 2, player,"blue");
-        antarcticMerchant = new Merchant(player, antarcticDomain, antarcticItemsForSale,
-                antarcticPriceOfItem2, antarcticShopName, antarcticThingsToDo, antarcticGreeting, antarcticFarewell, antarcticErrorMessage,
-                merchantColor);
-        antarcticDomain.addMerchant(antarcticMerchant);
         antarcticDomain.addBuilding(player, playerStats, playerAccount, notStoreItems, notStorePrices, "Hospital",thingsToDoAtHospital, "Welcome to the Hospital! We are ready to heal you!", "Thank you for coming", "Sorry could you repeat that?", "white");        
         antarcticDungeon = new Dungeon(antarcticDungeonMobsFloor1, antarcticDungeonFloor1MobLevels, antarcticDungeonFloor2MobLevels, antarcticDungeonMobsFloor2, antarcticDungeonFloor3MobLevels, antarcticDungeonMobsFloor3, antarcticBossName, antarcticBossLevel, antarcticBossDialog, antarcticDungeonGoldPerFloor, antarcticDungeonXPperFloor, antarcticDungeonRecommendedLevel, antarcticDungeonRequiredLevel, player, antarcticDomain, "purple");
         Guild antarcticAdventurersGuild = new Guild(player);
@@ -170,15 +121,10 @@ public class TownMaker{
        
     }
 
-   
-    //returns slum merchant
-    public Merchant getSlumsMerchant(){
-        return slumsMerchant;
-    }
-    
-    //returns antarctic merchant
-    public Merchant getAntarcticMerchant(){
-        return antarcticMerchant;
+    //runs the slums. 
+    //This is temporary. 
+    public void runSlums(){
+        slums.characterEnteringTown(true);
     }
 
     /**
@@ -221,9 +167,5 @@ public class TownMaker{
 
     public Town[] getAllTowns() {
         return allTowns;
-    }
-
-    public Town getAntarcticDomain() {
-        return antarcticDomain;
     }
 }

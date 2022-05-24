@@ -385,7 +385,6 @@ public class MainStory {
         Printer.quickBreak(1000);
         mainPlayer.levelUp();
         mainPlayer.levelUp();
-        System.out.println();
         Printer.printItalizcizedColor(
                 "The bright glow dissipates as you are \nsafely teleported. You look around and \ntake in the change of scenery. \n",
                 "white");
@@ -476,7 +475,6 @@ public class MainStory {
 
         mainPlayer.getCurrentTown().enterDungeon(true);
 
-        Printer.printItalizcizedColor("\nAs you get teleported to the next floor, you bask in the realization that you're one step closer to retribution.", "red");
     }
 }
 

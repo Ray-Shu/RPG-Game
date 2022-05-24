@@ -128,19 +128,15 @@ public class Inventory {
 
         System.out.println();  
 
-
-       
-
-        System.out.println("\nItems\n------------------------------------------------------------------------------\n");
+        //Displays items
+        System.out.println("\nItems\n--------------------------------------------------------------\n");
         for (int i = 0; i < categorizedInventory.size(); i++) {
             if (i != 0 && i < categorizedInventory.size()) { 
                 System.out.print(" | ");
             }
-            Printer.printColor("[" + (i+1) + "] " + categorizedInventory.get(i),"yellow");
-
-
+            System.out.println("[" + (i+1) + "] " + categorizedInventory.get(i));
         }
-        System.out.println("\n\n------------------------------------------------------------------------------");
+        System.out.println("\n\n--------------------------------------------------------------");
         Printer.printColor("\n\n[E] Exit Inventory\n","yellow");
 
         String inventoryOptions = ErrorChecker.compareArrayOfStrings(inventoryChoice, "Choose a proper input.", "white");

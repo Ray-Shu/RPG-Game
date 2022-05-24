@@ -64,7 +64,7 @@ public class TownMaker{
     private String antarcticMissionProblem1 = "A group of Yeti's have attacked an innocent group of campers! Help the campers by defeating the Yeti's";
     private String antarcticMissionGreeting1 = "AAAaaaaaaaaaaaaaaaaaaaaaHHHHHHHHHHH HELP US BEFORE WE ARE TURNED INTO YETI SNACKS!";
     private String antarcticMissionThankYou1 = "Thank you so much!";
-    private int antarcticMissionXPReward1 = 800;
+    private int antarcticMissionXPReward1 = 1000;
     private String antarcticMissionColor1 = "cyan";
     private int antarcticMissionRecommendedLevel1 = 11;
     
@@ -74,17 +74,17 @@ public class TownMaker{
     private String antarcticMissionProblem2 = "We need a brave and skilled soldier to break into the ice jail and free a prisoner.";
     private String antarcticMissionGreeting2 = "You go for the head on approach: choosing to defeat all enemies in the jail by entering through the front door!";
     private String antarcticMissionThankYou2 = "Are you here to save me !?!?!?!?!";
-    private int antarcticMissionXPReward2 = 1000;
+    private int antarcticMissionXPReward2 = 1300;
     private String antarcticMissionColor2 = "green";
     private int antarcticMissionRecommendedLevel2 = 14;
     
     private String antarcticMissionName3 = "Assassinate the president of the yeti's!";
     private String[] antarcticMissionOpponents3 = {"Yeti" };
-    private int[] antarcticMissionOpponentLevels3 = {19};
+    private int[] antarcticMissionOpponentLevels3 = {17};
     private String antarcticMissionProblem3 = "We need someone to stop the villainous Yeti president from forcing the yeti's to do terrible things";
     private String antarcticMissionGreeting3 = "You sneak around, finding the Yeti. As you attempt to strike, the yeti notices you!";
     private String antarcticMissionThankYou3 = "*clunk*";
-    private int antarcticMissionXPReward3 = 1200;
+    private int antarcticMissionXPReward3 = 1600;
     private String antarcticMissionColor3 = "green";
     private int antarcticMissionRecommendedLevel3 = 16;
 

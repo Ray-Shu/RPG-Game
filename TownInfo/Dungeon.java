@@ -287,6 +287,10 @@ public class Dungeon {
 
         else if(mobName.equalsIgnoreCase("Quantum Sensory Droid")){ 
             currentMobStats = summoner.newQuantumSensoryDroid(mobLevel);
+        } 
+        
+        else if(mobName.equalsIgnoreCase("Warden of Frost")){
+            currentMobStats = summoner.newGreaterWillArcher(mobLevel);
         }
         
         else{

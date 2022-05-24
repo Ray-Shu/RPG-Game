@@ -238,7 +238,7 @@ public void chooseCyborg(String chosenClass){
  * @param chosenClass   - The chosen class
  */
 public void chooseHacker(String chosenClass){
-        playerStats = new Stats(300.0, 80.0, 0.75, 3.0, 8.0, 1.0, 7.0, 10.0, 150.0, 8.0,
+        playerStats = new Stats(250.0, 80.0, 0.75, 3.0, 8.0, 1.0, 7.0, 10.0, 150.0, 8.0,
                                         1.0, 1.0, 1.0, 1.0, 1.0, 1.0);
         Printer.printColor("Hacker, a good choice.", "green");
         chosenAttacks = HACKER_ATTACKS;
@@ -251,7 +251,7 @@ public void chooseHacker(String chosenClass){
  * @param chosenClass   - The chosen class
  */
 public void chooseTerminator(String chosenClass){
-        playerStats = new Stats(200.0, 90.0, 0.8, 4.5, 8.0, 0.0, 7.0, 10.0, 200.0, 9.0, 3.0, 1.0, 1.0, 1.0, 1.0, 1.0);
+        playerStats = new Stats(200.0, 90.0, 0.8, 4, 8.0, 0.0, 7.0, 10.0, 200.0, 9.0, 3.0, 1.0, 1.0, 1.0, 1.0, 1.0);
 
         Printer.printColor("Terminator, a good choice.", "red");
         chosenAttacks = TERMINATOR_ATTACKS;
@@ -277,7 +277,7 @@ public void chooseLazerSwordsman(String chosenClass){
  * @param chosenClass   - The chosen class
  */
 public void chooseRogue(String chosenClass){
-        playerStats = new Stats(125.0, 150.0, 2.0, 5.5, 10.0, 6.0, 2.0, 3.0, 130.0, 3.0, 3.0, 5.0, 1.0, 1.0, 1.0, 1.0);
+        playerStats = new Stats(125.0, 150.0, 2.0, 3.7, 10.0, 6.0, 2.0, 3.0, 130.0, 3.0, 3.0, 5.0, 1.0, 1.0, 1.0, 1.0);
 
         Printer.printColor("Rogue, a good choice.", "yellow");
         chosenAttacks = ROGUE_ATTACKS;

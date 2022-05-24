@@ -385,6 +385,7 @@ public class MainStory {
         Printer.quickBreak(1000);
         mainPlayer.levelUp();
         mainPlayer.levelUp();
+        System.out.println();
         Printer.printItalizcizedColor(
                 "The bright glow dissipates as you are \nsafely teleported. You look around and \ntake in the change of scenery. \n",
                 "white");
@@ -463,14 +464,19 @@ public class MainStory {
 
         do {
         mainPlayer.getCurrentTown().characterEnteringTown(true);
-        if(mainPlayer.getLevel() < 18) {
+        if(mainPlayer.getLevel() < 16) {
         Printer.printItalizcizedColor(
         "Nothing occupies your minds besides the malevolent laughter echoing through your skull, your burning hatred only growing brighter.\n",
         "purple");
         }
 
-        } while (mainPlayer.getLevel() < 18);
+        } while (mainPlayer.getLevel() < 16);
 
+        antarcticMerchant.shop(false, true);
+
+        mainPlayer.getCurrentTown().enterDungeon(true);
+
+        Printer.printItalizcizedColor("\nAs you get teleported to the next floor, you bask in the realization that you're one step closer to retribution.", "red");
     }
 }
 

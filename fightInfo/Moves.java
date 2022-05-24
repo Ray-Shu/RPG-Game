@@ -190,7 +190,7 @@ public class Moves {
      */
     public void machine_gun_fury (Stats attackerStats, Stats victimStats) {
         Printer.printColor("Unleashing the Machine Gun!", "cyan");
-        double moveAttack =  10;
+        double moveAttack =  7;
         double missMultiplier = 0.7; 
         statsCalculator.doDamage(attackerStats, victimStats, moveAttack, missMultiplier);
     }
@@ -202,7 +202,7 @@ public class Moves {
      */
     public void first_impact_fists (Stats attackerStats, Stats victimStats) {
         Printer.printColor("Time to strike fast!", "blue");
-        double moveAttack =  7;
+        double moveAttack =  8;
         double missMultiplier = 1.3; 
         statsCalculator.doDamage(attackerStats, victimStats, moveAttack, missMultiplier);
     }

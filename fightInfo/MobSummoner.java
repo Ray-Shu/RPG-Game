@@ -17,11 +17,11 @@ public class MobSummoner {
     
     private final String GREATER_WILL_ASSASSIN_ATTACKS[] = {"Chromium Daggers!", "Nano-electric Volley!", "Frenzied Kicks!", "Cruel Assassin's Flowing Fist!"};
     private final int GREATER_WILL_ASSASSIN_COSTS[] = {10, 15, 6, 8};
-    private double[] greaterWillAssassinStats = {110, 60, 1.3, 2.9, 6.0, 4.0, 7, 4.0, 140.0, 6.0, 6.0, 4.0, 2.0, 3.0, 9.0, 1.0};
+    private double[] greaterWillAssassinStats = {110, 60, 1.3, 3.5, 6.0, 4.0, 7, 4.0, 140.0, 6.0, 6.0, 4.0, 2.0, 3.0, 9.0, 1.0};
     
     private final String NANO_BOT_ATTACKS[] = {"Synthetic Infection!", "Integrated Combustion!", "Coordinated Ion Drill!", "Neon-Laser Cascade!"}; 
     private final int NANO_BOT_COST[] = {5, 10, 7, 8}; 
-    private double[] nanoBotStats = {150, 60, 0.9, 5.0, 5.0, 1.0, 5, 2.0, 130, 3, 3, 2.0, 1.0, 4.5, 4.0, 1.0}; 
+    private double[] nanoBotStats = {150, 60, 0.9, 4.4, 5.0, 1.0, 5, 2.0, 130, 3, 3, 2.0, 1.0, 4.5, 4.0, 1.0}; 
     
     private final String[] WARDEN_OF_DIRT_ATTACKS = {"Strange Hurl", "Soil of Pestilence", "Rooted", "Souls of Reveangance"};
     private final int[] WARDEN_DIRT_ATTACK_COSTS = {40,20,10,30};
@@ -38,7 +38,7 @@ public class MobSummoner {
     //Stats stat = new Stats(hp, mp, spd, atk, pd, md, def, end, stam, physRes, magicRes, dodge, vit, cr, cd, luck);
     private final String[] YETIS_ATTACKS = {"Body Slam","Cataclysmic Claws","Snowball Strike","Blizzard"};
     private final int[] YETIS_ATTACK_COSTS = {11,22,7,8};
-    private double[] yetiStats = {140.0, 100.0, 0.9, 5, 5, 4.0, 3, 5, 100.0, 8.0, 8.0, 0.8, 1.0, 1.4, 1.4, 1.0};
+    private double[] yetiStats = {140.0, 100.0, 0.5, 5, 5, 4.0, 3, 5, 100.0, 8.0, 8.0, 0.8, 1.0, 1.4, 1.4, 1.0};
     
     private final String[] QUANTUM_SENSORY_DROID_ATTACKS = {"Gravitational Slam!", "Atomic Annihilation!", "Power-down", "Astrogate Evasion!"};
     private final int[] QUANTUM_SENSORY_DROID_ATTACK_COSTS = {9, 15, 0, 5};

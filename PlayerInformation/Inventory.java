@@ -59,7 +59,9 @@ public class Inventory {
         itemsToAdd.add("Weak Healing Pots");
         itemsToAdd.add("Weak Healing Pots");
         itemsToAdd.add("Weak Healing Pots");
+        itemsToAdd.add("Weak Healing Pots");
         itemsToAdd.add("Weak Mana Pots"); 
+        itemsToAdd.add("Weak Mana Pots");
         itemsToAdd.add("Weak Mana Pots");
         itemsToAdd.add("Weak Mana Pots");
         addInventory(itemsToAdd); 

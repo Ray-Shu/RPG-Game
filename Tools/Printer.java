@@ -24,7 +24,7 @@ public class Printer {
         //prints each letter out into a message
         for (char c : message) {
             System.out.print(c);
-            quickBreak(1);
+            quickBreak(20);
         }
         System.out.println();
     }
@@ -67,7 +67,7 @@ public class Printer {
     
     for (char c : message) {
         System.out.print(c);
-        quickBreak(1);
+        quickBreak(20);
     }
 
     System.out.println(ANSI_RESET);
